@@ -6,653 +6,336 @@
 <title>SUPLAB — Sports Nutrition</title>
 
 <style>
-:root{
-  --bg:#080808;
-  --panel:#111;
-  --panel2:#171717;
-  --line:#292929;
-  --text:#f5f5f5;
-  --muted:#a7a7a7;
-  --accent:#ff3c00;
-  --gold:#e6b84b;
-  --green:#35c46a;
-}
-
+body{margin:0;background:#080808;color:#f5f5f5;font-family:Arial,sans-serif}
 *{box-sizing:border-box}
-
-html{scroll-behavior:smooth}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif
+.header{position:sticky;top:0;background:#0b0b0bf2;border-bottom:1px solid #292929;z-index:9}
+.nav,.container,.footerinner{max-width:1400px;margin:auto}
+.nav{min-height:70px;padding:0 20px;display:flex;align-items:center;gap:24px}
+.logo{font-weight:900;font-size:25px;letter-spacing:2px}
+.logo span,.source{color:#ff3c00}
+.links{display:flex;gap:18px;font-size:13px;font-weight:800}
+.links a{color:#fff;text-decoration:none}
+.tools{margin-left:auto;display:flex;gap:7px}
+button{cursor:pointer}
+.iconbtn,.btn{
+background:#151515;
+color:#fff;
+border:1px solid #303030;
+border-radius:9px;
+padding:10px 13px
 }
-
-button,input{
-  font:inherit
-}
-
-button{
-  cursor:pointer
-}
-
-a{
-  color:inherit;
-  text-decoration:none
-}
-
-/* =========================
-   HEADER
-========================= */
-
-.header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(8,8,8,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line)
-}
-
-.nav{
-  max-width:1400px;
-  margin:auto;
-  min-height:72px;
-  display:flex;
-  align-items:center;
-  gap:22px;
-  padding:0 20px
-}
-
-.logo{
-  font-size:25px;
-  font-weight:950;
-  letter-spacing:2px
-}
-
-.logo span{
-  color:var(--accent)
-}
-
-.links{
-  display:flex;
-  gap:20px;
-  font-size:13px;
-  font-weight:800
-}
-
-.links a:hover{
-  color:var(--accent)
-}
-
-.tools{
-  margin-left:auto;
-  display:flex;
-  gap:8px
-}
-
-.iconbtn,
-.btn{
-  border:1px solid var(--line);
-  background:#151515;
-  color:var(--text);
-  border-radius:10px;
-  padding:10px 13px
-}
-
-.iconbtn:hover,
-.btn:hover{
-  border-color:#555
-}
-
 .btn.primary{
-  background:var(--accent);
-  border-color:var(--accent);
-  font-weight:900
+background:#ff3c00;
+border-color:#ff3c00;
+font-weight:900
 }
-
-.btn.ghost{
-  background:transparent
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  border:1px solid #3a3a3a;
-  border-radius:999px;
-  padding:5px 9px;
-  font-size:11px;
-  font-weight:900
-}
-
-/* =========================
-   LAYOUT
-========================= */
-
-.container{
-  max-width:1400px;
-  margin:auto;
-  padding:34px 20px
-}
-
-.section{
-  margin:34px 0 58px
-}
-
+.container{padding:32px 20px}
+.section{margin:0 0 58px}
 .sectionhead{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:20px;
-  margin-bottom:18px
+display:flex;
+justify-content:space-between;
+align-items:end;
+gap:15px;
+margin-bottom:18px
 }
-
-.sectionhead h2{
-  margin:0;
-  font-size:27px
-}
-
-.sectionhead p{
-  margin:7px 0 0;
-  color:var(--muted);
-  font-size:14px
-}
-
+.sectionhead h2{margin:0;font-size:27px}
+.sectionhead p{color:#aaa;font-size:14px}
 .search{
-  width:100%;
-  max-width:390px;
-  background:#101010;
-  border:1px solid var(--line);
-  color:white;
-  border-radius:10px;
-  padding:12px 14px
+background:#111;
+color:#fff;
+border:1px solid #303030;
+border-radius:9px;
+padding:12px;
+width:380px;
+max-width:100%
 }
-
-/* =========================
-   BRAND FILTER
-========================= */
-
-.brandbar{
-  display:flex;
-  gap:8px;
-  margin-bottom:18px
-}
-
+.brandbar{display:flex;gap:8px;margin-bottom:16px}
 .brandbar button{
-  border:1px solid var(--line);
-  background:var(--panel);
-  color:var(--muted);
-  padding:10px 16px;
-  border-radius:9px;
-  font-weight:900
+background:#111;
+color:#aaa;
+border:1px solid #303030;
+padding:10px 15px;
+border-radius:8px;
+font-weight:900
 }
-
-.brandbar button.active{
-  background:var(--text);
-  color:#080808
+.brandbar .active{
+background:#fff;
+color:#080808
 }
-
-/* =========================
-   PRODUCTS
-========================= */
-
 .grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px
 }
-
 .card{
-  background:linear-gradient(180deg,#141414,#0f0f0f);
-  border:1px solid var(--line);
-  border-radius:15px;
-  overflow:hidden;
-  position:relative
+background:#111;
+border:1px solid #292929;
+border-radius:14px;
+overflow:hidden;
+position:relative
 }
-
 .productimg{
-  height:245px;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  cursor:pointer
+height:245px;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center
 }
-
 .productimg img{
-  width:100%;
-  height:100%;
-  object-fit:contain
+width:100%;
+height:100%;
+object-fit:contain
 }
-
-.productbody{
-  padding:15px
-}
-
-.source{
-  font-size:10px;
-  font-weight:950;
-  letter-spacing:1px;
-  color:var(--accent)
-}
-
-.productbody h3{
-  font-size:16px;
-  margin:7px 0
-}
-
-.desc{
-  font-size:12px;
-  color:var(--muted);
-  min-height:34px;
-  line-height:1.45
-}
-
-.stars{
-  color:#ffc84a;
-  font-size:13px;
-  margin:9px 0
-}
-
-.stars span{
-  color:var(--muted);
-  margin-left:4px
-}
-
-.price{
-  font-size:21px;
-  font-weight:950
-}
-
-.old{
-  color:#777;
-  text-decoration:line-through;
-  font-size:12px;
-  margin-left:5px
-}
-
-.actions{
-  display:flex;
-  gap:7px;
-  margin-top:12px
-}
-
-.actions .btn{
-  flex:1
-}
-
 .heart{
-  position:absolute;
-  right:10px;
-  top:10px;
-  border:0;
-  background:rgba(0,0,0,.65);
-  color:white;
-  border-radius:50%;
-  width:36px;
-  height:36px;
-  z-index:2;
-  font-size:18px
+position:absolute;
+right:9px;
+top:9px;
+z-index:2;
+border:0;
+border-radius:50%;
+width:35px;
+height:35px;
+background:#000b;
+color:#fff
 }
-
-/* =========================
-   CLUB
-========================= */
-
+.productbody{padding:15px}
+.productbody h3{font-size:16px}
+.desc{
+color:#aaa;
+font-size:12px;
+min-height:34px
+}
+.stars{
+color:#ffc84a;
+font-size:13px
+}
+.stars span{color:#999}
+.price{
+font-size:21px;
+font-weight:900;
+margin-top:8px
+}
+.old{
+text-decoration:line-through;
+color:#777;
+font-size:12px
+}
+.actions{
+display:flex;
+gap:7px;
+margin-top:12px
+}
+.actions .btn{flex:1}
+.panel,.clubcard{
+background:#111;
+border:1px solid #292929;
+border-radius:15px;
+padding:21px
+}
 .club{
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:18px
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:16px
 }
-
-.clubcard{
-  background:linear-gradient(135deg,#191919,#0d0d0d);
-  border:1px solid #343434;
-  border-radius:16px;
-  padding:22px
-}
-
 .level{
-  color:var(--gold);
-  font-weight:950;
-  font-size:28px;
-  margin-top:12px
+font-size:28px;
+color:#e6b84b;
+font-weight:900
 }
-
 .progress{
-  height:9px;
-  background:#252525;
-  border-radius:999px;
-  overflow:hidden
+height:9px;
+background:#252525;
+border-radius:99px;
+overflow:hidden
 }
-
 .progress i{
-  display:block;
-  height:100%;
-  background:var(--accent);
-  width:0%;
-  transition:.35s
+display:block;
+height:100%;
+background:#ff3c00
 }
-
 .stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
 }
-
 .stat{
-  background:#151515;
-  border:1px solid var(--line);
-  padding:16px;
-  border-radius:12px
+background:#151515;
+border:1px solid #292929;
+border-radius:11px;
+padding:15px
 }
-
 .stat b{
-  display:block;
-  font-size:22px;
-  margin-top:5px
+display:block;
+font-size:21px;
+margin-top:5px
 }
-
-/* =========================
-   VIDEO
-========================= */
-
 .video-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
 }
-
 .video{
-  background:#101010;
-  border:1px solid var(--line);
-  border-radius:15px;
-  overflow:hidden
+background:#111;
+border:1px solid #292929;
+border-radius:14px;
+overflow:hidden
 }
-
 .video iframe{
-  display:block;
-  width:100%;
-  aspect-ratio:16/9;
-  border:0
+width:100%;
+aspect-ratio:16/9;
+border:0;
+display:block
 }
-
-.video .vbody{
-  padding:13px
+.vbody{padding:14px}
+.badge{
+display:inline-block;
+border:1px solid #444;
+border-radius:99px;
+padding:5px 9px;
+font-size:10px;
+font-weight:900
 }
-
 .official{
-  color:#aaa;
-  font-size:12px
+color:#aaa;
+font-size:12px
 }
-
-/* =========================
-   CATEGORIES
-========================= */
-
 .categories{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:12px
 }
-
 .cat{
-  background:#111;
-  border:1px solid var(--line);
-  border-radius:13px;
-  padding:22px 15px;
-  font-weight:950;
-  text-align:center;
-  transition:.2s;
-  color:white
+background:#111;
+color:#fff;
+border:1px solid #292929;
+border-radius:12px;
+padding:20px;
+font-weight:900
 }
-
-.cat:hover{
-  transform:translateY(-3px);
-  border-color:#555
-}
-
 .cat small{
-  display:block;
-  color:var(--muted);
-  font-weight:500;
-  margin-top:6px
+display:block;
+color:#999;
+margin-top:6px
 }
-
-/* =========================
-   PANELS
-========================= */
-
-.panel{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:22px
+.modal,.drawer{
+position:fixed;
+inset:0;
+display:none;
+z-index:30
 }
-
-/* =========================
-   MODALS / DRAWER
-========================= */
-
-.modal,
-.drawer{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  display:none
-}
-
-.modal.show,
-.drawer.show{
-  display:block
-}
-
+.modal.show,.drawer.show{display:block}
 .shade{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.76)
+position:absolute;
+inset:0;
+background:#000c
 }
-
+.modalbox,.drawerbox{
+position:relative;
+z-index:1;
+background:#111;
+border:1px solid #292929
+}
 .modalbox{
-  position:relative;
-  z-index:1;
-  background:#111;
-  border:1px solid var(--line);
-  border-radius:16px;
-  max-width:650px;
-  margin:7vh auto;
-  padding:22px;
-  max-height:86vh;
-  overflow:auto
+max-width:650px;
+margin:7vh auto;
+padding:20px;
+border-radius:15px
 }
-
-.close{
-  float:right;
-  border:0;
-  background:none;
-  color:#aaa;
-  font-size:24px
-}
-
 .drawerbox{
-  position:absolute;
-  right:0;
-  top:0;
-  height:100%;
-  width:min(470px,100%);
-  background:#101010;
-  border-left:1px solid var(--line);
-  padding:20px;
-  overflow:auto
+margin-left:auto;
+width:min(470px,100%);
+height:100%;
+padding:20px;
+overflow:auto
 }
-
+.close{
+float:right;
+background:none;
+border:0;
+color:#aaa;
+font-size:25px
+}
 .cartrow{
-  display:grid;
-  grid-template-columns:65px 1fr auto;
-  gap:10px;
-  padding:12px 0;
-  border-bottom:1px solid var(--line)
+display:grid;
+grid-template-columns:65px 1fr auto;
+gap:10px;
+padding:12px 0;
+border-bottom:1px solid #292929
 }
-
 .cartrow img{
-  width:65px;
-  height:65px;
-  object-fit:contain;
-  background:#fff;
-  border-radius:8px
+width:65px;
+height:65px;
+background:#fff;
+object-fit:contain;
+border-radius:7px
 }
-
 .qty{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  margin-top:8px
+display:flex;
+gap:6px;
+align-items:center;
+margin-top:7px
 }
-
 .qty button{
-  background:#222;
-  color:white;
-  border:1px solid #333;
-  border-radius:6px;
-  width:26px;
-  height:26px
+background:#222;
+color:#fff;
+border:1px solid #333
 }
-
 .form{
-  display:grid;
-  gap:10px
+display:grid;
+gap:10px
 }
-
 .form input{
-  background:#0b0b0b;
-  border:1px solid var(--line);
-  color:#fff;
-  border-radius:9px;
-  padding:12px
+background:#0b0b0b;
+color:#fff;
+border:1px solid #303030;
+padding:12px;
+border-radius:8px
 }
-
-.tabs{
-  display:flex;
-  gap:7px;
-  margin-bottom:14px
-}
-
-.tabs button{
-  flex:1
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  background:#eee;
-  color:#111;
-  padding:12px 15px;
-  border-radius:10px;
-  font-weight:800;
-  z-index:200;
-  display:none
-}
-
-/* =========================
-   FOOTER
-========================= */
-
 .footer{
-  border-top:1px solid var(--line);
-  padding:35px 20px;
-  color:#777;
-  font-size:12px
+border-top:1px solid #292929;
+padding:35px 20px;
+color:#777;
+font-size:12px
 }
-
-.footerinner{
-  max-width:1400px;
-  margin:auto
+.toast{
+display:none;
+position:fixed;
+right:18px;
+bottom:18px;
+background:#eee;
+color:#111;
+padding:12px 15px;
+border-radius:9px;
+z-index:99
 }
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media(max-width:1050px){
-
-  .grid{
-    grid-template-columns:repeat(3,1fr)
-  }
-
-  .categories{
-    grid-template-columns:repeat(3,1fr)
-  }
-
-  .video-grid{
-    grid-template-columns:repeat(2,1fr)
-  }
-
-  .club{
-    grid-template-columns:1fr
-  }
-
-  .links{
-    display:none
-  }
+.grid{grid-template-columns:repeat(3,1fr)}
+.categories{grid-template-columns:repeat(3,1fr)}
+.video-grid{grid-template-columns:repeat(2,1fr)}
+.club{grid-template-columns:1fr}
+.links{display:none}
 }
 
 @media(max-width:700px){
-
-  .container{
-    padding:24px 14px
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px
-  }
-
-  .productimg{
-    height:190px
-  }
-
-  .categories{
-    grid-template-columns:repeat(2,1fr)
-  }
-
-  .video-grid{
-    grid-template-columns:1fr
-  }
-
-  .stats{
-    grid-template-columns:1fr
-  }
-
-  .sectionhead{
-    display:block
-  }
-
-  .search{
-    max-width:none;
-    margin-top:12px
-  }
+.container{padding:24px 14px}
+.grid{grid-template-columns:repeat(2,1fr)}
+.categories,.video-grid{grid-template-columns:1fr}
+.productimg{height:190px}
+.stats{grid-template-columns:1fr}
+.sectionhead{display:block}
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header class="header">
-
 <nav class="nav">
 
-<a class="logo" href="#">SUP<span>LAB</span></a>
+<a class="logo" href="#">
+SUP<span>LAB</span>
+</a>
 
 <div class="links">
 <a href="#store">ΚΑΤΑΣΤΗΜΑ</a>
@@ -664,7 +347,7 @@ a{
 
 <div class="tools">
 
-<button class="iconbtn" onclick="toggleWishlist()">
+<button class="iconbtn" onclick="toggleWishList()">
 ❤️ <span id="wishCount">0</span>
 </button>
 
@@ -679,37 +362,31 @@ a{
 </div>
 
 </nav>
-
 </header>
 
 
 <main class="container">
 
 
-<!-- =========================
-     PRODUCTS FIRST
-========================= -->
+<!-- PRODUCTS FIRST -->
 
 <section class="section" id="store">
 
 <div class="sectionhead">
 
 <div>
-
 <h2>SUPLAB STORE</h2>
 
 <p>
 Πραγματικά προϊόντα από MyProtein και iHerb — αγορές μέσα από το SUPLAB.
 </p>
-
 </div>
 
 <input
 id="search"
 class="search"
 placeholder="🔍 Αναζήτηση προϊόντος..."
-oninput="renderProducts()"
->
+oninput="render()">
 
 </div>
 
@@ -739,9 +416,8 @@ iHERB
 </section>
 
 
-<!-- =========================
-     CLUB
-========================= -->
+
+<!-- CLUB -->
 
 <section class="section" id="club">
 
@@ -757,7 +433,9 @@ iHERB
 
 </div>
 
-<button class="btn primary" onclick="openAccount()">
+<button
+class="btn primary"
+onclick="openAccount()">
 Ο ΛΟΓΑΡΙΑΣΜΟΣ ΜΟΥ
 </button>
 
@@ -768,9 +446,9 @@ iHERB
 
 <div class="clubcard">
 
-<div class="badge">
+<span class="badge">
 SUPLAB CLUB MEMBER
-</div>
+</span>
 
 <div class="level" id="clubLevel">
 BRONZE
@@ -781,7 +459,7 @@ BRONZE
 </p>
 
 <div class="progress">
-<i id="clubProgress"></i>
+<i id="clubProgress" style="width:0%"></i>
 </div>
 
 <p
@@ -820,11 +498,10 @@ style="color:#aaa;font-size:12px">
 </section>
 
 
-<!-- =========================
-     GIFT PROGRESS
-========================= -->
 
-<section class="section" id="gift">
+<!-- GIFT -->
+
+<section class="section">
 
 <div class="panel">
 
@@ -847,7 +524,12 @@ $50.00 ακόμα
 </div>
 
 <div class="progress">
-<i id="giftBar" style="width:0%"></i>
+
+<i
+id="giftBar"
+style="width:0%">
+</i>
+
 </div>
 
 </div>
@@ -855,11 +537,10 @@ $50.00 ακόμα
 </section>
 
 
-<!-- =========================
-     BUY AGAIN
-========================= -->
 
-<section class="section" id="buyagain">
+<!-- BUY AGAIN -->
+
+<section class="section">
 
 <div class="sectionhead">
 
@@ -875,16 +556,20 @@ $50.00 ακόμα
 
 </div>
 
-<div id="buyAgain" class="grid"></div>
+<div
+id="buyAgain"
+class="grid">
+</div>
 
 </section>
 
 
-<!-- =========================
-     PERSONAL OFFERS
-========================= -->
 
-<section class="section" id="offers">
+<!-- PERSONAL OFFERS -->
+
+<section
+class="section"
+id="offers">
 
 <div class="sectionhead">
 
@@ -893,23 +578,27 @@ $50.00 ακόμα
 <h2>🎯 ΠΡΟΣΩΠΙΚΕΣ ΠΡΟΣΦΟΡΕΣ</h2>
 
 <p>
-Προσφορές που προσαρμόζονται στο ιστορικό του λογαριασμού.
+Προτάσεις με βάση τα δημοφιλή προϊόντα και τη δραστηριότητά σου.
 </p>
 
 </div>
 
 </div>
 
-<div id="offersGrid" class="grid"></div>
+<div
+id="offersGrid"
+class="grid">
+</div>
 
 </section>
 
 
-<!-- =========================
-     OFFICIAL VIDEOS
-========================= -->
 
-<section class="section" id="videos">
+<!-- OFFICIAL CONTENT -->
+
+<section
+class="section"
+id="videos">
 
 <div class="sectionhead">
 
@@ -918,7 +607,7 @@ $50.00 ακόμα
 <h2>🎥 OFFICIAL CONTENT</h2>
 
 <p>
-Official brand videos embedded μέσα στο SUPLAB.
+Embedded official content — χωρίς να φεύγεις από το SUPLAB.
 </p>
 
 </div>
@@ -929,17 +618,14 @@ Official brand videos embedded μέσα στο SUPLAB.
 <div class="video-grid">
 
 
-<!-- MYPROTEIN VIDEO 1
-     REPLACED UNAVAILABLE VIDEO
--->
+<!-- MYPROTEIN VIDEO 1 -->
 
 <article class="video">
 
 <iframe
 src="https://www.youtube.com/embed/6moAJc6NCFQ"
-title="Myprotein official YouTube"
+title="Myprotein official"
 loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
 
@@ -962,15 +648,15 @@ Fitness • Nutrition • Products
 </article>
 
 
+
 <!-- MYPROTEIN VIDEO 2 -->
 
 <article class="video">
 
 <iframe
 src="https://www.youtube.com/embed/ECVm_FoSCoA"
-title="Myprotein official workout video"
+title="Myprotein workout"
 loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
 
@@ -993,15 +679,15 @@ Official Myprotein content
 </article>
 
 
+
 <!-- MYPROTEIN VIDEO 3 -->
 
 <article class="video">
 
 <iframe
 src="https://www.youtube.com/embed/atLBPddkCSY"
-title="Myprotein official nutrition video"
+title="Myprotein nutrition"
 loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
 
@@ -1024,15 +710,15 @@ Official Myprotein content
 </article>
 
 
+
 <!-- IHERB VIDEO 1 -->
 
 <article class="video">
 
 <iframe
 src="https://www.youtube.com/embed/iepMy_1vefw"
-title="iHerb official video"
+title="iHerb official"
 loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
 
@@ -1055,15 +741,15 @@ Official iHerb content
 </article>
 
 
+
 <!-- IHERB VIDEO 2 -->
 
 <article class="video">
 
 <iframe
 src="https://www.youtube.com/embed/cH-Bv5KGUh8"
-title="iHerb official reviews video"
+title="iHerb official reviews"
 loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
 
@@ -1091,21 +777,23 @@ Official iHerb content
 </section>
 
 
-<!-- =========================================================
-     LAST SECTION
-     ΑΓΟΡΕΣ ΑΝΑ ΚΑΤΗΓΟΡΙΑ
-========================================================= -->
 
-<section class="section" id="categories">
+<!-- CATEGORIES LAST -->
+
+<section
+class="section"
+id="categories">
 
 <div class="sectionhead">
 
 <div>
 
-<h2>ΑΓΟΡΕΣ ΑΝΑ ΚΑΤΗΓΟΡΙΑ</h2>
+<h2>
+ΑΓΟΡΕΣ ΑΝΑ ΚΑΤΗΓΟΡΙΑ
+</h2>
 
 <p>
-Βρες γρήγορα το είδος συμπληρώματος που χρειάζεσαι.
+Το τελευταίο shopping section, όπως ζήτησες.
 </p>
 
 </div>
@@ -1121,7 +809,6 @@ class="cat"
 onclick="filterCat('Protein')">
 
 💪
-
 <br>
 
 ΠΡΩΤΕΪΝΗ
@@ -1138,7 +825,6 @@ class="cat"
 onclick="filterCat('Creatine')">
 
 ⚡
-
 <br>
 
 ΚΡΕΑΤΙΝΗ
@@ -1155,7 +841,6 @@ class="cat"
 onclick="filterCat('Vitamins')">
 
 💊
-
 <br>
 
 ΒΙΤΑΜΙΝΕΣ
@@ -1172,13 +857,12 @@ class="cat"
 onclick="filterCat('Minerals')">
 
 🧬
-
 <br>
 
 ΜΕΤΑΛΛΑ
 
 <small>
-Magnesium & more
+Magnesium • Minerals
 </small>
 
 </button>
@@ -1189,98 +873,12 @@ class="cat"
 onclick="filterCat('Wellness')">
 
 ❤️
-
 <br>
 
 ΥΓΕΙΑ
 
 <small>
-Wellness essentials
-</small>
-
-</button>
-
-
-<button
-class="cat"
-onclick="filterCat('Omega')">
-
-🐟
-
-<br>
-
-OMEGA-3
-
-<small>
-Fish oil
-</small>
-
-</button>
-
-
-<button
-class="cat"
-onclick="filterCat('Collagen')">
-
-✨
-
-<br>
-
-COLLAGEN
-
-<small>
-Beauty & wellness
-</small>
-
-</button>
-
-
-<button
-class="cat"
-onclick="filterCat('Casein')">
-
-🌙
-
-<br>
-
-CASEIN
-
-<small>
-Slow release protein
-</small>
-
-</button>
-
-
-<button
-class="cat"
-onclick="filterCat('Clear')">
-
-💧
-
-<br>
-
-CLEAR WHEY
-
-<small>
-Light format
-</small>
-
-</button>
-
-
-<button
-class="cat"
-onclick="filterCat('all')">
-
-🛍️
-
-<br>
-
-ΟΛΑ ΤΑ ΠΡΟΪΟΝΤΑ
-
-<small>
-Επιστροφή στο store
+Wellness • Daily support
 </small>
 
 </button>
@@ -1293,104 +891,86 @@ onclick="filterCat('all')">
 </main>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer class="footer">
 
 <div class="footerinner">
 
 <b>SUPLAB</b>
-
-— independent storefront/demo.
+—
+independent storefront/demo.
 
 Product names, images, trademarks and official content belong to their respective owners.
 
-Prices shown are snapshots and can change.
+Prices are snapshots and can change.
 
-Για πραγματικές πληρωμές, παραγγελίες και ασφαλή λογαριασμούς απαιτείται backend/payment provider.
+Για πραγματικές πληρωμές, παραγγελίες και ασφαλή credentials απαιτείται backend/payment provider.
 
 </div>
 
 </footer>
 
 
-<!-- =========================
-     PRODUCT MODAL
-========================= -->
 
-<div id="productModal" class="modal">
+<!-- PRODUCT MODAL -->
+
+<div
+id="productModal"
+class="modal">
 
 <div
 class="shade"
-onclick="closeModal('productModal')">
+onclick="closeM('productModal')">
 </div>
 
 <div class="modalbox">
 
 <button
 class="close"
-onclick="closeModal('productModal')">
+onclick="closeM('productModal')">
 ×
 </button>
 
-<div id="productDetail"></div>
+<div id="detail"></div>
 
 </div>
 
 </div>
 
 
-<!-- =========================
-     ACCOUNT MODAL
-========================= -->
 
-<div id="accountModal" class="modal">
+<!-- ACCOUNT MODAL -->
+
+<div
+id="accountModal"
+class="modal">
 
 <div
 class="shade"
-onclick="closeModal('accountModal')">
+onclick="closeM('accountModal')">
 </div>
 
 <div class="modalbox">
 
 <button
 class="close"
-onclick="closeModal('accountModal')">
+onclick="closeM('accountModal')">
 ×
 </button>
 
-
-<div class="tabs">
-
-<button
-class="btn primary"
-onclick="showAuth('login')">
-Σύνδεση
-</button>
-
-<button
-class="btn"
-onclick="showAuth('register')">
-Εγγραφή
-</button>
-
-</div>
-
-
-<div id="authBox"></div>
+<div id="auth"></div>
 
 </div>
 
 </div>
 
 
-<!-- =========================
-     CART
-========================= -->
 
-<div id="cartDrawer" class="drawer">
+<!-- CART -->
+
+<div
+id="cartDrawer"
+class="drawer">
 
 <div
 class="shade"
@@ -1411,16 +991,11 @@ onclick="toggleCart()">
 
 <div id="cartItems"></div>
 
+<div class="panel">
 
-<div
-class="panel"
-style="margin-top:15px">
-
-<div id="cartGift">
+<p id="cartGift">
 🎁 $50.00 ακόμα για δωρεάν δώρο
-</div>
-
-<hr style="border-color:#292929">
+</p>
 
 <div
 style="display:flex;justify-content:space-between">
@@ -1435,10 +1010,9 @@ $0.00
 
 </div>
 
-
 <button
 class="btn primary"
-style="width:100%;margin-top:13px"
+style="width:100%;margin-top:12px"
 onclick="checkout()">
 
 ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ →
@@ -1452,233 +1026,211 @@ onclick="checkout()">
 </div>
 
 
-<div id="toast" class="toast"></div>
+
+<div
+id="toast"
+class="toast">
+</div>
+
 
 
 <script>
 
-/* =========================================================
-   REAL PRODUCT DATA
-========================================================= */
+const products=[
 
-const products = [
 
 {
 id:1,
-brand:'MyProtein',
-name:'Impact Whey Protein',
-cat:['Protein'],
-price:13.99,
-old:19.99,
-rating:4.48,
-reviews:4416,
-img:'https://static.thcdn.com/productimg/original/10852500-1615304620165133.jpg',
-desc:'Whey protein concentrate designed to help increase daily protein intake.'
+b:'MyProtein',
+n:'Impact Whey Protein',
+c:['Protein'],
+p:13.99,
+o:19.99,
+r:4.48,
+v:4416,
+i:'https://static.thcdn.com/productimg/original/10852500-1615304620165133.jpg',
+d:'Whey protein concentrate designed to help increase daily protein intake.'
 },
+
 
 {
 id:2,
-brand:'MyProtein',
-name:'Creatine Monohydrate Powder',
-cat:['Creatine'],
-price:13.99,
-old:19.99,
-rating:4.74,
-reviews:508,
-img:'https://static.thcdn.com/productimg/original/10852411-1935304620346456.jpg',
-desc:'Creatine monohydrate powder for convenient daily creatine supplementation.'
+b:'MyProtein',
+n:'Creatine Monohydrate Powder',
+c:['Creatine'],
+p:13.99,
+o:19.99,
+r:4.74,
+v:508,
+i:'https://static.thcdn.com/productimg/original/10852411-1935304620346456.jpg',
+d:'Creatine monohydrate powder for convenient daily creatine supplementation.'
 },
+
 
 {
 id:3,
-brand:'MyProtein',
-name:'Impact Whey Isolate',
-cat:['Protein'],
-price:20.99,
-old:29.99,
-rating:4.36,
-reviews:2449,
-img:'https://static.thcdn.com/productimg/original/10852482-2555304620117685.jpg',
-desc:'Whey protein isolate with a high protein content.'
+b:'MyProtein',
+n:'Impact Whey Isolate',
+c:['Protein'],
+p:20.99,
+o:29.99,
+r:4.36,
+v:2449,
+i:'https://static.thcdn.com/productimg/original/10852482-2555304620117685.jpg',
+d:'Whey protein isolate with a high protein content.'
 },
+
 
 {
 id:4,
-brand:'MyProtein',
-name:'Clear Whey Isolate',
-cat:['Protein','Clear'],
-price:31.46,
-old:44.95,
-rating:4.35,
-reviews:935,
-img:'https://static.thcdn.com/productimg/original/12095869-1335285731042416.png',
-desc:'Clear-style whey isolate with a light, juice-like format.'
+b:'MyProtein',
+n:'Clear Whey Isolate',
+c:['Protein','Clear'],
+p:31.46,
+o:44.95,
+r:4.35,
+v:935,
+i:'https://static.thcdn.com/productimg/original/12095869-1335285731042416.png',
+d:'Clear-style whey isolate with a light, juice-like format.'
 },
+
 
 {
 id:5,
-brand:'MyProtein',
-name:'Slow-Release Casein',
-cat:['Protein','Casein'],
-price:41.99,
-old:59.99,
-rating:4.05,
-reviews:338,
-img:'https://static.thcdn.com/productimg/original/11092497-1895309035258791.jpg',
-desc:'Casein protein designed for a slower release of amino acids.'
+b:'MyProtein',
+n:'Slow-Release Casein',
+c:['Protein','Casein'],
+p:41.99,
+o:59.99,
+r:4.05,
+v:338,
+i:'https://static.thcdn.com/productimg/original/11092497-1895309035258791.jpg',
+d:'Casein protein designed for a slower release of amino acids.'
 },
+
 
 {
 id:6,
-brand:'MyProtein',
-name:'Vegan Protein Blend',
-cat:['Protein'],
-price:38.49,
-old:54.99,
-rating:3.85,
-reviews:176,
-img:'https://static.thcdn.com/productimg/1600/1600/10852638-1694635916388175.jpg',
-desc:'Plant-based protein blend suitable for vegan diets.'
+b:'MyProtein',
+n:'Vegan Protein Blend',
+c:['Protein'],
+p:38.49,
+o:54.99,
+r:3.85,
+v:176,
+i:'https://static.thcdn.com/productimg/1600/1600/10852638-1694635916388175.jpg',
+d:'Plant-based protein blend suitable for vegan diets.'
 },
+
 
 {
 id:7,
-brand:'iHerb',
-name:'California Gold Nutrition CollagenUP',
-cat:['Wellness','Collagen'],
-price:17.46,
-old:null,
-rating:4.7,
-reviews:325886,
-img:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01033/k/478.jpg',
-desc:'Hydrolyzed marine collagen peptides with hyaluronic acid and vitamin C.'
+b:'iHerb',
+n:'California Gold Nutrition CollagenUP',
+c:['Wellness','Collagen'],
+p:17.46,
+o:null,
+r:4.7,
+v:325886,
+i:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01033/k/478.jpg',
+d:'Hydrolyzed marine collagen peptides with hyaluronic acid and vitamin C.'
 },
+
 
 {
 id:8,
-brand:'iHerb',
-name:'NOW Magnesium Glycinate',
-cat:['Minerals','Wellness'],
-price:22.36,
-old:null,
-rating:4.7,
-reviews:42195,
-img:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01289/k/62.jpg',
-desc:'Magnesium glycinate, 100 mg per tablet, 180 tablets.'
+b:'iHerb',
+n:'NOW Magnesium Glycinate',
+c:['Minerals','Wellness'],
+p:22.36,
+o:null,
+r:4.7,
+v:42195,
+i:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01289/k/62.jpg',
+d:'Magnesium glycinate, 100 mg per tablet, 180 tablets.'
 },
+
 
 {
 id:9,
-brand:'iHerb',
-name:'California Gold Nutrition Vitamin D3 + K2',
-cat:['Vitamins','Wellness'],
-price:16.20,
-old:null,
-rating:4.7,
-reviews:37089,
-img:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn02333/r/63.jpg',
-desc:'Vitamin D3 + K2 as MK-7, 180 veggie capsules.'
+b:'iHerb',
+n:'California Gold Nutrition Vitamin D3 + K2',
+c:['Vitamins','Wellness'],
+p:16.20,
+o:null,
+r:4.7,
+v:37089,
+i:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn02333/r/63.jpg',
+d:'Vitamin D3 + K2 as MK-7, 180 veggie capsules.'
 },
+
 
 {
 id:10,
-brand:'iHerb',
-name:'NOW Vitamin D3 & K2',
-cat:['Vitamins','Wellness'],
-price:10.28,
-old:null,
-rating:4.7,
-reviews:79805,
-img:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now00369/k/132.jpg',
-desc:'Vitamin D3 & K2, 120 capsules.'
+b:'iHerb',
+n:'NOW Vitamin D3 & K2',
+c:['Vitamins','Wellness'],
+p:10.28,
+o:null,
+r:4.7,
+v:79805,
+i:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now00369/k/132.jpg',
+d:'Vitamin D3 & K2, 120 capsules.'
 },
+
 
 {
 id:11,
-brand:'iHerb',
-name:"Doctor's Best High Absorption Magnesium",
-cat:['Minerals','Wellness'],
-price:25.77,
-old:null,
-rating:4.8,
-reviews:211788,
-img:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/drb/drb00565/k/32.jpg',
-desc:'High absorption magnesium formula.'
+b:'iHerb',
+n:"Doctor's Best High Absorption Magnesium",
+c:['Minerals','Wellness'],
+p:25.77,
+o:null,
+r:4.8,
+v:211788,
+i:'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/drb/drb00565/k/32.jpg',
+d:'High absorption magnesium formula.'
 }
 
 ];
 
 
-/* =========================================================
-   STATE
-========================================================= */
+let brand='all';
 
-let brand = 'all';
+let cat='all';
 
-let cat = 'all';
-
-let cart =
+let cart=
 JSON.parse(
-localStorage.getItem('suplab_cart') || '[]'
+localStorage.suplab_cart||'[]'
 );
 
-let wish =
+let wish=
 JSON.parse(
-localStorage.getItem('suplab_wish') || '[]'
+localStorage.suplab_wish||'[]'
 );
 
-let orders =
+let orders=
 JSON.parse(
-localStorage.getItem('suplab_orders') || '[]'
+localStorage.suplab_orders||'[]'
 );
 
-let points =
-Number(
-localStorage.getItem('suplab_points') || 0
-);
+let points=
++localStorage.suplab_points||0;
 
 
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function money(n){
-
-return '$' + Number(n).toFixed(2);
-
-}
+const $=x=>
+document.getElementById(x);
 
 
-function save(){
-
-localStorage.setItem(
-'suplab_cart',
-JSON.stringify(cart)
-);
-
-localStorage.setItem(
-'suplab_wish',
-JSON.stringify(wish)
-);
-
-localStorage.setItem(
-'suplab_orders',
-JSON.stringify(orders)
-);
-
-localStorage.setItem(
-'suplab_points',
-points
-);
-
-}
+const money=x=>
+'$'+x.toFixed(2);
 
 
-function esc(s){
+function esc(x){
 
-return String(s).replace(
+return String(x).replace(
 /[&<>"']/g,
-m => ({
+m=>({
 '&':'&amp;',
 '<':'&lt;',
 '>':'&gt;',
@@ -1690,42 +1242,23 @@ m => ({
 }
 
 
-/* =========================================================
-   FILTER
-========================================================= */
+function save(){
 
-function filtered(){
+localStorage.suplab_cart=
+JSON.stringify(cart);
 
-let q =
-(
-document.getElementById('search')?.value || ''
-).toLowerCase();
+localStorage.suplab_wish=
+JSON.stringify(wish);
 
-return products.filter(p =>
+localStorage.suplab_orders=
+JSON.stringify(orders);
 
-(brand === 'all' || p.brand === brand)
-
-&&
-
-(cat === 'all' || p.cat.includes(cat))
-
-&&
-
-(
-!q ||
-(p.name + ' ' + p.brand)
-.toLowerCase()
-.includes(q)
-)
-
-);
+localStorage.suplab_points=
+points;
 
 }
 
 
-/* =========================================================
-   PRODUCT CARD
-========================================================= */
 
 function card(p){
 
@@ -1737,18 +1270,18 @@ return `
 class="heart"
 onclick="toggleWish(${p.id})">
 
-${wish.includes(p.id) ? '♥' : '♡'}
+${wish.includes(p.id)?'♥':'♡'}
 
 </button>
 
 
 <div
 class="productimg"
-onclick="openProduct(${p.id})">
+onclick="openP(${p.id})">
 
 <img
-src="${p.img}"
-alt="${esc(p.name)}"
+src="${p.i}"
+alt="${esc(p.n)}"
 loading="lazy">
 
 </div>
@@ -1757,42 +1290,35 @@ loading="lazy">
 <div class="productbody">
 
 <div class="source">
-${p.brand.toUpperCase()}
+${p.b.toUpperCase()}
 </div>
-
 
 <h3>
-${esc(p.name)}
+${esc(p.n)}
 </h3>
 
-
 <div class="desc">
-${esc(p.desc)}
+${esc(p.d)}
 </div>
-
 
 <div class="stars">
 
 ★★★★★
 
 <span>
-${p.rating}
-(${p.reviews.toLocaleString()})
+${p.r}
+(${p.v.toLocaleString()})
 </span>
 
 </div>
 
-
 <div class="price">
 
-${money(p.price)}
+${money(p.p)}
 
-${p.old
-?
-`<span class="old">${money(p.old)}</span>`
-:
-''
-}
+${p.o?
+`<span class="old">${money(p.o)}</span>`
+:''}
 
 </div>
 
@@ -1800,13 +1326,12 @@ ${p.old
 <div class="actions">
 
 <button
-class="btn ghost"
-onclick="openProduct(${p.id})">
+class="btn"
+onclick="openP(${p.id})">
 
 ΠΕΡΙΣΣΟΤΕΡΑ
 
 </button>
-
 
 <button
 class="btn primary"
@@ -1827,116 +1352,134 @@ onclick="add(${p.id})">
 }
 
 
-/* =========================================================
-   RENDER PRODUCTS
-========================================================= */
 
-function renderProducts(){
+function current(){
 
-document.getElementById('productGrid').innerHTML =
-filtered()
+let q=
+($('search').value||'')
+.toLowerCase();
+
+return products.filter(p=>
+(brand==='all'||p.b===brand)&&
+(cat==='all'||p.c.includes(cat))&&
+(!q||
+(p.n+' '+p.b)
+.toLowerCase()
+.includes(q))
+);
+
+}
+
+
+
+function render(){
+
+$('productGrid').innerHTML=
+current()
 .map(card)
 .join('')
-
 ||
+'<div class="panel">Δεν βρέθηκαν προϊόντα.</div>';
 
-'<div class="panel">
-Δεν βρέθηκαν προϊόντα.
-</div>';
 
-renderBuyAgain();
+let ps=
 
-renderOffers();
+orders.length
+
+?
+
+[
+...new Set(
+orders.flatMap(
+o=>o.items.map(x=>x.id)
+)
+)
+]
+.map(
+id=>products.find(
+p=>p.id===id
+)
+)
+.filter(Boolean)
+
+:
+
+products.slice(0,4);
+
+
+$('buyAgain').innerHTML=
+ps.map(card).join('');
+
+
+$('offersGrid').innerHTML=
+products
+.slice()
+.sort(
+(a,b)=>b.r-a.r
+)
+.slice(0,4)
+.map(card)
+.join('');
+
 
 update();
 
 }
 
 
-/* =========================================================
-   BRAND
-========================================================= */
 
-function setBrand(b){
+function setBrand(x){
 
-brand = b;
+brand=x;
 
-cat = 'all';
+cat='all';
 
 document
 .querySelectorAll('.brandbar button')
-.forEach(x =>
-x.classList.remove('active')
+.forEach(
+b=>b.classList.remove('active')
 );
 
-if(b === 'all'){
-
-document
-.getElementById('allBtn')
+if(x==='all')
+$('allBtn')
 .classList.add('active');
 
-}else{
-
-[
-...document.querySelectorAll('.brandbar button')
-]
-.find(
-x =>
-x.textContent
-.toLowerCase()
-.includes(b.toLowerCase())
-)
-?.classList.add('active');
-
-}
-
-renderProducts();
+render();
 
 }
 
 
-/* =========================================================
-   CATEGORY
-========================================================= */
 
-function filterCat(c){
+function filterCat(x){
 
-cat = c;
+cat=x;
 
-brand = 'all';
+brand='all';
 
-document
-.getElementById('store')
+render();
+
+$('store')
 .scrollIntoView({
 behavior:'smooth'
 });
 
-renderProducts();
-
 }
 
 
-/* =========================================================
-   CART
-========================================================= */
 
 function add(id){
 
-let x =
-cart.find(i => i.id === id);
+let x=
+cart.find(x=>x.id===id);
 
-if(x){
-
-x.qty++;
-
-}else{
-
+x
+?
+x.qty++
+:
 cart.push({
-id:id,
+id,
 qty:1
 });
-
-}
 
 save();
 
@@ -1949,11 +1492,12 @@ toast(
 }
 
 
+
 function remove(id){
 
-cart =
+cart=
 cart.filter(
-x => x.id !== id
+x=>x.id!==id
 );
 
 save();
@@ -1963,123 +1507,125 @@ update();
 }
 
 
+
 function change(id,d){
 
-let x =
-cart.find(i => i.id === id);
+let x=
+cart.find(
+x=>x.id===id
+);
 
 if(!x)return;
 
-x.qty += d;
+x.qty+=d;
 
-if(x.qty < 1){
-
-remove(id);
-
-}else{
-
-save();
-
-update();
-
-}
+x.qty<1
+?
+remove(id)
+:
+(
+save(),
+update()
+);
 
 }
+
 
 
 function total(){
 
 return cart.reduce(
-(s,x) =>
-s +
-(
+(s,x)=>
+s+
 products.find(
-p => p.id === x.id
-).price * x.qty
-),
+p=>p.id===x.id
+).p*x.qty,
 0
 );
 
 }
 
 
-/* =========================================================
-   UPDATE UI
-========================================================= */
 
 function update(){
 
-document.getElementById(
-'cartCount'
-).textContent =
+let t=total();
+
+let remain=
+Math.max(
+0,
+50-t
+);
+
+
+$('cartCount')
+.textContent=
 cart.reduce(
-(s,x) => s + x.qty,
+(s,x)=>s+x.qty,
 0
 );
 
 
-document.getElementById(
-'wishCount'
-).textContent =
+$('wishCount')
+.textContent=
 wish.length;
 
 
-document.getElementById(
-'cartTotal'
-).textContent =
-money(total());
+$('cartTotal')
+.textContent=
+money(t);
 
 
-let remain =
-Math.max(
-0,
-50 - total()
-);
+$('giftText')
+.textContent=
 
-
-document.getElementById(
-'giftText'
-).textContent =
 remain
+
 ?
-money(remain) +
+
+money(remain)+
 ' ακόμα για δωρεάν δώρο'
+
 :
+
 '🎉 ΔΩΡΕΑΝ ΔΩΡΟ ΞΕΚΛΕΙΔΩΘΗΚΕ';
 
 
-document.getElementById(
-'giftBar'
-).style.width =
+$('giftBar')
+.style.width=
 Math.min(
 100,
-total()/50*100
-) + '%';
+t/50*100
+)+'%';
 
 
-document.getElementById(
-'cartGift'
-).textContent =
+$('cartGift')
+.textContent=
+
 remain
+
 ?
-`🎁 ${money(remain)} ακόμα για δωρεάν δώρο`
+
+'🎁 '+
+money(remain)+
+' ακόμα για δωρεάν δώρο'
+
 :
+
 '🎉 Το δωρεάν δώρο ξεκλειδώθηκε';
 
 
-document.getElementById(
-'cartItems'
-).innerHTML =
+$('cartItems').innerHTML=
 
 cart.length
 
 ?
 
-cart.map(x => {
+cart.map(x=>{
 
-let p =
+let p=
 products.find(
-p => p.id === x.id
+p=>p.id===x.id
 );
 
 return `
@@ -2087,20 +1633,17 @@ return `
 <div class="cartrow">
 
 <img
-src="${p.img}"
-alt="${esc(p.name)}">
-
+src="${p.i}">
 
 <div>
 
 <b>
-${esc(p.name)}
+${esc(p.n)}
 </b>
 
 <div>
-${money(p.price)}
+${money(p.p)}
 </div>
-
 
 <div class="qty">
 
@@ -2125,9 +1668,8 @@ onclick="remove(${p.id})">
 
 </div>
 
-
 <b>
-${money(p.price*x.qty)}
+${money(p.p*x.qty)}
 </b>
 
 </div>
@@ -2143,70 +1685,65 @@ ${money(p.price*x.qty)}
 </p>';
 
 
-document.getElementById(
-'points'
-).textContent =
-points;
+let lv=
 
-
-document.getElementById(
-'points2'
-).textContent =
-points;
-
-
-document.getElementById(
-'orderCount'
-).textContent =
-orders.length;
-
-
-/* CLUB LEVEL */
-
-let lv =
-points >= 5000
+points>=5000
 ?
 'ELITE'
 :
-points >= 2000
+points>=2000
 ?
 'GOLD'
 :
-points >= 500
+points>=500
 ?
 'SILVER'
 :
 'BRONZE';
 
 
-let next =
-lv === 'BRONZE'
+let next=
+
+lv==='BRONZE'
 ?
 500
 :
-lv === 'SILVER'
+lv==='SILVER'
 ?
 2000
 :
-lv === 'GOLD'
+lv==='GOLD'
 ?
 5000
 :
 5000;
 
 
-document.getElementById(
-'clubLevel'
-).textContent =
+$('clubLevel')
+.textContent=
 lv;
 
 
-document.getElementById(
-'clubProgress'
-).style.width =
+$('points')
+.textContent=
+points;
+
+
+$('points2')
+.textContent=
+points;
+
+
+$('orderCount')
+.textContent=
+orders.length;
+
+
+$('clubProgress')
+.style.width=
 
 (
-lv === 'ELITE'
+lv==='ELITE'
 ?
 100
 :
@@ -2214,16 +1751,13 @@ Math.min(
 100,
 points/next*100
 )
-)
-
-+ '%';
+)+'%';
 
 
-document.getElementById(
-'clubNext'
-).textContent =
+$('clubNext')
+.textContent=
 
-lv === 'ELITE'
+lv==='ELITE'
 
 ?
 
@@ -2231,67 +1765,48 @@ lv === 'ELITE'
 
 :
 
-Math.max(
-0,
+(
 next-points
-)
-
-+
-
+)+
 ' πόντοι μέχρι το επόμενο επίπεδο';
 
 }
 
 
-/* =========================================================
-   CART DRAWER
-========================================================= */
 
-function toggleCart(){
+function openP(id){
 
-document
-.getElementById('cartDrawer')
-.classList.toggle('show');
-
-}
-
-
-/* =========================================================
-   PRODUCT MODAL
-========================================================= */
-
-function openProduct(id){
-
-let p =
+let p=
 products.find(
-x => x.id === id
+p=>p.id===id
 );
 
 
-document.getElementById(
-'productDetail'
-).innerHTML = `
+$('detail').innerHTML=
+
+`
 
 <div
 class="productimg"
-style="height:330px">
+style="height:320px">
 
 <img
-src="${p.img}"
-alt="${esc(p.name)}">
+src="${p.i}">
 
 </div>
 
 
-<div style="padding-top:16px">
+<div
+class="source"
+style="margin-top:15px">
 
-<div class="source">
-${p.brand.toUpperCase()}
+${p.b.toUpperCase()}
+
 </div>
 
 
 <h2>
-${esc(p.name)}
+${esc(p.n)}
 </h2>
 
 
@@ -2300,8 +1815,8 @@ ${esc(p.name)}
 ★★★★★
 
 <span>
-${p.rating} / 5 •
-${p.reviews.toLocaleString()}
+${p.r}/5 •
+${p.v.toLocaleString()}
 reviews
 </span>
 
@@ -2309,52 +1824,37 @@ reviews
 
 
 <p style="color:#aaa">
-${esc(p.desc)}
+
+${esc(p.d)}
+
 </p>
 
 
 <div class="price">
 
-${money(p.price)}
-
-${
-p.old
-?
-`<span class="old">${money(p.old)}</span>`
-:
-''
-}
+${money(p.p)}
 
 </div>
 
 
 <button
 class="btn primary"
-style="width:100%;margin-top:15px"
-onclick="
-add(${p.id});
-closeModal('productModal')
-">
+style="width:100%;margin-top:14px"
+onclick="add(${p.id});closeM('productModal')">
 
 ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ
 
 </button>
 
-</div>
-
 `;
 
 
-document
-.getElementById('productModal')
+$('productModal')
 .classList.add('show');
 
 }
 
 
-/* =========================================================
-   WISHLIST
-========================================================= */
 
 function toggleWish(id){
 
@@ -2362,9 +1862,9 @@ wish.includes(id)
 
 ?
 
-wish =
+wish=
 wish.filter(
-x => x !== id
+x=>x!==id
 )
 
 :
@@ -2373,26 +1873,23 @@ wish.push(id);
 
 save();
 
-renderProducts();
+render();
 
 }
 
 
-function toggleWishlist(){
 
-let ps =
+function toggleWishList(){
+
+let ps=
 products.filter(
-p => wish.includes(p.id)
+p=>wish.includes(p.id)
 );
 
 
-document.getElementById(
-'productDetail'
-).innerHTML =
+$('detail').innerHTML=
 
-'<h2>❤️ ΛΙΣΤΑ ΕΠΙΘΥΜΙΩΝ</h2>'
-
-+
+'<h2>❤️ ΛΙΣΤΑ ΕΠΙΘΥΜΙΩΝ</h2>'+
 
 (
 
@@ -2400,8 +1897,8 @@ ps.length
 
 ?
 
-'<div class="grid">' +
-ps.map(card).join('') +
+'<div class="grid">'+
+ps.map(card).join('')+
 '</div>'
 
 :
@@ -2413,130 +1910,52 @@ ps.map(card).join('') +
 );
 
 
-document
-.getElementById('productModal')
+$('productModal')
 .classList.add('show');
 
 }
 
 
-/* =========================================================
-   BUY AGAIN
-========================================================= */
 
-function renderBuyAgain(){
+function toggleCart(){
 
-let ids =
-[
-...new Set(
-orders.flatMap(
-o =>
-o.items.map(
-i => i.id
-)
-)
-)
-];
-
-
-let ps =
-
-(
-ids.length
-?
-ids
-:
-products
-.slice(0,4)
-.map(p => p.id)
-)
-
-.map(
-id =>
-products.find(
-p => p.id === id
-)
-);
-
-
-document.getElementById(
-'buyAgain'
-).innerHTML =
-ps.map(card).join('');
+$('cartDrawer')
+.classList.toggle('show');
 
 }
 
 
-/* =========================================================
-   PERSONAL OFFERS
-========================================================= */
-
-function renderOffers(){
-
-let ps =
-products
-.slice()
-.sort(
-(a,b) =>
-b.rating - a.rating
-)
-.slice(0,4);
-
-
-document.getElementById(
-'offersGrid'
-).innerHTML =
-ps.map(card).join('');
-
-}
-
-
-/* =========================================================
-   ACCOUNT
-========================================================= */
 
 function openAccount(){
 
-showAuth('login');
-
-document
-.getElementById('accountModal')
-.classList.add('show');
-
-}
-
-
-function showAuth(mode){
-
-document.getElementById(
-'authBox'
-).innerHTML =
-
-mode === 'login'
-
-?
+$('auth').innerHTML=
 
 `
 
 <h2>
-Καλώς ήρθατε!
+ΛΟΓΑΡΙΑΣΜΟΣ
 </h2>
+
 
 <form
 class="form"
-onsubmit="login(event)">
+onsubmit="
+event.preventDefault();
+toast('Demo σύνδεση ολοκληρώθηκε');
+closeM('accountModal')
+">
 
 <input
-id="email"
 type="email"
 placeholder="Email"
 required>
 
+
 <input
-id="pass"
 type="password"
 placeholder="Κωδικός"
 required>
+
 
 <button
 class="btn primary">
@@ -2547,146 +1966,58 @@ class="btn primary">
 
 </form>
 
-`
 
-:
+<p
+style="color:#777;font-size:12px">
 
-`
+Prototype only —
+μην χρησιμοποιήσεις πραγματικό κωδικό.
 
-<h2>
-Δημιουργία λογαριασμού
-</h2>
-
-<form
-class="form"
-onsubmit="register(event)">
-
-<input
-id="name"
-placeholder="Ονοματεπώνυμο"
-required>
-
-<input
-id="email"
-type="email"
-placeholder="Email"
-required>
-
-<input
-id="pass"
-type="password"
-placeholder="Κωδικός"
-required>
-
-<button
-class="btn primary">
-
-ΕΓΓΡΑΦΗ
-
-</button>
-
-</form>
+</p>
 
 `;
 
-}
 
-
-function register(e){
-
-e.preventDefault();
-
-localStorage.setItem(
-'suplab_user',
-JSON.stringify({
-
-name:
-document.getElementById('name')
-.value,
-
-email:
-document.getElementById('email')
-.value
-
-})
-);
-
-toast(
-'Ο λογαριασμός δημιουργήθηκε'
-);
-
-closeModal(
-'accountModal'
-);
+$('accountModal')
+.classList.add('show');
 
 }
 
 
-function login(e){
-
-e.preventDefault();
-
-toast(
-'Σύνδεση demo ολοκληρώθηκε'
-);
-
-closeModal(
-'accountModal'
-);
-
-}
-
-
-/* =========================================================
-   CHECKOUT
-========================================================= */
 
 function checkout(){
 
-if(!cart.length){
-
-toast(
+if(!cart.length)
+return toast(
 'Το καλάθι είναι άδειο'
 );
 
-return;
 
-}
-
-
-let order = {
+let o={
 
 id:
-'SUPLAB-' +
+'SUPLAB-'+
 Date.now(),
-
-date:
-new Date()
-.toLocaleDateString(
-'el-GR'
-),
 
 total:
 total(),
 
 items:
 cart.map(
-x => ({
-...x
-})
+x=>({...x})
 )
 
 };
 
 
-orders.unshift(order);
+orders.unshift(o);
 
-points +=
+points+=
 Math.floor(
-order.total
+o.total
 );
 
-cart = [];
+cart=[];
 
 save();
 
@@ -2701,48 +2032,36 @@ toast(
 }
 
 
-/* =========================================================
-   MODALS
-========================================================= */
 
-function closeModal(id){
+function closeM(id){
 
-document
-.getElementById(id)
-.classList.remove('show');
+$(id)
+.classList
+.remove('show');
 
 }
 
 
-/* =========================================================
-   TOAST
-========================================================= */
 
 function toast(t){
 
-let x =
-document.getElementById('toast');
+$('toast')
+.textContent=t;
 
-x.textContent = t;
-
-x.style.display =
-'block';
+$('toast')
+.style.display='block';
 
 setTimeout(
-() =>
-x.style.display =
-'none',
+()=>
+$('toast')
+.style.display='none',
 2200
 );
 
 }
 
 
-/* =========================================================
-   INIT
-========================================================= */
-
-renderProducts();
+render();
 
 </script>
 
