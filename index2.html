@@ -3,12 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUPLAB — Multi-Brand Sports Nutrition</title>
+
+<title>SUPLAB — Sports Nutrition</title>
+
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --primary: #0a0a0a;
-  --secondary: #1a1a1a;
+  --secondary: #151515;
   --accent: #ff3c00;
   --accent-hover: #ff5500;
   --gold: #ffd700;
@@ -17,517 +24,2431 @@
   --suplab: #ffd700;
   --text: #ffffff;
   --text-secondary: #a0a0a0;
-  --border: #2a2a2a;
+  --border: #292929;
   --success: #00d97e;
 }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--primary); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background: var(--primary);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =========================
+   TOP MENU
+========================= */
 
 .top-menu-bar {
   position: fixed;
-  top: 0; left: 0; right: 0;
-  background: rgba(10, 10, 10, 0.98);
-  border-bottom: 2px solid var(--border);
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background: rgba(10, 10, 10, 0.97);
+  border-bottom: 1px solid var(--border);
+
   z-index: 1000;
-  padding: 0.75rem 2rem;
-  backdrop-filter: blur(10px);
+  padding: 0.8rem 2rem;
+
+  backdrop-filter: blur(15px);
 }
+
 .menu-bar-content {
   max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.menu-logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; cursor: pointer; }
-.menu-logo span { color: var(--accent); }
 
-.brand-tabs { display: flex; gap: 0.75rem; }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+}
+
+.menu-logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menu-logo span {
+  color: var(--accent);
+}
+
+.brand-tabs {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .brand-tab {
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 1.1rem;
+
   background: transparent;
   border: 2px solid var(--border);
   border-radius: 25px;
+
   color: var(--text);
-  font-weight: 700;
+  font-weight: 800;
+
   cursor: pointer;
-  transition: all 0.3s;
+  transition: 0.25s;
+
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.85rem;
+  letter-spacing: 0.8px;
+  font-size: 0.78rem;
 }
-.brand-tab:hover { transform: translateY(-2px); border-color: var(--text-secondary); }
-.brand-tab.myprotein.active { background: var(--myprotein); border-color: var(--myprotein); color: white; }
-.brand-tab.iherb.active { background: var(--iherb); border-color: var(--iherb); color: white; }
-.brand-tab.suplab.active { background: var(--suplab); border-color: var(--suplab); color: var(--primary); }
 
-.header-actions { display: flex; gap: 1.5rem; align-items: center; }
-.icon-btn { background: none; border: none; color: var(--text); cursor: pointer; font-size: 1.3rem; position: relative; transition: color 0.3s; }
-.icon-btn:hover { color: var(--accent); }
+.brand-tab:hover {
+  transform: translateY(-2px);
+}
+
+.brand-tab.myprotein.active {
+  background: var(--myprotein);
+  border-color: var(--myprotein);
+}
+
+.brand-tab.iherb.active {
+  background: var(--iherb);
+  border-color: var(--iherb);
+}
+
+.brand-tab.suplab.active {
+  background: var(--suplab);
+  border-color: var(--suplab);
+  color: #000;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.icon-btn {
+  position: relative;
+
+  background: none;
+  border: none;
+
+  color: white;
+  cursor: pointer;
+
+  font-size: 1.25rem;
+}
+
+.icon-btn:hover {
+  color: var(--accent);
+}
+
 .badge {
-  position: absolute; top: -8px; right: -8px;
-  background: var(--accent); color: white;
-  border-radius: 50%; width: 18px; height: 18px;
-  font-size: 0.7rem; display: none;
-  align-items: center; justify-content: center; font-weight: bold;
-}
-.badge.visible { display: flex; }
+  position: absolute;
 
-.main-content { margin-top: 100px; padding: 2rem; max-width: 1400px; margin-left: auto; margin-right: auto; }
-.brand-section { display: none; animation: fadeIn 0.5s; }
-.brand-section.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  top: -9px;
+  right: -9px;
+
+  width: 18px;
+  height: 18px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--accent);
+  color: white;
+
+  border-radius: 50%;
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.badge.visible {
+  display: flex;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main-content {
+  max-width: 1400px;
+
+  margin: 100px auto 0;
+  padding: 2rem;
+}
+
+.brand-section {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.brand-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   VIDEO CAROUSEL
+========================= */
 
 .video-carousel-container {
   position: relative;
+
   margin-bottom: 3rem;
-  border-radius: 16px;
-  overflow: hidden;
+
   border: 1px solid var(--border);
+  border-radius: 16px;
+
+  overflow: hidden;
+
   background: var(--secondary);
 }
+
 .carousel-header {
   padding: 1.2rem 1.5rem;
+
   border-bottom: 1px solid var(--border);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.carousel-title { font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+
+.carousel-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .video-carousel {
   display: flex;
   gap: 1.5rem;
+
   overflow-x: auto;
   scroll-behavior: smooth;
+
   padding: 1.5rem;
+
   scrollbar-width: none;
 }
-.video-carousel::-webkit-scrollbar { display: none; }
+
+.video-carousel::-webkit-scrollbar {
+  display: none;
+}
+
 .video-card {
-  min-width: 320px;
+  min-width: 300px;
+
   background: var(--primary);
-  border-radius: 12px;
-  overflow: hidden;
+
   border: 1px solid var(--border);
-  transition: transform 0.3s;
-  cursor: pointer;
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  transition: 0.25s;
 }
-.video-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+.video-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
 .video-placeholder {
-  width: 100%; height: 180px;
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 3rem; position: relative;
+  height: 170px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 3.5rem;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #303030,
+      #151515 70%
+    );
 }
-.play-button {
-  width: 50px; height: 50px;
-  background: rgba(255, 60, 0, 0.9);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; color: white;
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.3s;
+
+.video-info {
+  padding: 1rem;
 }
-.video-card:hover .play-button { transform: translate(-50%, -50%) scale(1.1); }
-.video-info { padding: 1rem; }
-.video-info h4 { font-size: 0.95rem; margin-bottom: 0.3rem; }
-.video-info p { font-size: 0.8rem; color: var(--text-secondary); }
+
+.video-info h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.video-info p {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.video-link {
+  display: inline-block;
+
+  margin-top: 0.8rem;
+
+  color: var(--accent);
+  text-decoration: none;
+
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
 .carousel-nav {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(255, 60, 0, 0.9); border: none; color: white;
-  width: 45px; height: 45px; border-radius: 50%;
-  font-size: 1.2rem; cursor: pointer; transition: all 0.3s; z-index: 10;
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 60, 0, 0.92);
+  color: white;
+
+  cursor: pointer;
+
+  z-index: 10;
 }
-.carousel-nav:hover { background: var(--accent-hover); transform: translateY(-50%) scale(1.1); }
-.carousel-nav.prev { left: 1rem; }
-.carousel-nav.next { right: 1rem; }
+
+.carousel-nav:hover {
+  background: var(--accent-hover);
+}
+
+.carousel-nav.prev {
+  left: 1rem;
+}
+
+.carousel-nav.next {
+  right: 1rem;
+}
+
+/* =========================
+   SECTION HEADER
+========================= */
 
 .section-header {
-  padding: 1.5rem; background: var(--secondary);
-  border-radius: 12px; margin-bottom: 2rem;
+  padding: 1.5rem;
+
+  margin-bottom: 2rem;
+
+  background: var(--secondary);
+
   border: 1px solid var(--border);
+  border-radius: 12px;
 }
-.section-header h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; }
-.section-header p { color: var(--text-secondary); font-size: 0.95rem; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+
+.section-header h2 {
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+.section-header p {
+  margin-top: 0.35rem;
+
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.product-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(270px, 1fr));
+
+  gap: 1.6rem;
+}
+
 .product-card {
-  background: var(--secondary); border: 1px solid var(--border);
-  border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  background: var(--secondary);
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  transition: 0.3s;
 }
-.product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); border-color: var(--accent); }
+
+.product-card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--accent);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* REAL PRODUCT IMAGE */
+
 .product-image {
-  width: 100%; height: 220px;
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 4rem; position: relative;
+  position: relative;
+
+  height: 270px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f7f7f7;
+
+  overflow: hidden;
 }
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  padding: 18px;
+
+  transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
 .product-badge {
-  position: absolute; top: 1rem; right: 1rem;
-  background: var(--accent); color: white;
-  padding: 0.4rem 0.8rem; border-radius: 20px;
-  font-size: 0.75rem; font-weight: 700;
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  padding: 0.35rem 0.65rem;
+
+  background: var(--accent);
+  color: white;
+
+  border-radius: 20px;
+
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  z-index: 2;
 }
-.product-info { padding: 1.2rem; }
-.product-brand { color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
-.product-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.3; }
-.product-rating { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.5rem; }
-.product-size { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem; }
-.product-price { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
-.price-current { font-size: 1.4rem; font-weight: 900; color: var(--accent); }
-.price-original { font-size: 0.95rem; color: var(--text-secondary); text-decoration: line-through; }
+
+.product-info {
+  padding: 1.2rem;
+
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.product-brand {
+  color: var(--text-secondary);
+
+  font-size: 0.72rem;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  margin-bottom: 0.35rem;
+}
+
+.product-name {
+  font-size: 1.02rem;
+  font-weight: 800;
+
+  line-height: 1.3;
+
+  min-height: 2.7rem;
+}
+
+.product-rating {
+  color: var(--gold);
+
+  margin-top: 0.55rem;
+
+  font-size: 0.82rem;
+}
+
+.review-count {
+  color: var(--text-secondary);
+  margin-left: 0.25rem;
+}
+
+.product-size {
+  color: var(--text-secondary);
+
+  font-size: 0.78rem;
+
+  margin-top: 0.45rem;
+}
+
+.product-description {
+  color: #bdbdbd;
+
+  font-size: 0.78rem;
+  line-height: 1.45;
+
+  margin-top: 0.7rem;
+
+  min-height: 46px;
+}
+
+.product-price {
+  display: flex;
+  align-items: baseline;
+
+  gap: 0.65rem;
+
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.price-current {
+  color: var(--accent);
+
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.price-original {
+  color: #777;
+
+  font-size: 0.82rem;
+
+  text-decoration: line-through;
+}
+
+.product-actions {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 0.6rem;
+
+  margin-top: 1rem;
+}
+
+.btn-add-cart,
+.btn-product {
+  border: none;
+
+  padding: 0.75rem 0.5rem;
+
+  border-radius: 8px;
+
+  font-size: 0.72rem;
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  text-decoration: none;
+  text-align: center;
+}
+
 .btn-add-cart {
-  width: 100%; background: var(--accent); color: white;
-  border: none; padding: 0.8rem; border-radius: 8px;
-  font-weight: 700; cursor: pointer; transition: all 0.3s;
+  background: var(--accent);
+  color: white;
 }
-.btn-add-cart:hover { background: var(--accent-hover); }
+
+.btn-add-cart:hover {
+  background: var(--accent-hover);
+}
+
+.btn-product {
+  background: transparent;
+
+  color: white;
+
+  border: 1px solid #444;
+}
+
+.btn-product:hover {
+  border-color: white;
+}
+
+/* =========================
+   CART
+========================= */
 
 .cart-overlay {
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);
-  z-index: 1500; opacity: 0; visibility: hidden; transition: all 0.3s;
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.72);
+
+  backdrop-filter: blur(5px);
+
+  z-index: 1500;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.3s;
 }
-.cart-overlay.active { opacity: 1; visibility: visible; }
+
+.cart-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 .cart-drawer {
-  position: fixed; top: 0; right: -450px;
-  width: 450px; max-width: 100vw; height: 100vh;
-  background: var(--secondary); border-left: 1px solid var(--border);
-  z-index: 1600; display: flex; flex-direction: column;
-  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: fixed;
+
+  top: 0;
+  right: -460px;
+
+  width: 460px;
+  max-width: 100vw;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--secondary);
+
+  border-left: 1px solid var(--border);
+
+  z-index: 1600;
+
+  transition: right 0.4s ease;
 }
-.cart-drawer.active { right: 0; }
+
+.cart-drawer.active {
+  right: 0;
+}
+
 .cart-drawer-header {
-  padding: 1.5rem; border-bottom: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid var(--border);
 }
-.cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
-.cart-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+
+.cart-drawer-header h2 {
+  font-size: 1.1rem;
+}
+
+.cart-items {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 1rem 1.5rem;
+}
+
+.cart-item {
+  display: flex;
+
+  gap: 1rem;
+
+  padding: 1rem 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
 .cart-item-icon {
-  width: 60px; height: 60px; background: var(--primary);
-  border-radius: 10px; display: flex; align-items: center;
-  justify-content: center; font-size: 1.8rem; flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  border-radius: 10px;
+
+  overflow: hidden;
 }
-.cart-item-info { flex: 1; }
-.cart-item-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
-.cart-item-controls { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+
+.cart-item-icon img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-size: 0.86rem;
+  font-weight: 800;
+
+  line-height: 1.35;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  margin-top: 0.6rem;
+}
+
 .qty-btn {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--primary); border: 1px solid var(--border);
-  color: var(--text); cursor: pointer; font-weight: 700;
+  width: 27px;
+  height: 27px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  border: 1px solid var(--border);
+
+  color: white;
+
+  cursor: pointer;
 }
-.cart-drawer-footer { padding: 1.5rem; border-top: 1px solid var(--border); background: var(--primary); }
-.cart-summary-row { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.9rem; color: var(--text-secondary); }
-.cart-summary-row.total { padding-top: 1rem; margin-top: 0.5rem; border-top: 1px solid var(--border); font-size: 1.2rem; font-weight: 900; color: var(--text); }
+
+.cart-price {
+  margin-left: auto;
+
+  color: var(--accent);
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+.cart-drawer-footer {
+  padding: 1.4rem 1.5rem;
+
+  background: var(--primary);
+
+  border-top: 1px solid var(--border);
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0.35rem 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.85rem;
+}
+
+.cart-summary-row.total {
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+
+  border-top: 1px solid var(--border);
+
+  color: white;
+
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
 .btn-checkout {
-  width: 100%; padding: 1rem; background: var(--accent); color: white;
-  border: none; border-radius: 8px; font-weight: 900;
-  cursor: pointer; letter-spacing: 1px; margin-top: 1rem;
-}
-.btn-checkout:hover { background: var(--accent-hover); }
+  width: 100%;
 
-.toast-container { position: fixed; top: 100px; right: 20px; z-index: 3000; display: flex; flex-direction: column; gap: 0.75rem; }
+  margin-top: 1rem;
+
+  padding: 1rem;
+
+  border: none;
+  border-radius: 8px;
+
+  background: var(--accent);
+  color: white;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast-container {
+  position: fixed;
+
+  top: 100px;
+  right: 20px;
+
+  z-index: 3000;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.7rem;
+}
+
 .toast {
-  background: var(--secondary); border: 1px solid var(--border);
-  border-left: 4px solid var(--success); border-radius: 10px;
-  padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem;
-  min-width: 300px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  animation: toastIn 0.4s;
-}
-@keyframes toastIn { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
-.toast.hiding { animation: toastOut 0.3s forwards; }
-@keyframes toastOut { to { opacity: 0; transform: translateX(100px); } }
+  min-width: 300px;
 
-@media (max-width: 768px) {
-  .menu-bar-content { flex-direction: column; gap: 1rem; }
-  .brand-tabs { flex-wrap: wrap; justify-content: center; }
-  .video-card { min-width: 260px; }
-  .main-content { margin-top: 160px; }
-  .cart-drawer { width: 100vw; right: -100vw; }
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem 1.3rem;
+
+  background: var(--secondary);
+
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--success);
+
+  border-radius: 10px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+  animation: toastIn 0.35s;
+}
+
+.toast.hiding {
+  animation: toastOut 0.3s forwards;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastOut {
+  to {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+  .menu-bar-content {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .main-content {
+    margin-top: 170px;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-menu-bar {
+    padding: 0.7rem 1rem;
+  }
+
+  .brand-tab {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.68rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .product-image {
+    height: 190px;
+  }
+
+  .product-info {
+    padding: 0.8rem;
+  }
+
+  .product-name {
+    font-size: 0.86rem;
+  }
+
+  .product-description {
+    display: none;
+  }
+
+  .product-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-product {
+    display: none;
+  }
+
+  .cart-drawer {
+    width: 100vw;
+  }
 }
 </style>
 </head>
+
 <body>
 
+<!-- =========================
+     TOP MENU
+========================= -->
+
 <div class="top-menu-bar">
+
   <div class="menu-bar-content">
-    <div class="menu-logo" onclick="switchBrand('myprotein')">SUPL<span>AB</span></div>
+
+    <div
+      class="menu-logo"
+      onclick="switchBrand('myprotein')"
+    >
+      SUPL<span>AB</span>
+    </div>
+
     <div class="brand-tabs">
-      <button class="brand-tab myprotein active" onclick="switchBrand('myprotein')">MyProtein</button>
-      <button class="brand-tab iherb" onclick="switchBrand('iherb')">iHerb</button>
-      <button class="brand-tab suplab" onclick="switchBrand('suplab')">SUPLAB Signature</button>
-    </div>
-    <div class="header-actions">
-      <button class="icon-btn">🔍</button>
-      <button class="icon-btn">❤️</button>
-      <button class="icon-btn" onclick="toggleCart()">
-        🛒
-        <span class="badge" id="cartBadge">0</span>
+
+      <button
+        class="brand-tab myprotein active"
+        onclick="switchBrand('myprotein')"
+        type="button"
+      >
+        MyProtein
       </button>
+
+      <button
+        class="brand-tab iherb"
+        onclick="switchBrand('iherb')"
+        type="button"
+      >
+        iHerb
+      </button>
+
+      <button
+        class="brand-tab suplab"
+        onclick="switchBrand('suplab')"
+        type="button"
+      >
+        SUPLAB Signature
+      </button>
+
     </div>
+
+    <div class="header-actions">
+
+      <button class="icon-btn" type="button">
+        🔍
+      </button>
+
+      <button class="icon-btn" type="button">
+        ❤️
+      </button>
+
+      <button
+        class="icon-btn"
+        onclick="toggleCart()"
+        type="button"
+        aria-label="Καλάθι"
+      >
+        🛒
+        <span
+          class="badge"
+          id="cartBadge"
+        >0</span>
+      </button>
+
+    </div>
+
   </div>
+
 </div>
+
+
+<!-- =========================
+     MAIN
+========================= -->
 
 <div class="main-content">
 
-  <section class="brand-section active" id="myproteinSection">
-    <div class="video-carousel-container">
-      <div class="carousel-header">
-        <div class="carousel-title">🎥 MyProtein Official Videos</div>
+
+<!-- =========================
+     MYPROTEIN
+========================= -->
+
+<section
+  class="brand-section active"
+  id="myproteinSection"
+>
+
+  <div class="video-carousel-container">
+
+    <div class="carousel-header">
+      <div class="carousel-title">
+        🎥 MyProtein Official Content
       </div>
-      <button class="carousel-nav prev" onclick="scrollCarousel('myprotein', -350)">❮</button>
-      <div class="video-carousel" id="myproteinVideos">
-        <div class="video-card">
-          <div class="video-placeholder">🎬<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Impact Whey Guide</h4><p>How to choose the best protein for your goals</p></div>
-        </div>
-        <div class="video-card">
-          <div class="video-placeholder">🔥<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Pre-Workout Tips</h4><p>Maximize your training performance</p></div>
-        </div>
-        <div class="video-card">
-          <div class="video-placeholder">💪<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Recovery Essentials</h4><p>Post-workout nutrition strategies</p></div>
-        </div>
-        <div class="video-card">
-          <div class="video-placeholder">🥤<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Clear Whey Review</h4><p>Light, refreshing, and 20g of protein</p></div>
-        </div>
-      </div>
-      <button class="carousel-nav next" onclick="scrollCarousel('myprotein', 350)">❯</button>
     </div>
 
-    <div class="section-header">
-      <h2 style="color: var(--myprotein);">🌿 MyProtein Best Sellers</h2>
-      <p>Πραγματικά προϊόντα από το No.1 online sports nutrition brand στον κόσμο.</p>
-    </div>
-    <div class="product-grid" id="myproteinProducts"></div>
-  </section>
+    <button
+      class="carousel-nav prev"
+      onclick="scrollCarousel('myprotein', -350)"
+      type="button"
+    >
+      ❮
+    </button>
 
-  <section class="brand-section" id="iherbSection">
-    <div class="video-carousel-container">
-      <div class="carousel-header">
-        <div class="carousel-title">🎥 iHerb Wellness Videos</div>
+    <div
+      class="video-carousel"
+      id="myproteinVideos"
+    >
+
+      <div class="video-card">
+
+        <div class="video-placeholder">
+          🥤
+        </div>
+
+        <div class="video-info">
+          <h4>Impact Whey Protein</h4>
+          <p>
+            Official Myprotein protein range.
+          </p>
+
+          <a
+            class="video-link"
+            href="https://www.myprotein.com/p/sports-nutrition/impact-whey-protein/10852500/"
+            target="_blank"
+            rel="noopener"
+          >
+            VIEW OFFICIAL PRODUCT →
+          </a>
+        </div>
+
       </div>
-      <button class="carousel-nav prev" onclick="scrollCarousel('iherb', -350)">❮</button>
-      <div class="video-carousel" id="iherbVideos">
-        <div class="video-card">
-          <div class="video-placeholder">🌱<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Natural Supplements</h4><p>Discover organic wellness products</p></div>
+
+
+      <div class="video-card">
+
+        <div class="video-placeholder">
+          ⚡
         </div>
-        <div class="video-card">
-          <div class="video-placeholder">💊<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Vitamins Guide</h4><p>Essential vitamins for daily health</p></div>
+
+        <div class="video-info">
+          <h4>Creatine Monohydrate</h4>
+          <p>
+            Official Myprotein creatine range.
+          </p>
+
+          <a
+            class="video-link"
+            href="https://us.myprotein.com/p/sports-nutrition/creatine-monohydrate-powder/10852411/"
+            target="_blank"
+            rel="noopener"
+          >
+            VIEW OFFICIAL PRODUCT →
+          </a>
         </div>
-        <div class="video-card">
-          <div class="video-placeholder">🧴<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Beauty & Personal Care</h4><p>Natural beauty products review</p></div>
-        </div>
-        <div class="video-card">
-          <div class="video-placeholder">🥗<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Healthy Eating</h4><p>Superfoods and nutrition tips</p></div>
-        </div>
+
       </div>
-      <button class="carousel-nav next" onclick="scrollCarousel('iherb', 350)">❯</button>
+
+
+      <div class="video-card">
+
+        <div class="video-placeholder">
+          💧
+        </div>
+
+        <div class="video-info">
+          <h4>Clear Whey Isolate</h4>
+          <p>
+            Fruit-flavored clear protein.
+          </p>
+
+          <a
+            class="video-link"
+            href="https://us.myprotein.com/p/sports-nutrition/clear-whey-isolate/12095867/"
+            target="_blank"
+            rel="noopener"
+          >
+            VIEW OFFICIAL PRODUCT →
+          </a>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="section-header">
-      <h2 style="color: var(--iherb);">🛒 iHerb Top Picks</h2>
-      <p>Η μεγαλύτερη επιλογή φυσικών προϊόντων, βιταμινών και συμπληρωμάτων παγκοσμίως.</p>
-    </div>
-    <div class="product-grid" id="iherbProducts"></div>
-  </section>
+    <button
+      class="carousel-nav next"
+      onclick="scrollCarousel('myprotein', 350)"
+      type="button"
+    >
+      ❯
+    </button>
 
-  <section class="brand-section" id="suplabSection">
-    <div class="video-carousel-container">
-      <div class="carousel-header">
-        <div class="carousel-title">🎥 SUPLAB Signature Series</div>
+  </div>
+
+
+  <div class="section-header">
+
+    <h2 style="color: var(--myprotein);">
+      🌿 MyProtein Best Sellers
+    </h2>
+
+    <p>
+      Πραγματικά προϊόντα Myprotein με πραγματικές εικόνες,
+      ratings και links προς το επίσημο κατάστημα.
+    </p>
+
+  </div>
+
+  <div
+    class="product-grid"
+    id="myproteinProducts"
+  ></div>
+
+</section>
+
+
+<!-- =========================
+     IHERB
+========================= -->
+
+<section
+  class="brand-section"
+  id="iherbSection"
+>
+
+  <div class="video-carousel-container">
+
+    <div class="carousel-header">
+      <div class="carousel-title">
+        🎥 iHerb Wellness
       </div>
-      <button class="carousel-nav prev" onclick="scrollCarousel('suplab', -350)">❮</button>
-      <div class="video-carousel" id="suplabVideos">
-        <div class="video-card">
-          <div class="video-placeholder">⚡<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>The Science of Pre-Workout</h4><p>Πώς δημιουργήσαμε το SUPLAB Elite</p></div>
-        </div>
-        <div class="video-card">
-          <div class="video-placeholder">🧬<div class="play-button">▶</div></div>
-          <div class="video-info"><h4>Advanced Recovery</h4><p>Η φόρμουλα πίσω από το SUPLAB BCAA+</p></div>
-        </div>
-      </div>
-      <button class="carousel-nav next" onclick="scrollCarousel('suplab', 350)">❯</button>
     </div>
 
-    <div class="section-header">
-      <h2 style="color: var(--suplab);">💎 SUPLAB Signature Exclusives</h2>
-      <p>Οι 2 δικές μου premium επιλογές, σχεδιασμένες αποκλειστικά για την πλατφόρμα SUPLAB.</p>
+    <button
+      class="carousel-nav prev"
+      onclick="scrollCarousel('iherb', -350)"
+      type="button"
+    >
+      ❮
+    </button>
+
+    <div
+      class="video-carousel"
+      id="iherbVideos"
+    >
+
+      <div class="video-card">
+
+        <div class="video-placeholder">
+          ✨
+        </div>
+
+        <div class="video-info">
+          <h4>CollagenUP</h4>
+          <p>
+            California Gold Nutrition.
+          </p>
+
+          <a
+            class="video-link"
+            href="https://www.iherb.com/pr/california-gold-nutrition-collagenup-hydrolyzed-marine-collagen-peptides-with-hyaluronic-acid-and-vitamin-c-unflavored-7-26-oz-206-g/64903"
+            target="_blank"
+            rel="noopener"
+          >
+            VIEW PRODUCT →
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="video-card">
+
+        <div class="video-placeholder">
+          🐟
+        </div>
+
+        <div class="video-info">
+          <h4>Omega-3</h4>
+          <p>
+            California Gold Nutrition.
+          </p>
+
+          <a
+            class="video-link"
+            href="https://www.iherb.com/r/california-gold-nutrition-omega-3-premium-fish-oil-100-fish-gelatin-softgels-1-100-mg-per-softgel/62118"
+            target="_blank"
+            rel="noopener"
+          >
+            VIEW PRODUCT →
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="video-card">
+
+        <div class="video-placeholder">
+          💊
+        </div>
+
+        <div class="video-info">
+          <h4>Magnesium Glycinate</h4>
+          <p>
+            NOW Foods.
+          </p>
+
+          <a
+            class="video-link"
+            href="https://www.iherb.com/pr/now-foods-magnesium-glycinate-180-tablets-100-mg-per-tablet/88819"
+            target="_blank"
+            rel="noopener"
+          >
+            VIEW PRODUCT →
+          </a>
+        </div>
+
+      </div>
+
     </div>
-    <div class="product-grid" id="suplabProducts"></div>
-  </section>
+
+    <button
+      class="carousel-nav next"
+      onclick="scrollCarousel('iherb', 350)"
+      type="button"
+    >
+      ❯
+    </button>
+
+  </div>
+
+
+  <div class="section-header">
+
+    <h2 style="color: var(--iherb);">
+      🛒 iHerb Top Picks
+    </h2>
+
+    <p>
+      Πραγματικά iHerb προϊόντα με εικόνες από το
+      επίσημο iHerb image CDN.
+    </p>
+
+  </div>
+
+  <div
+    class="product-grid"
+    id="iherbProducts"
+  ></div>
+
+</section>
+
+
+<!-- =========================
+     SUPLAB
+========================= -->
+
+<section
+  class="brand-section"
+  id="suplabSection"
+>
+
+  <div class="video-carousel-container">
+
+    <div class="carousel-header">
+      <div class="carousel-title">
+        💎 SUPLAB Signature
+      </div>
+    </div>
+
+    <div class="video-carousel">
+
+      <div class="video-card">
+
+        <div class="video-placeholder">
+          ⚡
+        </div>
+
+        <div class="video-info">
+
+          <h4>SUPLAB Elite</h4>
+
+          <p>
+            Η μελλοντική signature σειρά της SUPLAB.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="video-card">
+
+        <div class="video-placeholder">
+          🧬
+        </div>
+
+        <div class="video-info">
+
+          <h4>SUPLAB Recovery</h4>
+
+          <p>
+            Premium προϊόντα υπό ανάπτυξη.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="section-header">
+
+    <h2 style="color: var(--suplab);">
+      💎 SUPLAB Signature
+    </h2>
+
+    <p>
+      Εδώ θα μπουν αργότερα τα πραγματικά SUPLAB προϊόντα
+      όταν έχουμε τις δικές μας product photos και product data.
+    </p>
+
+  </div>
+
+  <div
+    class="product-grid"
+    id="suplabProducts"
+  ></div>
+
+</section>
 
 </div>
 
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-<div class="cart-drawer" id="cartDrawer">
+
+<!-- =========================
+     CART
+========================= -->
+
+<div
+  class="cart-overlay"
+  id="cartOverlay"
+  onclick="toggleCart()"
+></div>
+
+
+<div
+  class="cart-drawer"
+  id="cartDrawer"
+>
+
   <div class="cart-drawer-header">
-    <h2>🛒 ΤΟ ΚΑΛΑΘΙ ΣΑΣ</h2>
-    <button class="icon-btn" onclick="toggleCart()">✕</button>
+
+    <h2>
+      🛒 ΤΟ ΚΑΛΑΘΙ ΣΑΣ
+    </h2>
+
+    <button
+      class="icon-btn"
+      onclick="toggleCart()"
+      type="button"
+    >
+      ✕
+    </button>
+
   </div>
-  <div class="cart-items" id="cartItems">
-    <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
-      <div style="font-size: 4rem; margin-bottom: 1rem;">🛒</div>
-      <h3>Το καλάθι σας είναι άδειο</h3>
+
+
+  <div
+    class="cart-items"
+    id="cartItems"
+  >
+
+    <div
+      style="
+        text-align:center;
+        padding:3rem;
+        color:var(--text-secondary);
+      "
+    >
+
+      <div
+        style="
+          font-size:4rem;
+          margin-bottom:1rem;
+        "
+      >
+        🛒
+      </div>
+
+      <h3>
+        Το καλάθι σας είναι άδειο
+      </h3>
+
     </div>
+
   </div>
+
+
   <div class="cart-drawer-footer">
-    <div class="cart-summary-row"><span>Υποσύνολο</span><span id="cartSubtotal">€0.00</span></div>
-    <div class="cart-summary-row"><span>Μεταφορικά</span><span style="color: var(--success);">ΔΩΡΕΑΝ</span></div>
-    <div class="cart-summary-row total"><span>Σύνολο</span><span id="cartTotal">€0.00</span></div>
-    <button class="btn-checkout" onclick="checkout()">ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ →</button>
+
+    <div class="cart-summary-row">
+      <span>Υποσύνολο</span>
+      <span id="cartSubtotal">$0.00</span>
+    </div>
+
+    <div class="cart-summary-row">
+      <span>Μεταφορικά</span>
+      <span style="color:var(--success);">
+        ΕΛΕΓΧΟΣ ΣΤΟ ΚΑΤΑΣΤΗΜΑ
+      </span>
+    </div>
+
+    <div class="cart-summary-row total">
+      <span>Σύνολο</span>
+      <span id="cartTotal">$0.00</span>
+    </div>
+
+    <button
+      class="btn-checkout"
+      onclick="checkout()"
+      type="button"
+    >
+      ΣΥΝΕΧΕΙΑ ΣΤΑ ΠΡΟΪΟΝΤΑ →
+    </button>
+
   </div>
+
 </div>
 
-<div class="toast-container" id="toastContainer"></div>
+
+<div
+  class="toast-container"
+  id="toastContainer"
+></div>
+
 
 <script>
+
+/* =====================================================
+   REAL PRODUCT DATA
+   Prices are current USD snapshots and can change.
+===================================================== */
+
+
+/* =========================
+   MYPROTEIN
+========================= */
+
 const myproteinProducts = [
-  { id: 'mp1', name: 'Impact Whey Protein', brand: 'MyProtein', price: 19.99, oldPrice: 29.99, rating: 4.8, size: '2.5kg - Chocolate', icon: '🥤', badge: 'BEST SELLER' },
-  { id: 'mp2', name: 'Creatine Monohydrate', brand: 'MyProtein', price: 13.99, oldPrice: 19.99, rating: 4.7, size: '500g - Unflavored', icon: '💊', badge: 'TOP RATED' },
-  { id: 'mp3', name: 'Clear Whey Isolate', brand: 'MyProtein', price: 31.46, oldPrice: 44.95, rating: 4.3, size: '500g - Lemon & Lime', icon: '🍋', badge: 'NEW' },
-  { id: 'mp4', name: 'Slow-Release Casein', brand: 'MyProtein', price: 41.99, oldPrice: 59.99, rating: 4.0, size: '1kg - Vanilla', icon: '🌙' }
+
+  {
+    id: "mp1",
+
+    name: "Impact Whey Protein",
+
+    brand: "Myprotein",
+
+    price: 13.99,
+    oldPrice: 19.99,
+
+    rating: 4.48,
+    reviews: 4416,
+
+    size: "0.55lb / Salted Caramel",
+
+    badge: "BEST SELLER",
+
+    description:
+      "High-quality whey protein with up to 22g protein per serving.",
+
+    image:
+      "https://static.thcdn.com/productimg/original/10852500-1615304620165133.jpg",
+
+    link:
+      "https://us.myprotein.com/p/sports-nutrition/impact-whey-protein/10852500/"
+  },
+
+
+  {
+    id: "mp2",
+
+    name: "Creatine Monohydrate Powder",
+
+    brand: "Myprotein",
+
+    price: 13.99,
+    oldPrice: 19.99,
+
+    rating: 4.74,
+    reviews: 508,
+
+    size: "0.5lb / Unflavored",
+
+    badge: "TOP RATED",
+
+    description:
+      "Pure creatine monohydrate designed to support physical performance.",
+
+    image:
+      "https://static.thcdn.com/productimg/original/10852411-1935304620346456.jpg",
+
+    link:
+      "https://us.myprotein.com/p/sports-nutrition/creatine-monohydrate-powder/10852411/"
+  },
+
+
+  {
+    id: "mp3",
+
+    name: "Impact Whey Isolate",
+
+    brand: "Myprotein",
+
+    price: 20.99,
+    oldPrice: 29.99,
+
+    rating: 4.36,
+    reviews: 2449,
+
+    size: "0.55lb / Strawberry Milkshake",
+
+    badge: "PURE WHEY",
+
+    description:
+      "Ultra-filtered whey isolate with 25g protein per serving.",
+
+    image:
+      "https://static.thcdn.com/productimg/original/10852482-2555304620117685.jpg",
+
+    link:
+      "https://us.myprotein.com/p/sports-nutrition/impact-whey-isolate/10852482/"
+  },
+
+
+  {
+    id: "mp4",
+
+    name: "Clear Whey Isolate",
+
+    brand: "Myprotein",
+
+    price: 31.46,
+    oldPrice: 44.95,
+
+    rating: 4.35,
+    reviews: 935,
+
+    size: "1.1lb / Lemonade",
+
+    badge: "AWARD WINNING",
+
+    description:
+      "Light, refreshing clear protein with 20g protein per serving.",
+
+    image:
+      "https://static.thcdn.com/productimg/original/12095869-1335285731042416.png",
+
+    link:
+      "https://us.myprotein.com/p/sports-nutrition/clear-whey-isolate/12095867/"
+  },
+
+
+  {
+    id: "mp5",
+
+    name: "Slow-Release Casein",
+
+    brand: "Myprotein",
+
+    price: 41.99,
+    oldPrice: 59.99,
+
+    rating: 4.05,
+    reviews: 338,
+
+    size: "2.2lb / Chocolate Smooth",
+
+    badge: "NIGHT TIME",
+
+    description:
+      "Slow-releasing casein protein with 23g protein per serving.",
+
+    image:
+      "https://static.thcdn.com/productimg/original/11092497-1895309035258791.jpg",
+
+    link:
+      "https://us.myprotein.com/p/sports-nutrition/slow-release-casein/11092497/"
+  },
+
+
+  {
+    id: "mp6",
+
+    name: "Vegan Protein Blend",
+
+    brand: "Myprotein",
+
+    price: 38.49,
+    oldPrice: 54.99,
+
+    rating: 3.85,
+    reviews: 176,
+
+    size: "2.2lb / Mocha",
+
+    badge: "VEGAN",
+
+    description:
+      "Plant-powered protein blend based on pea and other plant proteins.",
+
+    image:
+      "https://static.thcdn.com/productimg/1600/1600/10852638-1694635916388175.jpg",
+
+    link:
+      "https://us.myprotein.com/p/sports-nutrition/vegan-protein-blend/10852638/"
+  }
+
 ];
+
+
+/* =========================
+   IHERB
+========================= */
 
 const iherbProducts = [
-  { id: 'ih1', name: 'Omega-3 Premium Fish Oil', brand: 'California Gold Nutrition', price: 12.20, rating: 4.9, size: '100 Softgels', icon: '🐟', badge: '#1 SELLER' },
-  { id: 'ih2', name: 'High Absorption Magnesium', brand: "Doctor's Best", price: 23.99, rating: 4.8, size: '240 Tablets', icon: '💊' },
-  { id: 'ih3', name: 'Vitamin D-3 & K-2', brand: 'NOW Foods', price: 9.17, rating: 4.8, size: '120 Capsules', icon: '☀️', badge: 'VALUE' },
-  { id: 'ih4', name: 'CollagenUP® Marine Peptides', brand: 'California Gold Nutrition', price: 19.21, rating: 4.7, size: '206g - Unflavored', icon: '✨' }
+
+  {
+    id: "ih1",
+
+    name: "CollagenUP®",
+
+    brand: "California Gold Nutrition",
+
+    price: 17.46,
+
+    rating: 4.7,
+    reviews: 326099,
+
+    size: "206g / Unflavored",
+
+    badge: "BEST SELLER",
+
+    description:
+      "Marine collagen peptides with hyaluronic acid and vitamin C.",
+
+    image:
+      "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01033/k/478.jpg",
+
+    link:
+      "https://www.iherb.com/pr/california-gold-nutrition-collagenup-hydrolyzed-marine-collagen-peptides-with-hyaluronic-acid-and-vitamin-c-unflavored-7-26-oz-206-g/64903"
+  },
+
+
+  {
+    id: "ih2",
+
+    name: "Omega-3 Premium Fish Oil",
+
+    brand: "California Gold Nutrition",
+
+    price: 26.53,
+
+    rating: 4.8,
+    reviews: 490083,
+
+    size: "240 Fish Gelatin Softgels",
+
+    badge: "TOP RATED",
+
+    description:
+      "Premium fish oil providing EPA and DHA in softgel form.",
+
+    image:
+      "https://images.iherb.com/86598.jpg",
+
+    link:
+      "https://gr.iherb.com/pr/california-gold-nutrition-omega-3-premium-fish-oil-240-fish-gelatin-softgels/86598"
+  },
+
+
+  {
+    id: "ih3",
+
+    name: "Magnesium Glycinate",
+
+    brand: "NOW Foods",
+
+    price: 19.59,
+
+    rating: 4.8,
+    reviews: 42264,
+
+    size: "180 Tablets / 100mg",
+
+    badge: "BEST SELLER",
+
+    description:
+      "Magnesium glycinate formula from NOW Foods.",
+
+    image:
+      "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01289/k/62.jpg",
+
+    link:
+      "https://www.iherb.com/pr/now-foods-magnesium-glycinate-180-tablets-100-mg-per-tablet/88819"
+  },
+
+
+  {
+    id: "ih4",
+
+    name: "Vitamin D3 + K2",
+
+    brand: "California Gold Nutrition",
+
+    price: 16.20,
+
+    rating: 4.8,
+    reviews: 37087,
+
+    size: "180 Veggie Capsules",
+
+    badge: "POPULAR",
+
+    description:
+      "Vitamin D3 combined with Vitamin K2 as MK-7.",
+
+    image:
+      "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn02333/r/63.jpg",
+
+    link:
+      "https://www.iherb.com/pr/california-gold-nutrition-vitamin-d3-k2-as-mk-7-180-veggie-capsules/124745"
+  },
+
+
+  {
+    id: "ih5",
+
+    name: "Vitamin D3 & K2",
+
+    brand: "NOW Foods",
+
+    price: 9.17,
+
+    rating: 4.8,
+    reviews: 79890,
+
+    size: "120 Capsules",
+
+    badge: "BEST SELLER",
+
+    description:
+      "Convenient Vitamin D3 and K2 combination from NOW Foods.",
+
+    image:
+      "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now00369/k/132.jpg",
+
+    link:
+      "https://www.iherb.com/pr/now-foods-vitamin-d3-k2-120-capsules/10056"
+  }
+
 ];
 
-const suplabProducts = [
-  { id: 'sl1', name: 'SUPLAB Pre-Workout Elite', brand: 'SUPLAB Signature', price: 34.90, rating: 4.9, size: '300g - Fruit Punch', icon: '⚡', badge: 'EXCLUSIVE' },
-  { id: 'sl2', name: 'SUPLAB Recovery BCAA+', brand: 'SUPLAB Signature', price: 24.90, oldPrice: 32.90, rating: 4.7, size: '400g - Watermelon', icon: '🧬', badge: 'PREMIUM' }
+
+/* =========================
+   SUPLAB
+========================= */
+
+const suplabProducts = [];
+
+
+/* =========================
+   ALL PRODUCTS
+========================= */
+
+const allProducts = [
+  ...myproteinProducts,
+  ...iherbProducts,
+  ...suplabProducts
 ];
+
 
 let cart = [];
 
-function renderProducts() {
-  const createCard = (p) => `
-    <div class="product-card">
-      <div class="product-image">
-        ${p.icon}
-        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-      </div>
-      <div class="product-info">
-        <div class="product-brand">${p.brand}</div>
-        <div class="product-name">${p.name}</div>
-        <div class="product-rating">${'⭐'.repeat(Math.floor(p.rating))} (${p.rating})</div>
-        <div class="product-size">${p.size}</div>
-        <div class="product-price">
-          <span class="price-current">€${p.price.toFixed(2)}</span>
-          ${p.oldPrice ? `<span class="price-original">€${p.oldPrice.toFixed(2)}</span>` : ''}
-        </div>
-        <button class="btn-add-cart" onclick="addToCart('${p.id}')">ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ</button>
-      </div>
-    </div>
-  `;
 
-  document.getElementById('myproteinProducts').innerHTML = myproteinProducts.map(createCard).join('');
-  document.getElementById('iherbProducts').innerHTML = iherbProducts.map(createCard).join('');
-  document.getElementById('suplabProducts').innerHTML = suplabProducts.map(createCard).join('');
+/* =========================
+   RENDER PRODUCTS
+========================= */
+
+function renderProducts() {
+
+  function createCard(product) {
+
+    return `
+      <article class="product-card">
+
+        <div class="product-image">
+
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          >
+
+          ${
+            product.badge
+              ? `<span class="product-badge">${product.badge}</span>`
+              : ""
+          }
+
+        </div>
+
+
+        <div class="product-info">
+
+          <div class="product-brand">
+            ${product.brand}
+          </div>
+
+
+          <div class="product-name">
+            ${product.name}
+          </div>
+
+
+          <div class="product-rating">
+
+            ${"★".repeat(Math.floor(product.rating))}
+            ${product.rating % 1 >= 0.5 ? "½" : ""}
+
+            <span class="review-count">
+              ${product.rating} · ${formatReviews(product.reviews)} reviews
+            </span>
+
+          </div>
+
+
+          <div class="product-size">
+            ${product.size}
+          </div>
+
+
+          <div class="product-description">
+            ${product.description}
+          </div>
+
+
+          <div class="product-price">
+
+            <span class="price-current">
+              $${product.price.toFixed(2)}
+            </span>
+
+            ${
+              product.oldPrice
+                ? `
+                  <span class="price-original">
+                    $${product.oldPrice.toFixed(2)}
+                  </span>
+                `
+                : ""
+            }
+
+          </div>
+
+
+          <div class="product-actions">
+
+            <button
+              class="btn-add-cart"
+              onclick="addToCart('${product.id}')"
+              type="button"
+            >
+              ΠΡΟΣΘΗΚΗ
+            </button>
+
+
+            <a
+              class="btn-product"
+              href="${product.link}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ΠΡΟΒΟΛΗ
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+    `;
+  }
+
+
+  document.getElementById("myproteinProducts").innerHTML =
+    myproteinProducts.map(createCard).join("");
+
+
+  document.getElementById("iherbProducts").innerHTML =
+    iherbProducts.map(createCard).join("");
+
+
+  document.getElementById("suplabProducts").innerHTML =
+    `
+      <div
+        style="
+          grid-column:1/-1;
+          padding:4rem 2rem;
+          text-align:center;
+          border:1px dashed var(--border);
+          border-radius:14px;
+          color:var(--text-secondary);
+        "
+      >
+
+        <div style="font-size:4rem;">
+          💎
+        </div>
+
+        <h3 style="color:white;margin-top:1rem;">
+          SUPLAB Signature Coming Soon
+        </h3>
+
+        <p style="margin-top:.5rem;">
+          Εδώ θα μπουν τα πραγματικά SUPLAB προϊόντα
+          όταν ολοκληρωθούν οι δικές μας product φωτογραφίες
+          και πληροφορίες.
+        </p>
+
+      </div>
+    `;
 }
+
+
+/* =========================
+   FORMAT REVIEWS
+========================= */
+
+function formatReviews(number) {
+
+  return new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumFractionDigits: 1
+  }).format(number);
+}
+
+
+/* =========================
+   SWITCH BRAND
+========================= */
 
 function switchBrand(brand) {
-  document.querySelectorAll('.brand-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
-  
-  document.getElementById(brand + 'Section').classList.add('active');
-  document.querySelector(`.brand-tab.${brand}`).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const section =
+    document.getElementById(`${brand}Section`);
+
+  const tab =
+    document.querySelector(`.brand-tab.${brand}`);
+
+
+  if (!section || !tab) {
+    return;
+  }
+
+
+  document
+    .querySelectorAll(".brand-section")
+    .forEach(item => {
+      item.classList.remove("active");
+    });
+
+
+  document
+    .querySelectorAll(".brand-tab")
+    .forEach(item => {
+      item.classList.remove("active");
+    });
+
+
+  section.classList.add("active");
+  tab.classList.add("active");
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
+
+
+/* =========================
+   CAROUSEL
+========================= */
 
 function scrollCarousel(brand, amount) {
-  const carousel = document.getElementById(brand + 'Videos');
-  carousel.scrollBy({ left: amount, behavior: 'smooth' });
+
+  const carousel =
+    document.getElementById(`${brand}Videos`);
+
+
+  if (!carousel) {
+    return;
+  }
+
+
+  carousel.scrollBy({
+    left: amount,
+    behavior: "smooth"
+  });
 }
+
+
+/* =========================
+   ADD TO CART
+========================= */
 
 function addToCart(id) {
-  const allProducts = [...myproteinProducts, ...iherbProducts, ...suplabProducts];
-  const product = allProducts.find(p => p.id === id);
-  const existing = cart.find(i => i.id === id);
-  
-  if (existing) { existing.quantity++; } 
-  else { cart.push({ ...product, quantity: 1 }); }
-  
+
+  const product =
+    allProducts.find(item => item.id === id);
+
+
+  if (!product) {
+    showToast("Το προϊόν δεν βρέθηκε.");
+    return;
+  }
+
+
+  const existing =
+    cart.find(item => item.id === id);
+
+
+  if (existing) {
+
+    existing.quantity++;
+
+  } else {
+
+    cart.push({
+      ...product,
+      quantity: 1
+    });
+
+  }
+
+
   updateCart();
-  showToast('✓ Προστέθηκε: ' + product.name);
+
+
+  showToast(
+    `✓ Προστέθηκε: ${product.name}`
+  );
 }
+
+
+/* =========================
+   UPDATE QUANTITY
+========================= */
 
 function updateQty(id, delta) {
-  const item = cart.find(i => i.id === id);
-  if (!item) return;
+
+  const item =
+    cart.find(product => product.id === id);
+
+
+  if (!item) {
+    return;
+  }
+
+
   item.quantity += delta;
-  if (item.quantity <= 0) cart = cart.filter(i => i.id !== id);
+
+
+  if (item.quantity <= 0) {
+
+    cart =
+      cart.filter(product => product.id !== id);
+
+  }
+
+
   updateCart();
 }
+
+
+/* =========================
+   UPDATE CART
+========================= */
 
 function updateCart() {
-  const itemsContainer = document.getElementById('cartItems');
-  const badge = document.getElementById('cartBadge');
-  const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-  const totalItems = cart.reduce((s, i) => s + i.quantity, 0);
-  
+
+  const container =
+    document.getElementById("cartItems");
+
+
+  const badge =
+    document.getElementById("cartBadge");
+
+
+  const subtotal =
+    cart.reduce(
+      (sum, item) =>
+        sum + item.price * item.quantity,
+      0
+    );
+
+
+  const totalItems =
+    cart.reduce(
+      (sum, item) =>
+        sum + item.quantity,
+      0
+    );
+
+
   badge.textContent = totalItems;
-  badge.classList.toggle('visible', totalItems > 0);
-  
+
+
+  badge.classList.toggle(
+    "visible",
+    totalItems > 0
+  );
+
+
   if (cart.length === 0) {
-    itemsContainer.innerHTML = `<div style="text-align: center; padding: 3rem; color: var(--text-secondary);"><div style="font-size: 4rem; margin-bottom: 1rem;">🛒</div><h3>Το καλάθι σας είναι άδειο</h3></div>`;
-  } else {
-    itemsContainer.innerHTML = cart.map(i => `
-      <div class="cart-item">
-        <div class="cart-item-icon">${i.icon}</div>
-        <div class="cart-item-info">
-          <div class="cart-item-name">${i.name}</div>
-          <div class="cart-item-controls">
-            <button class="qty-btn" onclick="updateQty('${i.id}', -1)">−</button>
-            <span>${i.quantity}</span>
-            <button class="qty-btn" onclick="updateQty('${i.id}', 1)">+</button>
-            <strong style="color: var(--accent); margin-left: auto;">€${(i.price * i.quantity).toFixed(2)}</strong>
-          </div>
+
+    container.innerHTML = `
+      <div
+        style="
+          text-align:center;
+          padding:3rem;
+          color:var(--text-secondary);
+        "
+      >
+
+        <div
+          style="
+            font-size:4rem;
+            margin-bottom:1rem;
+          "
+        >
+          🛒
         </div>
+
+        <h3>
+          Το καλάθι σας είναι άδειο
+        </h3>
+
       </div>
-    `).join('');
+    `;
+
+  } else {
+
+    container.innerHTML =
+      cart.map(item => `
+
+        <div class="cart-item">
+
+          <div class="cart-item-icon">
+
+            <img
+              src="${item.image}"
+              alt="${item.name}"
+            >
+
+          </div>
+
+
+          <div class="cart-item-info">
+
+            <div class="cart-item-name">
+              ${item.name}
+            </div>
+
+
+            <div class="cart-item-controls">
+
+              <button
+                class="qty-btn"
+                onclick="updateQty('${item.id}', -1)"
+                type="button"
+              >
+                −
+              </button>
+
+
+              <span>
+                ${item.quantity}
+              </span>
+
+
+              <button
+                class="qty-btn"
+                onclick="updateQty('${item.id}', 1)"
+                type="button"
+              >
+                +
+              </button>
+
+
+              <strong class="cart-price">
+                $${(
+                  item.price *
+                  item.quantity
+                ).toFixed(2)}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `).join("");
+
   }
-  
-  document.getElementById('cartSubtotal').textContent = `€${subtotal.toFixed(2)}`;
-  document.getElementById('cartTotal').textContent = `€${subtotal.toFixed(2)}`;
+
+
+  document.getElementById("cartSubtotal")
+    .textContent =
+      `$${subtotal.toFixed(2)}`;
+
+
+  document.getElementById("cartTotal")
+    .textContent =
+      `$${subtotal.toFixed(2)}`;
 }
+
+
+/* =========================
+   TOGGLE CART
+========================= */
 
 function toggleCart() {
-  document.getElementById('cartDrawer').classList.toggle('active');
-  document.getElementById('cartOverlay').classList.toggle('active');
+
+  const drawer =
+    document.getElementById("cartDrawer");
+
+
+  const overlay =
+    document.getElementById("cartOverlay");
+
+
+  const isOpen =
+    drawer.classList.contains("active");
+
+
+  drawer.classList.toggle(
+    "active",
+    !isOpen
+  );
+
+
+  overlay.classList.toggle(
+    "active",
+    !isOpen
+  );
+
+
+  document.body.style.overflow =
+    !isOpen ? "hidden" : "";
 }
+
+
+/* =========================
+   CHECKOUT
+========================= */
 
 function checkout() {
-  if (cart.length === 0) { showToast('Το καλάθι είναι άδειο'); return; }
-  showToast('🎉 Παραγγελία ολοκληρώθηκε επιτυχώς!');
-  cart = [];
-  updateCart();
-  toggleCart();
+
+  if (cart.length === 0) {
+
+    showToast(
+      "Το καλάθι είναι άδειο."
+    );
+
+    return;
+  }
+
+
+  /*
+    IMPORTANT:
+    This is intentionally NOT pretending
+    to process a real payment.
+
+    The products belong to external retailers.
+    A real checkout/affiliate system should
+    be connected later.
+  */
+
+  const firstProduct =
+    cart[0];
+
+
+  window.open(
+    firstProduct.link,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+
+  showToast(
+    "Άνοιξε η επίσημη σελίδα προϊόντος."
+  );
 }
 
+
+/* =========================
+   TOAST
+========================= */
+
 function showToast(message) {
-  const container = document.getElementById('toastContainer');
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.innerHTML = `<div style="font-size: 1.5rem;">✓</div><div style="flex: 1; font-weight: 600;">${message}</div>`;
+
+  const container =
+    document.getElementById(
+      "toastContainer"
+    );
+
+
+  const toast =
+    document.createElement("div");
+
+
+  toast.className = "toast";
+
+
+  toast.innerHTML = `
+
+    <div
+      style="
+        font-size:1.4rem;
+      "
+    >
+      ✓
+    </div>
+
+    <div
+      style="
+        flex:1;
+        font-weight:700;
+      "
+    >
+      ${message}
+    </div>
+
+  `;
+
+
   container.appendChild(toast);
+
+
   setTimeout(() => {
-    toast.classList.add('hiding');
-    setTimeout(() => toast.remove(), 300);
+
+    toast.classList.add("hiding");
+
+
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
+
   }, 3000);
 }
 
+
+/* =========================
+   ESCAPE
+========================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (event.key !== "Escape") {
+      return;
+    }
+
+
+    const drawer =
+      document.getElementById("cartDrawer");
+
+
+    if (
+      drawer.classList.contains("active")
+    ) {
+      toggleCart();
+    }
+
+  }
+);
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
 renderProducts();
 updateCart();
+
 </script>
+
 </body>
 </html>
