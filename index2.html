@@ -1,2104 +1,5495 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>SUPLAB — Sports Nutrition</title>
-
-  <meta
-    name="description"
-    content="SUPLAB — premium sports nutrition, real MyProtein and iHerb products, official brand content and direct shopping."
-  >
-
-  <style>
-    :root {
-      --bg: #07090d;
-      --bg-soft: #0d1118;
-      --card: #111722;
-      --card-2: #151c28;
-      --border: rgba(255,255,255,.09);
-      --text: #f5f7fa;
-      --muted: #8f99a8;
-      --accent: #c7ff00;
-      --accent-2: #9ed000;
-      --danger: #ff5d68;
-      --white: #ffffff;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1380px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(199,255,0,.05), transparent 30%),
-        var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(18px);
-      background: rgba(7,9,13,.88);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      max-width: var(--max);
-      margin: auto;
-      min-height: 78px;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 950;
-      letter-spacing: -.08em;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .brand-tabs {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .brand-tab {
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--muted);
-      padding: 10px 15px;
-      border-radius: 999px;
-      font-weight: 800;
-      transition: .2s ease;
-    }
-
-    .brand-tab:hover {
-      color: var(--white);
-      background: rgba(255,255,255,.05);
-    }
-
-    .brand-tab.active {
-      color: #071000;
-      background: var(--accent);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .icon-btn {
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--white);
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-size: 18px;
-      transition: .2s ease;
-    }
-
-    .icon-btn:hover {
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.16);
-    }
-
-    .cart-btn {
-      position: relative;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      min-width: 20px;
-      height: 20px;
-      padding: 0 5px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #050700;
-      font-size: 11px;
-      font-weight: 950;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      max-width: var(--max);
-      margin: auto;
-      padding: 70px 24px 45px;
-    }
-
-    .hero-box {
-      min-height: 360px;
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 60px;
-      display: flex;
-      align-items: flex-end;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(7,9,13,.98) 0%,
-          rgba(7,9,13,.86) 48%,
-          rgba(7,9,13,.25) 100%
-        ),
-        radial-gradient(
-          circle at 78% 45%,
-          rgba(199,255,0,.20),
-          transparent 30%
-        ),
-        #10151e;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-content {
-      max-width: 720px;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-weight: 950;
-      margin-bottom: 14px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 6vw, 82px);
-      line-height: .92;
-      letter-spacing: -.065em;
-      font-weight: 950;
-      margin-bottom: 22px;
-    }
-
-    .hero p {
-      color: #b8c0ca;
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 650px;
-    }
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    main {
-      max-width: var(--max);
-      margin: auto;
-      padding: 0 24px 90px;
-    }
-
-    .brand-section {
-      display: none;
-      padding-top: 20px;
-    }
-
-    .brand-section.active {
-      display: block;
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin: 45px 0 22px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(26px, 4vw, 42px);
-      line-height: 1;
-      letter-spacing: -.045em;
-      font-weight: 950;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin-top: 9px;
-      line-height: 1.5;
-      max-width: 650px;
-    }
-
-    .brand-label {
-      font-size: 11px;
-      font-weight: 950;
-      color: var(--accent);
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    /* =========================
-       VIDEO SECTION
-    ========================= */
-
-    .official-videos {
-      margin-top: 42px;
-    }
-
-    .video-heading {
-      margin-bottom: 20px;
-    }
-
-    .video-heading .official-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 11px;
-      border: 1px solid rgba(199,255,0,.25);
-      background: rgba(199,255,0,.06);
-      color: var(--accent);
-      border-radius: 999px;
-      font-size: 10px;
-      font-weight: 950;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .video-heading h2 {
-      font-size: clamp(28px, 4vw, 44px);
-      letter-spacing: -.05em;
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-
-    .video-heading p {
-      color: var(--muted);
-      max-width: 700px;
-      line-height: 1.6;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .video-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 12px 35px rgba(0,0,0,.18);
-    }
-
-    .video-frame {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      overflow: hidden;
-    }
-
-    .video-frame iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .video-info {
-      padding: 17px 18px 19px;
-    }
-
-    .video-info h3 {
-      font-size: 16px;
-      line-height: 1.3;
-      margin-bottom: 7px;
-    }
-
-    .video-info p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .video-source {
-      display: inline-block;
-      margin-top: 13px;
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    /* =========================
-       PRODUCTS
-    ========================= */
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .product-card {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, #131a24, #0e131b);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: transform .22s ease, border-color .22s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(199,255,0,.25);
-    }
-
-    .product-image-wrap {
-      height: 300px;
-      background: #f4f4f4;
-      display: grid;
-      place-items: center;
-      padding: 25px;
-      position: relative;
-    }
-
-    .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .image-fallback {
-      display: none;
-      color: #6e7681;
-      font-size: 13px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      z-index: 2;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #060900;
-      font-size: 10px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .product-body {
-      padding: 20px;
-    }
-
-    .product-brand {
-      color: var(--accent);
-      font-size: 10px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: 8px;
-    }
-
-    .product-name {
-      font-size: 20px;
-      line-height: 1.15;
-      letter-spacing: -.025em;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-
-    .product-description {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-      min-height: 39px;
-      margin-bottom: 12px;
-    }
-
-    .rating {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      margin-bottom: 14px;
-    }
-
-    .stars {
-      color: #ffd54a;
-      letter-spacing: -2px;
-      font-size: 14px;
-    }
-
-    .rating-number {
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .reviews {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .product-meta {
-      color: #aeb6c1;
-      font-size: 12px;
-      margin-bottom: 17px;
-    }
-
-    .price-row {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    .price {
-      font-size: 25px;
-      font-weight: 950;
-      letter-spacing: -.04em;
-    }
-
-    .old-price {
-      color: #6d7580;
-      text-decoration: line-through;
-      font-size: 13px;
-      margin-left: 5px;
-    }
-
-    .save {
-      color: var(--accent);
-      font-size: 10px;
-      font-weight: 950;
-      text-transform: uppercase;
-    }
-
-    .product-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-    }
-
-    .btn {
-      min-height: 45px;
-      border-radius: 11px;
-      border: 1px solid var(--border);
-      display: grid;
-      place-items: center;
-      padding: 0 12px;
-      font-size: 12px;
-      font-weight: 900;
-      transition: .2s ease;
-    }
-
-    .btn-primary {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: #060900;
-    }
-
-    .btn-primary:hover {
-      background: #d7ff45;
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,.03);
-      color: var(--white);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,.08);
-    }
-
-    /* =========================
-       SIGNATURE
-    ========================= */
-
-    .signature {
-      padding: 70px 0 10px;
-    }
-
-    .signature-box {
-      border: 1px solid var(--border);
-      border-radius: 25px;
-      padding: 55px;
-      text-align: center;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(199,255,0,.08), transparent 38%),
-        #0d1219;
-    }
-
-    .signature-icon {
-      font-size: 44px;
-      margin-bottom: 15px;
-    }
-
-    .signature-box h2 {
-      font-size: 38px;
-      letter-spacing: -.05em;
-      margin-bottom: 12px;
-    }
-
-    .signature-box p {
-      color: var(--muted);
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.7;
-    }
-
-    /* =========================
-       CART
-    ========================= */
-
-    .cart-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.65);
-      opacity: 0;
-      pointer-events: none;
-      transition: .25s ease;
-      z-index: 1998;
-    }
-
-    .cart-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .cart-drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: min(440px, 94vw);
-      height: 100vh;
-      background: #0d1219;
-      border-left: 1px solid var(--border);
-      z-index: 1999;
-      transform: translateX(100%);
-      transition: transform .28s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cart-drawer.open {
-      transform: translateX(0);
-    }
-
-    .cart-header {
-      padding: 21px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .cart-header h2 {
-      font-size: 20px;
-    }
-
-    .cart-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 18px;
-    }
-
-    .empty-cart {
-      min-height: 280px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .cart-item {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 12px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cart-item-image {
-      width: 70px;
-      height: 70px;
-      border-radius: 10px;
-      object-fit: contain;
-      background: #f4f4f4;
-    }
-
-    .cart-item h3 {
-      font-size: 13px;
-      line-height: 1.3;
-      margin-bottom: 5px;
-    }
-
-    .cart-item-price {
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-
-    .quantity {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .quantity button {
-      width: 26px;
-      height: 26px;
-      border-radius: 7px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--white);
-    }
-
-    .quantity span {
-      min-width: 18px;
-      text-align: center;
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .cart-footer {
-      padding: 20px;
-      border-top: 1px solid var(--border);
-    }
-
-    .summary-line {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .summary-line.total {
-      color: var(--white);
-      font-size: 17px;
-      font-weight: 950;
-      margin-top: 13px;
-      padding-top: 13px;
-      border-top: 1px solid var(--border);
-    }
-
-    .checkout-btn {
-      width: 100%;
-      margin-top: 17px;
-      min-height: 50px;
-      border: 0;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #050700;
-      font-weight: 950;
-    }
-
-    /* =========================
-       TOAST
-    ========================= */
-
-    .toast-container {
-      position: fixed;
-      left: 50%;
-      bottom: 25px;
-      transform: translateX(-50%);
-      z-index: 3000;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      pointer-events: none;
-    }
-
-    .toast {
-      background: #f4f6f8;
-      color: #0b0e12;
-      padding: 12px 16px;
-      border-radius: 11px;
-      font-size: 13px;
-      font-weight: 800;
-      box-shadow: var(--shadow);
-      animation: toastIn .25s ease forwards;
-    }
-
-    @keyframes toastIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 35px 24px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    footer strong {
-      color: var(--white);
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 1050px) {
-      .products-grid,
-      .video-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .brand-tabs {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .header-inner {
-        flex-wrap: wrap;
-        padding-top: 13px;
-        padding-bottom: 13px;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .header-inner {
-        gap: 10px;
-      }
-
-      .logo {
-        font-size: 21px;
-      }
-
-      .brand-tabs {
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 2px;
-      }
-
-      .brand-tab {
-        white-space: nowrap;
-        font-size: 12px;
-        padding: 8px 11px;
-      }
-
-      .hero {
-        padding-top: 30px;
-      }
-
-      .hero-box {
-        min-height: 320px;
-        padding: 35px 25px;
-        border-radius: 21px;
-      }
-
-      .hero p {
-        font-size: 14px;
-      }
-
-      .products-grid,
-      .video-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-heading {
-        margin-top: 35px;
-      }
-
-      .product-image-wrap {
-        height: 280px;
-      }
-
-      .signature-box {
-        padding: 40px 22px;
-      }
-
-      .signature-box h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="SUPLAB — Premium αθλητική διατροφή. MyProtein & iHerb προϊόντα, SUPLAB Club και επιβράβευση.">
+
+    <meta name="theme-color" content="#0a0a0a">
+
+    <title>SUPLAB — Fuel Your Performance</title>
+
+    <style>
+        /* =========================================================
+           RESET & VARIABLES
+           ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #151515;
+            --secondary-2: #1d1d1d;
+            --accent: #ff3c00;
+            --accent-hover: #ff5500;
+            --gold: #ffd700;
+            --text: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+            --success: #00d97e;
+            --error: #ff4444;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* =========================================================
+           HEADER
+           ========================================================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            background: rgba(10, 10, 10, 0.96);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid var(--border);
+
+            z-index: 1000;
+
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+
+            font-weight: 600;
+            font-size: 0.85rem;
+
+            transition: color 0.3s;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            font-size: 1.2rem;
+
+            position: relative;
+
+            transition: color 0.3s;
+        }
+
+        .icon-btn:hover {
+            color: var(--accent);
+        }
+
+        .badge {
+            position: absolute;
+
+            top: -8px;
+            right: -8px;
+
+            background: var(--accent);
+            color: white;
+
+            border-radius: 50%;
+
+            width: 18px;
+            height: 18px;
+
+            font-size: 0.7rem;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .badge.visible {
+            display: flex;
+        }
+
+        /* =========================================================
+           ACCOUNT DROPDOWN
+           ========================================================= */
+
+        .account-wrapper {
+            position: relative;
+        }
+
+        .account-dropdown {
+            position: absolute;
+
+            top: 100%;
+            right: 0;
+
+            margin-top: 1rem;
+
+            background: var(--secondary);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            min-width: 280px;
+
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+            display: none;
+
+            overflow: hidden;
+        }
+
+        .account-dropdown.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .account-header {
+            padding: 1.5rem;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1a1a1a 0%,
+                    #0a0a0a 100%
+                );
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .account-user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .account-avatar {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent) 0%,
+                    var(--accent-hover) 100%
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .account-menu-item {
+            padding: 1rem 1.5rem;
+
+            display: flex;
+            align-items: center;
+
+            gap: 1rem;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            border: none;
+            background: none;
+
+            color: var(--text);
+
+            width: 100%;
+
+            text-align: left;
+
+            font-size: 0.95rem;
+        }
+
+        .account-menu-item:hover {
+            background: var(--border);
+        }
+
+        .account-menu-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0.5rem 0;
+        }
+
+        /* =========================================================
+           BUTTONS
+           ========================================================= */
+
+        .btn {
+            padding: 1rem 2.5rem;
+
+            border: none;
+
+            border-radius: 50px;
+
+            font-weight: 700;
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            text-decoration: none;
+
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 30px rgba(255, 60, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .hero {
+            margin-top: 80px;
+
+            padding: 7rem 2rem;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a0a0a 0%,
+                    #1a1a1a 100%
+                );
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(255, 60, 0, 0.12) 0%,
+                    transparent 70%
+                );
+        }
+
+        .hero-content {
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+
+            font-weight: 900;
+
+            margin-bottom: 1rem;
+
+            letter-spacing: -2px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff 0%,
+                    var(--accent) 100%
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+
+            color: var(--text-secondary);
+
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 1rem;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+        }
+
+        /* =========================================================
+           SECTIONS
+           ========================================================= */
+
+        .section {
+            padding: 4rem 2rem;
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+
+            font-weight: 900;
+
+            margin-bottom: 2rem;
+
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+
+            color: var(--text-secondary);
+
+            max-width: 750px;
+
+            margin: -1rem auto 2.5rem;
+        }
+
+        /* =========================================================
+           CATEGORIES
+           ========================================================= */
+
+        .category-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--secondary);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 2rem;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+
+            border-color: var(--accent);
+
+            box-shadow:
+                0 10px 30px rgba(255, 60, 0, 0.2);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+
+            margin-bottom: 1rem;
+        }
+
+        .category-name {
+            font-weight: 700;
+
+            font-size: 1.1rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================================================
+           BRAND SECTION
+           ========================================================= */
+
+        .brand-section {
+            margin-top: 2rem;
+        }
+
+        .brand-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 1rem;
+
+            margin-bottom: 2rem;
+
+            padding-bottom: 1rem;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-title {
+            font-size: 2rem;
+
+            font-weight: 900;
+        }
+
+        .brand-title span {
+            color: var(--accent);
+        }
+
+        .brand-description {
+            color: var(--text-secondary);
+
+            max-width: 650px;
+
+            font-size: 0.95rem;
+        }
+
+        /* =========================================================
+           PRODUCTS
+           ========================================================= */
+
+        .product-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(280px, 1fr));
+
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--secondary);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            transition: all 0.3s;
+
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+
+            border-color: #3a3a3a;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .product-image {
+            width: 100%;
+
+            height: 280px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #303030 0%,
+                    #171717 75%
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            padding: 1rem;
+
+            display: block;
+
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .image-fallback {
+            display: none;
+
+            text-align: center;
+
+            color: var(--text-secondary);
+
+            font-size: 3rem;
+        }
+
+        .product-badge {
+            position: absolute;
+
+            top: 1rem;
+            right: 1rem;
+
+            background: var(--accent);
+
+            color: white;
+
+            padding: 0.45rem 0.8rem;
+
+            border-radius: 20px;
+
+            font-size: 0.75rem;
+
+            font-weight: 800;
+
+            z-index: 2;
+        }
+
+        .product-brand-badge {
+            position: absolute;
+
+            top: 1rem;
+            left: 1rem;
+
+            background: rgba(0, 0, 0, 0.75);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            color: white;
+
+            padding: 0.4rem 0.65rem;
+
+            border-radius: 8px;
+
+            font-size: 0.65rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            z-index: 2;
+        }
+
+        .product-wishlist {
+            position: absolute;
+
+            bottom: 1rem;
+            left: 1rem;
+
+            background: rgba(0, 0, 0, 0.75);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            color: white;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 1.1rem;
+
+            transition: all 0.3s;
+
+            z-index: 3;
+        }
+
+        .product-wishlist:hover,
+        .product-wishlist.active {
+            background: var(--accent);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-brand {
+            color: var(--text-secondary);
+
+            font-size: 0.75rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.08rem;
+
+            font-weight: 800;
+
+            margin-bottom: 0.55rem;
+
+            min-height: 52px;
+        }
+
+        .product-rating {
+            color: var(--gold);
+
+            margin-bottom: 0.45rem;
+
+            font-size: 0.9rem;
+        }
+
+        .review-count {
+            color: var(--text-secondary);
+
+            font-size: 0.78rem;
+
+            margin-left: 0.35rem;
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+
+            font-size: 0.82rem;
+
+            line-height: 1.5;
+
+            margin-bottom: 0.75rem;
+
+            min-height: 50px;
+        }
+
+        .product-size {
+            color: var(--text-secondary);
+
+            font-size: 0.82rem;
+
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.8rem;
+
+            margin-bottom: 1rem;
+        }
+
+        .price-current {
+            font-size: 1.5rem;
+
+            font-weight: 900;
+
+            color: var(--accent);
+        }
+
+        .price-original {
+            font-size: 0.9rem;
+
+            color: var(--text-secondary);
+
+            text-decoration: line-through;
+        }
+
+        .price-note {
+            font-size: 0.68rem;
+
+            color: var(--text-secondary);
+
+            margin-top: -0.7rem;
+
+            margin-bottom: 0.8rem;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+
+            background: var(--accent);
+
+            color: white;
+
+            border: none;
+
+            padding: 0.9rem;
+
+            border-radius: 9px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            letter-spacing: 0.5px;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--accent-hover);
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================================================
+           OFFICIAL VIDEO SECTION
+           ========================================================= */
+
+        .official-content {
+            margin-top: 4rem;
+        }
+
+        .official-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            gap: 1rem;
+
+            margin-bottom: 1.5rem;
+        }
+
+        .official-header h3 {
+            font-size: 1.7rem;
+
+            font-weight: 900;
+        }
+
+        .official-header p {
+            color: var(--text-secondary);
+
+            font-size: 0.9rem;
+
+            max-width: 600px;
+        }
+
+        .official-channel {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            padding: 0.6rem 0.9rem;
+
+            background: var(--secondary);
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+        }
+
+        .official-channel:hover {
+            border-color: var(--accent);
+
+            color: var(--accent);
+        }
+
+        .video-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 1.5rem;
+        }
+
+        .video-card {
+            background: var(--secondary);
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+
+            overflow: hidden;
+        }
+
+        .video-frame {
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            border: none;
+
+            display: block;
+
+            background: #000;
+        }
+
+        .video-info {
+            padding: 1rem 1.2rem;
+        }
+
+        .video-info strong {
+            display: block;
+
+            margin-bottom: 0.3rem;
+        }
+
+        .video-info span {
+            color: var(--text-secondary);
+
+            font-size: 0.78rem;
+        }
+
+        /* =========================================================
+           CLUB CARD
+           ========================================================= */
+
+        .club-card {
+            max-width: 500px;
+
+            margin: 2rem auto;
+
+            aspect-ratio: 1.6 / 1;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1a1a1a 0%,
+                    #0a0a0a 50%,
+                    #2a1a0a 100%
+                );
+
+            border: 2px solid var(--gold);
+
+            border-radius: 20px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px rgba(255, 215, 0, 0.25);
+
+            cursor: pointer;
+
+            transition: transform 0.5s;
+        }
+
+        .club-card:hover {
+            transform: translateY(-8px) rotateX(3deg);
+        }
+
+        .card-shine {
+            position: absolute;
+
+            top: -50%;
+            left: -50%;
+
+            width: 200%;
+            height: 200%;
+
+            background:
+                linear-gradient(
+                    45deg,
+                    transparent 30%,
+                    rgba(255, 215, 0, 0.1) 50%,
+                    transparent 70%
+                );
+
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform:
+                    translateX(-100%)
+                    translateY(-100%);
+            }
+
+            100% {
+                transform:
+                    translateX(100%)
+                    translateY(100%);
+            }
+        }
+
+        .card-content {
+            position: relative;
+
+            z-index: 1;
+
+            padding: 2rem;
+
+            height: 100%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .card-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+        }
+
+        .card-logo {
+            font-size: 1.2rem;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            color: var(--gold);
+        }
+
+        .card-level {
+            font-size: 2.5rem;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold) 0%,
+                    #ffed4e 100%
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+
+            letter-spacing: 2px;
+        }
+
+        .card-points {
+            text-align: center;
+        }
+
+        .card-points-value {
+            font-size: 3rem;
+
+            font-weight: 900;
+
+            display: block;
+        }
+
+        .card-points-label {
+            font-size: 0.9rem;
+
+            letter-spacing: 3px;
+
+            color: var(--text-secondary);
+        }
+
+        .card-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+        }
+
+        /* =========================================================
+           PROGRESS BAR
+           ========================================================= */
+
+        .progress-bar {
+            width: 100%;
+
+            height: 8px;
+
+            background: var(--border);
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold) 0%,
+                    var(--accent) 100%
+                );
+
+            border-radius: 10px;
+
+            transition: width 0.5s;
+        }
+
+        /* =========================================================
+           DASHBOARD
+           ========================================================= */
+
+        .dashboard-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 1.5rem;
+        }
+
+        .dashboard-card {
+            background: var(--secondary);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 2rem;
+
+            transition: all 0.3s;
+
+            cursor: pointer;
+        }
+
+        .dashboard-card:hover {
+            border-color: var(--accent);
+
+            transform: translateY(-3px);
+        }
+
+        .dashboard-card-icon {
+            font-size: 2.5rem;
+
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-card-title {
+            font-size: 1.2rem;
+
+            font-weight: 700;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-card-value {
+            font-size: 2rem;
+
+            font-weight: 900;
+
+            color: var(--accent);
+
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-card-desc {
+            color: var(--text-secondary);
+
+            font-size: 0.9rem;
+        }
+
+        /* =========================================================
+           ACCOUNT PAGES
+           ========================================================= */
+
+        .account-page {
+            display: none;
+
+            margin-top: 80px;
+
+            padding: 4rem 2rem;
+
+            max-width: 1400px;
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .account-page.active {
+            display: block;
+
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .account-page-title {
+            font-size: 2.5rem;
+
+            font-weight: 900;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .account-page-subtitle {
+            color: var(--text-secondary);
+
+            font-size: 1.1rem;
+
+            margin-bottom: 2rem;
+        }
+
+        /* =========================================================
+           MODALS
+           ========================================================= */
+
+        .modal-overlay {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background: rgba(0, 0, 0, 0.8);
+
+            backdrop-filter: blur(5px);
+
+            z-index: 2000;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal {
+            background: var(--secondary);
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            max-width: 500px;
+
+            width: 100%;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+
+            font-weight: 700;
+        }
+
+        .modal-close {
+            background: none;
+
+            border: none;
+
+            color: var(--text);
+
+            font-size: 1.5rem;
+
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        /* =========================================================
+           AUTH
+           ========================================================= */
+
+        .auth-tabs {
+            display: flex;
+
+            gap: 1rem;
+
+            margin-bottom: 2rem;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .auth-tab {
+            flex: 1;
+
+            padding: 1rem;
+
+            background: none;
+
+            border: none;
+
+            color: var(--text-secondary);
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            border-bottom: 2px solid transparent;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .auth-tab.active {
+            color: var(--accent);
+
+            border-bottom-color: var(--accent);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+
+            margin-bottom: 0.5rem;
+
+            font-weight: 600;
+
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+
+            padding: 1rem;
+
+            background: var(--primary);
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            color: var(--text);
+
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+
+            border-color: var(--accent);
+        }
+
+        .btn-submit {
+            width: 100%;
+
+            padding: 1rem;
+
+            background: var(--accent);
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-hover);
+        }
+
+        /* =========================================================
+           CART
+           ========================================================= */
+
+        .cart-overlay {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            backdrop-filter: blur(5px);
+
+            z-index: 1500;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: all 0.3s;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+        .cart-drawer {
+            position: fixed;
+
+            top: 0;
+            right: -450px;
+
+            width: 450px;
+
+            max-width: 100vw;
+
+            height: 100vh;
+
+            background: var(--secondary);
+
+            border-left: 1px solid var(--border);
+
+            z-index: 1600;
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition:
+                right 0.4s
+                cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cart-drawer.active {
+            right: 0;
+        }
+
+        .cart-drawer-header {
+            padding: 1.5rem;
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .cart-gift-progress {
+            padding: 1rem 1.5rem;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 215, 0, 0.1) 0%,
+                    rgba(255, 60, 0, 0.1) 100%
+                );
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+        }
+
+        .cart-points-preview {
+            padding: 0.75rem 1.5rem;
+
+            background: var(--primary);
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            font-size: 0.85rem;
+
+            color: var(--text-secondary);
+        }
+
+        .cart-points-preview strong {
+            color: var(--accent);
+
+            margin-left: auto;
+
+            font-size: 1.1rem;
+        }
+
+        .cart-items {
+            flex: 1;
+
+            overflow-y: auto;
+
+            padding: 1rem 1.5rem;
+        }
+
+        .cart-empty {
+            text-align: center;
+
+            padding: 3rem 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+
+            gap: 1rem;
+
+            padding: 1rem 0;
+
+            border-bottom: 1px solid var(--border);
+
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cart-item-image {
+            width: 70px;
+            height: 70px;
+
+            background: var(--primary);
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            padding: 4px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+
+            min-width: 0;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-brand {
+            font-size: 0.7rem;
+
+            color: var(--text-secondary);
+
+            margin-bottom: 0.4rem;
+
+            text-transform: uppercase;
+        }
+
+        .qty-control {
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            background: var(--primary);
+
+            border-radius: 20px;
+
+            padding: 0.25rem;
+        }
+
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+
+            border-radius: 50%;
+
+            background: var(--secondary);
+
+            border: none;
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+        .cart-drawer-footer {
+            padding: 1.5rem;
+
+            border-top: 1px solid var(--border);
+
+            background: var(--primary);
+        }
+
+        .cart-summary-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 0.5rem 0;
+
+            font-size: 0.9rem;
+
+            color: var(--text-secondary);
+        }
+
+        .cart-summary-row.total {
+            padding-top: 1rem;
+
+            margin-top: 0.5rem;
+
+            border-top: 1px solid var(--border);
+
+            font-size: 1.2rem;
+
+            font-weight: 900;
+
+            color: var(--text);
+        }
+
+        .btn-checkout {
+            width: 100%;
+
+            padding: 1rem;
+
+            background: var(--accent);
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-checkout:hover {
+            background: var(--accent-hover);
+        }
+
+        /* =========================================================
+           TOAST
+           ========================================================= */
+
+        .toast-container {
+            position: fixed;
+
+            top: 100px;
+            right: 20px;
+
+            z-index: 3000;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 0.75rem;
+        }
+
+        .toast {
+            background: var(--secondary);
+
+            border: 1px solid var(--border);
+
+            border-left: 4px solid var(--accent);
+
+            border-radius: 10px;
+
+            padding: 1rem 1.5rem;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+            min-width: 300px;
+
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.5);
+
+            animation: toastSlideIn 0.4s;
+        }
+
+        .toast.success {
+            border-left-color: var(--success);
+        }
+
+        .toast.error {
+            border-left-color: var(--error);
+        }
+
+        @keyframes toastSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast.hiding {
+            animation:
+                toastSlideOut 0.3s
+                forwards;
+        }
+
+        @keyframes toastSlideOut {
+            to {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+        }
+
+        /* =========================================================
+           MOBILE NAV
+           ========================================================= */
+
+        .mobile-nav {
+            display: none;
+
+            position: fixed;
+
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            background: rgba(21, 21, 21, 0.97);
+
+            border-top: 1px solid var(--border);
+
+            padding: 0.8rem;
+
+            z-index: 1000;
+        }
+
+        .mobile-nav-content {
+            display: flex;
+
+            justify-content: space-around;
+
+            align-items: center;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 0.3rem;
+
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-size: 0.65rem;
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.4rem;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+            }
+
+            .official-header {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .mobile-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+
+            header {
+                padding:
+                    0.9rem 1rem;
+            }
+
+            .header-content {
+                gap: 0.5rem;
+            }
+
+            .header-actions {
+                gap: 0.8rem;
+            }
+
+            .hero {
+                padding:
+                    5rem 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .section {
+                padding:
+                    3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .brand-header {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .product-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 1rem;
+            }
+
+            .product-image {
+                height: 190px;
+            }
+
+            .product-info {
+                padding: 1rem;
+            }
+
+            .product-name {
+                font-size: 0.95rem;
+
+                min-height: auto;
+            }
+
+            .product-description {
+                display: none;
+            }
+
+            .price-current {
+                font-size: 1.2rem;
+            }
+
+            .cart-drawer {
+                width: 100vw;
+
+                right: -100vw;
+            }
+
+            .toast {
+                min-width: auto;
+
+                width:
+                    calc(100vw - 30px);
+            }
+
+            .toast-container {
+                left: 15px;
+                right: 15px;
+            }
+
+            .club-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 240px;
+            }
+        }
+
+        /* =========================================================
+           SCROLLBAR
+           ========================================================= */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
 
-  <header>
-    <div class="header-inner">
+<header>
 
-      <a class="logo" href="#" onclick="return false;">
-        SUP<span>LAB</span>
-      </a>
+    <div class="header-content">
 
-      <nav class="brand-tabs" aria-label="Brand navigation">
-        <button class="brand-tab active" data-brand="myprotein">
-          MyProtein
-        </button>
-
-        <button class="brand-tab" data-brand="iherb">
-          iHerb
-        </button>
-
-        <button class="brand-tab" data-brand="signature">
-          SUPLAB Signature
-        </button>
-      </nav>
-
-      <div class="header-actions">
-        <button class="icon-btn" type="button" title="Search" onclick="showToast('Search coming soon')">
-          🔍
-        </button>
-
-        <button class="icon-btn" type="button" title="Wishlist" onclick="showToast('Wishlist coming soon')">
-          ♡
-        </button>
-
-        <button class="icon-btn cart-btn" type="button" title="Cart" onclick="toggleCart(true)">
-          🛒
-          <span class="cart-count" id="cartCount">0</span>
-        </button>
-      </div>
-
-    </div>
-  </header>
-
-
-  <!-- =========================
-       HERO
-  ========================= -->
-
-  <section class="hero">
-    <div class="hero-box">
-
-      <div class="hero-content">
-        <div class="eyebrow">
-          Sports Nutrition • SUPLAB
+        <div
+            class="logo"
+            onclick="showHome()"
+            aria-label="SUPLAB Home"
+        >
+            SUPL<span>AB</span>
         </div>
 
-        <h1>
-          TRAIN.<br>
-          FUEL.<br>
-          PERFORM.
-        </h1>
+        <nav>
+            <a href="#home" onclick="showHome()">ΑΡΧΙΚΗ</a>
 
-        <p>
-          Discover selected products from leading sports-nutrition
-          and wellness brands, with direct links to the official stores.
+            <a href="#shop">
+                ΚΑΤΑΣΤΗΜΑ
+            </a>
+
+            <a href="#categories">
+                ΚΑΤΗΓΟΡΙΕΣ
+            </a>
+
+            <a href="#club">
+                CLUB
+            </a>
+
+            <a href="#offers">
+                ΠΡΟΣΦΟΡΕΣ
+            </a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button
+                class="icon-btn"
+                onclick="focusSearch()"
+                aria-label="Αναζήτηση"
+            >
+                🔍
+            </button>
+
+            <button
+                class="icon-btn"
+                onclick="showAccountPage('wishlist')"
+                aria-label="Wishlist"
+            >
+                ❤️
+            </button>
+
+            <div class="account-wrapper">
+
+                <button
+                    class="icon-btn"
+                    onclick="toggleAccountDropdown()"
+                    aria-label="Λογαριασμός"
+                >
+                    👤
+                </button>
+
+                <div
+                    class="account-dropdown"
+                    id="accountDropdown"
+                >
+
+                    <!-- LOGGED OUT -->
+
+                    <div id="loggedOutState">
+
+                        <div class="account-header">
+
+                            <h3>
+                                Καλώς ήρθατε!
+                            </h3>
+
+                            <p
+                                style="
+                                    color:var(--text-secondary);
+                                    font-size:0.9rem;
+                                "
+                            >
+                                Συνδεθείτε ή δημιουργήστε
+                                λογαριασμό
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="account-menu-item"
+                            onclick="openAuthModal('login')"
+                        >
+                            <span>🔑</span>
+                            <span>Σύνδεση</span>
+                        </button>
+
+                        <button
+                            class="account-menu-item"
+                            onclick="openAuthModal('register')"
+                        >
+                            <span>📝</span>
+                            <span>Εγγραφή</span>
+                        </button>
+
+                    </div>
+
+
+                    <!-- LOGGED IN -->
+
+                    <div
+                        id="loggedInState"
+                        style="display:none;"
+                    >
+
+                        <div class="account-header">
+
+                            <div class="account-user-info">
+
+                                <div class="account-avatar">
+                                    Γ
+                                </div>
+
+                                <div>
+
+                                    <h3
+                                        style="font-size:1rem;"
+                                    >
+                                        Γιώργος Παπαδόπουλος
+                                    </h3>
+
+                                    <p
+                                        style="
+                                            font-size:0.85rem;
+                                            color:var(--text-secondary);
+                                        "
+                                    >
+                                        💎 ELITE MEMBER
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="account-menu-item"
+                            onclick="showAccountPage('dashboard')"
+                        >
+                            <span>📊</span>
+                            <span>Dashboard</span>
+                        </button>
+
+                        <button
+                            class="account-menu-item"
+                            onclick="showAccountPage('club')"
+                        >
+                            <span>💎</span>
+                            <span>SUPLAB CLUB</span>
+                        </button>
+
+                        <button
+                            class="account-menu-item"
+                            onclick="showAccountPage('orders')"
+                        >
+                            <span>📦</span>
+                            <span>Παραγγελίες</span>
+                        </button>
+
+                        <button
+                            class="account-menu-item"
+                            onclick="showAccountPage('wishlist')"
+                        >
+                            <span>❤️</span>
+                            <span>Λίστα Επιθυμιών</span>
+                        </button>
+
+                        <div
+                            class="account-menu-divider"
+                        ></div>
+
+                        <button
+                            class="account-menu-item"
+                            style="color:var(--error);"
+                            onclick="logout()"
+                        >
+                            <span>🚪</span>
+                            <span>Αποσύνδεση</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="icon-btn"
+                onclick="toggleCart()"
+                aria-label="Καλάθι"
+            >
+
+                🛒
+
+                <span
+                    class="badge"
+                    id="cartBadge"
+                >
+                    0
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ============================================================
+     HOME
+     ============================================================ -->
+
+<div id="homePage">
+
+
+    <!-- HERO -->
+
+    <section
+        class="hero"
+        id="home"
+    >
+
+        <div class="hero-content">
+
+            <h1>
+                FUEL YOUR PERFORMANCE
+            </h1>
+
+            <p>
+                Premium συμπληρώματα για προπόνηση,
+                αποκατάσταση και καθημερινή απόδοση.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#shop"
+                    class="btn btn-primary"
+                >
+                    ΑΓΟΡΑ ΤΩΡΑ
+                </a>
+
+                <a
+                    href="#club"
+                    class="btn btn-secondary"
+                >
+                    SUPLAB CLUB
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================
+         CATEGORIES
+         ======================================================== -->
+
+    <section
+        class="section"
+        id="categories"
+    >
+
+        <h2 class="section-title">
+            ΑΓΟΡΕΣ ΑΝΑ ΚΑΤΗΓΟΡΙΑ
+        </h2>
+
+        <div class="category-grid">
+
+            <div
+                class="category-card"
+                onclick="filterCategory('protein')"
+            >
+                <div class="category-icon">
+                    💪
+                </div>
+
+                <div class="category-name">
+                    ΠΡΩΤΕΪΝΗ
+                </div>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('creatine')"
+            >
+                <div class="category-icon">
+                    ⚡
+                </div>
+
+                <div class="category-name">
+                    ΚΡΕΑΤΙΝΗ
+                </div>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('preworkout')"
+            >
+                <div class="category-icon">
+                    🔥
+                </div>
+
+                <div class="category-name">
+                    PRE-WORKOUT
+                </div>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('amino')"
+            >
+                <div class="category-icon">
+                    🧬
+                </div>
+
+                <div class="category-name">
+                    ΑΜΙΝΟΞΕΑ
+                </div>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('vitamins')"
+            >
+                <div class="category-icon">
+                    💊
+                </div>
+
+                <div class="category-name">
+                    ΒΙΤΑΜΙΝΕΣ
+                </div>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('performance')"
+            >
+                <div class="category-icon">
+                    🏆
+                </div>
+
+                <div class="category-name">
+                    ΑΠΟΔΟΣΗ
+                </div>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('weight')"
+            >
+                <div class="category-icon">
+                    📈
+                </div>
+
+                <div class="category-name">
+                    ΑΥΞΗΣΗ ΒΑΡΟΥΣ
+                </div>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('vegan')"
+            >
+                <div class="category-icon">
+                    🌱
+                </div>
+
+                <div class="category-name">
+                    VEGAN
+                </div>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('health')"
+            >
+                <div class="category-icon">
+                    ❤️
+                </div>
+
+                <div class="category-name">
+                    ΥΓΕΙΑ
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================
+         SHOP
+         ======================================================== -->
+
+    <section
+        class="section"
+        id="shop"
+    >
+
+        <h2 class="section-title">
+            SUPLAB STORE
+        </h2>
+
+        <p class="section-subtitle">
+            Πραγματικά προϊόντα από MyProtein και iHerb,
+            διαθέσιμα μέσα από το SUPLAB store.
         </p>
-      </div>
+
+
+        <!-- =====================================================
+             SEARCH
+             ===================================================== -->
+
+        <div
+            style="
+                max-width:700px;
+                margin:0 auto 3rem;
+            "
+        >
+
+            <input
+                id="productSearch"
+                class="form-input"
+                type="search"
+                placeholder="🔍 Αναζήτηση προϊόντος..."
+                oninput="searchProducts(this.value)"
+            >
+
+        </div>
+
+
+        <!-- =====================================================
+             MYPROTEIN
+             ===================================================== -->
+
+        <div
+            class="brand-section"
+            id="myproteinSection"
+        >
+
+            <div class="brand-header">
+
+                <div>
+
+                    <div
+                        class="brand-title"
+                    >
+                        <span>MY</span>PROTEIN
+                    </div>
+
+                    <div
+                        class="brand-description"
+                    >
+                        Επιλεγμένα πραγματικά προϊόντα
+                        MyProtein για πρωτεΐνη,
+                        κρεατίνη και αθλητική απόδοση.
+                    </div>
+
+                </div>
+
+                <div
+                    style="
+                        font-size:2rem;
+                        font-weight:900;
+                    "
+                >
+                    MP
+                </div>
+
+            </div>
+
+            <div
+                class="product-grid"
+                id="myproteinGrid"
+            ></div>
+
+
+            <!-- OFFICIAL MYPROTEIN -->
+
+            <div
+                class="official-content"
+            >
+
+                <div class="official-header">
+
+                    <div>
+
+                        <h3>
+                            🎥 Official MyProtein
+                        </h3>
+
+                        <p>
+                            Βίντεο από το επίσημο
+                            MyProtein YouTube channel.
+                        </p>
+
+                    </div>
+
+                    <a
+                        class="official-channel"
+                        href="https://www.youtube.com/@MyproteinOfficial"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ▶ OFFICIAL CHANNEL
+                    </a>
+
+                </div>
+
+                <div class="video-grid">
+
+                    <div class="video-card">
+
+                        <iframe
+                            class="video-frame"
+                            src="https://www.youtube.com/embed?listType=user_uploads&list=MyproteinOfficial"
+                            title="MyProtein Official"
+                            loading="lazy"
+                            allowfullscreen
+                        ></iframe>
+
+                        <div class="video-info">
+
+                            <strong>
+                                MyProtein Official
+                            </strong>
+
+                            <span>
+                                Fitness • Nutrition • Products
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="video-card">
+
+                        <iframe
+                            class="video-frame"
+                            src="https://www.youtube.com/embed/cH-Bv5KGUh8"
+                            title="Official Supplement Content"
+                            loading="lazy"
+                            allowfullscreen
+                        ></iframe>
+
+                        <div class="video-info">
+
+                            <strong>
+                                Supplement & Nutrition Content
+                            </strong>
+
+                            <span>
+                                Official brand content
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             IHERB
+             ===================================================== -->
+
+        <div
+            class="brand-section"
+            id="iherbSection"
+            style="margin-top:5rem;"
+        >
+
+            <div class="brand-header">
+
+                <div>
+
+                    <div class="brand-title">
+                        <span>i</span>Herb
+                    </div>
+
+                    <div
+                        class="brand-description"
+                    >
+                        Δημοφιλή προϊόντα iHerb
+                        και brands με έμφαση σε
+                        υγεία, wellness και sports nutrition.
+                    </div>
+
+                </div>
+
+                <div
+                    style="
+                        font-size:2rem;
+                        font-weight:900;
+                    "
+                >
+                    iH
+                </div>
+
+            </div>
+
+            <div
+                class="product-grid"
+                id="iherbGrid"
+            ></div>
+
+
+            <!-- OFFICIAL IHERB -->
+
+            <div
+                class="official-content"
+            >
+
+                <div class="official-header">
+
+                    <div>
+
+                        <h3>
+                            🎥 Official iHerb
+                        </h3>
+
+                        <p>
+                            Επίσημο περιεχόμενο από το
+                            iHerb YouTube channel.
+                        </p>
+
+                    </div>
+
+                    <a
+                        class="official-channel"
+                        href="https://www.youtube.com/@iHerb"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ▶ OFFICIAL CHANNEL
+                    </a>
+
+                </div>
+
+                <div class="video-grid">
+
+                    <div class="video-card">
+
+                        <iframe
+                            class="video-frame"
+                            src="https://www.youtube.com/embed/cH-Bv5KGUh8"
+                            title="iHerb Official"
+                            loading="lazy"
+                            allowfullscreen
+                        ></iframe>
+
+                        <div class="video-info">
+
+                            <strong>
+                                Authentic Products. Real Reviews.
+                            </strong>
+
+                            <span>
+                                Official iHerb content
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             OFFERS
+             ===================================================== -->
+
+        <div
+            id="offers"
+            style="
+                margin-top:5rem;
+                padding:2rem;
+                border:1px solid var(--border);
+                border-radius:16px;
+                background:
+                    linear-gradient(
+                        135deg,
+                        rgba(255,60,0,0.12),
+                        rgba(255,215,0,0.04)
+                    );
+                text-align:center;
+            "
+        >
+
+            <div
+                style="
+                    font-size:2rem;
+                    margin-bottom:0.5rem;
+                "
+            >
+                🔥
+            </div>
+
+            <h3
+                style="
+                    font-size:1.7rem;
+                    margin-bottom:0.5rem;
+                "
+            >
+                SUPLAB SPECIAL OFFERS
+            </h3>
+
+            <p
+                style="
+                    color:var(--text-secondary);
+                "
+            >
+                Οι τιμές στο κατάστημα μπορούν
+                να αλλάζουν ανάλογα με τα διαθέσιμα
+                promotions και το SUPLAB pricing.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================
+         CLUB
+         ======================================================== -->
+
+    <section
+        class="section"
+        id="club"
+    >
+
+        <h2 class="section-title">
+            SUPLAB CLUB
+        </h2>
+
+        <p class="section-subtitle">
+            Αγόραζε. Κέρδιζε. Ανέβαινε επίπεδο.
+            Επιβραβεύσου.
+        </p>
+
+        <div class="club-card">
+
+            <div class="card-shine"></div>
+
+            <div class="card-content">
+
+                <div class="card-top">
+
+                    <div class="card-logo">
+                        SUPLAB CLUB
+                    </div>
+
+                    <div
+                        style="
+                            font-size:2rem;
+                        "
+                    >
+                        💳
+                    </div>
+
+                </div>
+
+                <div class="card-level">
+                    💎 ELITE
+                </div>
+
+                <div class="card-points">
+
+                    <span
+                        class="card-points-value"
+                        id="cardPoints"
+                    >
+                        740
+                    </span>
+
+                    <span
+                        class="card-points-label"
+                    >
+                        ΠΟΝΤΟΙ
+                    </span>
+
+                </div>
+
+                <div class="card-bottom">
+
+                    <div>
+
+                        <div
+                            style="
+                                font-size:0.7rem;
+                                letter-spacing:2px;
+                                color:var(--text-secondary);
+                            "
+                        >
+                            ΜΕΛΟΣ
+                        </div>
+
+                        <div
+                            style="
+                                font-weight:700;
+                            "
+                        >
+                            ΓΙΩΡΓΟΣ Π.
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div
+                            style="
+                                font-size:0.7rem;
+                                letter-spacing:2px;
+                                color:var(--text-secondary);
+                            "
+                        >
+                            ΑΠΟ
+                        </div>
+
+                        <div
+                            style="
+                                font-weight:700;
+                            "
+                        >
+                            2026
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            style="
+                max-width:500px;
+                margin:1rem auto;
+            "
+        >
+
+            <div
+                style="
+                    display:flex;
+                    justify-content:space-between;
+                    margin-bottom:0.5rem;
+                    font-size:0.9rem;
+                    color:var(--text-secondary);
+                "
+            >
+
+                <span>
+                    €586 / €800
+                </span>
+
+                <span>
+                    €214 μέχρι το VIP
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width:73%"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================
+         DASHBOARD PREVIEW
+         ======================================================== -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            DASHBOARD ΠΕΛΑΤΗ
+        </h2>
+
+        <div class="dashboard-grid">
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    🪪
+                </div>
+
+                <div class="dashboard-card-title">
+                    ΤΟ CLUB ΜΟΥ
+                </div>
+
+                <div class="dashboard-card-value">
+                    ELITE
+                </div>
+
+                <div class="dashboard-card-desc">
+                    740 Πόντοι
+                </div>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    🎁
+                </div>
+
+                <div class="dashboard-card-title">
+                    ΑΜΟΙΒΕΣ
+                </div>
+
+                <div class="dashboard-card-value">
+                    2
+                </div>
+
+                <div class="dashboard-card-desc">
+                    Διαθέσιμες
+                </div>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    📈
+                </div>
+
+                <div class="dashboard-card-title">
+                    ΠΡΟΟΔΟΣ
+                </div>
+
+                <div class="dashboard-card-value">
+                    €214
+                </div>
+
+                <div class="dashboard-card-desc">
+                    για VIP
+                </div>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    🔄
+                </div>
+
+                <div class="dashboard-card-title">
+                    ΑΓΟΡΑΣΤΕ ΞΑΝΑ
+                </div>
+
+                <div class="dashboard-card-value">
+                    3
+                </div>
+
+                <div class="dashboard-card-desc">
+                    Τακτικά προϊόντα
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- ============================================================
+     ACCOUNT PAGES
+     ============================================================ -->
+
+<div
+    class="account-page"
+    id="dashboardPage"
+>
+
+    <h1 class="account-page-title">
+        📊 DASHBOARD
+    </h1>
+
+    <p class="account-page-subtitle">
+        Καλώς ήρθατε πίσω, Γιώργο 👋
+    </p>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-icon">
+                🪪
+            </div>
+
+            <div class="dashboard-card-title">
+                CLUB STATUS
+            </div>
+
+            <div class="dashboard-card-value">
+                ELITE
+            </div>
+
+            <div class="dashboard-card-desc">
+                740 Πόντοι • €214 για VIP
+            </div>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-icon">
+                📦
+            </div>
+
+            <div class="dashboard-card-title">
+                ΠΑΡΑΓΓΕΛΙΕΣ
+            </div>
+
+            <div class="dashboard-card-value">
+                12
+            </div>
+
+            <div class="dashboard-card-desc">
+                Συνολικές παραγγελίες
+            </div>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-icon">
+                ❤️
+            </div>
+
+            <div class="dashboard-card-title">
+                WISHLIST
+            </div>
+
+            <div class="dashboard-card-value">
+                8
+            </div>
+
+            <div class="dashboard-card-desc">
+                Αποθηκευμένα προϊόντα
+            </div>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-icon">
+                ⭐
+            </div>
+
+            <div class="dashboard-card-title">
+                ΠΟΝΤΟΙ
+            </div>
+
+            <div class="dashboard-card-value">
+                2,450
+            </div>
+
+            <div class="dashboard-card-desc">
+                Συνολικά κερδισμένοι
+            </div>
+
+        </div>
 
     </div>
-  </section>
+
+</div>
 
 
-  <main>
+<div
+    class="account-page"
+    id="clubPage"
+>
 
-    <!-- =========================================================
-         MYPROTEIN
-    ========================================================== -->
+    <h1 class="account-page-title">
+        💎 SUPLAB CLUB
+    </h1>
 
-    <section id="myproteinSection" class="brand-section active">
+    <p class="account-page-subtitle">
+        Αγόραζε. Κέρδιζε. Ανέβαινε επίπεδο. Επιβραβεύσου.
+    </p>
 
-      <div class="section-heading">
-        <div>
-          <div class="brand-label">MYPROTEIN</div>
-          <h2>Best Sellers</h2>
-          <p>
-            Real MyProtein products with product images, current price snapshots,
-            ratings and direct links to the official store.
-          </p>
-        </div>
-      </div>
+    <div class="club-card">
 
-      <div id="myproteinProducts" class="products-grid"></div>
+        <div class="card-shine"></div>
 
+        <div class="card-content">
 
-      <!-- OFFICIAL MYPROTEIN VIDEOS -->
+            <div class="card-top">
 
-      <section class="official-videos">
+                <div class="card-logo">
+                    SUPLAB CLUB
+                </div>
 
-        <div class="video-heading">
+                <div style="font-size:2rem;">
+                    💳
+                </div>
 
-          <div class="official-tag">
-            ✓ OFFICIAL MYPROTEIN
-          </div>
-
-          <h2>MyProtein Official</h2>
-
-          <p>
-            Watch official MyProtein material covering training,
-            nutrition and supplements.
-          </p>
-
-        </div>
-
-        <div class="video-grid">
-
-          <!-- Official MyProtein channel introduction -->
-          <article class="video-card">
-
-            <div class="video-frame">
-              <iframe
-                src="https://www.youtube.com/embed/6moAJc6NCFQ"
-                title="Introducing Myprotein On YouTube"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
             </div>
 
-            <div class="video-info">
-              <h3>Introducing MyProtein on YouTube</h3>
-
-              <p>
-                Official MyProtein channel introduction.
-              </p>
-
-              <a
-                class="video-source"
-                href="https://www.youtube.com/watch?v=6moAJc6NCFQ"
-                target="_blank"
-                rel="noopener noreferrer">
-                Watch on YouTube →
-              </a>
+            <div class="card-level">
+                💎 ELITE
             </div>
 
-          </article>
+            <div class="card-points">
 
+                <span class="card-points-value">
+                    740
+                </span>
 
-          <!-- MyProtein official workout video -->
-          <article class="video-card">
+                <span class="card-points-label">
+                    ΠΟΝΤΟΙ
+                </span>
 
-            <div class="video-frame">
-              <iframe
-                src="https://www.youtube.com/embed/ECVm_FoSCoA"
-                title="MyProtein Official Workout"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
             </div>
 
-            <div class="video-info">
-              <h3>Official MyProtein Workout</h3>
+            <div class="card-bottom">
 
-              <p>
-                Training material published through the official
-                MyProtein US channel.
-              </p>
+                <div>
 
-              <a
-                class="video-source"
-                href="https://www.youtube.com/watch?v=ECVm_FoSCoA"
-                target="_blank"
-                rel="noopener noreferrer">
-                Watch on YouTube →
-              </a>
+                    <div
+                        style="
+                            font-size:0.7rem;
+                            letter-spacing:2px;
+                            color:var(--text-secondary);
+                        "
+                    >
+                        ΜΕΛΟΣ
+                    </div>
+
+                    <div style="font-weight:700;">
+                        ΓΙΩΡΓΟΣ Π.
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <div
+                        style="
+                            font-size:0.7rem;
+                            letter-spacing:2px;
+                            color:var(--text-secondary);
+                        "
+                    >
+                        ΑΠΟ
+                    </div>
+
+                    <div style="font-weight:700;">
+                        2026
+                    </div>
+
+                </div>
+
             </div>
-
-          </article>
-
-
-          <!-- MyProtein official nutrition video -->
-          <article class="video-card">
-
-            <div class="video-frame">
-              <iframe
-                src="https://www.youtube.com/embed/atLBPddkCSY"
-                title="MyProtein Health and Nutrition Tips"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-
-            <div class="video-info">
-              <h3>Health & Nutrition Tips</h3>
-
-              <p>
-                Official MyProtein nutrition and supplement guidance.
-              </p>
-
-              <a
-                class="video-source"
-                href="https://www.youtube.com/watch?v=atLBPddkCSY"
-                target="_blank"
-                rel="noopener noreferrer">
-                Watch on YouTube →
-              </a>
-            </div>
-
-          </article>
 
         </div>
-      </section>
-
-    </section>
-
-
-    <!-- =========================================================
-         iHERB
-    ========================================================== -->
-
-    <section id="iherbSection" class="brand-section">
-
-      <div class="section-heading">
-        <div>
-          <div class="brand-label">iHERB</div>
-          <h2>Top Picks</h2>
-          <p>
-            Selected real iHerb products with ratings, product information
-            and direct shopping links.
-          </p>
-        </div>
-      </div>
-
-      <div id="iherbProducts" class="products-grid"></div>
-
-
-      <!-- OFFICIAL iHERB VIDEOS -->
-
-      <section class="official-videos">
-
-        <div class="video-heading">
-
-          <div class="official-tag">
-            ✓ OFFICIAL iHERB
-          </div>
-
-          <h2>iHerb Official</h2>
-
-          <p>
-            Discover iHerb's official brand and wellness content.
-          </p>
-
-        </div>
-
-        <div class="video-grid">
-
-          <article class="video-card">
-
-            <div class="video-frame">
-              <iframe
-                src="https://www.youtube.com/embed/iepMy_1vefw"
-                title="The App to Shop for Wellness - iHerb"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-
-            <div class="video-info">
-              <h3>The App to Shop for Wellness</h3>
-
-              <p>
-                Official iHerb brand video introducing the iHerb
-                shopping and wellness platform.
-              </p>
-
-              <a
-                class="video-source"
-                href="https://www.youtube.com/watch?v=iepMy_1vefw"
-                target="_blank"
-                rel="noopener noreferrer">
-                Watch on YouTube →
-              </a>
-            </div>
-
-          </article>
-
-
-          <article class="video-card">
-
-            <div class="video-frame">
-              <iframe
-                src="https://www.youtube.com/watch?v=cH-Bv5KGUh8"
-                title="Authentic Products. Real Reviews. | iHerb"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-
-            <div class="video-info">
-              <h3>Authentic Products. Real Reviews.</h3>
-
-              <p>
-                Official iHerb brand content focused on authentic
-                products and customer reviews.
-              </p>
-
-              <a
-                class="video-source"
-                href="https://www.youtube.com/watch?v=cH-Bv5KGUh8"
-                target="_blank"
-                rel="noopener noreferrer">
-                Watch on YouTube →
-              </a>
-            </div>
-
-          </article>
-
-
-          <!-- Safe third card: official iHerb channel -->
-          <article class="video-card">
-
-            <div class="video-frame">
-              <iframe
-                src="https://www.youtube.com/embed/cH-Bv5KGUh8"
-                title="iHerb Official Content"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-
-            <div class="video-info">
-              <h3>More from iHerb</h3>
-
-              <p>
-                Explore official iHerb content directly through YouTube.
-              </p>
-
-              <a
-                class="video-source"
-                href="https://www.youtube.com/watch?v=cH-Bv5KGUh8"
-                target="_blank"
-                rel="noopener noreferrer">
-                Watch on YouTube →
-              </a>
-            </div>
-
-          </article>
-
-        </div>
-      </section>
-
-    </section>
-
-
-    <!-- =========================================================
-         SUPLAB SIGNATURE
-    ========================================================== -->
-
-    <section id="signatureSection" class="brand-section">
-
-      <section class="signature">
-
-        <div class="signature-box">
-
-          <div class="signature-icon">
-            💎
-          </div>
-
-          <div class="brand-label">
-            SUPLAB SIGNATURE
-          </div>
-
-          <h2>Coming Soon</h2>
-
-          <p>
-            The SUPLAB Signature range will be added once the products,
-            photography and verified product information are ready.
-            No placeholder products are presented as real products.
-          </p>
-
-        </div>
-
-      </section>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       CART
-  ========================= -->
-
-  <div
-    id="cartOverlay"
-    class="cart-overlay"
-    onclick="toggleCart(false)">
-  </div>
-
-  <aside
-    id="cartDrawer"
-    class="cart-drawer"
-    aria-label="Shopping cart">
-
-    <div class="cart-header">
-
-      <h2>🛒 Your Cart</h2>
-
-      <button
-        class="icon-btn"
-        type="button"
-        onclick="toggleCart(false)"
-        aria-label="Close cart">
-        ✕
-      </button>
 
     </div>
+
+</div>
+
+
+<div
+    class="account-page"
+    id="ordersPage"
+>
+
+    <h1 class="account-page-title">
+        📦 ΠΑΡΑΓΓΕΛΙΕΣ
+    </h1>
+
+    <p class="account-page-subtitle">
+        Το ιστορικό των παραγγελιών σας
+    </p>
 
     <div
-      id="cartItems"
-      class="cart-items">
+        style="
+            background:var(--secondary);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:1.5rem;
+        "
+    >
+
+        <div
+            style="
+                display:flex;
+                justify-content:space-between;
+                margin-bottom:1rem;
+                padding-bottom:1rem;
+                border-bottom:1px solid var(--border);
+            "
+        >
+
+            <strong>
+                #SUPLAB-2026-587
+            </strong>
+
+            <span
+                style="
+                    background:rgba(0,217,126,0.2);
+                    color:var(--success);
+                    padding:0.3rem 0.8rem;
+                    border-radius:20px;
+                    font-size:0.85rem;
+                    font-weight:700;
+                "
+            >
+                ΠΑΡΑΔΟΘΗΚΕ
+            </span>
+
+        </div>
+
+        <div
+            style="
+                display:flex;
+                justify-content:space-between;
+            "
+        >
+
+            <span
+                style="
+                    color:var(--text-secondary);
+                "
+            >
+                15 Ιανουαρίου 2026
+            </span>
+
+            <strong
+                style="
+                    color:var(--accent);
+                    font-size:1.2rem;
+                "
+            >
+                €89.80
+            </strong>
+
+        </div>
+
     </div>
 
-    <div class="cart-footer">
+</div>
 
-      <div class="summary-line">
-        <span>Subtotal</span>
-        <strong id="cartSubtotal">$0.00</strong>
-      </div>
 
-      <div class="summary-line">
-        <span>Shipping</span>
-        <span>Calculated at retailer</span>
-      </div>
+<div
+    class="account-page"
+    id="wishlistPage"
+>
 
-      <div class="summary-line total">
-        <span>Total</span>
-        <strong id="cartTotal">$0.00</strong>
-      </div>
+    <h1 class="account-page-title">
+        ❤️ ΛΙΣΤΑ ΕΠΙΘΥΜΙΩΝ
+    </h1>
 
-      <button
-        class="checkout-btn"
-        type="button"
-        onclick="checkout()">
-        CONTINUE TO STORE →
-      </button>
+    <p class="account-page-subtitle">
+        Τα αγαπημένα σας προϊόντα
+    </p>
+
+    <div
+        class="product-grid"
+        id="wishlistGrid"
+    ></div>
+
+</div>
+
+
+<!-- ============================================================
+     AUTH MODAL
+     ============================================================ -->
+
+<div
+    class="modal-overlay"
+    id="authModal"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2 class="modal-title">
+                ΛΟΓΑΡΙΑΣΜΟΣ
+            </h2>
+
+            <button
+                class="modal-close"
+                onclick="closeAuthModal()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div class="auth-tabs">
+
+                <button
+                    class="auth-tab active"
+                    onclick="switchAuthTab('login')"
+                >
+                    Σύνδεση
+                </button>
+
+                <button
+                    class="auth-tab"
+                    onclick="switchAuthTab('register')"
+                >
+                    Εγγραφή
+                </button>
+
+            </div>
+
+
+            <form
+                class="auth-form active"
+                id="loginForm"
+                onsubmit="handleLogin(event)"
+            >
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        class="form-input"
+                        required
+                        placeholder="your@email.com"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Κωδικός
+                    </label>
+
+                    <input
+                        type="password"
+                        class="form-input"
+                        required
+                        placeholder="••••••••"
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn-submit"
+                >
+                    Σύνδεση
+                </button>
+
+            </form>
+
+
+            <form
+                class="auth-form"
+                id="registerForm"
+                onsubmit="handleRegister(event)"
+            >
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Ονοματεπώνυμο
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-input"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        class="form-input"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Κωδικός
+                    </label>
+
+                    <input
+                        type="password"
+                        class="form-input"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn-submit"
+                >
+                    Εγγραφή
+                </button>
+
+            </form>
+
+        </div>
 
     </div>
 
-  </aside>
+</div>
 
 
-  <!-- =========================
-       TOAST
-  ========================= -->
+<!-- ============================================================
+     CART
+     ============================================================ -->
 
-  <div
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()"
+></div>
+
+<div
+    class="cart-drawer"
+    id="cartDrawer"
+>
+
+    <div class="cart-drawer-header">
+
+        <h2>
+            🛒 ΤΟ ΚΑΛΑΘΙ ΣΑΣ
+        </h2>
+
+        <button
+            class="modal-close"
+            onclick="closeCart()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div class="cart-gift-progress">
+
+        <div style="font-size:2rem;">
+            🎁
+        </div>
+
+        <div style="flex:1;">
+
+            <div
+                id="giftProgressText"
+                style="
+                    font-size:0.85rem;
+                    margin-bottom:0.5rem;
+                "
+            >
+                ΑΠΕΧΕΤΕ
+                <strong
+                    style="color:var(--gold);"
+                >
+                    €100.00
+                </strong>
+                ΑΠΟ ΔΩΡΕΑΝ ΔΩΡΟ!
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="giftProgressFill"
+                    style="width:0%"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="cart-points-preview">
+
+        <span>
+            🎁
+        </span>
+
+        <span>
+            ΠΟΝΤΟΙ CLUB:
+        </span>
+
+        <strong id="cartPointsEarn">
+            0
+        </strong>
+
+    </div>
+
+
+    <div
+        class="cart-items"
+        id="cartItems"
+    ></div>
+
+
+    <div
+        class="cart-drawer-footer"
+        id="cartFooter"
+        style="display:none;"
+    >
+
+        <div class="cart-summary-row">
+
+            <span>
+                Υποσύνολο
+            </span>
+
+            <span id="cartSubtotal">
+                €0.00
+            </span>
+
+        </div>
+
+        <div class="cart-summary-row">
+
+            <span>
+                Μεταφορικά
+            </span>
+
+            <span
+                style="color:var(--success);"
+                id="cartShipping"
+            >
+                ΔΩΡΕΑΝ
+            </span>
+
+        </div>
+
+        <div
+            class="cart-summary-row total"
+        >
+
+            <span>
+                Σύνολο
+            </span>
+
+            <span id="cartTotal">
+                €0.00
+            </span>
+
+        </div>
+
+        <button
+            class="btn-checkout"
+            onclick="checkout()"
+        >
+            ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ →
+        </button>
+
+        <button
+            style="
+                width:100%;
+                padding:0.75rem;
+                background:transparent;
+                color:var(--text-secondary);
+                border:none;
+                cursor:pointer;
+            "
+            onclick="closeCart()"
+        >
+            ← Συνέχεια αγορών
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     TOAST
+     ============================================================ -->
+
+<div
+    class="toast-container"
     id="toastContainer"
-    class="toast-container">
-  </div>
+></div>
 
 
-  <footer>
-    <strong>SUPLAB</strong> — Sports Nutrition
-    <br>
-    Product prices and availability can change at the retailer.
-    Product information and trademarks belong to their respective brands.
-  </footer>
+<!-- ============================================================
+     MOBILE NAV
+     ============================================================ -->
+
+<div class="mobile-nav">
+
+    <div class="mobile-nav-content">
+
+        <a
+            href="#home"
+            class="mobile-nav-item"
+            onclick="showHome()"
+        >
+            <span class="mobile-nav-icon">
+                🏠
+            </span>
+
+            <span>
+                ΑΡΧΙΚΗ
+            </span>
+        </a>
+
+        <a
+            href="#shop"
+            class="mobile-nav-item"
+        >
+            <span class="mobile-nav-icon">
+                🛍️
+            </span>
+
+            <span>
+                SHOP
+            </span>
+        </a>
+
+        <a
+            href="#club"
+            class="mobile-nav-item"
+        >
+            <span class="mobile-nav-icon">
+                🎁
+            </span>
+
+            <span>
+                CLUB
+            </span>
+        </a>
+
+        <a
+            href="#"
+            class="mobile-nav-item"
+            onclick="showAccountPage('wishlist')"
+        >
+            <span class="mobile-nav-icon">
+                ❤️
+            </span>
+
+            <span>
+                WISHLIST
+            </span>
+        </a>
+
+        <a
+            href="#"
+            class="mobile-nav-item"
+            onclick="toggleCart()"
+        >
+            <span class="mobile-nav-icon">
+                🛒
+            </span>
+
+            <span>
+                ΚΑΛΑΘΙ
+            </span>
+        </a>
+
+    </div>
+
+</div>
 
 
-  <script>
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+
+<script>
 
     /* =========================================================
-       PRODUCT DATA
-       Price snapshots and ratings are retailer data captured
-       for this storefront. Always check retailer before purchase.
-    ========================================================== */
+       REAL PRODUCT DATA
+       =========================================================
 
-    const products = {
+       IMPORTANT:
+       These are the initial SUPLAB catalogue snapshots.
 
-      myprotein: [
+       Prices can later be moved into a database/admin panel.
+
+       Images are direct product/CDN images rather than emoji
+       placeholders.
+       ========================================================= */
+
+
+    const products = [
+
+        /* =====================================================
+           MYPROTEIN
+           ===================================================== */
 
         {
-          id: "mp-impact-whey",
-          brand: "MyProtein",
-          name: "Impact Whey Protein",
-          description: "High-protein whey protein powder for everyday training and recovery.",
-          meta: "0.55 lb • Salted Caramel",
-          price: 13.99,
-          oldPrice: 19.99,
-          rating: 4.48,
-          reviews: 4416,
-          badge: "Best Seller",
-          image: "https://static.thcdn.com/productimg/original/10852500-1615304620165133.jpg",
-          url: "https://us.myprotein.com/p/sports-nutrition/impact-whey-protein/10852500/"
+            id: 101,
+
+            brand: "MYPROTEIN",
+
+            company: "myprotein",
+
+            name: "Impact Whey Protein",
+
+            description:
+                "Δημοφιλής whey protein για καθημερινή πρόσληψη πρωτεΐνης και υποστήριξη της προπόνησης.",
+
+            price: 13.99,
+
+            oldPrice: 19.99,
+
+            rating: 4.48,
+
+            reviews: 4416,
+
+            size: "0.55lb — Salted Caramel",
+
+            category: "protein",
+
+            badge: "-30%",
+
+            image:
+                "https://static.thcdn.com/productimg/original/10852500-1615304620165133.jpg"
         },
 
-        {
-          id: "mp-creatine",
-          brand: "MyProtein",
-          name: "Creatine Monohydrate Powder",
-          description: "Creatine monohydrate powder designed for strength, power and training performance.",
-          meta: "0.5 lb • Unflavored",
-          price: 13.99,
-          oldPrice: 19.99,
-          rating: 4.74,
-          reviews: 508,
-          badge: "Popular",
-          image: "https://static.thcdn.com/productimg/original/10852411-1935304620346456.jpg",
-          url: "https://us.myprotein.com/p/sports-nutrition/creatine-monohydrate-powder/10852411/"
-        },
 
         {
-          id: "mp-whey-isolate",
-          brand: "MyProtein",
-          name: "Impact Whey Isolate",
-          description: "High-protein whey isolate designed for a lean protein option.",
-          meta: "0.55 lb • Strawberry Milkshake",
-          price: 20.99,
-          oldPrice: 29.99,
-          rating: 4.36,
-          reviews: 2449,
-          badge: "Popular",
-          image: "https://static.thcdn.com/productimg/original/10852482-2555304620117685.jpg",
-          url: "https://us.myprotein.com/p/sports-nutrition/impact-whey-isolate/10852482/"
+            id: 102,
+
+            brand: "MYPROTEIN",
+
+            company: "myprotein",
+
+            name: "Creatine Monohydrate Powder",
+
+            description:
+                "Μονοϋδρική κρεατίνη για υποστήριξη δύναμης και απόδοσης σε υψηλής έντασης άσκηση.",
+
+            price: 13.99,
+
+            oldPrice: 19.99,
+
+            rating: 4.74,
+
+            reviews: 508,
+
+            size: "0.5lb — 45 servings — Unflavored",
+
+            category: "creatine",
+
+            badge: "-30%",
+
+            image:
+                "https://static.thcdn.com/productimg/original/10852411-1935304620346456.jpg"
         },
 
-        {
-          id: "mp-clear-whey",
-          brand: "MyProtein",
-          name: "Clear Whey Isolate",
-          description: "Light, fruit-flavored whey isolate designed as a refreshing alternative to shakes.",
-          meta: "1.1 lb • Lemonade",
-          price: 31.46,
-          oldPrice: 44.95,
-          rating: 4.35,
-          reviews: 935,
-          badge: "Trending",
-          image: "https://static.thcdn.com/productimg/original/12095869-1335285731042416.png",
-          url: "https://us.myprotein.com/p/sports-nutrition/clear-whey-isolate/12095867/"
-        },
 
         {
-          id: "mp-casein",
-          brand: "MyProtein",
-          name: "Slow-Release Casein",
-          description: "Slow-digesting casein protein designed for sustained protein release.",
-          meta: "2.2 lb • Chocolate Smooth",
-          price: 41.99,
-          oldPrice: 59.99,
-          rating: 4.05,
-          reviews: 338,
-          badge: "Recovery",
-          image: "https://static.thcdn.com/productimg/original/11092497-1895309035258791.jpg",
-          url: "https://us.myprotein.com/p/sports-nutrition/slow-release-casein/11092497/"
+            id: 103,
+
+            brand: "MYPROTEIN",
+
+            company: "myprotein",
+
+            name: "Impact Whey Isolate",
+
+            description:
+                "Υψηλής καθαρότητας whey isolate για όσους θέλουν μια πιο lean επιλογή πρωτεΐνης.",
+
+            price: 20.99,
+
+            oldPrice: 29.99,
+
+            rating: 4.36,
+
+            reviews: 2449,
+
+            size: "0.55lb — Strawberry Milkshake",
+
+            category: "protein",
+
+            badge: "-30%",
+
+            image:
+                "https://static.thcdn.com/productimg/original/10852482-2555304620117685.jpg"
         },
 
+
         {
-          id: "mp-vegan",
-          brand: "MyProtein",
-          name: "Vegan Protein Blend",
-          description: "Plant-based protein blend for vegan and vegetarian nutrition.",
-          meta: "2.2 lb • Mocha",
-          price: 38.49,
-          oldPrice: 54.99,
-          rating: 3.85,
-          reviews: 176,
-          badge: "Vegan",
-          image: "https://static.thcdn.com/productimg/1600/1600/10852638-1694635916388175.jpg",
-          url: "https://us.myprotein.com/p/sports-nutrition/vegan-protein-blend/10852638/"
+            id: 104,
+
+            brand: "MYPROTEIN",
+
+            company: "myprotein",
+
+            name: "Clear Whey Isolate",
+
+            description:
+                "Clear whey isolate με πιο ελαφριά υφή και γεύση τύπου drink.",
+
+            price: 31.46,
+
+            oldPrice: 44.95,
+
+            rating: 4.35,
+
+            reviews: 935,
+
+            size: "1.1lb — Lemonade",
+
+            category: "protein",
+
+            badge: "-30%",
+
+            image:
+                "https://static.thcdn.com/productimg/original/12095869-1335285731042416.png"
+        },
+
+
+        {
+            id: 105,
+
+            brand: "MYPROTEIN",
+
+            company: "myprotein",
+
+            name: "Slow-Release Casein",
+
+            description:
+                "Casein πρωτεΐνη σχεδιασμένη για πιο αργή απελευθέρωση πρωτεΐνης.",
+
+            price: 41.99,
+
+            oldPrice: 59.99,
+
+            rating: 4.05,
+
+            reviews: 338,
+
+            size: "2.2lb — Chocolate Smooth",
+
+            category: "protein",
+
+            badge: "-30%",
+
+            image:
+                "https://static.thcdn.com/productimg/original/11092497-1895309035258791.jpg"
+        },
+
+
+        {
+            id: 106,
+
+            brand: "MYPROTEIN",
+
+            company: "myprotein",
+
+            name: "Vegan Protein Blend",
+
+            description:
+                "Φυτική επιλογή πρωτεΐνης για vegan διατροφή.",
+
+            price: 38.49,
+
+            oldPrice: 54.99,
+
+            rating: 3.85,
+
+            reviews: 176,
+
+            size: "2.2lb — Mocha",
+
+            category: "vegan",
+
+            badge: "VEGAN",
+
+            image:
+                "https://static.thcdn.com/productimg/1600/1600/10852638-1694635916388175.jpg"
+        },
+
+
+        /* =====================================================
+           IHERB
+           ===================================================== */
+
+        {
+            id: 201,
+
+            brand: "CALIFORNIA GOLD NUTRITION",
+
+            company: "iherb",
+
+            name: "CollagenUP®",
+
+            description:
+                "Hydrolyzed marine collagen peptides με hyaluronic acid και vitamin C.",
+
+            price: 17.46,
+
+            rating: 4.7,
+
+            reviews: 325886,
+
+            size: "206g — Unflavored",
+
+            category: "health",
+
+            badge: "BEST SELLER",
+
+            image:
+                "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01033/k/478.jpg"
+        },
+
+
+        {
+            id: 202,
+
+            brand: "CALIFORNIA GOLD NUTRITION",
+
+            company: "iherb",
+
+            name: "Omega-3 Premium Fish Oil",
+
+            description:
+                "Premium fish oil με Omega-3 για καθημερινή διατροφική υποστήριξη.",
+
+            price: 26.53,
+
+            rating: 4.8,
+
+            reviews: 489952,
+
+            size: "240 Fish Gelatin Softgels",
+
+            category: "health",
+
+            badge: "TOP SELLER",
+
+            image:
+                "https://images.iherb.com/86598.jpg"
+        },
+
+
+        {
+            id: 203,
+
+            brand: "NOW FOODS",
+
+            company: "iherb",
+
+            name: "Magnesium Glycinate",
+
+            description:
+                "Magnesium glycinate σε μορφή δισκίων για καθημερινή συμπλήρωση μαγνησίου.",
+
+            price: 19.59,
+
+            rating: 4.8,
+
+            reviews: 42116,
+
+            size: "180 Tablets — 100mg/tablet",
+
+            category: "health",
+
+            badge: "POPULAR",
+
+            image:
+                "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01289/k/62.jpg"
+        },
+
+
+        {
+            id: 204,
+
+            brand: "CALIFORNIA GOLD NUTRITION",
+
+            company: "iherb",
+
+            name: "Vitamin D3 + K2",
+
+            description:
+                "Vitamin D3 μαζί με K2 ως MK-7 σε veggie capsules.",
+
+            price: 16.20,
+
+            rating: 4.8,
+
+            reviews: 36993,
+
+            size: "180 Veggie Capsules",
+
+            category: "vitamins",
+
+            badge: "BEST SELLER",
+
+            image:
+                "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn02333/r/63.jpg"
+        },
+
+
+        {
+            id: 205,
+
+            brand: "NOW FOODS",
+
+            company: "iherb",
+
+            name: "Vitamin D3 & K2",
+
+            description:
+                "Συνδυασμός βιταμίνης D3 και K2 σε κάψουλες.",
+
+            price: 10.70,
+
+            rating: 4.8,
+
+            reviews: 79805,
+
+            size: "120 Capsules",
+
+            category: "vitamins",
+
+            badge: "POPULAR",
+
+            image:
+                "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now00369/k/132.jpg"
         }
 
-      ],
+    ];
 
 
-      iherb: [
+    /* =========================================================
+       STATE
+       ========================================================= */
 
-        {
-          id: "ih-collagenup",
-          brand: "California Gold Nutrition",
-          name: "CollagenUP",
-          description: "Hydrolyzed marine collagen peptides with hyaluronic acid and vitamin C.",
-          meta: "206 g • Unflavored",
-          price: 17.46,
-          oldPrice: null,
-          rating: 4.7,
-          reviews: 326099,
-          badge: "Top Rated",
-          image: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01033/k/478.jpg",
-          url: "https://www.iherb.com/pr/california-gold-nutrition-collagenup-hydrolyzed-marine-collagen-peptides-with-hyaluronic-acid-and-vitamin-c-unflavored-7-26-oz-206-g/64903"
-        },
+    let cart = [];
 
-        {
-          id: "ih-omega3",
-          brand: "California Gold Nutrition",
-          name: "Omega-3 Premium Fish Oil",
-          description: "Premium fish oil softgels providing omega-3 fatty acids.",
-          meta: "240 softgels",
-          price: 26.53,
-          oldPrice: null,
-          rating: 4.8,
-          reviews: 489893,
-          badge: "Top Rated",
-          image: "https://images.iherb.com/86598.jpg",
-          url: "https://www.iherb.com/"
-        },
+    let wishlist = [];
 
-        {
-          id: "ih-magnesium",
-          brand: "NOW Foods",
-          name: "Magnesium Glycinate",
-          description: "Magnesium glycinate tablets designed for convenient daily supplementation.",
-          meta: "180 tablets • 100 mg per tablet",
-          price: 19.59,
-          oldPrice: null,
-          rating: 4.8,
-          reviews: 42264,
-          badge: "Popular",
-          image: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01289/k/62.jpg",
-          url: "https://www.iherb.com/pr/now-foods-magnesium-glycinate-180-tablets-100-mg-per-tablet/88819"
-        },
+    let isLoggedIn = false;
 
-        {
-          id: "ih-d3-k2-cgn",
-          brand: "California Gold Nutrition",
-          name: "Vitamin D3 + K2",
-          description: "Vitamin D3 combined with K2 as MK-7 in vegetarian capsules.",
-          meta: "180 veggie capsules",
-          price: 16.20,
-          oldPrice: null,
-          rating: 4.8,
-          reviews: 36906,
-          badge: "Popular",
-          image: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn02333/r/63.jpg",
-          url: "https://www.iherb.com/pr/california-gold-nutrition-vitamin-d3-k2-as-mk-7-180-veggie-capsules/124745"
-        },
-
-        {
-          id: "ih-d3-k2-now",
-          brand: "NOW Foods",
-          name: "Vitamin D3 & K2",
-          description: "Vitamin D3 and vitamin K2 combination supplement.",
-          meta: "120 capsules",
-          price: 10.70,
-          oldPrice: null,
-          rating: 4.8,
-          reviews: 79762,
-          badge: "Popular",
-          image: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now00369/k/132.jpg",
-          url: "https://www.iherb.com/pr/now-foods-vitamin-d3-k2-120-capsules/10056"
-        }
-
-      ]
-
+    let clubState = {
+        points: 740,
+        level: "elite"
     };
 
 
     /* =========================================================
-       CART
-    ========================================================== */
-
-    let cart = [];
-
-
-    /* =========================================================
        HELPERS
-    ========================================================== */
+       ========================================================= */
 
     function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
 
+        return String(value)
 
-    function formatPrice(value) {
-      return `$${Number(value).toFixed(2)}`;
-    }
-
-
-    function formatReviews(number) {
-      return Number(number).toLocaleString();
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
     }
 
 
     function stars(rating) {
-      const rounded = Math.round(Number(rating));
 
-      return "★".repeat(Math.min(5, rounded)) +
-             "☆".repeat(Math.max(0, 5 - rounded));
+        const rounded =
+            Math.round(Number(rating));
+
+        return "⭐".repeat(
+            Math.min(Math.max(rounded, 1), 5)
+        );
+    }
+
+
+    function formatReviews(number) {
+
+        const n = Number(number);
+
+        if (n >= 1000000) {
+            return (
+                (n / 1000000)
+                    .toFixed(1)
+                    .replace(".0", "") +
+                "M"
+            );
+        }
+
+        if (n >= 1000) {
+            return (
+                (n / 1000)
+                    .toFixed(1)
+                    .replace(".0", "") +
+                "K"
+            );
+        }
+
+        return String(n);
     }
 
 
     /* =========================================================
-       IMAGE FALLBACK
-    ========================================================== */
+       PRODUCT CARD
+       ========================================================= */
 
-    function handleImageError(img) {
-      img.style.display = "none";
+    function productCard(p) {
 
-      const fallback = img.parentElement.querySelector(".image-fallback");
-
-      if (fallback) {
-        fallback.style.display = "block";
-      }
-    }
-
-
-    /* =========================================================
-       RENDER PRODUCTS
-    ========================================================== */
-
-    function renderProducts(brand) {
-
-      const container = document.getElementById(
-        brand === "myprotein"
-          ? "myproteinProducts"
-          : "iherbProducts"
-      );
-
-      if (!container) return;
-
-      const list = products[brand] || [];
-
-      container.innerHTML = list.map(product => {
-
-        const saving =
-          product.oldPrice
-            ? Math.round(
-                ((product.oldPrice - product.price) /
-                product.oldPrice) * 100
-              )
-            : 0;
+        const liked =
+            wishlist.includes(p.id);
 
         return `
-          <article class="product-card">
 
-            ${product.badge
-              ? `<div class="badge">${escapeHtml(product.badge)}</div>`
-              : ""
-            }
+            <div
+                class="product-card"
+                data-product-id="${p.id}"
+                data-category="${escapeHtml(p.category)}"
+                data-search="${escapeHtml(
+                    (
+                        p.name +
+                        " " +
+                        p.brand +
+                        " " +
+                        p.category
+                    ).toLowerCase()
+                )}"
+            >
 
-            <div class="product-image-wrap">
+                <div class="product-image">
 
-              <img
-                class="product-image"
-                src="${escapeHtml(product.image)}"
-                alt="${escapeHtml(product.name)}"
-                loading="lazy"
-                onerror="handleImageError(this)"
-              >
+                    <div class="product-brand-badge">
+                        ${escapeHtml(p.brand)}
+                    </div>
 
-              <div class="image-fallback">
-                Product image unavailable.
-                <br>
-                View the official retailer page.
-              </div>
+                    ${
+                        p.badge
+                            ? `
+                                <span class="product-badge">
+                                    ${escapeHtml(p.badge)}
+                                </span>
+                              `
+                            : ""
+                    }
 
-            </div>
+                    <img
+                        src="${escapeHtml(p.image)}"
+                        alt="${escapeHtml(p.name)}"
+                        loading="lazy"
+                        onerror="handleImageError(this)"
+                    >
 
-            <div class="product-body">
+                    <div class="image-fallback">
+                        🥤
+                    </div>
 
-              <div class="product-brand">
-                ${escapeHtml(product.brand)}
-              </div>
+                    <button
+                        class="
+                            product-wishlist
+                            ${liked ? "active" : ""}
+                        "
+                        onclick="toggleWishlist(event, ${p.id})"
+                        aria-label="Wishlist"
+                    >
+                        ${liked ? "❤️" : "🤍"}
+                    </button>
 
-              <h3 class="product-name">
-                ${escapeHtml(product.name)}
-              </h3>
-
-              <p class="product-description">
-                ${escapeHtml(product.description)}
-              </p>
-
-              <div class="rating">
-
-                <span class="stars">
-                  ${stars(product.rating)}
-                </span>
-
-                <span class="rating-number">
-                  ${product.rating}
-                </span>
-
-                <span class="reviews">
-                  (${formatReviews(product.reviews)})
-                </span>
-
-              </div>
-
-              <div class="product-meta">
-                ${escapeHtml(product.meta)}
-              </div>
-
-              <div class="price-row">
-
-                <div>
-                  <span class="price">
-                    ${formatPrice(product.price)}
-                  </span>
-
-                  ${
-                    product.oldPrice
-                      ? `
-                        <span class="old-price">
-                          ${formatPrice(product.oldPrice)}
-                        </span>
-                      `
-                      : ""
-                  }
                 </div>
 
-                ${
-                  saving
-                    ? `<span class="save">Save ${saving}%</span>`
-                    : ""
-                }
 
-              </div>
+                <div class="product-info">
 
-              <div class="product-actions">
+                    <div class="product-brand">
+                        ${escapeHtml(p.brand)}
+                    </div>
 
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  onclick="addToCart('${product.id}')">
-                  ADD TO CART
-                </button>
+                    <div class="product-name">
+                        ${escapeHtml(p.name)}
+                    </div>
 
-                <a
-                  class="btn btn-secondary"
-                  href="${escapeHtml(product.url)}"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  OFFICIAL STORE
-                </a>
+                    <div class="product-rating">
 
-              </div>
+                        ${stars(p.rating)}
+
+                        <span
+                            style="
+                                color:var(--gold);
+                                font-weight:700;
+                            "
+                        >
+                            ${p.rating}
+                        </span>
+
+                        <span class="review-count">
+                            (${formatReviews(p.reviews)}
+                            reviews)
+                        </span>
+
+                    </div>
+
+                    <div class="product-description">
+                        ${escapeHtml(p.description)}
+                    </div>
+
+                    <div class="product-size">
+                        ${escapeHtml(p.size)}
+                    </div>
+
+                    <div class="product-price">
+
+                        <span class="price-current">
+                            €${Number(p.price).toFixed(2)}
+                        </span>
+
+                        ${
+                            p.oldPrice
+                                ? `
+                                    <span class="price-original">
+                                        €${Number(
+                                            p.oldPrice
+                                        ).toFixed(2)}
+                                    </span>
+                                  `
+                                : ""
+                        }
+
+                    </div>
+
+                    <div class="price-note">
+                        Τιμή SUPLAB • ενημέρωση catalogue
+                    </div>
+
+                    <button
+                        class="btn-add-cart"
+                        onclick="addToCart(${p.id})"
+                    >
+                        ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ
+                    </button>
+
+                </div>
 
             </div>
 
-          </article>
         `;
-
-      }).join("");
     }
 
 
     /* =========================================================
-       FIND PRODUCT
-    ========================================================== */
+       RENDER
+       ========================================================= */
 
-    function findProduct(id) {
+    function renderProducts() {
 
-      for (const brand of Object.keys(products)) {
+        const myproteinGrid =
+            document.getElementById(
+                "myproteinGrid"
+            );
 
-        const found = products[brand].find(
-          product => product.id === id
+        const iherbGrid =
+            document.getElementById(
+                "iherbGrid"
+            );
+
+        const myproteinProducts =
+            products.filter(
+                p => p.company === "myprotein"
+            );
+
+        const iherbProducts =
+            products.filter(
+                p => p.company === "iherb"
+            );
+
+        myproteinGrid.innerHTML =
+            myproteinProducts
+                .map(productCard)
+                .join("");
+
+        iherbGrid.innerHTML =
+            iherbProducts
+                .map(productCard)
+                .join("");
+
+        renderWishlist();
+    }
+
+
+    /* =========================================================
+       IMAGE ERROR
+       ========================================================= */
+
+    function handleImageError(img) {
+
+        img.style.display = "none";
+
+        const fallback =
+            img.parentElement.querySelector(
+                ".image-fallback"
+            );
+
+        if (fallback) {
+            fallback.style.display = "block";
+        }
+    }
+
+
+    /* =========================================================
+       WISHLIST
+       ========================================================= */
+
+    function toggleWishlist(event, productId) {
+
+        event.stopPropagation();
+
+        if (wishlist.includes(productId)) {
+
+            wishlist =
+                wishlist.filter(
+                    id => id !== productId
+                );
+
+            showToast(
+                "success",
+                "Αφαιρέθηκε από Wishlist"
+            );
+
+        } else {
+
+            wishlist.push(productId);
+
+            showToast(
+                "success",
+                "❤️ Προστέθηκε στη Wishlist"
+            );
+        }
+
+        renderProducts();
+    }
+
+
+    function renderWishlist() {
+
+        const grid =
+            document.getElementById(
+                "wishlistGrid"
+            );
+
+        if (!grid) return;
+
+        const items =
+            products.filter(
+                p => wishlist.includes(p.id)
+            );
+
+        if (!items.length) {
+
+            grid.innerHTML = `
+
+                <div
+                    style="
+                        grid-column:1/-1;
+                        text-align:center;
+                        padding:4rem 1rem;
+                        color:var(--text-secondary);
+                    "
+                >
+
+                    <div
+                        style="
+                            font-size:4rem;
+                            margin-bottom:1rem;
+                        "
+                    >
+                        ❤️
+                    </div>
+
+                    <h3>
+                        Η Wishlist είναι άδεια
+                    </h3>
+
+                    <p>
+                        Πατήστε ❤️ σε ένα προϊόν
+                        για να το αποθηκεύσετε.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+        grid.innerHTML =
+            items.map(productCard).join("");
+    }
+
+
+    /* =========================================================
+       SEARCH
+       ========================================================= */
+
+    function focusSearch() {
+
+        showHome();
+
+        setTimeout(() => {
+
+            const search =
+                document.getElementById(
+                    "productSearch"
+                );
+
+            if (search) {
+
+                search.focus();
+
+                search.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
+
+        }, 100);
+    }
+
+
+    function searchProducts(value) {
+
+        const query =
+            String(value || "")
+                .trim()
+                .toLowerCase();
+
+        document
+            .querySelectorAll(".product-card")
+            .forEach(card => {
+
+                const searchText =
+                    card.dataset.search || "";
+
+                card.style.display =
+                    !query ||
+                    searchText.includes(query)
+                        ? ""
+                        : "none";
+            });
+    }
+
+
+    /* =========================================================
+       CATEGORY FILTER
+       ========================================================= */
+
+    function filterCategory(category) {
+
+        showHome();
+
+        setTimeout(() => {
+
+            const shop =
+                document.getElementById("shop");
+
+            if (shop) {
+
+                shop.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+
+            document
+                .querySelectorAll(".product-card")
+                .forEach(card => {
+
+                    const cardCategory =
+                        card.dataset.category;
+
+                    card.style.display =
+                        cardCategory === category
+                            ? ""
+                            : "none";
+                });
+
+        }, 100);
+    }
+
+
+    /* =========================================================
+       CART
+       ========================================================= */
+
+    function addToCart(productId) {
+
+        const product =
+            products.find(
+                p => p.id === productId
+            );
+
+        if (!product) return;
+
+        const existing =
+            cart.find(
+                item => item.id === productId
+            );
+
+        if (existing) {
+
+            existing.quantity++;
+
+        } else {
+
+            cart.push({
+                ...product,
+                quantity: 1
+            });
+        }
+
+        updateCart();
+
+        showToast(
+            "success",
+            "✓ Προστέθηκε στο καλάθι",
+            product.name
         );
 
-        if (found) {
-          return found;
+        openCart();
+    }
+
+
+    function removeFromCart(productId) {
+
+        cart =
+            cart.filter(
+                item => item.id !== productId
+            );
+
+        updateCart();
+    }
+
+
+    function updateQuantity(productId, delta) {
+
+        const item =
+            cart.find(
+                i => i.id === productId
+            );
+
+        if (!item) return;
+
+        item.quantity += delta;
+
+        if (item.quantity <= 0) {
+
+            removeFromCart(productId);
+
+            return;
         }
-      }
 
-      return null;
+        updateCart();
     }
 
-
-    /* =========================================================
-       ADD TO CART
-    ========================================================== */
-
-    function addToCart(id) {
-
-      const product = findProduct(id);
-
-      if (!product) return;
-
-      const existing = cart.find(
-        item => item.id === id
-      );
-
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({
-          ...product,
-          quantity: 1
-        });
-      }
-
-      updateCart();
-
-      showToast(`${product.name} added to cart`);
-
-      toggleCart(true);
-    }
-
-
-    /* =========================================================
-       UPDATE CART
-    ========================================================== */
 
     function updateCart() {
 
-      const container =
-        document.getElementById("cartItems");
+        const itemsContainer =
+            document.getElementById(
+                "cartItems"
+            );
 
-      const count =
-        document.getElementById("cartCount");
+        const footer =
+            document.getElementById(
+                "cartFooter"
+            );
 
-      const subtotalElement =
-        document.getElementById("cartSubtotal");
+        const badge =
+            document.getElementById(
+                "cartBadge"
+            );
 
-      const totalElement =
-        document.getElementById("cartTotal");
+        const subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum +
+                    (
+                        Number(item.price) *
+                        item.quantity
+                    ),
+                0
+            );
 
+        const points =
+            Math.floor(subtotal);
 
-      const totalQuantity = cart.reduce(
-        (sum, item) => sum + item.quantity,
-        0
-      );
+        const totalItems =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.quantity,
+                0
+            );
 
-      count.textContent = totalQuantity;
+        badge.textContent =
+            totalItems;
 
-
-      if (cart.length === 0) {
-
-        container.innerHTML = `
-          <div class="empty-cart">
-            🛒
-            <div>
-              <strong>Your cart is empty</strong>
-              <br>
-              Add a product to get started.
-            </div>
-          </div>
-        `;
-
-      } else {
-
-        container.innerHTML = cart.map(item => {
-
-          return `
-            <div class="cart-item">
-
-              <img
-                class="cart-item-image"
-                src="${escapeHtml(item.image)}"
-                alt="${escapeHtml(item.name)}"
-                onerror="this.style.visibility='hidden'"
-              >
-
-              <div>
-
-                <h3>
-                  ${escapeHtml(item.name)}
-                </h3>
-
-                <div class="cart-item-price">
-                  ${formatPrice(item.price)}
-                </div>
-
-                <div class="quantity">
-
-                  <button
-                    type="button"
-                    onclick="updateQty('${item.id}', -1)">
-                    −
-                  </button>
-
-                  <span>
-                    ${item.quantity}
-                  </span>
-
-                  <button
-                    type="button"
-                    onclick="updateQty('${item.id}', 1)">
-                    +
-                  </button>
-
-                </div>
-
-              </div>
-
-            </div>
-          `;
-
-        }).join("");
-      }
-
-
-      const subtotal = cart.reduce(
-        (sum, item) =>
-          sum + item.price * item.quantity,
-        0
-      );
-
-
-      subtotalElement.textContent =
-        formatPrice(subtotal);
-
-      totalElement.textContent =
-        formatPrice(subtotal);
-    }
-
-
-    /* =========================================================
-       UPDATE QUANTITY
-    ========================================================== */
-
-    function updateQty(id, change) {
-
-      const item = cart.find(
-        product => product.id === id
-      );
-
-      if (!item) return;
-
-      item.quantity += change;
-
-      if (item.quantity <= 0) {
-        cart = cart.filter(
-          product => product.id !== id
+        badge.classList.toggle(
+            "visible",
+            totalItems > 0
         );
-      }
 
-      updateCart();
+
+        if (cart.length === 0) {
+
+            itemsContainer.innerHTML = `
+
+                <div class="cart-empty">
+
+                    <div
+                        style="
+                            font-size:4rem;
+                            opacity:0.3;
+                            margin-bottom:1rem;
+                        "
+                    >
+                        🛒
+                    </div>
+
+                    <h3>
+                        Το καλάθι σας είναι άδειο
+                    </h3>
+
+                    <p
+                        style="
+                            color:var(--text-secondary);
+                            margin-bottom:1.5rem;
+                        "
+                    >
+                        Προσθέστε προϊόντα
+                        για να ξεκινήσετε.
+                    </p>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="closeCart()"
+                    >
+                        ΞΕΚΙΝΗΣΤΕ ΤΙΣ ΑΓΟΡΕΣ
+                    </button>
+
+                </div>
+
+            `;
+
+            footer.style.display =
+                "none";
+
+        } else {
+
+            itemsContainer.innerHTML =
+                cart.map(item => `
+
+                    <div class="cart-item">
+
+                        <div class="cart-item-image">
+
+                            <img
+                                src="${escapeHtml(item.image)}"
+                                alt="${escapeHtml(item.name)}"
+                                onerror="handleImageError(this)"
+                            >
+
+                        </div>
+
+                        <div class="cart-item-info">
+
+                            <div class="cart-item-brand">
+                                ${escapeHtml(item.brand)}
+                            </div>
+
+                            <div class="cart-item-name">
+                                ${escapeHtml(item.name)}
+                            </div>
+
+                            <div
+                                style="
+                                    display:flex;
+                                    align-items:center;
+                                    gap:0.65rem;
+                                    margin-top:0.5rem;
+                                "
+                            >
+
+                                <div class="qty-control">
+
+                                    <button
+                                        class="qty-btn"
+                                        onclick="updateQuantity(${item.id}, -1)"
+                                    >
+                                        −
+                                    </button>
+
+                                    <span>
+                                        ${item.quantity}
+                                    </span>
+
+                                    <button
+                                        class="qty-btn"
+                                        onclick="updateQuantity(${item.id}, 1)"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                                <strong
+                                    style="
+                                        color:var(--accent);
+                                    "
+                                >
+                                    €${(
+                                        item.price *
+                                        item.quantity
+                                    ).toFixed(2)}
+                                </strong>
+
+                                <button
+                                    style="
+                                        background:none;
+                                        border:none;
+                                        color:var(--text-secondary);
+                                        cursor:pointer;
+                                    "
+                                    onclick="removeFromCart(${item.id})"
+                                >
+                                    🗑️
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `).join("");
+
+            footer.style.display =
+                "block";
+        }
+
+
+        document.getElementById(
+            "cartSubtotal"
+        ).textContent =
+            `€${subtotal.toFixed(2)}`;
+
+        document.getElementById(
+            "cartTotal"
+        ).textContent =
+            `€${subtotal.toFixed(2)}`;
+
+        document.getElementById(
+            "cartPointsEarn"
+        ).textContent =
+            points;
+
+
+        /* FREE GIFT */
+
+        const FREE_GIFT = 100;
+
+        const progress =
+            Math.min(
+                (subtotal / FREE_GIFT) * 100,
+                100
+            );
+
+        document.getElementById(
+            "giftProgressFill"
+        ).style.width =
+            progress + "%";
+
+
+        if (subtotal >= FREE_GIFT) {
+
+            document.getElementById(
+                "giftProgressText"
+            ).innerHTML = `
+                🎉
+                <strong
+                    style="color:var(--success);"
+                >
+                    ΚΕΡΔΙΣΑΤΕ ΔΩΡΕΑΝ ΔΩΡΟ!
+                </strong>
+            `;
+
+        } else {
+
+            const remaining =
+                (
+                    FREE_GIFT -
+                    subtotal
+                ).toFixed(2);
+
+            document.getElementById(
+                "giftProgressText"
+            ).innerHTML = `
+                ΑΠΕΧΕΤΕ
+                <strong
+                    style="color:var(--gold);"
+                >
+                    €${remaining}
+                </strong>
+                ΑΠΟ ΔΩΡΕΑΝ ΔΩΡΟ!
+            `;
+        }
     }
 
 
-    /* =========================================================
-       CART DRAWER
-    ========================================================== */
+    function openCart() {
 
-    function toggleCart(open) {
+        document
+            .getElementById("cartDrawer")
+            .classList.add("active");
 
-      const drawer =
-        document.getElementById("cartDrawer");
+        document
+            .getElementById("cartOverlay")
+            .classList.add("active");
 
-      const overlay =
-        document.getElementById("cartOverlay");
+        document.body.style.overflow =
+            "hidden";
+    }
 
-      if (open) {
 
-        drawer.classList.add("open");
-        overlay.classList.add("open");
+    function closeCart() {
 
-      } else {
+        document
+            .getElementById("cartDrawer")
+            .classList.remove("active");
 
-        drawer.classList.remove("open");
-        overlay.classList.remove("open");
-      }
+        document
+            .getElementById("cartOverlay")
+            .classList.remove("active");
+
+        document.body.style.overflow =
+            "";
+    }
+
+
+    function toggleCart() {
+
+        const drawer =
+            document.getElementById(
+                "cartDrawer"
+            );
+
+        if (
+            drawer.classList.contains("active")
+        ) {
+
+            closeCart();
+
+        } else {
+
+            openCart();
+        }
     }
 
 
     /* =========================================================
        CHECKOUT
-    ========================================================== */
+       =========================================================
+
+       This is deliberately a front-end demo.
+
+       No fake payment processing.
+
+       Later we can connect this to:
+       Stripe / Viva Wallet / WooCommerce / Supabase /
+       Firebase / custom backend.
+       ========================================================= */
 
     function checkout() {
 
-      if (cart.length === 0) {
+        if (cart.length === 0) {
 
-        showToast("Your cart is empty");
+            showToast(
+                "error",
+                "Το καλάθι είναι άδειο"
+            );
 
-        return;
-      }
+            return;
+        }
 
-      /*
-        Because SUPLAB is currently a storefront/affiliate-style
-        front end, checkout sends the customer to the official
-        retailer rather than pretending to process payment.
-      */
+        const subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum +
+                    (
+                        item.price *
+                        item.quantity
+                    ),
+                0
+            );
 
-      const firstProduct = cart[0];
+        const points =
+            Math.floor(subtotal);
 
-      window.open(
-        firstProduct.url,
-        "_blank",
-        "noopener,noreferrer"
-      );
-    }
+        clubState.points += points;
 
+        const cardPoints =
+            document.getElementById(
+                "cardPoints"
+            );
 
-    /* =========================================================
-       BRAND SWITCHING
-    ========================================================== */
+        if (cardPoints) {
+            cardPoints.textContent =
+                clubState.points;
+        }
 
-    function switchBrand(brand) {
-
-      document
-        .querySelectorAll(".brand-tab")
-        .forEach(button => {
-
-          button.classList.toggle(
-            "active",
-            button.dataset.brand === brand
-          );
-
-        });
-
-
-      document
-        .querySelectorAll(".brand-section")
-        .forEach(section => {
-          section.classList.remove("active");
-        });
-
-
-      const section =
-        document.getElementById(
-          brand + "Section"
+        showToast(
+            "success",
+            "🎉 Η παραγγελία καταχωρήθηκε!",
+            `+${points} πόντοι SUPLAB Club`
         );
 
-      if (section) {
-        section.classList.add("active");
-      }
+        cart = [];
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+        updateCart();
+
+        closeCart();
     }
 
 
     /* =========================================================
        TOAST
-    ========================================================== */
+       ========================================================= */
 
-    function showToast(message) {
+    function showToast(
+        type,
+        title,
+        message = ""
+    ) {
 
-      const container =
-        document.getElementById(
-          "toastContainer"
-        );
+        const container =
+            document.getElementById(
+                "toastContainer"
+            );
 
-      const toast =
-        document.createElement("div");
+        const toast =
+            document.createElement(
+                "div"
+            );
 
-      toast.className = "toast";
+        toast.className =
+            `toast ${type}`;
 
-      toast.textContent = message;
+        toast.innerHTML = `
 
-      container.appendChild(toast);
+            <div
+                style="
+                    font-size:1.5rem;
+                "
+            >
+                ${
+                    type === "success"
+                        ? "✓"
+                        : "✕"
+                }
+            </div>
 
-      setTimeout(() => {
+            <div style="flex:1;">
 
-        toast.style.opacity = "0";
+                <div
+                    style="
+                        font-weight:700;
+                    "
+                >
+                    ${escapeHtml(title)}
+                </div>
+
+                ${
+                    message
+                        ? `
+                            <div
+                                style="
+                                    font-size:0.85rem;
+                                    color:var(--text-secondary);
+                                "
+                            >
+                                ${escapeHtml(message)}
+                            </div>
+                          `
+                        : ""
+                }
+
+            </div>
+
+            <button
+                style="
+                    background:none;
+                    border:none;
+                    color:var(--text-secondary);
+                    cursor:pointer;
+                "
+                onclick="
+                    this.parentElement.classList.add('hiding');
+                    setTimeout(
+                        () => this.parentElement.remove(),
+                        300
+                    );
+                "
+            >
+                ✕
+            </button>
+
+        `;
+
+        container.appendChild(toast);
 
         setTimeout(() => {
-          toast.remove();
-        }, 250);
 
-      }, 2200);
+            if (toast.parentElement) {
+
+                toast.classList.add(
+                    "hiding"
+                );
+
+                setTimeout(
+                    () => toast.remove(),
+                    300
+                );
+            }
+
+        }, 4000);
     }
 
 
     /* =========================================================
-       EVENTS
-    ========================================================== */
+       AUTH
+       ========================================================= */
 
-    document
-      .querySelectorAll(".brand-tab")
-      .forEach(button => {
+    function openAuthModal(
+        tab = "login"
+    ) {
 
-        button.addEventListener(
-          "click",
-          () => switchBrand(button.dataset.brand)
+        document
+            .getElementById("authModal")
+            .classList.add("active");
+
+        switchAuthTab(tab);
+
+        closeAccountDropdown();
+    }
+
+
+    function closeAuthModal() {
+
+        document
+            .getElementById("authModal")
+            .classList.remove("active");
+    }
+
+
+    function switchAuthTab(tab) {
+
+        document
+            .querySelectorAll(".auth-tab")
+            .forEach(
+                t =>
+                    t.classList.remove(
+                        "active"
+                    )
+            );
+
+        document
+            .querySelectorAll(".auth-form")
+            .forEach(
+                f =>
+                    f.classList.remove(
+                        "active"
+                    )
+            );
+
+
+        if (tab === "login") {
+
+            document
+                .querySelectorAll(".auth-tab")[0]
+                .classList.add("active");
+
+            document
+                .getElementById("loginForm")
+                .classList.add("active");
+
+        } else {
+
+            document
+                .querySelectorAll(".auth-tab")[1]
+                .classList.add("active");
+
+            document
+                .getElementById("registerForm")
+                .classList.add("active");
+        }
+    }
+
+
+    function handleLogin(event) {
+
+        event.preventDefault();
+
+        isLoggedIn = true;
+
+        document.getElementById(
+            "loggedOutState"
+        ).style.display = "none";
+
+        document.getElementById(
+            "loggedInState"
+        ).style.display = "block";
+
+        closeAuthModal();
+
+        showToast(
+            "success",
+            "Καλώς ήρθατε!",
+            "Γιώργος Παπαδόπουλος"
         );
+    }
 
-      });
+
+    function handleRegister(event) {
+
+        event.preventDefault();
+
+        handleLogin(event);
+    }
+
+
+    function logout() {
+
+        isLoggedIn = false;
+
+        document.getElementById(
+            "loggedOutState"
+        ).style.display = "block";
+
+        document.getElementById(
+            "loggedInState"
+        ).style.display = "none";
+
+        closeAccountDropdown();
+
+        showHome();
+
+        showToast(
+            "success",
+            "Αποσυνδεθήκατε"
+        );
+    }
+
+
+    /* =========================================================
+       ACCOUNT
+       ========================================================= */
+
+    function toggleAccountDropdown() {
+
+        document
+            .getElementById(
+                "accountDropdown"
+            )
+            .classList.toggle(
+                "active"
+            );
+    }
+
+
+    function closeAccountDropdown() {
+
+        document
+            .getElementById(
+                "accountDropdown"
+            )
+            .classList.remove(
+                "active"
+            );
+    }
 
 
     document.addEventListener(
-      "keydown",
-      event => {
+        "click",
+        function(event) {
 
-        if (event.key === "Escape") {
-          toggleCart(false);
+            if (
+                !event.target.closest(
+                    ".account-wrapper"
+                )
+            ) {
+
+                closeAccountDropdown();
+            }
         }
-
-      }
     );
 
 
     /* =========================================================
-       INITIALIZE
-    ========================================================== */
+       PAGE NAVIGATION
+       ========================================================= */
 
-    renderProducts("myprotein");
-    renderProducts("iherb");
-    updateCart();
+    function showAccountPage(page) {
 
-  </script>
+        document.getElementById(
+            "homePage"
+        ).style.display = "none";
+
+        document
+            .querySelectorAll(".account-page")
+            .forEach(
+                p =>
+                    p.classList.remove(
+                        "active"
+                    )
+            );
+
+        const target =
+            document.getElementById(
+                page + "Page"
+            );
+
+        if (target) {
+
+            target.classList.add(
+                "active"
+            );
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        closeAccountDropdown();
+    }
+
+
+    function showHome() {
+
+        document
+            .querySelectorAll(".account-page")
+            .forEach(
+                p =>
+                    p.classList.remove(
+                        "active"
+                    )
+            );
+
+        document.getElementById(
+            "homePage"
+        ).style.display = "block";
+    }
+
+
+    /* =========================================================
+       ESC KEY
+       ========================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                closeCart();
+
+                closeAuthModal();
+
+                closeAccountDropdown();
+            }
+        }
+    );
+
+
+    /* =========================================================
+       AUTH MODAL BACKDROP
+       ========================================================= */
+
+    document
+        .getElementById("authModal")
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === this
+                ) {
+
+                    closeAuthModal();
+                }
+            }
+        );
+
+
+    /* =========================================================
+       SMOOTH ANCHOR NAVIGATION
+       ========================================================= */
+
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(anchor => {
+
+            anchor.addEventListener(
+                "click",
+                function(event) {
+
+                    const href =
+                        this.getAttribute(
+                            "href"
+                        );
+
+                    if (
+                        !href ||
+                        href === "#"
+                    ) {
+
+                        event.preventDefault();
+
+                        return;
+                    }
+
+                    const target =
+                        document.querySelector(
+                            href
+                        );
+
+                    if (!target) return;
+
+                    event.preventDefault();
+
+                    showHome();
+
+                    setTimeout(() => {
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }, 50);
+                }
+            );
+        });
+
+
+    /* =========================================================
+       INIT
+       ========================================================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            renderProducts();
+
+            updateCart();
+
+        }
+    );
+
+</script>
 
 </body>
 </html>
