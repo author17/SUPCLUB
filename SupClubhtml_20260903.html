@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SUPLAB — Premium αθλητική διατροφή. Αγόραζε. Κέρδιζε. Ανέβαινε επίπεδο. Επιβραβεύσου.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>SUPLAB — Fuel Your Performance</title>
+    <style>
+        /* ============================================
+           CSS VARIABLES & RESET
+           ============================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #ff3c00;
+            --accent-hover: #ff5500;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+            --text: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+            --success: #00d97e;
+            --error: #ff4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           HEADER & NAVIGATION
+           ============================================ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .icon-btn:hover { color: var(--accent); }
+
+        .badge {
+            position: absolute;
+            top: -8px; right: -8px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 18px; height: 18px;
+            font-size: 0.7rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .badge.visible { display: flex; }
+
+        /* Account Dropdown */
+        .account-wrapper { position: relative; }
+
+        .account-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            margin-top: 1rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-width: 280px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            display: none;
+            overflow: hidden;
+        }
+
+        .account-dropdown.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .account-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .account-user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .account-avatar {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .account-menu-item {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            background: none;
+            color: var(--text);
+            width: 100%;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .account-menu-item:hover { background: var(--border); }
+
+        .account-menu-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0.5rem 0;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 60, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 60, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           SECTIONS
+           ============================================ */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* ============================================
+           CATEGORIES
+           ============================================ */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(255, 60, 0, 0.2);
+        }
+
+        .category-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+        .category-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================
+           PRODUCTS
+           ============================================ */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .product-wishlist {
+            position: absolute;
+            top: 1rem; left: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: white;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .product-wishlist:hover { background: var(--accent); }
+
+        .product-info { padding: 1.5rem; }
+
+        .product-brand {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-rating {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-size {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-current {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        .price-original {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-add-cart:hover { background: var(--accent-hover); }
+
+        /* ============================================
+           CLUB CARD
+           ============================================ */
+        .club-card {
+            max-width: 500px;
+            margin: 2rem auto;
+            aspect-ratio: 1.6 / 1;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #2a1a0a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+
+        .club-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+
+        .card-shine {
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-logo {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--gold);
+        }
+
+        .card-level {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            background: linear-gradient(135deg, var(--gold) 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .card-points { text-align: center; }
+
+        .card-points-value {
+            font-size: 3rem;
+            font-weight: 900;
+            display: block;
+        }
+
+        .card-points-label {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        /* ============================================
+           PROGRESS BAR
+           ============================================ */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--accent) 100%);
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        /* ============================================
+           DASHBOARD
+           ============================================ */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .dashboard-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .dashboard-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .dashboard-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+        .dashboard-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-card-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-card-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           ACCOUNT PAGES
+           ============================================ */
+        .account-page {
+            display: none;
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .account-page.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .account-page-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .account-page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* ============================================
+           MODALS
+           ============================================ */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title { font-size: 1.5rem; font-weight: 700; }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body { padding: 2rem; }
+
+        /* Auth Forms */
+        .auth-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .auth-tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+
+        .form-group { margin-bottom: 1.5rem; }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit:hover { background: var(--accent-hover); }
+
+        /* ============================================
+           CART DRAWER
+           ============================================ */
+        .cart-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0; right: -450px;
+            width: 450px;
+            max-width: 100vw;
+            height: 100vh;
+            background: var(--secondary);
+            border-left: 1px solid var(--border);
+            z-index: 1600;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cart-drawer.active { right: 0; }
+
+        .cart-drawer-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-gift-progress {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 60, 0, 0.1) 100%);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-points-preview {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .cart-points-preview strong {
+            color: var(--accent);
+            margin-left: auto;
+            font-size: 1.1rem;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem 1.5rem;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .cart-item-icon {
+            width: 70px; height: 70px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .cart-item-info { flex: 1; min-width: 0; }
+
+        .cart-item-name { font-weight: 700; margin-bottom: 0.5rem; }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            border-radius: 20px;
+            padding: 0.25rem;
+        }
+
+        .qty-btn {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .cart-drawer-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            background: var(--primary);
+        }
+
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .cart-summary-row.total {
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--text);
+        }
+
+        .btn-checkout {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 900;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-checkout:hover { background: var(--accent-hover); }
+
+        /* ============================================
+           TOAST NOTIFICATIONS
+           ============================================ */
+        .toast-container {
+            position: fixed;
+            top: 100px; right: 20px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .toast {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 300px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: toastSlideIn 0.4s;
+        }
+
+        .toast.success { border-left-color: var(--success); }
+        .toast.error { border-left-color: var(--error); }
+
+        @keyframes toastSlideIn {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .toast.hiding {
+            animation: toastSlideOut 0.3s forwards;
+        }
+
+        @keyframes toastSlideOut {
+            to { opacity: 0; transform: translateX(100px); }
+        }
+
+        /* ============================================
+           MOBILE NAV
+           ============================================ */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: var(--secondary);
+            border-top: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        .mobile-nav-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.75rem;
+        }
+
+        .mobile-nav-icon { font-size: 1.5rem; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .mobile-nav { display: block; }
+            
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .product-image { height: 180px; }
+            
+            body { padding-bottom: 80px; }
+            
+            .cart-drawer {
+                width: 100vw;
+                right: -100vw;
+            }
+            
+            .section-title { font-size: 1.8rem; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--primary); }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo" onclick="showHome()">SUPL<span>AB</span></div>
+            <nav>
+                <a href="#" onclick="showHome()">ΑΡΧΙΚΗ</a>
+                <a href="#shop">ΚΑΤΑΣΤΗΜΑ</a>
+                <a href="#categories">ΚΑΤΗΓΟΡΙΕΣ</a>
+                <a href="#club">CLUB</a>
+                <a href="#offers">ΠΡΟΣΦΟΡΕΣ</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn">🔍</button>
+                <button class="icon-btn">❤️</button>
+                <div class="account-wrapper">
+                    <button class="icon-btn" onclick="toggleAccountDropdown()">
+                        👤
+                    </button>
+                    <div class="account-dropdown" id="accountDropdown">
+                        <div id="loggedOutState">
+                            <div class="account-header">
+                                <h3>Καλώς ήρθατε!</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem;">Συνδεθείτε ή δημιουργήστε λογαριασμό</p>
+                            </div>
+                            <button class="account-menu-item" onclick="openAuthModal('login')">
+                                <span>🔑</span><span>Σύνδεση</span>
+                            </button>
+                            <button class="account-menu-item" onclick="openAuthModal('register')">
+                                <span>📝</span><span>Εγγραφή</span>
+                            </button>
+                        </div>
+                        <div id="loggedInState" style="display: none;">
+                            <div class="account-header">
+                                <div class="account-user-info">
+                                    <div class="account-avatar">Γ</div>
+                                    <div>
+                                        <h3 style="font-size: 1rem;">Γιώργος Παπαδόπουλος</h3>
+                                        <p style="font-size: 0.85rem; color: var(--text-secondary);">💎 ELITE MEMBER</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="account-menu-item" onclick="showAccountPage('dashboard')">
+                                <span>📊</span><span>Dashboard</span>
+                            </button>
+                            <button class="account-menu-item" onclick="showAccountPage('club')">
+                                <span>💎</span><span>SUPLAB CLUB</span>
+                            </button>
+                            <button class="account-menu-item" onclick="showAccountPage('orders')">
+                                <span>📦</span><span>Παραγγελίες</span>
+                            </button>
+                            <button class="account-menu-item" onclick="showAccountPage('wishlist')">
+                                <span>❤️</span><span>Λίστα Επιθυμιών</span>
+                            </button>
+                            <div class="account-menu-divider"></div>
+                            <button class="account-menu-item" style="color: var(--error);" onclick="logout()">
+                                <span>🚪</span><span>Αποσύνδεση</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="icon-btn" onclick="toggleCart()">
+                    🛒
+                    <span class="badge" id="cartBadge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="homePage">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>FUEL YOUR PERFORMANCE</h1>
+                <p>Premium συμπληρώματα για προπόνηση, αποκατάσταση και καθημερινή απόδοση</p>
+                <div class="hero-buttons">
+                    <a href="#shop" class="btn btn-primary">ΑΓΟΡΑ ΤΩΡΑ</a>
+                    <a href="#club" class="btn btn-secondary">ΑΝΑΚΑΛΥΨΤΕ ΤΟ SUPLAB CLUB</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORIES -->
+        <section class="section" id="categories">
+            <h2 class="section-title">ΑΓΟΡΕΣ ΑΝΑ ΚΑΤΗΓΟΡΙΑ</h2>
+            <div class="category-grid">
+                <div class="category-card"><div class="category-icon">💪</div><div class="category-name">ΠΡΩΤΕΪΝΗ</div></div>
+                <div class="category-card"><div class="category-icon">⚡</div><div class="category-name">ΚΡΕΑΤΙΝΗ</div></div>
+                <div class="category-card"><div class="category-icon">🔥</div><div class="category-name">PRE-WORKOUT</div></div>
+                <div class="category-card"><div class="category-icon">🧬</div><div class="category-name">ΑΜΙΝΟΞΕΑ</div></div>
+                <div class="category-card"><div class="category-icon">💊</div><div class="category-name">ΒΙΤΑΜΙΝΕΣ</div></div>
+                <div class="category-card"><div class="category-icon">🏆</div><div class="category-name">ΑΠΟΔΟΣΗ</div></div>
+                <div class="category-card"><div class="category-icon">📈</div><div class="category-name">ΑΥΞΗΣΗ ΒΑΡΟΥΣ</div></div>
+                <div class="category-card"><div class="category-icon">🌱</div><div class="category-name">VEGAN</div></div>
+                <div class="category-card"><div class="category-icon">❤️</div><div class="category-name">ΥΓΕΙΑ</div></div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="section" id="shop">
+            <h2 class="section-title">BEST SELLERS</h2>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <!-- CLUB CARD -->
+        <section class="section" id="club">
+            <h2 class="section-title">SUPLAB CLUB</h2>
+            <div class="club-card">
+                <div class="card-shine"></div>
+                <div class="card-content">
+                    <div class="card-top">
+                        <div class="card-logo">SUPLAB CLUB</div>
+                        <div style="font-size: 2rem;">💳</div>
+                    </div>
+                    <div class="card-level">💎 ELITE</div>
+                    <div class="card-points">
+                        <span class="card-points-value" id="cardPoints">740</span>
+                        <span class="card-points-label">ΠΟΝΤΟΙ</span>
+                    </div>
+                    <div class="card-bottom">
+                        <div>
+                            <div style="font-size: 0.7rem; letter-spacing: 2px; color: var(--text-secondary);">ΜΕΛΟΣ</div>
+                            <div style="font-weight: 700;">ΓΙΩΡΓΟΣ Π.</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.7rem; letter-spacing: 2px; color: var(--text-secondary);">ΑΠΟ</div>
+                            <div style="font-weight: 700;">2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="max-width: 500px; margin: 1rem auto;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    <span>€586 / €800</span>
+                    <span>€214 μέχρι το VIP</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 73%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD PREVIEW -->
+        <section class="section">
+            <h2 class="section-title">DASHBOARD ΠΕΛΑΤΗ</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">🪪</div>
+                    <div class="dashboard-card-title">ΤΟ CLUB ΜΟΥ</div>
+                    <div class="dashboard-card-value">ELITE</div>
+                    <div class="dashboard-card-desc">740 Πόντοι</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">🎁</div>
+                    <div class="dashboard-card-title">ΑΜΟΙΒΕΣ</div>
+                    <div class="dashboard-card-value">2</div>
+                    <div class="dashboard-card-desc">Διαθέσιμες</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">📈</div>
+                    <div class="dashboard-card-title">ΠΡΟΟΔΟΣ</div>
+                    <div class="dashboard-card-value">€214</div>
+                    <div class="dashboard-card-desc">για VIP</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">🔄</div>
+                    <div class="dashboard-card-title">ΑΓΟΡΑΣΤΕ ΞΑΝΑ</div>
+                    <div class="dashboard-card-value">3</div>
+                    <div class="dashboard-card-desc">Τακτικά προϊόντα</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ACCOUNT PAGES -->
+    <div class="account-page" id="dashboardPage">
+        <h1 class="account-page-title">📊 DASHBOARD</h1>
+        <p class="account-page-subtitle">Καλώς ήρθατε πίσω, Γιώργο 👋</p>
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">🪪</div>
+                <div class="dashboard-card-title">CLUB STATUS</div>
+                <div class="dashboard-card-value">ELITE</div>
+                <div class="dashboard-card-desc">740 Πόντοι • €214 για VIP</div>
+            </div>
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">📦</div>
+                <div class="dashboard-card-title">ΠΑΡΑΓΓΕΛΙΕΣ</div>
+                <div class="dashboard-card-value">12</div>
+                <div class="dashboard-card-desc">Συνολικές παραγγελίες</div>
+            </div>
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">❤️</div>
+                <div class="dashboard-card-title">WISHLIST</div>
+                <div class="dashboard-card-value">8</div>
+                <div class="dashboard-card-desc">Αποθηκευμένα προϊόντα</div>
+            </div>
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">⭐</div>
+                <div class="dashboard-card-title">ΠΟΝΤΟΙ</div>
+                <div class="dashboard-card-value">2,450</div>
+                <div class="dashboard-card-desc">Συνολικά κερδισμένοι</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="account-page" id="clubPage">
+        <h1 class="account-page-title">💎 SUPLAB CLUB</h1>
+        <p class="account-page-subtitle">Αγόραζε. Κέρδιζε. Ανέβαινε επίπεδο. Επιβραβεύσου.</p>
+        <div class="club-card">
+            <div class="card-shine"></div>
+            <div class="card-content">
+                <div class="card-top">
+                    <div class="card-logo">SUPLAB CLUB</div>
+                    <div style="font-size: 2rem;">💳</div>
+                </div>
+                <div class="card-level">💎 ELITE</div>
+                <div class="card-points">
+                    <span class="card-points-value">740</span>
+                    <span class="card-points-label">ΠΟΝΤΟΙ</span>
+                </div>
+                <div class="card-bottom">
+                    <div>
+                        <div style="font-size: 0.7rem; letter-spacing: 2px; color: var(--text-secondary);">ΜΕΛΟΣ</div>
+                        <div style="font-weight: 700;">ΓΙΩΡΓΟΣ Π.</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.7rem; letter-spacing: 2px; color: var(--text-secondary);">ΑΠΟ</div>
+                        <div style="font-weight: 700;">2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="account-page" id="ordersPage">
+        <h1 class="account-page-title">📦 ΠΑΡΑΓΓΕΛΙΕΣ</h1>
+        <p class="account-page-subtitle">Το ιστορικό των παραγγελιών σας</p>
+        <div style="background: var(--secondary); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
+                <strong>#SUPLAB-2026-587</strong>
+                <span style="background: rgba(0, 217, 126, 0.2); color: var(--success); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700;">ΠΑΡΑΔΟΘΗΚΕ</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-secondary);">15 Ιανουαρίου 2026</span>
+                <strong style="color: var(--accent); font-size: 1.2rem;">€89.80</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="account-page" id="wishlistPage">
+        <h1 class="account-page-title">❤️ ΛΙΣΤΑ ΕΠΙΘΥΜΙΩΝ</h1>
+        <p class="account-page-subtitle">Τα αγαπημένα σας προϊόντα</p>
+        <div class="product-grid" id="wishlistGrid"></div>
+    </div>
+
+    <!-- AUTH MODAL -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">ΛΟΓΑΡΙΑΣΜΟΣ</h2>
+                <button class="modal-close" onclick="closeAuthModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchAuthTab('login')">Σύνδεση</button>
+                    <button class="auth-tab" onclick="switchAuthTab('register')">Εγγραφή</button>
+                </div>
+                <form class="auth-form active" id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Κωδικός</label>
+                        <input type="password" class="form-input" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn-submit">Σύνδεση</button>
+                </form>
+                <form class="auth-form" id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label class="form-label">Ονοματεπώνυμο</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Κωδικός</label>
+                        <input type="password" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Εγγραφή</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h2>🛒 ΤΟ ΚΑΛΑΘΙ ΣΑΣ</h2>
+            <button class="modal-close" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-gift-progress">
+            <div style="font-size: 2rem;">🎁</div>
+            <div style="flex: 1;">
+                <div id="giftProgressText" style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+                    ΑΠΕΧΕΤΕ <strong style="color: var(--gold);">€100.00</strong> ΑΠΟ ΔΩΡΕΑΝ ΔΩΡΟ!
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="giftProgressFill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-points-preview">
+            <span>🎁</span>
+            <span>ΠΟΝΤΟΙ CLUB:</span>
+            <strong id="cartPointsEarn">0</strong>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <div style="font-size: 4rem; opacity: 0.3; margin-bottom: 1rem;">🛒</div>
+                <h3>Το καλάθι σας είναι άδειο</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Προσθέστε προϊόντα για να ξεκινήσετε</p>
+                <button class="btn btn-primary" onclick="toggleCart()">ΞΕΚΙΝΗΣΤΕ ΤΙΣ ΑΓΟΡΕΣ</button>
+            </div>
+        </div>
+        <div class="cart-drawer-footer" id="cartFooter" style="display: none;">
+            <div class="cart-summary-row">
+                <span>Υποσύνολο</span>
+                <span id="cartSubtotal">€0.00</span>
+            </div>
+            <div class="cart-summary-row">
+                <span>Μεταφορικά</span>
+                <span id="cartShipping" style="color: var(--success);">ΔΩΡΕΑΝ</span>
+            </div>
+            <div class="cart-summary-row total">
+                <span>Σύνολο</span>
+                <span id="cartTotal">€0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ →</button>
+            <button style="width: 100%; padding: 0.75rem; background: transparent; color: var(--text-secondary); border: none; cursor: pointer;" onclick="toggleCart()">← Συνέχεια αγορών</button>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="#" class="mobile-nav-item" onclick="showHome()">
+                <span class="mobile-nav-icon">🏠</span>
+                <span>ΑΡΧΙΚΗ</span>
+            </a>
+            <a href="#shop" class="mobile-nav-item">
+                <span class="mobile-nav-icon">🛍️</span>
+                <span>SHOP</span>
+            </a>
+            <a href="#club" class="mobile-nav-item">
+                <span class="mobile-nav-icon">🎁</span>
+                <span>CLUB</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <span class="mobile-nav-icon">❤️</span>
+                <span>WISHLIST</span>
+            </a>
+            <a href="#" class="mobile-nav-item" onclick="toggleCart()">
+                <span class="mobile-nav-icon">🛒</span>
+                <span>ΚΑΛΑΘΙ</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // DATA
+        // ============================================
+        const products = [
+            { id: 1, name: 'Gold Standard 100% Whey', brand: 'OPTIMUM NUTRITION', price: 59.90, oldPrice: 74.90, rating: 4.9, size: '2.27kg - Σοκολάτα', icon: '🥤', badge: '-20%' },
+            { id: 2, name: 'Creatine Monohydrate', brand: 'MYPROTEIN', price: 29.90, rating: 4.8, size: '250g - Άγευστο', icon: '💊' },
+            { id: 3, name: 'C4 Pre-Workout', brand: 'CELLUCOR', price: 34.90, rating: 4.7, size: '390g - Fruit Punch', icon: '⚡', badge: 'NEW' },
+            { id: 4, name: '100% BCAA', brand: 'SCITEC', price: 42.50, oldPrice: 50.00, rating: 4.9, size: '500g - Λεμόνι', icon: '🧬', badge: '-15%' },
+            { id: 5, name: 'Multivitamin Sport', brand: 'NOW FOODS', price: 24.90, rating: 4.6, size: '120 caps', icon: '💊' },
+            { id: 6, name: 'Plant Protein Blend', brand: 'VEGANIC', price: 49.90, rating: 4.8, size: '1kg - Βανίλια', icon: '🌱', badge: 'VEGAN' }
+        ];
+
+        // ============================================
+        // STATE
+        // ============================================
+        let cart = [];
+        let isLoggedIn = false;
+        let clubState = { points: 740, level: 'elite' };
+
+        // ============================================
+        // RENDER PRODUCTS
+        // ============================================
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <div class="product-image">
+                        ${p.icon}
+                        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+                        <button class="product-wishlist">❤️</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">${p.brand}</div>
+                        <div class="product-name">${p.name}</div>
+                        <div class="product-rating">${'⭐'.repeat(Math.floor(p.rating))} (${p.rating})</div>
+                        <div class="product-size">${p.size}</div>
+                        <div class="product-price">
+                            <span class="price-current">€${p.price.toFixed(2)}</span>
+                            ${p.oldPrice ? `<span class="price-original">€${p.oldPrice.toFixed(2)}</span>` : ''}
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart(${p.id})">ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ============================================
+        // CART
+        // ============================================
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCart();
+            showToast('success', '✓ Προστέθηκε στο καλάθι', product.name);
+            
+            const badge = document.getElementById('cartBadge');
+            badge.classList.add('visible');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                removeFromCart(productId);
+                return;
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const itemsContainer = document.getElementById('cartItems');
+            const footer = document.getElementById('cartFooter');
+            const badge = document.getElementById('cartBadge');
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const points = Math.floor(subtotal);
+            const total = subtotal;
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            badge.textContent = totalItems;
+            badge.classList.toggle('visible', totalItems > 0);
+            
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `
+                    <div class="cart-empty">
+                        <div style="font-size: 4rem; opacity: 0.3; margin-bottom: 1rem;">🛒</div>
+                        <h3>Το καλάθι σας είναι άδειο</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Προσθέστε προϊόντα</p>
+                        <button class="btn btn-primary" onclick="toggleCart()">ΞΕΚΙΝΗΣΤΕ ΤΙΣ ΑΓΟΡΕΣ</button>
+                    </div>
+                `;
+                footer.style.display = 'none';
+            } else {
+                itemsContainer.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-icon">${item.icon}</div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem;">
+                                <div class="qty-control">
+                                    <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">−</button>
+                                    <span>${item.quantity}</span>
+                                    <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                </div>
+                                <strong style="color: var(--accent);">€${(item.price * item.quantity).toFixed(2)}</strong>
+                                <button style="background: none; border: none; color: var(--text-secondary); cursor: pointer;" onclick="removeFromCart(${item.id})">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                footer.style.display = 'block';
+            }
+            
+            document.getElementById('cartSubtotal').textContent = `€${subtotal.toFixed(2)}`;
+            document.getElementById('cartTotal').textContent = `€${total.toFixed(2)}`;
+            document.getElementById('cartPointsEarn').textContent = points;
+            
+            // Gift progress
+            const FREE_GIFT = 100;
+            const progress = Math.min((subtotal / FREE_GIFT) * 100, 100);
+            document.getElementById('giftProgressFill').style.width = progress + '%';
+            
+            if (subtotal >= FREE_GIFT) {
+                document.getElementById('giftProgressText').innerHTML = '🎉 <strong style="color: var(--success);">ΚΕΡΔΙΣΑΤΕ ΔΩΡΕΑΝ ΔΩΡΟ!</strong>';
+            } else {
+                const remaining = (FREE_GIFT - subtotal).toFixed(2);
+                document.getElementById('giftProgressText').innerHTML = `ΑΠΕΧΕΤΕ <strong style="color: var(--gold);">€${remaining}</strong> ΑΠΟ ΔΩΡΕΑΝ ΔΩΡΟ!`;
+            }
+        }
+
+        function toggleCart() {
+            document.getElementById('cartDrawer').classList.toggle('active');
+            document.getElementById('cartOverlay').classList.toggle('active');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('error', 'Το καλάθι είναι άδειο');
+                return;
+            }
+            const points = Math.floor(cart.reduce((sum, item) => sum + (item.price * item.quantity), 0));
+            clubState.points += points;
+            document.getElementById('cardPoints').textContent = clubState.points;
+            showToast('success', '🎉 Παραγγελία ολοκληρώθηκε!', `+${points} πόντοι Club`);
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        // ============================================
+        // TOAST
+        // ============================================
+        function showToast(type, title, message = '') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <div style="font-size: 1.5rem;">${type === 'success' ? '✓' : '✕'}</div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 700;">${title}</div>
+                    ${message ? `<div style="font-size: 0.85rem; color: var(--text-secondary);">${message}</div>` : ''}
+                </div>
+                <button style="background: none; border: none; color: var(--text-secondary); cursor: pointer;" onclick="this.parentElement.classList.add('hiding'); setTimeout(() => this.parentElement.remove(), 300)">✕</button>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.classList.add('hiding');
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 4000);
+        }
+
+        // ============================================
+        // AUTH
+        // ============================================
+        function openAuthModal(tab = 'login') {
+            document.getElementById('authModal').classList.add('active');
+            switchAuthTab(tab);
+            closeAccountDropdown();
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+
+        function switchAuthTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            
+            if (tab === 'login') {
+                document.querySelectorAll('.auth-tab')[0].classList.add('active');
+                document.getElementById('loginForm').classList.add('active');
+            } else {
+                document.querySelectorAll('.auth-tab')[1].classList.add('active');
+                document.getElementById('registerForm').classList.add('active');
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            isLoggedIn = true;
+            document.getElementById('loggedOutState').style.display = 'none';
+            document.getElementById('loggedInState').style.display = 'block';
+            closeAuthModal();
+            showToast('success', 'Καλώς ήρθατε!', 'Γιώργος Παπαδόπουλος');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            handleLogin(e);
+        }
+
+        function logout() {
+            isLoggedIn = false;
+            document.getElementById('loggedOutState').style.display = 'block';
+            document.getElementById('loggedInState').style.display = 'none';
+            closeAccountDropdown();
+            showHome();
+            showToast('success', 'Αποσυνδεθήκατε');
+        }
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        function toggleAccountDropdown() {
+            document.getElementById('accountDropdown').classList.toggle('active');
+        }
+
+        function closeAccountDropdown() {
+            document.getElementById('accountDropdown').classList.remove('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.account-wrapper')) {
+                closeAccountDropdown();
+            }
+        });
+
+        function showAccountPage(page) {
+            document.getElementById('homePage').style.display = 'none';
+            document.querySelectorAll('.account-page').forEach(p => p.classList.remove('active'));
+            document.getElementById(page + 'Page').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            closeAccountDropdown();
+        }
+
+        function showHome() {
+            document.querySelectorAll('.account-page').forEach(p => p.classList.remove('active'));
+            document.getElementById('homePage').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============================================
+        // INIT
+        // ============================================
+        renderProducts();
+        updateCart();
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                showHome();
+                setTimeout(() => {
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
