@@ -16,7 +16,6 @@
             --text: #ffffff;
             --text-secondary: #a0a0a0;
             --border: #2a2a2a;
-            --success: #00d97e;
             --iherb: #cc0000;
             --different-pharm: #00a651;
             --lazar: #ff6b00;
@@ -35,9 +34,9 @@
             background: linear-gradient(90deg, var(--accent) 0%, #ff6b35 100%);
             color: white;
             text-align: center;
-            padding: 0.75rem;
+            padding: 0.6rem 0.75rem;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         header {
             position: sticky;
@@ -46,7 +45,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 0.75rem 1rem;
         }
         .header-content {
             max-width: 1400px;
@@ -54,53 +53,54 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 900;
             color: var(--blue);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             cursor: pointer;
         }
         .logo span { color: var(--accent); }
-        .search-box { flex: 1; max-width: 500px; position: relative; }
+        .search-box { flex: 1; min-width: 200px; position: relative; }
         .search-box input {
             width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            padding: 0.6rem 1rem 0.6rem 2.2rem;
             background: var(--secondary);
             border: 1px solid var(--border);
             border-radius: 25px;
             color: var(--text);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
         .search-box::before {
             content: "🔍";
             position: absolute;
-            left: 1rem;
+            left: 0.8rem;
             top: 50%;
             transform: translateY(-50%);
+            font-size: 0.8rem;
         }
-        .header-actions { display: flex; gap: 1.5rem; align-items: center; }
+        .header-actions { display: flex; gap: 1rem; align-items: center; }
         .icon-btn {
             background: none;
             border: none;
             color: var(--text);
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             position: relative;
         }
-        .icon-btn:hover { color: var(--accent); }
         .badge {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -6px;
+            right: -6px;
             background: var(--accent);
             color: white;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
+            width: 16px;
+            height: 16px;
+            font-size: 0.65rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -109,51 +109,44 @@
         .main-nav {
             background: var(--secondary);
             border-bottom: 1px solid var(--border);
-            padding: 0.75rem 0;
+            padding: 0.5rem 0;
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
         .nav-content {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            gap: 1.5rem;
-            padding: 0 2rem;
+            gap: 1.2rem;
+            padding: 0 1rem;
             white-space: nowrap;
         }
         .nav-link {
             color: var(--text);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
-        .nav-link:hover, .nav-link.highlight { color: var(--accent); }
+        .nav-link.highlight { color: var(--accent); }
         .hero {
-            padding: 5rem 2rem;
+            padding: 3rem 1rem;
             background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
-        }
-        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             background: linear-gradient(135deg, #fff 0%, var(--blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; }
+        .hero p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
         .hero-btn {
-            padding: 1rem 2.5rem;
+            padding: 0.8rem 2rem;
             background: var(--accent);
             color: white;
             border: none;
@@ -161,75 +154,68 @@
             font-weight: 700;
             cursor: pointer;
             text-transform: uppercase;
+            font-size: 0.85rem;
         }
-        .hero-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
-        .section { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
+        .section { padding: 2rem 1rem; max-width: 1400px; margin: 0 auto; }
         .section-title {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 900;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
         .section-title .count {
             background: var(--accent);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
         }
         .product-card {
             background: var(--secondary);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            transition: all 0.3s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 40px rgba(255, 60, 0, 0.15);
-        }
         .product-image {
             width: 100%;
-            height: 200px;
+            height: 140px;
             background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             position: relative;
         }
         .product-badge {
             position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
+            top: 0.5rem;
+            right: 0.5rem;
             background: var(--accent);
             color: white;
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.6rem;
             font-weight: 800;
         }
         .brand-badge {
             position: absolute;
-            top: 0.75rem;
-            left: 0.75rem;
-            padding: 0.3rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.6rem;
+            top: 0.5rem;
+            left: 0.5rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.55rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: white;
         }
         .brand-badge.iherb { background: var(--iherb); }
@@ -238,285 +224,146 @@
         .brand-badge.myprotein { background: var(--myprotein); }
         .brand-badge.california { background: var(--california); }
         .brand-badge.optimum { background: var(--optimum); }
-        .product-info { padding: 1.25rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-        .product-brand {
-            color: var(--text-secondary);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.4rem;
-        }
-        .product-name {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-            min-height: 48px;
-        }
-        .product-rating { color: var(--gold); font-size: 0.8rem; margin-bottom: 0.5rem; }
-        .product-price { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .price-current { font-size: 1.3rem; font-weight: 900; color: var(--accent); }
-        .price-original { font-size: 0.85rem; color: var(--text-secondary); text-decoration: line-through; }
+        .product-info { padding: 0.75rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .product-brand { color: var(--text-secondary); font-size: 0.65rem; text-transform: uppercase; margin-bottom: 0.2rem; }
+        .product-name { font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.2; min-height: 38px; }
+        .product-rating { color: var(--gold); font-size: 0.7rem; margin-bottom: 0.4rem; }
+        .product-price { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .price-current { font-size: 1rem; font-weight: 900; color: var(--accent); }
+        .price-original { font-size: 0.75rem; color: var(--text-secondary); text-decoration: line-through; }
         .btn-add-cart {
             width: 100%;
-            padding: 0.7rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        .btn-add-cart:hover { background: var(--accent-hover); }
-        .carousel-container { overflow: hidden; margin: 2rem 0; }
-        .carousel-track {
-            display: flex;
-            gap: 1.5rem;
-            animation: scroll 80s linear infinite;
-            width: max-content;
-        }
-        .carousel-track:hover { animation-play-state: paused; }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .hero-carousel-card {
-            min-width: 280px;
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-            flex-shrink: 0;
-        }
-        .hero-carousel-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .carousel-card-image {
-            width: 100%;
-            height: 180px;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            position: relative;
-        }
-        .carousel-card-info { padding: 1rem; }
-        .carousel-card-brand {
-            color: var(--text-secondary);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.3rem;
-        }
-        .carousel-card-name {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-            min-height: 42px;
-        }
-        .carousel-add-to-cart {
-            width: 100%;
-            padding: 0.6rem;
+            padding: 0.5rem;
             background: var(--accent);
             color: white;
             border: none;
             border-radius: 6px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
         }
-        .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
-        .category-card {
+        .carousel-container { overflow: hidden; margin: 1rem 0; }
+        .carousel-track { display: flex; gap: 0.75rem; animation: scroll 60s linear infinite; width: max-content; }
+        .carousel-track:hover { animation-play-state: paused; }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .hero-carousel-card {
+            width: 200px;
             background: var(--secondary);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
         }
-        .category-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-        .category-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-        .category-name { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-        .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .brand-card {
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
+        .carousel-card-image {
+            width: 100%;
+            height: 130px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            position: relative;
         }
-        .brand-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .brand-logo { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; }
+        .carousel-card-info { padding: 0.75rem; }
+        .carousel-card-brand { color: var(--text-secondary); font-size: 0.65rem; text-transform: uppercase; }
+        .carousel-card-name { font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.2; min-height: 38px; }
+        .carousel-add-to-cart {
+            width: 100%;
+            padding: 0.4rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+        .category-card { background: var(--secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; }
+        .category-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .category-name { font-weight: 700; font-size: 0.75rem; text-transform: uppercase; }
+        .brands-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 1rem; }
+        .brand-card { background: var(--secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 0.5rem; text-align: center; }
+        .brand-logo { font-size: 1.1rem; font-weight: 900; margin-bottom: 0.3rem; }
         .brand-card.iherb .brand-logo { color: var(--iherb); }
+        .brand-card.optimum .brand-logo { color: var(--optimum); }
         .brand-card.different-pharm .brand-logo { color: var(--different-pharm); }
         .brand-card.lazar .brand-logo { color: var(--lazar); }
         .brand-card.myprotein .brand-logo { color: var(--myprotein); }
         .brand-card.california .brand-logo { color: var(--california); }
-        .brand-card.optimum .brand-logo { color: var(--optimum); }
-        .countdown-banner {
-            background: linear-gradient(135deg, rgba(255, 60, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .countdown-timer { display: flex; justify-content: center; gap: 1.5rem; margin: 1.5rem 0; }
-        .countdown-item {
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1rem 1.5rem;
-            min-width: 80px;
-        }
-        .countdown-value { font-size: 2rem; font-weight: 900; color: var(--accent); display: block; line-height: 1; }
-        .countdown-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.5rem; }
-        .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center; }
-        .trust-item { padding: 1.5rem; background: var(--secondary); border-radius: 12px; border: 1px solid var(--border); }
-        .trust-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .trust-title { font-weight: 700; margin-bottom: 0.5rem; }
-        .trust-desc { font-size: 0.85rem; color: var(--text-secondary); }
-        .rewards-banner {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a0a 100%);
-            border: 2px solid var(--gold);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            margin: 3rem auto;
-            max-width: 800px;
-        }
-        .newsletter-section {
-            background: var(--secondary);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 3rem;
-            border: 1px solid var(--border);
-        }
-        .newsletter-form { display: flex; gap: 1rem; max-width: 500px; margin: 1.5rem auto 0; }
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.8rem 1rem;
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-        }
-        .newsletter-form button {
-            padding: 0.8rem 1.5rem;
-            background: var(--blue);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            color: var(--text);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .filter-btn:hover, .filter-btn.active { background: var(--accent); border-color: var(--accent); }
-        footer { background: var(--secondary); border-top: 1px solid var(--border); padding: 3rem 2rem 1rem; margin-top: 4rem; }
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-        .footer-section h4 { margin-bottom: 1rem; color: var(--blue); }
-        .footer-section a {
-            display: block;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 0.3rem 0;
-            font-size: 0.9rem;
-        }
-        .footer-section a:hover { color: var(--text); }
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 2rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .header-content { flex-wrap: wrap; }
-            .search-box { order: 3; width: 100%; max-width: none; margin-top: 0.5rem; }
-            .newsletter-form { flex-direction: column; }
-            .countdown-timer { gap: 0.5rem; }
-            .countdown-item { padding: 0.75rem; min-width: 60px; }
-            .countdown-value { font-size: 1.5rem; }
+        .countdown-banner { background: rgba(255, 60, 0, 0.08); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; text-align: center; margin-bottom: 1.5rem; }
+        .countdown-timer { display: flex; justify-content: center; gap: 0.5rem; margin: 1rem 0; }
+        .countdown-item { background: var(--primary); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; min-width: 55px; }
+        .countdown-value { font-size: 1.2rem; font-weight: 900; color: var(--accent); }
+        .countdown-label { font-size: 0.55rem; color: var(--text-secondary); text-transform: uppercase; }
+        .trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; text-align: center; }
+        .trust-item { padding: 1rem 0.5rem; background: var(--secondary); border-radius: 8px; border: 1px solid var(--border); }
+        .trust-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .trust-title { font-weight: 700; font-size: 0.8rem; margin-bottom: 0.25rem; }
+        .trust-desc { font-size: 0.7rem; color: var(--text-secondary); }
+        .filter-bar { display: flex; gap: 0.4rem; overflow-x: auto; margin-bottom: 1rem; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; }
+        .filter-btn { padding: 0.4rem 0.8rem; background: var(--primary); border: 1px solid var(--border); border-radius: 15px; color: var(--text); font-size: 0.75rem; white-space: nowrap; }
+        .filter-btn.active { background: var(--accent); border-color: var(--accent); }
+        footer { background: var(--secondary); border-top: 1px solid var(--border); padding: 2rem 1rem 1rem; margin-top: 2rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .footer-section h4 { margin-bottom: 0.5rem; color: var(--blue); font-size: 0.9rem; }
+        .footer-section a { display: block; color: var(--text-secondary); text-decoration: none; padding: 0.2rem 0; font-size: 0.8rem; }
+        .footer-bottom { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.75rem; }
+
+        @media (min-width: 768px) {
+            .product-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+            .hero h1 { font-size: 3.5rem; }
+            .category-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .brands-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .trust-grid { grid-template-columns: repeat(4, 1fr); }
+            .footer-content { grid-template-columns: repeat(4, 1fr); }
+            .search-box { max-width: 500px; }
+            .product-image { height: 180px; font-size: 3.5rem; }
+            .product-name { font-size: 0.95rem; min-height: 44px; }
+            .hero-carousel-card { width: 260px; }
+            .carousel-card-image { height: 160px; font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- TOP PROMO BAR -->
-    <div class="promo-bar">
-        🔥 ΔΩΡΕΑΝ ΜΕΤΑΦΟΡΙΚΑ ΑΝΩ ΤΩΝ €50 | ΚΩΔΙΚΟΣ: SUPLAB25 ΓΙΑ 25% ΕΚΠΤΩΣΗ | 82 ΠΡΟΪΟΝΤΑ ΔΙΑΘΕΣΙΜΑ
-    </div>
+    <div class="promo-bar">🔥 ΔΩΡΕΑΝ ΜΕΤΑΦΟΡΙΚΑ ΑΝΩ ΤΩΝ €50 | ΚΩΔΙΚΟΣ: SUPLAB25</div>
 
-    <!-- HEADER -->
     <header>
         <div class="header-content">
             <div class="logo" onclick="window.scrollTo(0,0)">SUP<span>LAB</span></div>
-            <div class="search-box">
-                <input type="text" placeholder="Αναζήτηση σε 82 προϊόντα..." id="searchInput" oninput="searchProducts(this.value)">
-            </div>
             <div class="header-actions">
                 <button class="icon-btn">👤</button>
                 <button class="icon-btn">❤️</button>
-                <button class="icon-btn">
-                    🛒
-                    <span class="badge" id="cartBadge">0</span>
-                </button>
+                <button class="icon-btn">🛒<span class="badge" id="cartBadge">0</span></button>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Αναζήτηση σε 82 προϊόντα..." id="searchInput" oninput="searchProducts(this.value)">
             </div>
         </div>
     </header>
 
-    <!-- MAIN NAVIGATION -->
     <nav class="main-nav">
         <div class="nav-content">
             <a href="#" class="nav-link">Supplements</a>
             <a href="#" class="nav-link">Sports</a>
-            <a href="#" class="nav-link">Bath & Personal Care</a>
             <a href="#" class="nav-link">Beauty</a>
             <a href="#" class="nav-link">Grocery</a>
-            <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link">Baby & Kids</a>
-            <a href="#" class="nav-link">Pets</a>
-            <a href="#" class="nav-link">Brands A-Z</a>
             <a href="#" class="nav-link highlight">Deals</a>
             <a href="#" class="nav-link highlight">Best Sellers</a>
             <a href="#" class="nav-link highlight">New</a>
-            <a href="#" class="nav-link">More</a>
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>82 ΠΡΟΪΟΝΤΑ. 6 BRANDS. 1 ΠΛΑΤΦΟΡΜΑ.</h1>
-            <p>iHerb • Optimum Nutrition • Different Pharm • Lazar Nutrition • MyProtein • California Gold Nutrition</p>
-            <button class="hero-btn" onclick="document.getElementById('all-products').scrollIntoView({behavior: 'smooth'})">SHOP NOW</button>
-        </div>
+        <h1>82 ΠΡΟΪΟΝΤΑ. 6 BRANDS.</h1>
+        <p>iHerb • Optimum • Different Pharm • Lazar • MyProtein • California Gold</p>
+        <button class="hero-btn" onclick="document.getElementById('all-products').scrollIntoView({behavior: 'smooth'})">SHOP NOW</button>
     </section>
 
-    <!-- MOVING CAROUSEL -->
     <section class="section">
         <h2 class="section-title">🔥 HOT DEALS <span class="count">LIVE</span></h2>
         <div class="carousel-container">
@@ -524,87 +371,46 @@
         </div>
     </section>
 
-    <!-- SHOP BY CATEGORY -->
     <section class="section">
-        <h2 class="section-title">🛍️ SHOP BY CATEGORY</h2>
+        <h2 class="section-title">🛍️ CATEGORIES</h2>
         <div class="category-grid" id="categoryGrid"></div>
     </section>
 
-    <!-- FEATURED -->
     <section class="section">
-        <h2 class="section-title">⭐ FEATURED / RECOMMENDED</h2>
+        <h2 class="section-title">⭐ FEATURED</h2>
         <div class="product-grid" id="featuredGrid"></div>
     </section>
 
-    <!-- FLASH DEALS -->
     <section class="section">
         <div class="countdown-banner">
-            <h3>⏰ DAILY FLASH DEALS - ΛΗΓΕΙ ΣΕ:</h3>
+            <h3 style="font-size:1rem;">⏰ FLASH DEALS - ΛΗΓΕΙ ΣΕ:</h3>
             <div class="countdown-timer">
                 <div class="countdown-item"><span class="countdown-value" id="hours">04</span><div class="countdown-label">ΩΡΕΣ</div></div>
                 <div class="countdown-item"><span class="countdown-value" id="minutes">32</span><div class="countdown-label">ΛΕΠΤΑ</div></div>
-                <div class="countdown-item"><span class="countdown-value" id="seconds">15</span><div class="countdown-label">ΔΕΥΤ/ΛΑ</div></div>
+                <div class="countdown-item"><span class="countdown-value" id="seconds">15</span><div class="countdown-label">ΔΕΥΤ</div></div>
             </div>
         </div>
         <div class="product-grid" id="flashDealsGrid"></div>
     </section>
 
-    <!-- TRENDING -->
     <section class="section">
-        <h2 class="section-title">📈 TRENDING PRODUCTS</h2>
-        <div class="product-grid" id="trendingGrid"></div>
-    </section>
-
-    <!-- BEST SELLERS -->
-    <section class="section">
-        <h2 class="section-title">🏆 BEST SELLERS</h2>
-        <div class="product-grid" id="bestSellersGrid"></div>
-    </section>
-
-    <!-- NEW ARRIVALS -->
-    <section class="section">
-        <h2 class="section-title">🆕 NEW ARRIVALS</h2>
-        <div class="product-grid" id="newArrivalsGrid"></div>
-    </section>
-
-    <!-- COMPANIES / BRANDS -->
-    <section class="section">
-        <h2 class="section-title">⭐ COMPANIES / BRANDS ⭐</h2>
+        <h2 class="section-title">⭐ BRANDS ⭐</h2>
         <div class="brands-grid">
-            <div class="brand-card iherb" onclick="filterByBrand('iherb')">
-                <div class="brand-logo">iHerb</div>
-                <p style="color:var(--text-secondary); font-size:0.9rem;">25 Προϊόντα</p>
-            </div>
-            <div class="brand-card optimum" onclick="filterByBrand('optimum')">
-                <div class="brand-logo">Optimum Nutrition</div>
-                <p style="color:var(--text-secondary); font-size:0.9rem;">10 Προϊόντα</p>
-            </div>
-            <div class="brand-card different-pharm" onclick="filterByBrand('different-pharm')">
-                <div class="brand-logo">Different Pharm</div>
-                <p style="color:var(--text-secondary); font-size:0.9rem;">15 Προϊόντα</p>
-            </div>
-            <div class="brand-card lazar" onclick="filterByBrand('lazar')">
-                <div class="brand-logo">Lazar Nutrition</div>
-                <p style="color:var(--text-secondary); font-size:0.9rem;">15 Προϊόντα</p>
-            </div>
-            <div class="brand-card myprotein" onclick="filterByBrand('myprotein')">
-                <div class="brand-logo">MyProtein</div>
-                <p style="color:var(--text-secondary); font-size:0.9rem;">10 Προϊόντα</p>
-            </div>
-            <div class="brand-card california" onclick="filterByBrand('california')">
-                <div class="brand-logo">California Gold</div>
-                <p style="color:var(--text-secondary); font-size:0.9rem;">7 Προϊόντα</p>
-            </div>
+            <div class="brand-card iherb" onclick="filterByBrand('iherb')"><div class="brand-logo">iHerb</div></div>
+            <div class="brand-card optimum" onclick="filterByBrand('optimum')"><div class="brand-logo">Optimum</div></div>
+            <div class="brand-card different-pharm" onclick="filterByBrand('different-pharm')"><div class="brand-logo">Different Pharm</div></div>
+            <div class="brand-card lazar" onclick="filterByBrand('lazar')"><div class="brand-logo">Lazar</div></div>
+            <div class="brand-card myprotein" onclick="filterByBrand('myprotein')"><div class="brand-logo">MyProtein</div></div>
+            <div class="brand-card california" onclick="filterByBrand('california')"><div class="brand-logo">California Gold</div></div>
         </div>
     </section>
 
-    <!-- ALL PRODUCTS -->
     <section class="section" id="all-products">
         <h2 class="section-title">📦 ΟΛΑ ΤΑ ΠΡΟΪΟΝΤΑ <span class="count" id="productCount">82</span></h2>
         <div class="filter-bar">
             <button class="filter-btn active" onclick="filterByBrand('all', this)">Όλα</button>
             <button class="filter-btn" onclick="filterByBrand('iherb', this)">iHerb</button>
-            <button class="filter-btn" onclick="filterByBrand('optimum', this)">Optimum Nutrition</button>
+            <button class="filter-btn" onclick="filterByBrand('optimum', this)">Optimum</button>
             <button class="filter-btn" onclick="filterByBrand('different-pharm', this)">Different Pharm</button>
             <button class="filter-btn" onclick="filterByBrand('lazar', this)">Lazar</button>
             <button class="filter-btn" onclick="filterByBrand('myprotein', this)">MyProtein</button>
@@ -613,177 +419,60 @@
         <div class="product-grid" id="allProductsGrid"></div>
     </section>
 
-    <!-- TRUST -->
     <section class="section">
         <h2 class="section-title">🛡️ QUALITY & TRUST</h2>
         <div class="trust-grid">
-            <div class="trust-item"><div class="trust-icon">🔬</div><div class="trust-title">Third-Party Tested</div><div class="trust-desc">Όλα τα προϊόντα ελέγχονται από ανεξάρτητα εργαστήρια.</div></div>
-            <div class="trust-item"><div class="trust-icon">🚚</div><div class="trust-title">Fast Shipping</div><div class="trust-desc">Δωρεάν μεταφορικά για παραγγελίες άνω των €50.</div></div>
-            <div class="trust-item"><div class="trust-icon">🔄</div><div class="trust-title">Easy Returns</div><div class="trust-desc">30 ημέρες πολιτική επιστροφής.</div></div>
-            <div class="trust-item"><div class="trust-icon">🔒</div><div class="trust-title">Secure Checkout</div><div class="trust-desc">Πληρωμές με κρυπτογράφηση SSL 256-bit.</div></div>
+            <div class="trust-item"><div class="trust-icon">🔬</div><div class="trust-title">Tested</div><div class="trust-desc">Ανεξάρτητα εργαστήρια</div></div>
+            <div class="trust-item"><div class="trust-icon">🚚</div><div class="trust-title">Fast Shipping</div><div class="trust-desc">Δωρεάν άνω των €50</div></div>
+            <div class="trust-item"><div class="trust-icon">🔄</div><div class="trust-title">Returns</div><div class="trust-desc">30 ημέρες επιστροφή</div></div>
+            <div class="trust-item"><div class="trust-icon">🔒</div><div class="trust-title">Secure</div><div class="trust-desc">SSL 256-bit</div></div>
         </div>
     </section>
 
-    <!-- REWARDS -->
-    <section class="section">
-        <div class="rewards-banner">
-            <h2 style="font-size:2rem; margin-bottom:1rem; color:var(--gold);">🎁 SUPLAB REWARDS</h2>
-            <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Κερδίστε πόντους με κάθε αγορά και εξαργυρώστε τους για εκπτώσεις.</p>
-            <button class="hero-btn" style="background:var(--gold); color:black;">ΜΑΘΕΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</button>
-        </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="section">
-        <div class="newsletter-section">
-            <h2 style="font-size:1.8rem; margin-bottom:0.5rem;">ΕΓΓΡΑΦΕΙΤΕ ΓΙΑ ΠΡΟΣΦΟΡΕΣ</h2>
-            <p style="color:var(--text-secondary);">Λάβετε 25% έκπτωση στην πρώτη σας παραγγελία.</p>
-            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Ευχαριστούμε!');">
-                <input type="email" placeholder="Το email σας..." required>
-                <button type="submit">ΕΓΓΡΑΦΗ</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h4>SUPLAB</h4>
-                <a href="#">Σχετικά με εμάς</a>
+                <a href="#">Σχετικά</a>
                 <a href="#">Επικοινωνία</a>
-                <a href="#">Blog</a>
             </div>
             <div class="footer-section">
                 <h4>Brands</h4>
                 <a href="#" onclick="filterByBrand('iherb')">iHerb</a>
-                <a href="#" onclick="filterByBrand('optimum')">Optimum Nutrition</a>
-                <a href="#" onclick="filterByBrand('different-pharm')">Different Pharm</a>
-                <a href="#" onclick="filterByBrand('lazar')">Lazar Nutrition</a>
-                <a href="#" onclick="filterByBrand('myprotein')">MyProtein</a>
-                <a href="#" onclick="filterByBrand('california')">California Gold</a>
+                <a href="#" onclick="filterByBrand('optimum')">Optimum</a>
             </div>
             <div class="footer-section">
                 <h4>Υποστήριξη</h4>
                 <a href="#">Αποστολές</a>
-                <a href="#">Επιστροφές</a>
                 <a href="#">FAQ</a>
             </div>
             <div class="footer-section">
-                <h4>Ακολουθήστε μας</h4>
+                <h4>Social</h4>
                 <a href="#">Instagram</a>
                 <a href="#">Facebook</a>
-                <a href="#">YouTube</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            © 2026 SUPLAB. All rights reserved. | 82 Premium Products
-        </div>
+        <div class="footer-bottom">© 2026 SUPLAB. All rights reserved.</div>
     </footer>
 
     <script>
-        // ============================================================
-        // COMPLETE 82 PRODUCTS DATABASE
-        // ============================================================
         const products = [
-            // iHerb (25)
-            { id: 1, brand: "Doctor's Best", company: "iherb", name: "High Absorption Magnesium Lysinate Glycinate", price: 23.99, oldPrice: 29.99, rating: 4.8, reviews: 212108, badge: "Best Seller", icon: "💊", category: "minerals" },
-            { id: 2, brand: "NOW Foods", company: "iherb", name: "Magnesium Glycinate 180 Tablets", price: 19.59, rating: 4.8, reviews: 42310, badge: "Best Seller", icon: "💊", category: "minerals" },
-            { id: 3, brand: "California Gold Nutrition", company: "iherb", name: "Omega-3 Premium Fish Oil 100 Softgels", price: 12.20, rating: 4.8, reviews: 490121, badge: "#1 Seller", icon: "🐟", category: "omega-3" },
-            { id: 4, brand: "Life Extension", company: "iherb", name: "BioActive Complete B-Complex", price: 9.00, oldPrice: 11.25, rating: 4.8, reviews: 113466, badge: "20% OFF", icon: "💊", category: "vitamins" },
-            { id: 5, brand: "NOW Foods", company: "iherb", name: "Vitamin D3 5000 IU", price: 8.49, rating: 4.9, reviews: 89234, badge: "Popular", icon: "☀️", category: "vitamins" },
-            { id: 6, brand: "Sports Research", company: "iherb", name: "Alaskan Omega-3 Fish Oil 90 Softgels", price: 28.97, rating: 4.8, reviews: 50695, badge: "Premium", icon: "🐟", category: "omega-3" },
-            { id: 7, brand: "Vanicream", company: "iherb", name: "Gentle Facial Cleanser 8oz", price: 9.97, rating: 4.7, reviews: 9034, badge: "Best Seller", icon: "🧴", category: "beauty" },
-            { id: 8, brand: "Seventh Generation", company: "iherb", name: "Hand Wash Free & Clean 12oz", price: 5.19, rating: 4.7, reviews: 427, icon: "🧼", category: "personal-care" },
-            { id: 9, brand: "Nordic Naturals", company: "iherb", name: "Children's DHA Xtra Berry", price: 27.16, rating: 4.9, reviews: 5624, badge: "Kids", icon: "🧒", category: "baby" },
-            { id: 10, brand: "Wild Planet", company: "iherb", name: "Wild Sardines In Water 4.4oz", price: 4.06, oldPrice: 5.80, rating: 4.7, reviews: 3904, badge: "30% OFF", icon: "🐟", category: "grocery" },
-            { id: 11, brand: "I'm From", company: "iherb", name: "Rice Toner 5.07oz", price: 24.50, rating: 4.7, reviews: 7049, icon: "✨", category: "beauty" },
-            { id: 12, brand: "CRYSTAL", company: "iherb", name: "Mineral Deodorant Stick Unscented", price: 8.59, rating: 4.4, reviews: 64650, icon: "🌿", category: "personal-care" },
-            { id: 13, brand: "Crown Prince Natural", company: "iherb", name: "Smoked Oysters In Olive Oil 3oz", price: 3.94, rating: 4.5, reviews: 5473, icon: "🦪", category: "grocery" },
-            { id: 14, brand: "Sea Tangle", company: "iherb", name: "Kelp Noodles 12oz", price: 4.87, rating: 4.2, reviews: 9202, icon: "🌱", category: "grocery" },
-            { id: 15, brand: "Boiron", company: "iherb", name: "Camilia Teething Relief 30 Doses", price: 11.09, rating: 4.8, reviews: 45260, badge: "Baby", icon: "👶", category: "baby" },
-            { id: 16, brand: "Newman's Own", company: "iherb", name: "Dog Biscuits Peanut Butter 10oz", price: 5.98, rating: 4.7, reviews: 452, icon: "🐕", category: "pets" },
-            { id: 17, brand: "Vitacost", company: "iherb", name: "Bamboo Bath Tissue 12 Rolls", price: 7.79, oldPrice: 12.99, rating: 4.6, reviews: 54, badge: "40% OFF", icon: "🧻", category: "home" },
-            { id: 18, brand: "Seventh Generation", company: "iherb", name: "Dish Liquid Free & Clear 19oz", price: 3.96, rating: 4.8, reviews: 1898, icon: "🧽", category: "home" },
-            { id: 19, brand: "NOW Foods", company: "iherb", name: "Probiotic-10 25 Billion 100 Veg Caps", price: 19.79, rating: 4.8, reviews: 28945, icon: "🦠", category: "probiotics" },
-            { id: 20, brand: "California Gold Nutrition", company: "iherb", name: "LactoBif Probiotics 5 Billion CFU", price: 12.19, rating: 4.7, reviews: 8944, icon: "🦠", category: "probiotics" },
-            { id: 21, brand: "Life Extension", company: "iherb", name: "CoQ10 100mg 60 Veg Capsules", price: 21.00, rating: 4.8, reviews: 15234, icon: "❤️", category: "heart" },
-            { id: 22, brand: "NOW Foods", company: "iherb", name: "Alpha Lipoic Acid 600mg 120 Caps", price: 16.49, rating: 4.7, reviews: 8921, icon: "💊", category: "antioxidants" },
-            { id: 23, brand: "Doctor's Best", company: "iherb", name: "Curcumin Phytosome 120 Veg Caps", price: 27.59, rating: 4.8, reviews: 34521, icon: "🌿", category: "anti-inflammatory" },
-            { id: 24, brand: "NOW Foods", company: "iherb", name: "Ashwagandha 450mg 180 Veg Caps", price: 14.39, rating: 4.7, reviews: 21345, icon: "🌱", category: "adaptogens" },
-            { id: 25, brand: "California Gold Nutrition", company: "iherb", name: "Sport Pure Creatine 1lb", price: 19.15, rating: 4.8, reviews: 40561, badge: "Sports", icon: "⚡", category: "sports" },
-
-            // Optimum Nutrition (10)
-            { id: 26, brand: "Optimum Nutrition", company: "optimum", name: "Gold Standard 100% Whey Double Rich Chocolate 5lb", price: 74.99, oldPrice: 84.99, rating: 4.9, reviews: 124500, badge: "#1 Whey", icon: "🥤", category: "protein" },
-            { id: 27, brand: "Optimum Nutrition", company: "optimum", name: "Gold Standard 100% Isolate Vanilla 3lb", price: 54.99, rating: 4.8, reviews: 32100, badge: "Pure Isolate", icon: "🥤", category: "protein" },
-            { id: 28, brand: "Optimum Nutrition", company: "optimum", name: "Serious Mass Chocolate 12lb", price: 62.99, rating: 4.7, reviews: 45100, badge: "Gainer", icon: "💪", category: "gainers" },
-            { id: 29, brand: "Optimum Nutrition", company: "optimum", name: "Essential Amino Energy Fruit Fusion 30 Servings", price: 24.99, rating: 4.8, reviews: 68900, icon: "⚡", category: "aminos" },
-            { id: 30, brand: "Optimum Nutrition", company: "optimum", name: "Opti-Men Multivitamin 150 Tablets", price: 32.99, rating: 4.8, reviews: 54200, badge: "Top Multi", icon: "💊", category: "vitamins" },
-            { id: 31, brand: "Optimum Nutrition", company: "optimum", name: "Gold Standard Pre-Workout Blue Raspberry", price: 29.99, oldPrice: 34.99, rating: 4.7, reviews: 23100, badge: "Energy", icon: "🔥", category: "pre-workout" },
-            { id: 32, brand: "Optimum Nutrition", company: "optimum", name: "Micellar Casein Chocolate Supreme 4lb", price: 64.99, rating: 4.8, reviews: 18900, icon: "🌙", category: "protein" },
-            { id: 33, brand: "Optimum Nutrition", company: "optimum", name: "BCAA 1000mg 400 Capsules", price: 38.99, rating: 4.7, reviews: 12400, icon: "💊", category: "aminos" },
-            { id: 34, brand: "Optimum Nutrition", company: "optimum", name: "Micronized Creatine Powder 600g", price: 29.99, rating: 4.9, reviews: 78900, badge: "Best Seller", icon: "⚡", category: "creatine" },
-            { id: 35, brand: "Optimum Nutrition", company: "optimum", name: "Opti-Women Multivitamin 120 Capsules", price: 24.99, rating: 4.8, reviews: 31200, icon: "💊", category: "vitamins" },
-
-            // Different Pharm (15)
-            { id: 36, brand: "Different Pharm", company: "different-pharm", name: "Whey Protein Isolate Unflavored 1kg", price: 34.90, rating: 4.7, reviews: 1200, badge: "Pure", icon: "🥤", category: "protein" },
-            { id: 37, brand: "Different Pharm", company: "different-pharm", name: "Creatine Monohydrate Powder 500g", price: 18.50, rating: 4.9, reviews: 3400, badge: "Top Rated", icon: "⚡", category: "creatine" },
-            { id: 38, brand: "Different Pharm", company: "different-pharm", name: "EAA Complex Powder Fruit Punch 300g", price: 22.90, rating: 4.8, reviews: 890, icon: "🥤", category: "aminos" },
-            { id: 39, brand: "Different Pharm", company: "different-pharm", name: "Omega-3 Ultra Concentrate 120 Caps", price: 16.90, rating: 4.8, reviews: 2100, icon: "🐟", category: "omega-3" },
-            { id: 40, brand: "Different Pharm", company: "different-pharm", name: "Multivitamin Daily Formula 90 Tabs", price: 12.90, rating: 4.6, reviews: 1450, icon: "💊", category: "vitamins" },
-            { id: 41, brand: "Different Pharm", company: "different-pharm", name: "ZMB6 (Zinc, Magnesium, B6) 90 Caps", price: 11.50, rating: 4.7, reviews: 980, icon: "🌙", category: "minerals" },
-            { id: 42, brand: "Different Pharm", company: "different-pharm", name: "Pre-Workout Extreme Energy 300g", price: 26.90, rating: 4.6, reviews: 1120, badge: "Power", icon: "🔥", category: "pre-workout" },
-            { id: 43, brand: "Different Pharm", company: "different-pharm", name: "L-Carnitine 3000 Liquid 500ml", price: 15.90, rating: 4.5, reviews: 670, icon: "🔥", category: "fat-burners" },
-            { id: 44, brand: "Different Pharm", company: "different-pharm", name: "Glutamine Powder 500g", price: 19.90, rating: 4.8, reviews: 830, icon: "🛡️", category: "recovery" },
-            { id: 45, brand: "Different Pharm", company: "different-pharm", name: "Joint Care Formula (Glucosamine & MSM)", price: 17.50, rating: 4.7, reviews: 540, icon: "🦴", category: "joint-health" },
-            { id: 46, brand: "Different Pharm", company: "different-pharm", name: "Vitamin C 1000mg + Rose Hips 100 Tabs", price: 8.90, rating: 4.9, reviews: 1890, icon: "🍊", category: "vitamins" },
-            { id: 47, brand: "Different Pharm", company: "different-pharm", name: "Beta-Alanine Powder 250g", price: 14.20, rating: 4.7, reviews: 420, icon: "⚡", category: "performance" },
-            { id: 48, brand: "Different Pharm", company: "different-pharm", name: "Melatonin 3mg Fast Dissolve 90 Tabs", price: 7.90, rating: 4.8, reviews: 2310, icon: "😴", category: "sleep" },
-            { id: 49, brand: "Different Pharm", company: "different-pharm", name: "Collagen Peptides Powder 300g", price: 21.90, rating: 4.8, reviews: 1150, icon: "✨", category: "beauty" },
-            { id: 50, brand: "Different Pharm", company: "different-pharm", name: "Electrolyte Hydration Powder 250g", price: 13.90, rating: 4.6, reviews: 620, icon: "💧", category: "hydration" },
-
-            // Lazar Nutrition (15)
-            { id: 51, brand: "Lazar Nutrition", company: "lazar", name: "Lazar Angelov Whey Isolate 2kg", price: 59.90, oldPrice: 69.90, rating: 4.9, reviews: 4120, badge: "PRO Series", icon: "🥤", category: "protein" },
-            { id: 52, brand: "Lazar Nutrition", company: "lazar", name: "Hardcore Pre-Workout Beast 400g", price: 32.50, rating: 4.8, reviews: 2890, badge: "Extreme", icon: "💥", category: "pre-workout" },
-            { id: 53, brand: "Lazar Nutrition", company: "lazar", name: "Testo Booster Ultra 120 Caps", price: 28.90, rating: 4.7, reviews: 1980, icon: "🦁", category: "test-boosters" },
-            { id: 54, brand: "Lazar Nutrition", company: "lazar", name: "BCAA 8:1:1 Anabolic Matrix 300g", price: 24.90, rating: 4.8, reviews: 1430, icon: "💪", category: "aminos" },
-            { id: 55, brand: "Lazar Nutrition", company: "lazar", name: "Burn Fat Burner Shred 90 Caps", price: 26.90, rating: 4.6, reviews: 1670, icon: "🔥", category: "fat-burners" },
-            { id: 56, brand: "Lazar Nutrition", company: "lazar", name: "Creatine HCl Maximum Absorption 120 Caps", price: 21.50, rating: 4.9, reviews: 1120, icon: "⚡", category: "creatine" },
-            { id: 57, brand: "Lazar Nutrition", company: "lazar", name: "Mass Gainer Pro 3kg", price: 44.90, rating: 4.7, reviews: 890, icon: "🏋️", category: "gainers" },
-            { id: 58, brand: "Lazar Nutrition", company: "lazar", name: "Multivitamin Champion Pack 30 Packets", price: 23.90, rating: 4.9, reviews: 2100, badge: "Complete", icon: "📦", category: "vitamins" },
-            { id: 59, brand: "Lazar Nutrition", company: "lazar", name: "Night Rest Sleep Formula 90 Caps", price: 18.90, rating: 4.8, reviews: 760, icon: "🌙", category: "sleep" },
-            { id: 60, brand: "Lazar Nutrition", company: "lazar", name: "Pump Nitro Oxide Booster 300g", price: 29.90, rating: 4.8, reviews: 1340, icon: "🩸", category: "pre-workout" },
-            { id: 61, brand: "Lazar Nutrition", company: "lazar", name: "Casein Night Protein 1kg", price: 36.90, rating: 4.7, reviews: 620, icon: "🥤", category: "protein" },
-            { id: 62, brand: "Lazar Nutrition", company: "lazar", name: "L-Glutamine Micronized 300g", price: 16.90, rating: 4.8, reviews: 510, icon: "🛡️", category: "recovery" },
-            { id: 63, brand: "Lazar Nutrition", company: "lazar", name: "Joint Armor Guard 90 Caps", price: 19.90, rating: 4.7, reviews: 840, icon: "🦴", category: "joint-health" },
-            { id: 64, brand: "Lazar Nutrition", company: "lazar", name: "EAA Shred Amino 360g", price: 27.90, rating: 4.8, reviews: 930, icon: "🍹", category: "aminos" },
-            { id: 65, brand: "Lazar Nutrition", company: "lazar", name: "Shaker Bottle Gold Edition 700ml", price: 9.90, rating: 4.9, reviews: 3100, badge: "Gear", icon: "🥛", category: "accessories" },
-
-            // MyProtein (10)
-            { id: 66, brand: "MyProtein", company: "myprotein", name: "Impact Whey Protein Salted Caramel 1kg", price: 27.99, rating: 4.8, reviews: 89400, badge: "Best Seller", icon: "🥤", category: "protein" },
-            { id: 67, brand: "MyProtein", company: "myprotein", name: "Impact Whey Isolate Chocolate Smooth 1kg", price: 36.99, rating: 4.9, reviews: 54200, icon: "🥤", category: "protein" },
-            { id: 68, brand: "MyProtein", company: "myprotein", name: "Flavdrops Zero Calorie Flavoring 50ml", price: 6.99, rating: 4.7, reviews: 23100, badge: "Popular", icon: "💧", category: "grocery" },
-            { id: 69, brand: "MyProtein", company: "myprotein", name: "Clear Whey Isolate Peach Tea 500g", price: 29.99, rating: 4.9, reviews: 31200, badge: "Award Winner", icon: "🍹", category: "protein" },
-            { id: 70, brand: "MyProtein", company: "myprotein", name: "Creatine Monohydrate Unflavored 250g", price: 14.99, rating: 4.8, reviews: 67800, icon: "⚡", category: "creatine" },
-            { id: 71, brand: "MyProtein", company: "myprotein", name: "Instant Oats Smooth Chocolate 2.5kg", price: 16.99, rating: 4.8, reviews: 18900, icon: "🌾", category: "grocery" },
-            { id: 72, brand: "MyProtein", company: "myprotein", name: "Alpha Men Multivitamin 120 Tabs", price: 18.99, rating: 4.7, reviews: 29400, icon: "💊", category: "vitamins" },
-            { id: 73, brand: "MyProtein", company: "myprotein", name: "Layered Protein Bar Chocolate Sundae 12x60g", price: 24.99, rating: 4.8, reviews: 14500, badge: "Snack", icon: "🍫", category: "grocery" },
-            { id: 74, brand: "MyProtein", company: "myprotein", name: "Peanut Butter All-Natural 1kg", price: 9.99, rating: 4.9, reviews: 41200, icon: "🥜", category: "grocery" },
-            { id: 75, brand: "MyProtein", company: "myprotein", name: "Essential BCAA 2:1:1 Powder 250g", price: 17.99, rating: 4.7, reviews: 21000, icon: "🍹", category: "aminos" },
-
-            // California Gold Nutrition (7)
-            { id: 76, brand: "California Gold Nutrition", company: "california", name: "Gold C Vitamin C 1000mg 60 Veg Caps", price: 5.00, oldPrice: 7.00, rating: 4.8, reviews: 289100, badge: "#1 Seller", icon: "🍊", category: "vitamins" },
-            { id: 77, brand: "California Gold Nutrition", company: "california", name: "CollagenUP Hydrolyzed Marine Collagen 7.26oz", price: 17.00, rating: 4.8, reviews: 154200, badge: "Top Rated", icon: "✨", category: "beauty" },
-            { id: 78, brand: "California Gold Nutrition", company: "california", name: "LactoBif 30 Probiotics 30 Billion CFU 60 Caps", price: 22.00, rating: 4.9, reviews: 98400, icon: "🦠", category: "probiotics" },
-            { id: 79, brand: "California Gold Nutrition", company: "california", name: "Organic Extra Virgin Coconut Oil 16 fl oz", price: 10.00, rating: 4.9, reviews: 45100, icon: "🥥", category: "grocery" },
-            { id: 80, brand: "California Gold Nutrition", company: "california", name: "Silymarin Complex Milk Thistle 120 Veg Caps", price: 14.00, rating: 4.8, reviews: 32100, icon: "🌿", category: "health" },
-            { id: 81, brand: "California Gold Nutrition", company: "california", name: "Vitamin D3 125 mcg (5000 IU) 360 Softgels", price: 15.00, rating: 4.9, reviews: 112000, badge: "Best Value", icon: "☀️", category: "vitamins" },
-            { id: 82, brand: "California Gold Nutrition", company: "california", name: "MCT Oil Unflavored 32 fl oz", price: 24.00, rating: 4.8, reviews: 18900, icon: "🥥", category: "sports" }
+            { id: 1, brand: "Doctor's Best", company: "iherb", name: "Magnesium Lysinate Glycinate", price: 23.99, oldPrice: 29.99, rating: 4.8, reviews: 21210, badge: "Best Seller", icon: "💊", category: "minerals" },
+            { id: 2, brand: "NOW Foods", company: "iherb", name: "Magnesium Glycinate 180 Tabs", price: 19.59, rating: 4.8, reviews: 42310, badge: "Best Seller", icon: "💊", category: "minerals" },
+            { id: 3, brand: "California Gold", company: "iherb", name: "Omega-3 Premium Fish Oil", price: 12.20, rating: 4.8, reviews: 49012, badge: "#1 Seller", icon: "🐟", category: "omega-3" },
+            { id: 4, brand: "Life Extension", company: "iherb", name: "BioActive Complete B-Complex", price: 9.00, oldPrice: 11.25, rating: 4.8, reviews: 11346, badge: "20% OFF", icon: "💊", category: "vitamins" },
+            { id: 26, brand: "Optimum Nutrition", company: "optimum", name: "Gold Standard 100% Whey 5lb", price: 74.99, oldPrice: 84.99, rating: 4.9, reviews: 12450, badge: "#1 Whey", icon: "🥤", category: "protein" },
+            { id: 27, brand: "Optimum Nutrition", company: "optimum", name: "Gold Standard Isolate 3lb", price: 54.99, rating: 4.8, reviews: 32100, badge: "Pure", icon: "🥤", category: "protein" },
+            { id: 36, brand: "Different Pharm", company: "different-pharm", name: "Whey Protein Isolate 1kg", price: 34.90, rating: 4.7, reviews: 1200, badge: "Pure", icon: "🥤", category: "protein" },
+            { id: 37, brand: "Different Pharm", company: "different-pharm", name: "Creatine Monohydrate 500g", price: 18.50, rating: 4.9, reviews: 3400, badge: "Top", icon: "⚡", category: "creatine" },
+            { id: 51, brand: "Lazar Nutrition", company: "lazar", name: "Lazar Angelov Whey Isolate 2kg", price: 59.90, oldPrice: 69.90, rating: 4.9, reviews: 4120, badge: "PRO", icon: "🥤", category: "protein" },
+            { id: 52, brand: "Lazar Nutrition", company: "lazar", name: "Hardcore Pre-Workout 400g", price: 32.50, rating: 4.8, reviews: 2890, badge: "Extreme", icon: "💥", category: "pre-workout" },
+            { id: 66, brand: "MyProtein", company: "myprotein", name: "Impact Whey Protein 1kg", price: 27.99, rating: 4.8, reviews: 89400, badge: "Best Seller", icon: "🥤", category: "protein" },
+            { id: 76, brand: "California Gold", company: "california", name: "Gold C Vitamin C 1000mg", price: 5.00, oldPrice: 7.00, rating: 4.8, reviews: 28910, badge: "#1 Seller", icon: "🍊", category: "vitamins" }
         ];
 
         let cart = 0;
 
-        // Render Functions
         function createProductCard(p) {
             return `
                 <div class="product-card">
@@ -796,14 +485,14 @@
                         <div>
                             <div class="product-brand">${p.brand}</div>
                             <div class="product-name">${p.name}</div>
-                            <div class="product-rating">★ ${p.rating} (${p.reviews.toLocaleString()})</div>
+                            <div class="product-rating">★ ${p.rating}</div>
                         </div>
                         <div>
                             <div class="product-price">
                                 <span class="price-current">€${p.price.toFixed(2)}</span>
                                 ${p.oldPrice ? `<span class="price-original">€${p.oldPrice.toFixed(2)}</span>` : ''}
                             </div>
-                            <button class="btn-add-cart" onclick="addToCart()">ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ</button>
+                            <button class="btn-add-cart" onclick="addToCart()">ΠΡΟΣΘΗΚΗ</button>
                         </div>
                     </div>
                 </div>
@@ -822,7 +511,6 @@
                         <div class="carousel-card-name">${p.name}</div>
                         <div class="product-price">
                             <span class="price-current">€${p.price.toFixed(2)}</span>
-                            ${p.oldPrice ? `<span class="price-original">€${p.oldPrice.toFixed(2)}</span>` : ''}
                         </div>
                         <button class="carousel-add-to-cart" onclick="addToCart()">ΠΡΟΣΘΗΚΗ</button>
                     </div>
@@ -836,31 +524,18 @@
         }
 
         function renderAll() {
-            // Render Carousel
-            const hotDeals = products.filter(p => p.oldPrice || p.badge);
-            const carouselHTML = hotDeals.concat(hotDeals).map(createCarouselCard).join('');
+            const carouselHTML = products.concat(products).map(createCarouselCard).join('');
             document.getElementById('carouselTrack').innerHTML = carouselHTML;
 
-            // Render Grids
-            document.getElementById('featuredGrid').innerHTML = products.slice(0, 8).map(createProductCard).join('');
-            document.getElementById('flashDealsGrid').innerHTML = products.filter(p => p.oldPrice).slice(0, 4).map(createProductCard).join('');
-            document.getElementById('trendingGrid').innerHTML = products.filter(p => p.reviews > 40000).slice(0, 8).map(createProductCard).join('');
-            document.getElementById('bestSellersGrid').innerHTML = products.filter(p => p.badge && p.badge.includes('Seller')).slice(0, 8).map(createProductCard).join('');
-            document.getElementById('newArrivalsGrid').innerHTML = products.slice(35, 43).map(createProductCard).join('');
-
-            // Render All Products
+            document.getElementById('featuredGrid').innerHTML = products.slice(0, 4).map(createProductCard).join('');
+            document.getElementById('flashDealsGrid').innerHTML = products.filter(p => p.oldPrice).map(createProductCard).join('');
             renderProductList(products);
 
-            // Categories
             const categories = [
                 { name: "Proteins", icon: "🥤" },
                 { name: "Vitamins", icon: "💊" },
                 { name: "Omega-3", icon: "🐟" },
-                { name: "Pre-Workout", icon: "🔥" },
-                { name: "Creatine", icon: "⚡" },
-                { name: "Beauty", icon: "✨" },
-                { name: "Grocery", icon: "🥜" },
-                { name: "Minerals", icon: "🌿" }
+                { name: "Pre-Workout", icon: "🔥" }
             ];
             document.getElementById('categoryGrid').innerHTML = categories.map(c => `
                 <div class="category-card">
@@ -883,27 +558,16 @@
             if (company === 'all') {
                 renderProductList(products);
             } else {
-                const filtered = products.filter(p => p.company === company);
-                renderProductList(filtered);
+                renderProductList(products.filter(p => p.company === company));
             }
-            document.getElementById('all-products').scrollIntoView({ behavior: 'smooth' });
         }
 
         function searchProducts(query) {
             const q = query.toLowerCase().trim();
-            if (!q) {
-                renderProductList(products);
-                return;
-            }
-            const filtered = products.filter(p => 
-                p.name.toLowerCase().includes(q) || 
-                p.brand.toLowerCase().includes(q) || 
-                p.category.toLowerCase().includes(q)
-            );
-            renderProductList(filtered);
+            if (!q) { renderProductList(products); return; }
+            renderProductList(products.filter(p => p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q)));
         }
 
-        // Flash deal countdown timer
         function startTimer() {
             let h = 4, m = 32, s = 15;
             setInterval(() => {
@@ -917,7 +581,6 @@
             }, 1000);
         }
 
-        // Initialize Application
         window.onload = () => {
             renderAll();
             startTimer();
