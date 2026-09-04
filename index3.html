@@ -9,7 +9,7 @@
 <style>
 /* =========================================================
    SUPPLAB MARKETPLACE
-   Updated Palette: Modern Ocean / Deep Blue + Cyan + Gold
+   RESTORED ORIGINAL PALETTE: Classic Green & Gold/Yellow
 ========================================================= */
 
 * {
@@ -19,14 +19,14 @@
 }
 
 :root {
-  /* Updated Color Palette */
-  --green: #0d5c75;         /* Primary Brand Color (Deep Ocean) */
-  --green-dark: #083c4d;    /* Dark Variant */
-  --green-light: #e6f4f8;   /* Light Tint */
-  --green-soft: #f0f9fc;    /* Soft Background Tint */
+  /* Restored Original Green & Gold Palette */
+  --green: #15803d;         /* Original Brand Green */
+  --green-dark: #166534;    /* Original Dark Green */
+  --green-light: #dcfce7;   /* Light Green Tint */
+  --green-soft: #f0fdf4;    /* Soft Background Tint */
 
-  --yellow: #00d2d3;       /* Secondary Accent Color (Electric Cyan) */
-  --yellow-light: #e0fdfd;  /* Light Accent Tint */
+  --yellow: #facc15;       /* Original Bright Yellow/Gold */
+  --yellow-light: #fef08a;  /* Light Yellow Tint */
 
   --black: #0f172a;         /* Charcoal Black */
   --dark: #1e293b;          /* Dark Surface */
@@ -141,7 +141,7 @@ button {
 }
 
 .search-box input:focus {
-  box-shadow: 0 0 0 3px rgba(13,92,117,.12);
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.12);
 }
 
 .search-button {
@@ -249,30 +249,50 @@ button {
 }
 
 /* =========================================================
-   HERO
+   HERO WITH VIDEO BACKGROUND
 ========================================================= */
 
 .hero {
+  position: relative;
   margin: 20px 4%;
-  min-height: 430px;
+  min-height: 480px;
   border-radius: 6px;
   overflow: hidden;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(8,60,77,.97) 0%,
-      rgba(13,92,117,.88) 45%,
-      rgba(13,92,117,.25) 100%
-    ),
-    url("https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=1800&q=85")
-    center/cover;
-
   display: flex;
   align-items: center;
 }
 
+/* Video element styling */
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Dark green gradient overlay over the video for contrast */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(22, 101, 52, 0.92) 0%,
+    rgba(21, 128, 61, 0.75) 50%,
+    rgba(21, 128, 61, 0.2) 100%
+  );
+  z-index: 2;
+}
+
 .hero-content {
+  position: relative;
+  z-index: 3;
   max-width: 620px;
   padding: 55px;
   color: white;
@@ -321,7 +341,7 @@ button {
 }
 
 .btn-primary:hover {
-  background: #33e0e1;
+  background: #fde047;
 }
 
 .btn-secondary {
@@ -434,8 +454,6 @@ button {
   width: max-content;
 }
 
-/* Auto rolling carousels */
-
 .auto-scroll {
   animation: productRoll 55s linear infinite;
 }
@@ -453,8 +471,6 @@ button {
     transform: translateX(-50%);
   }
 }
-
-/* Manual controls */
 
 .carousel-controls {
   display: flex;
@@ -632,7 +648,7 @@ button {
   min-height: 150px;
   padding: 18px;
   background: var(--green-soft);
-  border: 1px solid #cce5ed;
+  border: 1px solid #bbf7d0;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -679,7 +695,7 @@ button {
 ========================================================= */
 
 .flash-section {
-  background: #eafafb;
+  background: #f0fdf4;
 }
 
 .flash-banner {
@@ -841,7 +857,7 @@ button {
 
 .rewards p {
   line-height: 1.5;
-  color: #e0f2fe;
+  color: #dcfce7;
 }
 
 .rewards-button {
@@ -861,8 +877,8 @@ button {
   background: var(--green-soft);
   padding: 55px 4%;
   text-align: center;
-  border-top: 1px solid #cce5ed;
-  border-bottom: 1px solid #cce5ed;
+  border-top: 1px solid #bbf7d0;
+  border-bottom: 1px solid #bbf7d0;
 }
 
 .newsletter h2 {
@@ -961,7 +977,7 @@ footer {
 }
 
 /* =========================================================
-   SEARCH RESULTS
+   SEARCH RESULTS & TOAST
 ========================================================= */
 
 .search-results {
@@ -983,34 +999,6 @@ footer {
 .search-results.active {
   display: block;
 }
-
-.search-result-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 13px;
-  border-bottom: 1px solid #eee;
-}
-
-.search-result-item img {
-  width: 55px;
-  height: 55px;
-  object-fit: cover;
-}
-
-.search-result-item strong {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.search-result-item span {
-  color: var(--green);
-  font-weight: 800;
-}
-
-/* =========================================================
-   TOAST
-========================================================= */
 
 .toast {
   position: fixed;
@@ -1036,194 +1024,50 @@ footer {
 ========================================================= */
 
 @media (max-width: 1100px) {
-
-  .header {
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    min-width: auto;
-  }
-
-  .search-box {
-    order: 3;
-    flex-basis: 100%;
-    max-width: none;
-  }
-
-  .category-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .brands-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .goal-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .header { flex-wrap: wrap; }
+  .logo { min-width: auto; }
+  .search-box { order: 3; flex-basis: 100%; max-width: none; }
+  .category-grid, .brands-grid { grid-template-columns: repeat(3, 1fr); }
+  .goal-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 700px) {
-
-  .promo-bar {
-    font-size: 11px;
-  }
-
-  .header {
-    gap: 15px;
-    padding: 14px 4%;
-  }
-
-  .logo {
-    font-size: 25px;
-  }
-
-  .header-actions {
-    margin-left: auto;
-    gap: 8px;
-  }
-
-  .header-action {
-    min-width: 42px;
-  }
-
-  .header-action span:last-child {
-    display: none;
-  }
-
-  .nav-container {
-    gap: 18px;
-  }
-
-  .hero {
-    margin: 12px 3%;
-    min-height: 430px;
-  }
-
-  .hero-content {
-    padding: 30px;
-  }
-
-  .hero h1 {
-    font-size: 43px;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  .benefits {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .benefit {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section {
-    padding: 35px 4%;
-  }
-
-  .section-title {
-    font-size: 23px;
-  }
-
-  .product-card {
-    width: 190px;
-  }
-
-  .product-image {
-    height: 180px;
-  }
-
-  .category-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .brands-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .goal-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .flash-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .rewards {
-    margin: 10px 4% 35px;
-    padding: 30px 25px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-  }
+  .promo-bar { font-size: 11px; }
+  .header { gap: 15px; padding: 14px 4%; }
+  .logo { font-size: 25px; }
+  .header-actions { margin-left: auto; gap: 8px; }
+  .header-action { min-width: 42px; }
+  .header-action span:last-child { display: none; }
+  .nav-container { gap: 18px; }
+  .hero { margin: 12px 3%; min-height: 430px; }
+  .hero-content { padding: 30px; }
+  .hero h1 { font-size: 43px; }
+  .hero p { font-size: 15px; }
+  .benefits { grid-template-columns: repeat(2, 1fr); }
+  .benefit { border-bottom: 1px solid var(--border); }
+  .section { padding: 35px 4%; }
+  .section-title { font-size: 23px; }
+  .product-card { width: 190px; }
+  .product-image { height: 180px; }
+  .category-grid, .brands-grid, .goal-grid { grid-template-columns: repeat(2, 1fr); }
+  .flash-banner { flex-direction: column; align-items: flex-start; }
+  .rewards { margin: 10px 4% 35px; padding: 30px 25px; flex-direction: column; align-items: flex-start; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; }
 }
 
 @media (max-width: 480px) {
-
-  .header-actions {
-    gap: 4px;
-  }
-
-  .header-action-icon {
-    font-size: 20px;
-  }
-
-  .hero {
-    min-height: 450px;
-  }
-
-  .hero-content {
-    padding: 25px;
-  }
-
-  .hero h1 {
-    font-size: 38px;
-  }
-
-  .benefits {
-    grid-template-columns: 1fr;
-  }
-
-  .benefit {
-    border-right: 0;
-  }
-
-  .category-grid,
-  .brands-grid,
-  .goal-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .newsletter-form {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .newsletter-form input,
-  .newsletter-form button {
-    border-radius: 3px;
-    width: 100%;
-  }
+  .header-actions { gap: 4px; }
+  .header-action-icon { font-size: 20px; }
+  .hero { min-height: 450px; }
+  .hero-content { padding: 25px; }
+  .hero h1 { font-size: 38px; }
+  .benefits { grid-template-columns: 1fr; }
+  .benefit { border-right: 0; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .newsletter-form { flex-direction: column; gap: 8px; }
+  .newsletter-form input, .newsletter-form button { border-radius: 3px; width: 100%; }
 }
 </style>
 </head>
@@ -1308,6 +1152,12 @@ footer {
 
 
 <section class="hero">
+
+  <video class="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=1800&q=85">
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-athlete-working-out-with-a-kettlebell-in-a-gym-42834-large.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
 
   <div class="hero-content">
 
