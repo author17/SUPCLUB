@@ -37,6 +37,8 @@
   --border:#cbd5e1;
 
   --red:#ef4444;
+  --green:#16a34a;
+  --orange:#f97316;
 
   --shadow:0 5px 20px rgba(0,0,0,.08);
 }
@@ -80,10 +82,161 @@ button{
   font-size:13px;
   font-weight:700;
   text-align:center;
+  cursor:pointer;
 }
 
 .promo-highlight{
   color:var(--cyan);
+}
+
+/* =========================================================
+   PROMO POPUPS
+========================================================= */
+
+.promo-overlay{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  background:rgba(15,23,42,.72);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  backdrop-filter:blur(4px);
+}
+
+.promo-overlay.active{
+  display:flex;
+}
+
+.promo-modal{
+  position:relative;
+  width:min(520px,100%);
+  background:#fff;
+  border-radius:10px;
+  padding:40px;
+  text-align:center;
+  box-shadow:0 25px 80px rgba(0,0,0,.3);
+  animation:promoPop .25s ease;
+}
+
+@keyframes promoPop{
+  from{
+    opacity:0;
+    transform:scale(.94) translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+.promo-modal-close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:#f1f5f9;
+  color:var(--black);
+  font-size:24px;
+  line-height:35px;
+}
+
+.promo-modal-close:hover{
+  background:var(--blue);
+  color:#fff;
+}
+
+.promo-modal-badge{
+  display:inline-block;
+  background:var(--cyan);
+  color:var(--black);
+  padding:7px 12px;
+  border-radius:3px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:16px;
+}
+
+.promo-modal h2{
+  color:var(--black);
+  font-size:31px;
+  line-height:1.1;
+  margin-bottom:12px;
+}
+
+.promo-modal p{
+  color:var(--muted);
+  line-height:1.55;
+  margin-bottom:22px;
+}
+
+.promo-modal-code{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--blue-soft);
+  border:2px dashed var(--blue);
+  padding:10px;
+  border-radius:5px;
+  margin-bottom:18px;
+}
+
+.promo-modal-code span{
+  flex:1;
+  color:var(--blue);
+  font-size:20px;
+  font-weight:950;
+  letter-spacing:1px;
+}
+
+.copy-code-btn{
+  border:0;
+  background:var(--blue);
+  color:#fff;
+  padding:11px 14px;
+  border-radius:3px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.copy-code-btn:hover{
+  background:var(--blue-dark);
+}
+
+.promo-modal-actions{
+  display:flex;
+  justify-content:center;
+}
+
+.shop-offer-btn{
+  border:0;
+  background:var(--cyan);
+  color:var(--black);
+  min-height:45px;
+  padding:0 25px;
+  border-radius:3px;
+  font-weight:950;
+}
+
+.shop-offer-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--shadow);
+}
+
+.promo-modal-countdown{
+  margin:14px 0 20px;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.promo-modal-countdown strong{
+  color:var(--red);
+  font-size:18px;
 }
 
 /* =========================================================
@@ -597,6 +750,149 @@ button{
 }
 
 /* =========================================================
+   OFFERS / DEALS
+========================================================= */
+
+.offers-section{
+  background:#fff;
+  padding:45px 4%;
+}
+
+.offers-header{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.offers-header h2{
+  color:var(--black);
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.offers-header p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.offers-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.offer-card{
+  position:relative;
+  background:var(--blue-soft);
+  border:1px solid #cce5ed;
+  border-radius:6px;
+  padding:25px;
+  overflow:hidden;
+  transition:.2s ease;
+}
+
+.offer-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow);
+}
+
+.offer-card.flash{
+  background:var(--blue);
+  color:#fff;
+}
+
+.offer-card.rewards-offer{
+  background:#f8fafc;
+}
+
+.offer-icon{
+  font-size:31px;
+  margin-bottom:10px;
+}
+
+.offer-card h3{
+  font-size:21px;
+  color:var(--black);
+  margin-bottom:8px;
+}
+
+.offer-card.flash h3{
+  color:#fff;
+}
+
+.offer-card p{
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  min-height:40px;
+}
+
+.offer-card.flash p{
+  color:#e0f2fe;
+}
+
+.offer-code{
+  margin:18px 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.offer-code strong{
+  flex:1;
+  background:#fff;
+  color:var(--blue);
+  border:1px dashed var(--blue);
+  padding:10px;
+  text-align:center;
+  font-size:15px;
+  letter-spacing:1px;
+}
+
+.offer-card.flash .offer-code strong{
+  color:var(--black);
+  border-color:var(--cyan);
+}
+
+.offer-copy{
+  border:0;
+  background:var(--black);
+  color:#fff;
+  padding:10px 12px;
+  border-radius:3px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.offer-copy:hover{
+  background:var(--blue-dark);
+}
+
+.offer-countdown{
+  margin:10px 0 16px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.offer-countdown strong{
+  font-size:16px;
+  color:var(--red);
+}
+
+.offer-card.flash .offer-countdown strong{
+  color:var(--cyan);
+}
+
+.offer-shop{
+  width:100%;
+  min-height:42px;
+  border:0;
+  background:var(--cyan);
+  color:var(--black);
+  border-radius:3px;
+  font-weight:900;
+}
+
+/* =========================================================
    CATEGORY
 ========================================================= */
 
@@ -681,6 +977,24 @@ button{
 
 .flash-banner p{
   font-size:13px;
+}
+
+.flash-actions{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.flash-offer-button{
+  min-height:42px;
+  padding:0 18px;
+  background:var(--cyan);
+  color:var(--black);
+  border:0;
+  border-radius:3px;
+  font-weight:900;
+  white-space:nowrap;
 }
 
 .countdown{
@@ -829,6 +1143,7 @@ button{
   padding:14px 28px;
   border-radius:3px;
   font-weight:900;
+  border:0;
 }
 
 /* =========================================================
@@ -993,7 +1308,7 @@ footer{
 
 .toast{
   position:fixed;
-  z-index:1000;
+  z-index:3000;
   bottom:25px;
   right:25px;
   background:var(--black);
@@ -1003,11 +1318,17 @@ footer{
   transform:translateY(100px);
   opacity:0;
   transition:.3s;
+  max-width:360px;
 }
 
 .toast.show{
   transform:translateY(0);
   opacity:1;
+}
+
+.toast.promo{
+  border-left-color:var(--cyan);
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 /* =========================================================
@@ -1044,6 +1365,10 @@ footer{
 
   .footer-grid{
     grid-template-columns:repeat(3,1fr);
+  }
+
+  .offers-grid{
+    grid-template-columns:1fr 1fr;
   }
 
   /* 2 PRODUCTS VISIBLE */
@@ -1145,6 +1470,11 @@ footer{
     align-items:flex-start;
   }
 
+  .flash-actions{
+    width:100%;
+    justify-content:space-between;
+  }
+
   .rewards{
     margin:10px 4% 35px;
     padding:30px 25px;
@@ -1154,6 +1484,18 @@ footer{
 
   .footer-grid{
     grid-template-columns:1fr 1fr;
+  }
+
+  .offers-grid{
+    grid-template-columns:1fr;
+  }
+
+  .promo-modal{
+    padding:30px 22px;
+  }
+
+  .promo-modal h2{
+    font-size:27px;
   }
 }
 
@@ -1222,6 +1564,27 @@ footer{
   .carousel-controls{
     flex-shrink:0;
   }
+
+  .flash-actions{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .countdown{
+    width:100%;
+  }
+
+  .promo-modal-code{
+    flex-direction:column;
+  }
+
+  .promo-modal-code span{
+    width:100%;
+  }
+
+  .copy-code-btn{
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -1232,10 +1595,131 @@ footer{
      PROMO
 ========================================================= -->
 
-<div class="promo-bar">
+<div class="promo-bar" onclick="openPromo('welcomePopup')">
   🚚 FREE SHIPPING ON ORDERS OVER €50
   &nbsp; | &nbsp;
-  <span class="promo-highlight">EXTRA 10% OFF YOUR FIRST ORDER</span>
+  <span class="promo-highlight">EXTRA 10% OFF YOUR FIRST ORDER — CLICK FOR CODE</span>
+</div>
+
+
+<!-- =========================================================
+     WELCOME POPUP
+========================================================= -->
+
+<div class="promo-overlay" id="welcomePopup">
+
+  <div class="promo-modal">
+
+    <button
+      class="promo-modal-close"
+      onclick="closePromo('welcomePopup')"
+      aria-label="Close popup">
+      ×
+    </button>
+
+    <div class="promo-modal-badge">
+      🎁 WELCOME TO SUPPLAB
+    </div>
+
+    <h2>
+      Get 10% Off Your First Order
+    </h2>
+
+    <p>
+      Welcome to SUPPLAB. Use your exclusive first-order
+      promo code at checkout and start your wellness journey.
+    </p>
+
+    <div class="promo-modal-code">
+
+      <span id="welcomeCode">
+        WELCOME10
+      </span>
+
+      <button
+        class="copy-code-btn"
+        onclick="copyPromoCode('WELCOME10')">
+        📋 COPY CODE
+      </button>
+
+    </div>
+
+    <div class="promo-modal-actions">
+
+      <button
+        class="shop-offer-btn"
+        onclick="shopOffer('#popular','WELCOME10','welcomePopup')">
+        SHOP OFFER →
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     FLASH DEAL POPUP
+========================================================= -->
+
+<div class="promo-overlay" id="flashPopup">
+
+  <div class="promo-modal">
+
+    <button
+      class="promo-modal-close"
+      onclick="closePromo('flashPopup')"
+      aria-label="Close popup">
+      ×
+    </button>
+
+    <div class="promo-modal-badge">
+      ⚡ LIMITED-TIME FLASH DEAL
+    </div>
+
+    <h2>
+      Extra 15% Off Flash Deals
+    </h2>
+
+    <p>
+      Grab the deal before the timer runs out. Use the code
+      below on eligible flash products.
+    </p>
+
+    <div class="promo-modal-countdown">
+      Offer ends in:
+      <strong id="flashPopupCountdown">
+        08:45:22
+      </strong>
+    </div>
+
+    <div class="promo-modal-code">
+
+      <span>
+        FLASH15
+      </span>
+
+      <button
+        class="copy-code-btn"
+        onclick="copyPromoCode('FLASH15')">
+        📋 COPY CODE
+      </button>
+
+    </div>
+
+    <div class="promo-modal-actions">
+
+      <button
+        class="shop-offer-btn"
+        onclick="shopOffer('#deals','FLASH15','flashPopup')">
+        SHOP FLASH DEALS →
+      </button>
+
+    </div>
+
+  </div>
+
 </div>
 
 
@@ -1448,6 +1932,154 @@ footer{
 
 
 <!-- =========================================================
+     OFFERS / DEALS
+========================================================= -->
+
+<section class="offers-section" id="offers">
+
+  <div class="offers-header">
+
+    <h2>
+      💥 Offers & Deals
+    </h2>
+
+    <p>
+      Save more with exclusive SUPPLAB promotional offers.
+    </p>
+
+  </div>
+
+  <div class="offers-grid">
+
+    <!-- WELCOME OFFER -->
+
+    <article class="offer-card">
+
+      <div class="offer-icon">
+        🎁
+      </div>
+
+      <h3>
+        10% Off First Order
+      </h3>
+
+      <p>
+        New to SUPPLAB? Get 10% off your first order.
+      </p>
+
+      <div class="offer-code">
+
+        <strong>
+          WELCOME10
+        </strong>
+
+        <button
+          class="offer-copy"
+          onclick="copyPromoCode('WELCOME10')">
+          📋 COPY
+        </button>
+
+      </div>
+
+      <button
+        class="offer-shop"
+        onclick="shopOffer('#popular','WELCOME10')">
+        SHOP OFFER →
+      </button>
+
+    </article>
+
+
+    <!-- FLASH OFFER -->
+
+    <article class="offer-card flash">
+
+      <div class="offer-icon">
+        ⚡
+      </div>
+
+      <h3>
+        Flash Deal — 15% Off
+      </h3>
+
+      <p>
+        Limited-time savings on selected flash products.
+      </p>
+
+      <div class="offer-code">
+
+        <strong>
+          FLASH15
+        </strong>
+
+        <button
+          class="offer-copy"
+          onclick="copyPromoCode('FLASH15')">
+          📋 COPY
+        </button>
+
+      </div>
+
+      <div class="offer-countdown">
+        Ends in:
+        <strong id="offerCountdown">
+          08:45:22
+        </strong>
+      </div>
+
+      <button
+        class="offer-shop"
+        onclick="shopOffer('#deals','FLASH15')">
+        SHOP FLASH DEALS →
+      </button>
+
+    </article>
+
+
+    <!-- REWARDS OFFER -->
+
+    <article class="offer-card rewards-offer">
+
+      <div class="offer-icon">
+        💎
+      </div>
+
+      <h3>
+        SUPPLAB Rewards
+      </h3>
+
+      <p>
+        Join SUPPLAB Rewards and unlock member offers and rewards.
+      </p>
+
+      <div class="offer-code">
+
+        <strong>
+          REWARDS5
+        </strong>
+
+        <button
+          class="offer-copy"
+          onclick="copyPromoCode('REWARDS5')">
+          📋 COPY
+        </button>
+
+      </div>
+
+      <button
+        class="offer-shop"
+        onclick="shopOffer('#rewards','REWARDS5')">
+        JOIN REWARDS →
+      </button>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
      CATEGORY
 ========================================================= -->
 
@@ -1557,22 +2189,32 @@ footer{
       <p>Limited-time offers. Limited stock.</p>
     </div>
 
-    <div class="countdown">
+    <div class="flash-actions">
 
-      <div class="time-box">
-        <strong id="hours">08</strong>
-        <span>HOURS</span>
+      <div class="countdown">
+
+        <div class="time-box">
+          <strong id="hours">08</strong>
+          <span>HOURS</span>
+        </div>
+
+        <div class="time-box">
+          <strong id="minutes">45</strong>
+          <span>MIN</span>
+        </div>
+
+        <div class="time-box">
+          <strong id="seconds">22</strong>
+          <span>SEC</span>
+        </div>
+
       </div>
 
-      <div class="time-box">
-        <strong id="minutes">45</strong>
-        <span>MIN</span>
-      </div>
-
-      <div class="time-box">
-        <strong id="seconds">22</strong>
-        <span>SEC</span>
-      </div>
+      <button
+        class="flash-offer-button"
+        onclick="openPromo('flashPopup')">
+        VIEW FLASH OFFER
+      </button>
 
     </div>
 
@@ -1850,7 +2492,7 @@ footer{
      REWARDS
 ========================================================= -->
 
-<section class="rewards">
+<section class="rewards" id="rewards">
 
   <div>
 
@@ -1863,9 +2505,11 @@ footer{
 
   </div>
 
-  <a href="#" class="rewards-button">
+  <button
+    class="rewards-button"
+    onclick="shopOffer('#rewards','REWARDS5')">
     JOIN NOW →
-  </a>
+  </button>
 
 </section>
 
@@ -2438,6 +3082,8 @@ function showToast(message){
 
   toast.textContent = message;
 
+  toast.classList.remove("promo");
+
   toast.classList.add("show");
 
   clearTimeout(toastTimer);
@@ -2447,6 +3093,208 @@ function showToast(message){
     toast.classList.remove("show");
 
   },2200);
+
+}
+
+
+function showPromoToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("promo");
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+
+    toast.classList.remove("show");
+    toast.classList.remove("promo");
+
+  },3000);
+
+}
+
+
+/* =========================================================
+   PROMO POPUPS
+========================================================= */
+
+function openPromo(popupId){
+
+  const popup =
+    document.getElementById(popupId);
+
+  if(!popup) return;
+
+  popup.classList.add("active");
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+function closePromo(popupId){
+
+  const popup =
+    document.getElementById(popupId);
+
+  if(!popup) return;
+
+  popup.classList.remove("active");
+
+  if(!document.querySelector(".promo-overlay.active")){
+
+    document.body.style.overflow = "";
+
+  }
+
+}
+
+
+/* Close when clicking dark background */
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target.classList &&
+      event.target.classList.contains("promo-overlay")
+    ){
+
+      closePromo(event.target.id);
+
+    }
+
+  }
+);
+
+
+/* Close popup with ESC */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key !== "Escape") return;
+
+    document
+      .querySelectorAll(".promo-overlay.active")
+      .forEach(popup => {
+        closePromo(popup.id);
+      });
+
+  }
+);
+
+
+/* =========================================================
+   COPY PROMO CODE
+========================================================= */
+
+function copyPromoCode(code){
+
+  if(
+    navigator.clipboard &&
+    navigator.clipboard.writeText
+  ){
+
+    navigator.clipboard
+      .writeText(code)
+      .then(() => {
+
+        showPromoToast(
+          `📋 Promo code ${code} copied!`
+        );
+
+      })
+      .catch(() => {
+
+        fallbackCopy(code);
+
+      });
+
+  }else{
+
+    fallbackCopy(code);
+
+  }
+
+}
+
+
+function fallbackCopy(code){
+
+  const textarea =
+    document.createElement("textarea");
+
+  textarea.value = code;
+
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+
+  document.body.appendChild(textarea);
+
+  textarea.select();
+
+  try{
+
+    document.execCommand("copy");
+
+    showPromoToast(
+      `📋 Promo code ${code} copied!`
+    );
+
+  }catch(error){
+
+    showPromoToast(
+      `Promo code: ${code}`
+    );
+
+  }
+
+  document.body.removeChild(textarea);
+
+}
+
+
+/* =========================================================
+   SHOP OFFER
+========================================================= */
+
+function shopOffer(target,code,popupId){
+
+  copyPromoCode(code);
+
+  if(popupId){
+
+    closePromo(popupId);
+
+  }
+
+  setTimeout(() => {
+
+    const destination =
+      document.querySelector(target);
+
+    if(destination){
+
+      destination.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    }
+
+    showPromoToast(
+      `🎯 ${code} ready — shop your offer!`
+    );
+
+  },150);
 
 }
 
@@ -2609,6 +3457,31 @@ let countdownSeconds =
   (45 * 60) +
   22;
 
+
+function formatCountdown(totalSeconds){
+
+  const hours =
+    Math.floor(totalSeconds / 3600);
+
+  const minutes =
+    Math.floor(
+      (totalSeconds % 3600) / 60
+    );
+
+  const seconds =
+    totalSeconds % 60;
+
+  return (
+    String(hours).padStart(2,"0") +
+    ":" +
+    String(minutes).padStart(2,"0") +
+    ":" +
+    String(seconds).padStart(2,"0")
+  );
+
+}
+
+
 function updateCountdown(){
 
   if(countdownSeconds <= 0){
@@ -2643,11 +3516,70 @@ function updateCountdown(){
     .textContent =
     String(seconds).padStart(2,"0");
 
+  const formatted =
+    formatCountdown(countdownSeconds);
+
+  const offerCountdown =
+    document.getElementById("offerCountdown");
+
+  const popupCountdown =
+    document.getElementById("flashPopupCountdown");
+
+  if(offerCountdown){
+    offerCountdown.textContent = formatted;
+  }
+
+  if(popupCountdown){
+    popupCountdown.textContent = formatted;
+  }
+
   countdownSeconds--;
 
 }
 
+
 setInterval(updateCountdown,1000);
+
+
+/* =========================================================
+   WELCOME POPUP
+========================================================= */
+
+function showWelcomePopup(){
+
+  let alreadyShown = false;
+
+  try{
+
+    alreadyShown =
+      sessionStorage.getItem(
+        "supplabWelcomeShown"
+      ) === "true";
+
+  }catch(error){
+
+    alreadyShown = false;
+
+  }
+
+  if(alreadyShown) return;
+
+  setTimeout(() => {
+
+    openPromo("welcomePopup");
+
+    try{
+
+      sessionStorage.setItem(
+        "supplabWelcomeShown",
+        "true"
+      );
+
+    }catch(error){}
+
+  },900);
+
+}
 
 
 /* =========================================================
@@ -2699,6 +3631,8 @@ document.addEventListener(
     loadCarousels();
 
     updateCountdown();
+
+    showWelcomePopup();
 
   }
 );
