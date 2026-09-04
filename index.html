@@ -9,7 +9,7 @@
 <style>
 /* =========================================================
    SUPPLAB MARKETPLACE
-   Modern Ocean / Deep Blue + Cyan + Gold
+   Updated Palette: Modern Ocean / Deep Blue + Cyan + Gold
 ========================================================= */
 
 * {
@@ -19,24 +19,25 @@
 }
 
 :root {
-  --green: #0d5c75;
-  --green-dark: #083c4d;
-  --green-light: #e6f4f8;
-  --green-soft: #f0f9fc;
+  /* Updated Color Palette */
+  --green: #0d5c75;         /* Primary Brand Color (Deep Ocean) */
+  --green-dark: #083c4d;    /* Dark Variant */
+  --green-light: #e6f4f8;   /* Light Tint */
+  --green-soft: #f0f9fc;    /* Soft Background Tint */
 
-  --yellow: #00d2d3;
-  --yellow-light: #e0fdfd;
+  --yellow: #00d2d3;       /* Secondary Accent Color (Electric Cyan) */
+  --yellow-light: #e0fdfd;  /* Light Accent Tint */
 
-  --black: #0f172a;
-  --dark: #1e293b;
-  --text: #334155;
-  --muted: #64748b;
+  --black: #0f172a;         /* Charcoal Black */
+  --dark: #1e293b;          /* Dark Surface */
+  --text: #334155;          /* Body Text */
+  --muted: #64748b;         /* Muted Text */
 
   --white: #ffffff;
   --gray: #f8fafc;
   --border: #cbd5e1;
 
-  --red: #ef4444;
+  --red: #ef4444;           /* Alert / Sale Accent */
 
   --shadow: 0 5px 20px rgba(0,0,0,.08);
 }
@@ -121,6 +122,8 @@ button {
   transform: rotate(45deg);
 }
 
+/* SEARCH */
+
 .search-box {
   flex: 1;
   max-width: 720px;
@@ -152,6 +155,8 @@ button {
   color: white;
   font-size: 19px;
 }
+
+/* HEADER ACTIONS */
 
 .header-actions {
   display: flex;
@@ -429,6 +434,8 @@ button {
   width: max-content;
 }
 
+/* Auto rolling carousels */
+
 .auto-scroll {
   animation: productRoll 55s linear infinite;
 }
@@ -446,6 +453,8 @@ button {
     transform: translateX(-50%);
   }
 }
+
+/* Manual controls */
 
 .carousel-controls {
   display: flex;
@@ -649,7 +658,7 @@ button {
 }
 
 /* =========================================================
-   FEATURE SECTION
+   GREEN FEATURE SECTION
 ========================================================= */
 
 .feature-green {
@@ -1221,22 +1230,12 @@ footer {
 
 <body>
 
-<!-- =========================================================
-     PROMO BAR
-========================================================= -->
-
 <div class="promo-bar">
   🚚 FREE SHIPPING ON ORDERS OVER €50
   &nbsp; | &nbsp;
-  <span class="promo-highlight">
-    EXTRA 10% OFF YOUR FIRST ORDER
-  </span>
+  <span class="promo-highlight">EXTRA 10% OFF YOUR FIRST ORDER</span>
 </div>
 
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
 
 <header class="header">
 
@@ -1262,33 +1261,19 @@ footer {
   <div class="header-actions">
 
     <a href="#" class="header-action">
-
       <span class="header-action-icon">👤</span>
-
       <span>Account</span>
-
     </a>
 
-
     <a href="#" class="header-action">
-
       <span class="header-action-icon">♡</span>
-
       <span>Wishlist</span>
-
     </a>
 
-
     <a href="#" class="header-action">
-
       <span class="header-action-icon">🛒</span>
-
       <span>Cart</span>
-
-      <span class="cart-count" id="cartCount">
-        0
-      </span>
-
+      <span class="cart-count" id="cartCount">0</span>
     </a>
 
   </div>
@@ -1296,81 +1281,31 @@ footer {
 </header>
 
 
-<!-- =========================================================
-     SEARCH RESULTS
-========================================================= -->
-
 <div class="search-results" id="searchResults"></div>
 
-
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
 
 <nav class="navigation">
 
   <div class="nav-container">
 
-    <a class="nav-link" href="#supplements">
-      Supplements
-    </a>
-
-    <a class="nav-link" href="#sports">
-      Sports Nutrition
-    </a>
-
-    <a class="nav-link" href="#personal-care">
-      Bath & Personal Care
-    </a>
-
-    <a class="nav-link" href="#beauty">
-      Beauty
-    </a>
-
-    <a class="nav-link" href="#grocery">
-      Grocery
-    </a>
-
-    <a class="nav-link" href="#">
-      Home
-    </a>
-
-    <a class="nav-link" href="#">
-      Baby & Kids
-    </a>
-
-    <a class="nav-link" href="#">
-      Pets
-    </a>
-
-    <a class="nav-link" href="#brands">
-      Brands A-Z
-    </a>
-
-    <a class="nav-link deals" href="#deals">
-      Deals
-    </a>
-
-    <a class="nav-link" href="#bestsellers">
-      Best Sellers
-    </a>
-
-    <a class="nav-link" href="#new">
-      New
-    </a>
-
-    <a class="nav-link sale" href="#deals">
-      SALE
-    </a>
+    <a class="nav-link" href="#supplements">Supplements</a>
+    <a class="nav-link" href="#sports">Sports Nutrition</a>
+    <a class="nav-link" href="#personal-care">Bath & Personal Care</a>
+    <a class="nav-link" href="#beauty">Beauty</a>
+    <a class="nav-link" href="#grocery">Grocery</a>
+    <a class="nav-link" href="#">Home</a>
+    <a class="nav-link" href="#">Baby & Kids</a>
+    <a class="nav-link" href="#">Pets</a>
+    <a class="nav-link" href="#brands">Brands A-Z</a>
+    <a class="nav-link deals" href="#deals">Deals</a>
+    <a class="nav-link" href="#bestsellers">Best Sellers</a>
+    <a class="nav-link" href="#new">New</a>
+    <a class="nav-link sale" href="#deals">SALE</a>
 
   </div>
 
 </nav>
 
-
-<!-- =========================================================
-     HERO
-========================================================= -->
 
 <section class="hero">
 
@@ -1408,101 +1343,42 @@ footer {
 </section>
 
 
-<!-- =========================================================
-     BENEFITS
-========================================================= -->
-
 <section class="benefits">
 
   <div class="benefit">
-
-    <div class="benefit-icon">
-      ✓
-    </div>
-
+    <div class="benefit-icon">✓</div>
     <div>
-
-      <strong>
-        Trusted Brands
-      </strong>
-
-      <span>
-        Quality products
-      </span>
-
+      <strong>Trusted Brands</strong>
+      <span>Quality products</span>
     </div>
-
   </div>
 
-
   <div class="benefit">
-
-    <div class="benefit-icon">
-      🚚
-    </div>
-
+    <div class="benefit-icon">🚚</div>
     <div>
-
-      <strong>
-        Fast Delivery
-      </strong>
-
-      <span>
-        Delivered to your door
-      </span>
-
+      <strong>Fast Delivery</strong>
+      <span>Delivered to your door</span>
     </div>
-
   </div>
 
-
   <div class="benefit">
-
-    <div class="benefit-icon">
-      🔒
-    </div>
-
+    <div class="benefit-icon">🔒</div>
     <div>
-
-      <strong>
-        Secure Shopping
-      </strong>
-
-      <span>
-        Safe checkout
-      </span>
-
+      <strong>Secure Shopping</strong>
+      <span>Safe checkout</span>
     </div>
-
   </div>
 
-
   <div class="benefit">
-
-    <div class="benefit-icon">
-      🎁
-    </div>
-
+    <div class="benefit-icon">🎁</div>
     <div>
-
-      <strong>
-        SUPPLAB Rewards
-      </strong>
-
-      <span>
-        Earn while you shop
-      </span>
-
+      <strong>SUPPLAB Rewards</strong>
+      <span>Earn while you shop</span>
     </div>
-
   </div>
 
 </section>
 
-
-<!-- =========================================================
-     POPULAR
-========================================================= -->
 
 <section class="section" id="popular">
 
@@ -1513,25 +1389,9 @@ footer {
     </h2>
 
     <div class="carousel-controls">
-
-      <button
-        class="carousel-control"
-        onclick="moveCarousel('popularTrack', -1)"
-      >
-        ‹
-      </button>
-
-      <button
-        class="carousel-control"
-        onclick="moveCarousel('popularTrack', 1)"
-      >
-        ›
-      </button>
-
-      <a href="#" class="view-all">
-        View All →
-      </a>
-
+      <button class="carousel-control" onclick="moveCarousel('popularTrack', -1)">‹</button>
+      <button class="carousel-control" onclick="moveCarousel('popularTrack', 1)">›</button>
+      <a href="#" class="view-all">View All →</a>
     </div>
 
   </div>
@@ -1553,10 +1413,6 @@ footer {
 </section>
 
 
-<!-- =========================================================
-     CATEGORIES
-========================================================= -->
-
 <section class="section green-section" id="supplements">
 
   <div class="section-header">
@@ -1574,106 +1430,39 @@ footer {
   <div class="category-grid">
 
     <a href="#" class="category-card">
-
-      <div class="category-icon">
-        💊
-      </div>
-
-      <h3>
-        Vitamins & Supplements
-      </h3>
-
+      <div class="category-icon">💊</div>
+      <h3>Vitamins & Supplements</h3>
     </a>
 
-
-    <a
-      href="#"
-      class="category-card"
-      id="sports"
-    >
-
-      <div class="category-icon">
-        🏋️
-      </div>
-
-      <h3>
-        Sports Nutrition
-      </h3>
-
+    <a href="#" class="category-card" id="sports">
+      <div class="category-icon">🏋️</div>
+      <h3>Sports Nutrition</h3>
     </a>
 
-
-    <a
-      href="#"
-      class="category-card"
-      id="beauty"
-    >
-
-      <div class="category-icon">
-        ✨
-      </div>
-
-      <h3>
-        Beauty
-      </h3>
-
+    <a href="#" class="category-card" id="beauty">
+      <div class="category-icon">✨</div>
+      <h3>Beauty</h3>
     </a>
 
-
-    <a
-      href="#"
-      class="category-card"
-      id="personal-care"
-    >
-
-      <div class="category-icon">
-        🧴
-      </div>
-
-      <h3>
-        Personal Care
-      </h3>
-
+    <a href="#" class="category-card" id="personal-care">
+      <div class="category-icon">🧴</div>
+      <h3>Personal Care</h3>
     </a>
 
-
-    <a
-      href="#"
-      class="category-card"
-      id="grocery"
-    >
-
-      <div class="category-icon">
-        🥑
-      </div>
-
-      <h3>
-        Healthy Grocery
-      </h3>
-
+    <a href="#" class="category-card" id="grocery">
+      <div class="category-icon">🥑</div>
+      <h3>Healthy Grocery</h3>
     </a>
-
 
     <a href="#" class="category-card">
-
-      <div class="category-icon">
-        🐶
-      </div>
-
-      <h3>
-        Pet Wellness
-      </h3>
-
+      <div class="category-icon">🐶</div>
+      <h3>Pet Wellness</h3>
     </a>
 
   </div>
 
 </section>
 
-
-<!-- =========================================================
-     FEATURED
-========================================================= -->
 
 <section class="section feature-green">
 
@@ -1702,73 +1491,35 @@ footer {
 </section>
 
 
-<!-- =========================================================
-     FLASH DEALS
-========================================================= -->
-
-<section
-  class="section flash-section"
-  id="deals"
->
+<section class="section flash-section" id="deals">
 
   <div class="flash-banner">
 
     <div>
-
-      <h2>
-        ⚡ Daily Flash Deals
-      </h2>
-
-      <p>
-        Limited-time offers. Limited stock.
-      </p>
-
+      <h2>⚡ Daily Flash Deals</h2>
+      <p>Limited-time offers. Limited stock.</p>
     </div>
 
     <div class="countdown">
 
       <div class="time-box">
-
-        <strong id="hours">
-          08
-        </strong>
-
-        <span>
-          HOURS
-        </span>
-
+        <strong id="hours">08</strong>
+        <span>HOURS</span>
       </div>
 
-
       <div class="time-box">
-
-        <strong id="minutes">
-          45
-        </strong>
-
-        <span>
-          MIN
-        </span>
-
+        <strong id="minutes">45</strong>
+        <span>MIN</span>
       </div>
 
-
       <div class="time-box">
-
-        <strong id="seconds">
-          22
-        </strong>
-
-        <span>
-          SEC
-        </span>
-
+        <strong id="seconds">22</strong>
+        <span>SEC</span>
       </div>
 
     </div>
 
   </div>
-
 
   <div class="carousel-window">
 
@@ -1782,10 +1533,6 @@ footer {
 
 </section>
 
-
-<!-- =========================================================
-     TRENDING
-========================================================= -->
 
 <section class="section">
 
@@ -1801,7 +1548,6 @@ footer {
 
   </div>
 
-
   <div class="carousel-window">
 
     <div
@@ -1815,14 +1561,7 @@ footer {
 </section>
 
 
-<!-- =========================================================
-     BEST SELLERS
-========================================================= -->
-
-<section
-  class="section green-section"
-  id="bestsellers"
->
+<section class="section green-section" id="bestsellers">
 
   <div class="section-header">
 
@@ -1835,7 +1574,6 @@ footer {
     </a>
 
   </div>
-
 
   <div class="carousel-window">
 
@@ -1850,14 +1588,7 @@ footer {
 </section>
 
 
-<!-- =========================================================
-     NEW ARRIVALS
-========================================================= -->
-
-<section
-  class="section"
-  id="new"
->
+<section class="section" id="new">
 
   <div class="section-header">
 
@@ -1870,7 +1601,6 @@ footer {
     </a>
 
   </div>
-
 
   <div class="carousel-window">
 
@@ -1885,14 +1615,7 @@ footer {
 </section>
 
 
-<!-- =========================================================
-     BRANDS
-========================================================= -->
-
-<section
-  class="section brands-section"
-  id="brands"
->
+<section class="section brands-section" id="brands">
 
   <div class="section-header">
 
@@ -1906,76 +1629,32 @@ footer {
 
   </div>
 
-
   <div class="brands-grid">
 
-    <a
-      href="brand-iherb.html"
-      class="brand-card"
-    >
-
-      <div class="brand-name green">
-        iHerb
-      </div>
-
+    <a href="brand-iherb.html" class="brand-card">
+      <div class="brand-name green">iHerb</div>
     </a>
 
-
-    <a
-      href="brand-myprotein.html"
-      class="brand-card"
-    >
-
-      <div class="brand-name">
-        MYPROTEIN
-      </div>
-
+    <a href="brand-myprotein.html" class="brand-card">
+      <div class="brand-name">MYPROTEIN</div>
     </a>
 
-
-    <a
-      href="brand-different-pharm.html"
-      class="brand-card"
-    >
-
-      <div class="brand-name green">
-        Different Pharm
-      </div>
-
+    <a href="brand-different-pharm.html" class="brand-card">
+      <div class="brand-name green">Different Pharm</div>
     </a>
 
-
-    <a
-      href="brand-lazar.html"
-      class="brand-card"
-    >
-
-      <div class="brand-name">
-        Lazar Nutrition
-      </div>
-
+    <a href="brand-lazar.html" class="brand-card">
+      <div class="brand-name">Lazar Nutrition</div>
     </a>
 
-
-    <a
-      href="#"
-      class="brand-card"
-    >
-
-      <div class="brand-name yellow">
-        SUPPLAB
-      </div>
-
+    <a href="#" class="brand-card">
+      <div class="brand-name yellow">SUPPLAB</div>
     </a>
 
   </div>
 
 </section>
 
-
-<!-- =========================================================
-     WELLNESS GOALS
-========================================================= -->
 
 <section class="section">
 
@@ -1987,120 +1666,52 @@ footer {
 
   </div>
 
-
   <div class="goal-grid">
 
     <a href="#" class="goal-card">
-
-      <div class="goal-icon">
-        💪
-      </div>
-
-      <h3>
-        Muscle & Fitness
-      </h3>
-
+      <div class="goal-icon">💪</div>
+      <h3>Muscle & Fitness</h3>
     </a>
 
-
     <a href="#" class="goal-card">
-
-      <div class="goal-icon">
-        🧠
-      </div>
-
-      <h3>
-        Brain & Focus
-      </h3>
-
+      <div class="goal-icon">🧠</div>
+      <h3>Brain & Focus</h3>
     </a>
 
-
     <a href="#" class="goal-card">
-
-      <div class="goal-icon">
-        ⚡
-      </div>
-
-      <h3>
-        Energy
-      </h3>
-
+      <div class="goal-icon">⚡</div>
+      <h3>Energy</h3>
     </a>
 
-
     <a href="#" class="goal-card">
-
-      <div class="goal-icon">
-        ❤️
-      </div>
-
-      <h3>
-        Heart Health
-      </h3>
-
+      <div class="goal-icon">❤️</div>
+      <h3>Heart Health</h3>
     </a>
 
-
     <a href="#" class="goal-card">
-
-      <div class="goal-icon">
-        🌿
-      </div>
-
-      <h3>
-        Natural Wellness
-      </h3>
-
+      <div class="goal-icon">🌿</div>
+      <h3>Natural Wellness</h3>
     </a>
 
-
     <a href="#" class="goal-card">
-
-      <div class="goal-icon">
-        😴
-      </div>
-
-      <h3>
-        Sleep Support
-      </h3>
-
+      <div class="goal-icon">😴</div>
+      <h3>Sleep Support</h3>
     </a>
 
-
     <a href="#" class="goal-card">
-
-      <div class="goal-icon">
-        ✨
-      </div>
-
-      <h3>
-        Skin & Beauty
-      </h3>
-
+      <div class="goal-icon">✨</div>
+      <h3>Skin & Beauty</h3>
     </a>
 
-
     <a href="#" class="goal-card">
-
-      <div class="goal-icon">
-        🛡️
-      </div>
-
-      <h3>
-        Immune Support
-      </h3>
-
+      <div class="goal-icon">🛡️</div>
+      <h3>Immune Support</h3>
     </a>
 
   </div>
 
 </section>
 
-
-<!-- =========================================================
-     EXPLORE SUPPLAB
-========================================================= -->
 
 <section class="section feature-green">
 
@@ -2116,7 +1727,6 @@ footer {
 
   </div>
 
-
   <div class="carousel-window">
 
     <div
@@ -2130,17 +1740,11 @@ footer {
 </section>
 
 
-<!-- =========================================================
-     SUPPLAB REWARDS
-========================================================= -->
-
 <section class="rewards">
 
   <div>
 
-    <h2>
-      🎁 Join SUPPLAB Rewards
-    </h2>
+    <h2>🎁 Join SUPPLAB Rewards</h2>
 
     <p>
       Earn points when you shop, discover exclusive offers
@@ -2149,57 +1753,33 @@ footer {
 
   </div>
 
-
-  <a
-    href="#"
-    class="rewards-button"
-  >
+  <a href="#" class="rewards-button">
     JOIN NOW →
   </a>
 
 </section>
 
 
-<!-- =========================================================
-     NEWSLETTER
-========================================================= -->
-
 <section class="newsletter">
 
-  <h2>
-    Stay Updated with SUPPLAB
-  </h2>
+  <h2>Stay Updated with SUPPLAB</h2>
 
-  <p>
-    Subscribe to our newsletter for exclusive deals and updates.
-  </p>
-
+  <p>Subscribe to our newsletter for exclusive deals and updates.</p>
 
   <form class="newsletter-form">
 
-    <input
-      type="email"
-      placeholder="Enter your email address"
-      required
-    >
+    <input type="email" placeholder="Enter your email address" required>
 
-    <button type="submit">
-      SUBSCRIBE
-    </button>
+    <button type="submit">SUBSCRIBE</button>
 
   </form>
 
 </section>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
 <footer>
 
   <div class="footer-grid">
-
 
     <div>
 
@@ -2214,123 +1794,58 @@ footer {
 
     </div>
 
-
     <div class="footer-column">
 
-      <h3>
-        SHOP
-      </h3>
+      <h3>SHOP</h3>
 
-      <a href="#">
-        Supplements
-      </a>
-
-      <a href="#">
-        Sports Nutrition
-      </a>
-
-      <a href="#">
-        Beauty
-      </a>
-
-      <a href="#">
-        Personal Care
-      </a>
-
-      <a href="#">
-        Grocery
-      </a>
+      <a href="#">Supplements</a>
+      <a href="#">Sports Nutrition</a>
+      <a href="#">Beauty</a>
+      <a href="#">Personal Care</a>
+      <a href="#">Grocery</a>
 
     </div>
 
-
     <div class="footer-column">
 
-      <h3>
-        CUSTOMER CARE
-      </h3>
+      <h3>CUSTOMER CARE</h3>
 
-      <a href="#">
-        Contact Us
-      </a>
-
-      <a href="#">
-        Shipping Policy
-      </a>
-
-      <a href="#">
-        Returns & Exchanges
-      </a>
-
-      <a href="#">
-        FAQs
-      </a>
+      <a href="#">Contact Us</a>
+      <a href="#">Shipping Policy</a>
+      <a href="#">Returns & Exchanges</a>
+      <a href="#">FAQs</a>
 
     </div>
 
-
     <div class="footer-column">
 
-      <h3>
-        ABOUT
-      </h3>
+      <h3>ABOUT</h3>
 
-      <a href="#">
-        About SUPPLAB
-      </a>
-
-      <a href="#">
-        Careers
-      </a>
-
-      <a href="#">
-        Privacy Policy
-      </a>
-
-      <a href="#">
-        Terms of Service
-      </a>
+      <a href="#">About SUPPLAB</a>
+      <a href="#">Careers</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
 
     </div>
 
-
     <div class="footer-column">
 
-      <h3>
-        CONNECT
-      </h3>
+      <h3>CONNECT</h3>
 
-      <a href="#">
-        Instagram
-      </a>
-
-      <a href="#">
-        Facebook
-      </a>
-
-      <a href="#">
-        Twitter
-      </a>
-
-      <a href="#">
-        YouTube
-      </a>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">YouTube</a>
 
     </div>
 
   </div>
 
-
   <div class="footer-bottom">
 
-    <p>
-      &copy; 2026 SUPPLAB Marketplace.
-      All rights reserved.
-    </p>
+    <p>&copy; 2026 SUPPLAB Marketplace. All rights reserved.</p>
 
-    <p>
-      Designed for wellness.
-    </p>
+    <p>Designed for wellness.</p>
 
   </div>
 
