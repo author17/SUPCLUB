@@ -9,7 +9,7 @@
 <style>
 /* =========================================================
    SUPPLAB MARKETPLACE
-   Updated Palette: Modern Ocean / Deep Blue + Cyan + Gold
+   Green + Black + White + Yellow
 ========================================================= */
 
 * {
@@ -19,25 +19,24 @@
 }
 
 :root {
-  /* Updated Color Palette */
-  --green: #0d5c75;         /* Primary Brand Color (Deep Ocean) */
-  --green-dark: #083c4d;    /* Dark Variant */
-  --green-light: #e6f4f8;   /* Light Tint */
-  --green-soft: #f0f9fc;    /* Soft Background Tint */
+  --green: #087f45;
+  --green-dark: #045b31;
+  --green-light: #e9f7ef;
+  --green-soft: #f3fbf6;
 
-  --yellow: #00d2d3;       /* Secondary Accent Color (Electric Cyan) */
-  --yellow-light: #e0fdfd;  /* Light Accent Tint */
+  --yellow: #ffd400;
+  --yellow-light: #fff7bf;
 
-  --black: #0f172a;         /* Charcoal Black */
-  --dark: #1e293b;          /* Dark Surface */
-  --text: #334155;          /* Body Text */
-  --muted: #64748b;         /* Muted Text */
+  --black: #111111;
+  --dark: #202020;
+  --text: #252525;
+  --muted: #6b6b6b;
 
   --white: #ffffff;
-  --gray: #f8fafc;
-  --border: #cbd5e1;
+  --gray: #f6f6f6;
+  --border: #dedede;
 
-  --red: #ef4444;           /* Alert / Sale Accent */
+  --red: #d92323;
 
   --shadow: 0 5px 20px rgba(0,0,0,.08);
 }
@@ -101,6 +100,10 @@ button {
   border-bottom: 1px solid var(--border);
 }
 
+/* Temporary text logo.
+   Replace .logo contents with your actual SUPPLAB logo image
+   when the logo asset is connected to the project. */
+
 .logo {
   min-width: 180px;
   font-size: 31px;
@@ -141,7 +144,7 @@ button {
 }
 
 .search-box input:focus {
-  box-shadow: 0 0 0 3px rgba(13,92,117,.12);
+  box-shadow: 0 0 0 3px rgba(8,127,69,.12);
 }
 
 .search-button {
@@ -243,7 +246,6 @@ button {
 
 .nav-link.sale {
   background: var(--yellow);
-  color: var(--black);
   padding: 7px 12px;
   border-radius: 3px;
 }
@@ -261,9 +263,9 @@ button {
   background:
     linear-gradient(
       90deg,
-      rgba(8,60,77,.97) 0%,
-      rgba(13,92,117,.88) 45%,
-      rgba(13,92,117,.25) 100%
+      rgba(0,70,38,.97) 0%,
+      rgba(0,110,60,.88) 45%,
+      rgba(0,110,60,.25) 100%
     ),
     url("https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=1800&q=85")
     center/cover;
@@ -321,7 +323,7 @@ button {
 }
 
 .btn-primary:hover {
-  background: #33e0e1;
+  background: #ffe34d;
 }
 
 .btn-secondary {
@@ -575,7 +577,7 @@ button {
 }
 
 .stars {
-  color: #f59e0b;
+  color: #f3b600;
   letter-spacing: 1px;
   font-size: 13px;
 }
@@ -632,7 +634,7 @@ button {
   min-height: 150px;
   padding: 18px;
   background: var(--green-soft);
-  border: 1px solid #cce5ed;
+  border: 1px solid #d7ecdf;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -679,7 +681,7 @@ button {
 ========================================================= */
 
 .flash-section {
-  background: #eafafb;
+  background: #fffbea;
 }
 
 .flash-banner {
@@ -841,7 +843,7 @@ button {
 
 .rewards p {
   line-height: 1.5;
-  color: #e0f2fe;
+  color: #e8f7ee;
 }
 
 .rewards-button {
@@ -861,8 +863,8 @@ button {
   background: var(--green-soft);
   padding: 55px 4%;
   text-align: center;
-  border-top: 1px solid #cce5ed;
-  border-bottom: 1px solid #cce5ed;
+  border-top: 1px solid #dceee3;
+  border-bottom: 1px solid #dceee3;
 }
 
 .newsletter h2 {
@@ -1230,6 +1232,10 @@ footer {
 
 <body>
 
+<!-- =========================================================
+     TOP PROMOTION
+========================================================= -->
+
 <div class="promo-bar">
   🚚 FREE SHIPPING ON ORDERS OVER €50
   &nbsp; | &nbsp;
@@ -1237,10 +1243,14 @@ footer {
 </div>
 
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
 <header class="header">
 
   <a href="#" class="logo">
-    SUP<span>LAB</span><i class="logo-mark"></i>
+    SUPP<span>LAB</span><i class="logo-mark"></i>
   </a>
 
   <div class="search-box">
@@ -1281,8 +1291,16 @@ footer {
 </header>
 
 
+<!-- =========================================================
+     SEARCH RESULTS
+========================================================= -->
+
 <div class="search-results" id="searchResults"></div>
 
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
 <nav class="navigation">
 
@@ -1307,12 +1325,16 @@ footer {
 </nav>
 
 
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <section class="hero">
 
   <div class="hero-content">
 
     <div class="hero-label">
-      SUPLAB WELLNESS MARKETPLACE
+      SUPPLAB WELLNESS MARKETPLACE
     </div>
 
     <h1>
@@ -1343,6 +1365,10 @@ footer {
 </section>
 
 
+<!-- =========================================================
+     BENEFITS
+========================================================= -->
+
 <section class="benefits">
 
   <div class="benefit">
@@ -1372,13 +1398,17 @@ footer {
   <div class="benefit">
     <div class="benefit-icon">🎁</div>
     <div>
-      <strong>SUPLAB Rewards</strong>
+      <strong>SUPPLAB Rewards</strong>
       <span>Earn while you shop</span>
     </div>
   </div>
 
 </section>
 
+
+<!-- =========================================================
+     POPULAR
+========================================================= -->
 
 <section class="section" id="popular">
 
@@ -1412,6 +1442,10 @@ footer {
 
 </section>
 
+
+<!-- =========================================================
+     SHOP BY CATEGORY
+========================================================= -->
 
 <section class="section green-section" id="supplements">
 
@@ -1464,6 +1498,10 @@ footer {
 </section>
 
 
+<!-- =========================================================
+     FEATURED
+========================================================= -->
+
 <section class="section feature-green">
 
   <div class="section-header">
@@ -1490,6 +1528,10 @@ footer {
 
 </section>
 
+
+<!-- =========================================================
+     FLASH DEALS
+========================================================= -->
 
 <section class="section flash-section" id="deals">
 
@@ -1534,6 +1576,10 @@ footer {
 </section>
 
 
+<!-- =========================================================
+     TRENDING
+========================================================= -->
+
 <section class="section">
 
   <div class="section-header">
@@ -1560,6 +1606,10 @@ footer {
 
 </section>
 
+
+<!-- =========================================================
+     BEST SELLERS
+========================================================= -->
 
 <section class="section green-section" id="bestsellers">
 
@@ -1588,6 +1638,10 @@ footer {
 </section>
 
 
+<!-- =========================================================
+     NEW ARRIVALS
+========================================================= -->
+
 <section class="section" id="new">
 
   <div class="section-header">
@@ -1614,6 +1668,10 @@ footer {
 
 </section>
 
+
+<!-- =========================================================
+     BRANDS
+========================================================= -->
 
 <section class="section brands-section" id="brands">
 
@@ -1648,13 +1706,17 @@ footer {
     </a>
 
     <a href="#" class="brand-card">
-      <div class="brand-name yellow">SUPLAB</div>
+      <div class="brand-name yellow">SUPPLAB</div>
     </a>
 
   </div>
 
 </section>
 
+
+<!-- =========================================================
+     WELLNESS GOALS
+========================================================= -->
 
 <section class="section">
 
@@ -1713,12 +1775,16 @@ footer {
 </section>
 
 
+<!-- =========================================================
+     ALL PRODUCT ROLL
+========================================================= -->
+
 <section class="section feature-green">
 
   <div class="section-header">
 
     <h2 class="section-title">
-      🛍️ Explore <span>SUPLAB</span>
+      🛍️ Explore <span>SUPPLAB</span>
     </h2>
 
     <a href="#" class="view-all">
@@ -1740,15 +1806,19 @@ footer {
 </section>
 
 
+<!-- =========================================================
+     REWARDS
+========================================================= -->
+
 <section class="rewards">
 
   <div>
 
-    <h2>🎁 Join SUPLAB Rewards</h2>
+    <h2>🎁 Join SUPPLAB Rewards</h2>
 
     <p>
       Earn points when you shop, discover exclusive offers
-      and unlock special SUPLAB member rewards.
+      and unlock special SUPPLAB member rewards.
     </p>
 
   </div>
@@ -1758,98 +1828,3 @@ footer {
   </a>
 
 </section>
-
-
-<section class="newsletter">
-
-  <h2>Stay Updated with SUPLAB</h2>
-
-  <p>Subscribe to our newsletter for exclusive deals and updates.</p>
-
-  <form class="newsletter-form">
-
-    <input type="email" placeholder="Enter your email address" required>
-
-    <button type="submit">SUBSCRIBE</button>
-
-  </form>
-
-</section>
-
-
-<footer>
-
-  <div class="footer-grid">
-
-    <div>
-
-      <div class="footer-logo">
-        SUP<span>LAB</span>
-      </div>
-
-      <p class="footer-description">
-        Your ultimate marketplace for supplements, sports nutrition,
-        beauty, personal care, and wellness products.
-      </p>
-
-    </div>
-
-    <div class="footer-column">
-
-      <h3>SHOP</h3>
-
-      <a href="#">Supplements</a>
-      <a href="#">Sports Nutrition</a>
-      <a href="#">Beauty</a>
-      <a href="#">Personal Care</a>
-      <a href="#">Grocery</a>
-
-    </div>
-
-    <div class="footer-column">
-
-      <h3>CUSTOMER CARE</h3>
-
-      <a href="#">Contact Us</a>
-      <a href="#">Shipping Policy</a>
-      <a href="#">Returns & Exchanges</a>
-      <a href="#">FAQs</a>
-
-    </div>
-
-    <div class="footer-column">
-
-      <h3>ABOUT</h3>
-
-      <a href="#">About SUPPLAB</a>
-      <a href="#">Careers</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-
-    </div>
-
-    <div class="footer-column">
-
-      <h3>CONNECT</h3>
-
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">Twitter</a>
-      <a href="#">YouTube</a>
-
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-
-    <p>&copy; 2026 SUPPLAB Marketplace. All rights reserved.</p>
-
-    <p>Designed for wellness.</p>
-
-  </div>
-
-</footer>
-
-</body>
-</html>
