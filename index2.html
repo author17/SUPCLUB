@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,8 @@
 <style>
 /* =========================================================
    SUPPLAB MARKETPLACE
-   Updated Palette: Modern Ocean / Deep Blue + Cyan + Gold
+   Unified Single-File Version
+   Manual Carousels
 ========================================================= */
 
 * {
@@ -19,25 +21,24 @@
 }
 
 :root {
-  /* Updated Color Palette */
-  --green: #0d5c75;         /* Primary Brand Color (Deep Ocean) */
-  --green-dark: #083c4d;    /* Dark Variant */
-  --green-light: #e6f4f8;   /* Light Tint */
-  --green-soft: #f0f9fc;    /* Soft Background Tint */
+  --green: #0d5c75;
+  --green-dark: #083c4d;
+  --green-light: #e6f4f8;
+  --green-soft: #f0f9fc;
 
-  --yellow: #00d2d3;       /* Secondary Accent Color (Electric Cyan) */
-  --yellow-light: #e0fdfd;  /* Light Accent Tint */
+  --yellow: #00d2d3;
+  --yellow-light: #e0fdfd;
 
-  --black: #0f172a;         /* Charcoal Black */
-  --dark: #1e293b;          /* Dark Surface */
-  --text: #334155;          /* Body Text */
-  --muted: #64748b;         /* Muted Text */
+  --black: #0f172a;
+  --dark: #1e293b;
+  --text: #334155;
+  --muted: #64748b;
 
   --white: #ffffff;
   --gray: #f8fafc;
   --border: #cbd5e1;
 
-  --red: #ef4444;           /* Alert / Sale Accent */
+  --red: #ef4444;
 
   --shadow: 0 5px 20px rgba(0,0,0,.08);
 }
@@ -50,6 +51,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--text);
   background: var(--white);
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 a {
@@ -67,7 +72,7 @@ button {
 }
 
 /* =========================================================
-   TOP PROMO
+   PROMO BAR
 ========================================================= */
 
 .promo-bar {
@@ -122,7 +127,9 @@ button {
   transform: rotate(45deg);
 }
 
-/* SEARCH */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 .search-box {
   flex: 1;
@@ -156,7 +163,9 @@ button {
   font-size: 19px;
 }
 
-/* HEADER ACTIONS */
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
 
 .header-actions {
   display: flex;
@@ -171,6 +180,7 @@ button {
   color: var(--black);
   font-size: 12px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .header-action-icon {
@@ -308,16 +318,20 @@ button {
   flex-wrap: wrap;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 46px;
   padding: 0 27px;
-  background: var(--yellow);
-  color: var(--black);
   font-weight: 900;
   border-radius: 3px;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--black);
 }
 
 .btn-primary:hover {
@@ -325,19 +339,12 @@ button {
 }
 
 .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 27px;
   background: white;
   color: var(--green-dark);
-  font-weight: 900;
-  border-radius: 3px;
 }
 
 /* =========================================================
-   QUICK BENEFITS
+   BENEFITS
 ========================================================= */
 
 .benefits {
@@ -376,7 +383,7 @@ button {
 }
 
 /* =========================================================
-   GENERAL SECTIONS
+   SECTIONS
 ========================================================= */
 
 .section {
@@ -416,7 +423,7 @@ button {
 }
 
 /* =========================================================
-   PRODUCT CAROUSEL
+   MANUAL CAROUSELS
 ========================================================= */
 
 .carousel-container {
@@ -426,53 +433,55 @@ button {
 .carousel-window {
   overflow: hidden;
   width: 100%;
+  scroll-behavior: smooth;
 }
 
 .product-track {
   display: flex;
   gap: 16px;
   width: max-content;
+  transform: translateX(0);
+  transition: transform .35s ease;
 }
 
-/* Auto rolling carousels */
-
+/* IMPORTANT:
+   No automatic animation.
+*/
 .auto-scroll {
-  animation: productRoll 55s linear infinite;
+  animation: none !important;
 }
 
-.carousel-window:hover .auto-scroll {
-  animation-play-state: paused;
-}
-
-@keyframes productRoll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* Manual controls */
+/* =========================================================
+   CAROUSEL CONTROLS
+========================================================= */
 
 .carousel-controls {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 
 .carousel-control {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--border);
   background: white;
-  font-size: 17px;
+  color: var(--black);
+  font-size: 22px;
+  font-weight: 700;
   border-radius: 3px;
+  transition: .2s ease;
 }
 
-.carousel-control:hover {
+.carousel-control:hover:not(:disabled) {
   background: var(--green);
   color: white;
+  border-color: var(--green);
+}
+
+.carousel-control:disabled {
+  opacity: .35;
+  cursor: not-allowed;
 }
 
 /* =========================================================
@@ -610,6 +619,7 @@ button {
   margin-top: 12px;
   background: var(--green);
   color: white;
+  border: 0;
   border-radius: 3px;
   font-weight: 800;
 }
@@ -658,7 +668,7 @@ button {
 }
 
 /* =========================================================
-   GREEN FEATURE SECTION
+   FEATURE GREEN
 ========================================================= */
 
 .feature-green {
@@ -668,6 +678,10 @@ button {
 
 .feature-green .section-title {
   color: white;
+}
+
+.feature-green .section-title span {
+  color: var(--yellow);
 }
 
 .feature-green .view-all {
@@ -731,7 +745,7 @@ button {
 }
 
 /* =========================================================
-   BRAND SECTION
+   BRANDS
 ========================================================= */
 
 .brands-section {
@@ -892,6 +906,7 @@ button {
 
 .newsletter-form button {
   min-width: 125px;
+  border: 0;
   background: var(--black);
   color: white;
   font-weight: 900;
@@ -996,6 +1011,7 @@ footer {
   width: 55px;
   height: 55px;
   object-fit: cover;
+  border-radius: 4px;
 }
 
 .search-result-item strong {
@@ -1150,7 +1166,7 @@ footer {
   }
 
   .goal-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .flash-banner {
@@ -1169,8 +1185,13 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
-  .footer-bottom {
+  .section-header {
+    align-items: flex-start;
     flex-direction: column;
+  }
+
+  .section-header .carousel-controls {
+    width: 100%;
   }
 }
 
@@ -1224,11 +1245,24 @@ footer {
     border-radius: 3px;
     width: 100%;
   }
+
+  .carousel-controls {
+    width: 100%;
+  }
+
+  .carousel-control {
+    width: 38px;
+    height: 38px;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<!-- =========================================================
+     PROMO
+========================================================= -->
 
 <div class="promo-bar">
   🚚 FREE SHIPPING ON ORDERS OVER €50
@@ -1236,6 +1270,9 @@ footer {
   <span class="promo-highlight">EXTRA 10% OFF YOUR FIRST ORDER</span>
 </div>
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header class="header">
 
@@ -1260,17 +1297,17 @@ footer {
 
   <div class="header-actions">
 
-    <a href="#" class="header-action">
+    <a href="#account" class="header-action">
       <span class="header-action-icon">👤</span>
       <span>Account</span>
     </a>
 
-    <a href="#" class="header-action">
+    <a href="#wishlist" class="header-action">
       <span class="header-action-icon">♡</span>
       <span>Wishlist</span>
     </a>
 
-    <a href="#" class="header-action">
+    <a href="#cart" class="header-action">
       <span class="header-action-icon">🛒</span>
       <span>Cart</span>
       <span class="cart-count" id="cartCount">0</span>
@@ -1280,9 +1317,13 @@ footer {
 
 </header>
 
+<!-- SEARCH RESULTS -->
 
 <div class="search-results" id="searchResults"></div>
 
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
 <nav class="navigation">
 
@@ -1293,9 +1334,9 @@ footer {
     <a class="nav-link" href="#personal-care">Bath & Personal Care</a>
     <a class="nav-link" href="#beauty">Beauty</a>
     <a class="nav-link" href="#grocery">Grocery</a>
-    <a class="nav-link" href="#">Home</a>
-    <a class="nav-link" href="#">Baby & Kids</a>
-    <a class="nav-link" href="#">Pets</a>
+    <a class="nav-link" href="#home">Home</a>
+    <a class="nav-link" href="#baby">Baby & Kids</a>
+    <a class="nav-link" href="#pets">Pets</a>
     <a class="nav-link" href="#brands">Brands A-Z</a>
     <a class="nav-link deals" href="#deals">Deals</a>
     <a class="nav-link" href="#bestsellers">Best Sellers</a>
@@ -1306,6 +1347,9 @@ footer {
 
 </nav>
 
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
 
@@ -1342,6 +1386,9 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     BENEFITS
+========================================================= -->
 
 <section class="benefits">
 
@@ -1379,6 +1426,9 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     1. POPULAR — TOP CAROUSEL
+========================================================= -->
 
 <section class="section" id="popular">
 
@@ -1389,9 +1439,27 @@ footer {
     </h2>
 
     <div class="carousel-controls">
-      <button class="carousel-control" onclick="moveCarousel('popularTrack', -1)">‹</button>
-      <button class="carousel-control" onclick="moveCarousel('popularTrack', 1)">›</button>
-      <a href="#" class="view-all">View All →</a>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('popularTrack', -1)"
+        aria-label="Previous popular products"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('popularTrack', 1)"
+        aria-label="Next popular products"
+      >
+        ›
+      </button>
+
+      <a href="#popular" class="view-all">
+        View All →
+      </a>
+
     </div>
 
   </div>
@@ -1401,9 +1469,8 @@ footer {
     <div class="carousel-window">
 
       <div
-        class="product-track auto-scroll"
+        class="product-track"
         id="popularTrack"
-        data-source="popular"
       ></div>
 
     </div>
@@ -1412,6 +1479,9 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     CATEGORIES
+========================================================= -->
 
 <section class="section green-section" id="supplements">
 
@@ -1421,7 +1491,7 @@ footer {
       Shop by <span>Category</span>
     </h2>
 
-    <a href="#" class="view-all">
+    <a href="#supplements" class="view-all">
       View All →
     </a>
 
@@ -1429,32 +1499,32 @@ footer {
 
   <div class="category-grid">
 
-    <a href="#" class="category-card">
+    <a href="#supplements" class="category-card">
       <div class="category-icon">💊</div>
       <h3>Vitamins & Supplements</h3>
     </a>
 
-    <a href="#" class="category-card" id="sports">
+    <a href="#sports" class="category-card" id="sports">
       <div class="category-icon">🏋️</div>
       <h3>Sports Nutrition</h3>
     </a>
 
-    <a href="#" class="category-card" id="beauty">
+    <a href="#beauty" class="category-card" id="beauty">
       <div class="category-icon">✨</div>
       <h3>Beauty</h3>
     </a>
 
-    <a href="#" class="category-card" id="personal-care">
+    <a href="#personal-care" class="category-card" id="personal-care">
       <div class="category-icon">🧴</div>
       <h3>Personal Care</h3>
     </a>
 
-    <a href="#" class="category-card" id="grocery">
+    <a href="#grocery" class="category-card" id="grocery">
       <div class="category-icon">🥑</div>
       <h3>Healthy Grocery</h3>
     </a>
 
-    <a href="#" class="category-card">
+    <a href="#pets" class="category-card" id="pets">
       <div class="category-icon">🐶</div>
       <h3>Pet Wellness</h3>
     </a>
@@ -1463,6 +1533,9 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     2. FEATURED CAROUSEL
+========================================================= -->
 
 <section class="section feature-green">
 
@@ -1472,24 +1545,46 @@ footer {
       Featured & Recommended
     </h2>
 
-    <a href="#" class="view-all">
-      View All →
-    </a>
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('featuredTrack', -1)"
+        aria-label="Previous featured products"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('featuredTrack', 1)"
+        aria-label="Next featured products"
+      >
+        ›
+      </button>
+
+      <a href="#" class="view-all">
+        View All →
+      </a>
+
+    </div>
 
   </div>
 
   <div class="carousel-window">
 
     <div
-      class="product-track auto-scroll"
+      class="product-track"
       id="featuredTrack"
-      data-source="featured"
     ></div>
 
   </div>
 
 </section>
 
+<!-- =========================================================
+     3. FLASH DEALS CAROUSEL
+========================================================= -->
 
 <section class="section flash-section" id="deals">
 
@@ -1521,18 +1616,48 @@ footer {
 
   </div>
 
+  <div class="section-header">
+
+    <h2 class="section-title">
+      Today's <span>Deals</span>
+    </h2>
+
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('flashTrack', -1)"
+        aria-label="Previous flash deals"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('flashTrack', 1)"
+        aria-label="Next flash deals"
+      >
+        ›
+      </button>
+
+    </div>
+
+  </div>
+
   <div class="carousel-window">
 
     <div
-      class="product-track auto-scroll"
+      class="product-track"
       id="flashTrack"
-      data-source="flash"
     ></div>
 
   </div>
 
 </section>
 
+<!-- =========================================================
+     TRENDING
+========================================================= -->
 
 <section class="section">
 
@@ -1542,24 +1667,44 @@ footer {
       🔥 Trending <span>Products</span>
     </h2>
 
-    <a href="#" class="view-all">
-      Explore Trending →
-    </a>
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('trendingTrack', -1)"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('trendingTrack', 1)"
+      >
+        ›
+      </button>
+
+      <a href="#" class="view-all">
+        Explore Trending →
+      </a>
+
+    </div>
 
   </div>
 
   <div class="carousel-window">
 
     <div
-      class="product-track auto-scroll"
+      class="product-track"
       id="trendingTrack"
-      data-source="trending"
     ></div>
 
   </div>
 
 </section>
 
+<!-- =========================================================
+     BEST SELLERS
+========================================================= -->
 
 <section class="section green-section" id="bestsellers">
 
@@ -1569,24 +1714,44 @@ footer {
       🏆 Best <span>Sellers</span>
     </h2>
 
-    <a href="#" class="view-all">
-      Shop Best Sellers →
-    </a>
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('bestSellerTrack', -1)"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('bestSellerTrack', 1)"
+      >
+        ›
+      </button>
+
+      <a href="#" class="view-all">
+        Shop Best Sellers →
+      </a>
+
+    </div>
 
   </div>
 
   <div class="carousel-window">
 
     <div
-      class="product-track auto-scroll"
+      class="product-track"
       id="bestSellerTrack"
-      data-source="bestseller"
     ></div>
 
   </div>
 
 </section>
 
+<!-- =========================================================
+     NEW ARRIVALS
+========================================================= -->
 
 <section class="section" id="new">
 
@@ -1596,24 +1761,44 @@ footer {
       ✨ New <span>Arrivals</span>
     </h2>
 
-    <a href="#" class="view-all">
-      View All →
-    </a>
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('newTrack', -1)"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('newTrack', 1)"
+      >
+        ›
+      </button>
+
+      <a href="#new" class="view-all">
+        View All →
+      </a>
+
+    </div>
 
   </div>
 
   <div class="carousel-window">
 
     <div
-      class="product-track auto-scroll"
+      class="product-track"
       id="newTrack"
-      data-source="new"
     ></div>
 
   </div>
 
 </section>
 
+<!-- =========================================================
+     BRANDS
+========================================================= -->
 
 <section class="section brands-section" id="brands">
 
@@ -1623,7 +1808,7 @@ footer {
       ⭐ Shop by <span>Brand</span>
     </h2>
 
-    <a href="#" class="view-all">
+    <a href="#brands" class="view-all">
       Brands A-Z →
     </a>
 
@@ -1631,19 +1816,19 @@ footer {
 
   <div class="brands-grid">
 
-    <a href="brand-iherb.html" class="brand-card">
-      <div class="brand-name green">iHerb</div>
+    <a href="#" class="brand-card">
+      <div class="brand-name green">SUPPLAB</div>
     </a>
 
-    <a href="brand-myprotein.html" class="brand-card">
+    <a href="#" class="brand-card">
       <div class="brand-name">MYPROTEIN</div>
     </a>
 
-    <a href="brand-different-pharm.html" class="brand-card">
+    <a href="#" class="brand-card">
       <div class="brand-name green">Different Pharm</div>
     </a>
 
-    <a href="brand-lazar.html" class="brand-card">
+    <a href="#" class="brand-card">
       <div class="brand-name">Lazar Nutrition</div>
     </a>
 
@@ -1655,6 +1840,9 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     WELLNESS GOALS
+========================================================= -->
 
 <section class="section">
 
@@ -1712,6 +1900,9 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     ALL PRODUCTS
+========================================================= -->
 
 <section class="section feature-green">
 
@@ -1721,24 +1912,44 @@ footer {
       🛍️ Explore <span>SUPLAB</span>
     </h2>
 
-    <a href="#" class="view-all">
-      Shop Everything →
-    </a>
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('allProductsTrack', -1)"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('allProductsTrack', 1)"
+      >
+        ›
+      </button>
+
+      <a href="#" class="view-all">
+        Shop Everything →
+      </a>
+
+    </div>
 
   </div>
 
   <div class="carousel-window">
 
     <div
-      class="product-track auto-scroll"
+      class="product-track"
       id="allProductsTrack"
-      data-source="all"
     ></div>
 
   </div>
 
 </section>
 
+<!-- =========================================================
+     REWARDS
+========================================================= -->
 
 <section class="rewards">
 
@@ -1759,23 +1970,38 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     NEWSLETTER
+========================================================= -->
 
 <section class="newsletter">
 
   <h2>Stay Updated with SUPLAB</h2>
 
-  <p>Subscribe to our newsletter for exclusive deals and updates.</p>
+  <p>
+    Subscribe to our newsletter for exclusive deals and updates.
+  </p>
 
-  <form class="newsletter-form">
+  <form class="newsletter-form" id="newsletterForm">
 
-    <input type="email" placeholder="Enter your email address" required>
+    <input
+      id="emailInput"
+      type="email"
+      placeholder="Enter your email address"
+      required
+    >
 
-    <button type="submit">SUBSCRIBE</button>
+    <button type="submit">
+      SUBSCRIBE
+    </button>
 
   </form>
 
 </section>
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
@@ -1798,11 +2024,11 @@ footer {
 
       <h3>SHOP</h3>
 
-      <a href="#">Supplements</a>
-      <a href="#">Sports Nutrition</a>
-      <a href="#">Beauty</a>
-      <a href="#">Personal Care</a>
-      <a href="#">Grocery</a>
+      <a href="#supplements">Supplements</a>
+      <a href="#sports">Sports Nutrition</a>
+      <a href="#beauty">Beauty</a>
+      <a href="#personal-care">Personal Care</a>
+      <a href="#grocery">Grocery</a>
 
     </div>
 
@@ -1821,7 +2047,7 @@ footer {
 
       <h3>ABOUT</h3>
 
-      <a href="#">About SUPPLAB</a>
+      <a href="#">About SUPLAB</a>
       <a href="#">Careers</a>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Service</a>
@@ -1843,13 +2069,987 @@ footer {
 
   <div class="footer-bottom">
 
-    <p>&copy; 2026 SUPPLAB Marketplace. All rights reserved.</p>
+    <p>
+      &copy; 2026 SUPPLAB Marketplace. All rights reserved.
+    </p>
 
-    <p>Designed for wellness.</p>
+    <p>
+      Designed for wellness.
+    </p>
 
   </div>
 
 </footer>
 
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div class="toast" id="toast"></div>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   SUPPLAB PRODUCT DATABASE
+========================================================= */
+
+const products = [
+
+  {
+    id: 1,
+    brand: "SUPPLAB",
+    name: "Premium Daily Multivitamin",
+    price: 24.99,
+    oldPrice: 29.99,
+    rating: 5,
+    reviews: 128,
+    badge: "BEST SELLER",
+    image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 2,
+    brand: "SUPPLAB",
+    name: "Omega 3 Fish Oil 1000mg",
+    price: 18.99,
+    oldPrice: 23.99,
+    rating: 5,
+    reviews: 94,
+    badge: "POPULAR",
+    image: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 3,
+    brand: "MYPROTEIN",
+    name: "Impact Whey Protein",
+    price: 39.99,
+    oldPrice: 49.99,
+    rating: 5,
+    reviews: 312,
+    badge: "SALE",
+    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 4,
+    brand: "SUPPLAB",
+    name: "Magnesium Complex",
+    price: 16.99,
+    oldPrice: 21.99,
+    rating: 4,
+    reviews: 87,
+    badge: "NEW",
+    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 5,
+    brand: "Different Pharm",
+    name: "Creatine Monohydrate",
+    price: 22.99,
+    oldPrice: 27.99,
+    rating: 5,
+    reviews: 201,
+    badge: "BEST SELLER",
+    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 6,
+    brand: "Lazar Nutrition",
+    name: "Pre Workout Energy",
+    price: 27.99,
+    oldPrice: 34.99,
+    rating: 5,
+    reviews: 155,
+    badge: "HOT",
+    image: "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 7,
+    brand: "SUPPLAB",
+    name: "Vitamin D3 + K2",
+    price: 14.99,
+    oldPrice: 18.99,
+    rating: 5,
+    reviews: 143,
+    badge: "POPULAR",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 8,
+    brand: "SUPPLAB",
+    name: "Collagen Beauty Formula",
+    price: 29.99,
+    oldPrice: 36.99,
+    rating: 4,
+    reviews: 76,
+    badge: "NEW",
+    image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 9,
+    brand: "MYPROTEIN",
+    name: "Clear Whey Isolate",
+    price: 34.99,
+    oldPrice: 44.99,
+    rating: 5,
+    reviews: 189,
+    badge: "SALE",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 10,
+    brand: "SUPPLAB",
+    name: "Zinc + Vitamin C",
+    price: 12.99,
+    oldPrice: 16.99,
+    rating: 5,
+    reviews: 112,
+    badge: "DEAL",
+    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 11,
+    brand: "Different Pharm",
+    name: "Electrolyte Hydration",
+    price: 19.99,
+    oldPrice: 24.99,
+    rating: 4,
+    reviews: 65,
+    badge: "POPULAR",
+    image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 12,
+    brand: "SUPPLAB",
+    name: "Ashwagandha Balance",
+    price: 21.99,
+    oldPrice: 26.99,
+    rating: 5,
+    reviews: 98,
+    badge: "TRENDING",
+    image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=700&q=80"
+  }
+
+];
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+let cart = JSON.parse(
+  localStorage.getItem("supplabCart") || "[]"
+);
+
+function updateCartCount() {
+
+  const count = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  document.getElementById("cartCount").textContent = count;
+
+  localStorage.setItem(
+    "supplabCart",
+    JSON.stringify(cart)
+  );
+}
+
+
+/* =========================================================
+   ADD TO CART
+========================================================= */
+
+function addToCart(productId) {
+
+  const product = products.find(
+    item => item.id === productId
+  );
+
+  if (!product) return;
+
+  const existing = cart.find(
+    item => item.id === productId
+  );
+
+  if (existing) {
+
+    existing.quantity++;
+
+  } else {
+
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1
+    });
+
+  }
+
+  updateCartCount();
+
+  showToast(
+    product.name + " added to cart"
+  );
+}
+
+
+/* =========================================================
+   WISHLIST
+========================================================= */
+
+function toggleWishlist(button) {
+
+  button.classList.toggle("active");
+
+  if (button.classList.contains("active")) {
+
+    button.textContent = "♥";
+
+    showToast("Added to wishlist");
+
+  } else {
+
+    button.textContent = "♡";
+
+    showToast("Removed from wishlist");
+
+  }
+}
+
+
+/* =========================================================
+   CREATE PRODUCT CARD
+========================================================= */
+
+function createProductCard(product) {
+
+  const article =
+    document.createElement("article");
+
+  article.className = "product-card";
+
+  const stars =
+    "★".repeat(product.rating) +
+    "☆".repeat(5 - product.rating);
+
+  article.innerHTML = `
+
+    <div class="product-image">
+
+      ${
+        product.badge
+        ?
+        `<span class="product-badge ${
+          product.badge === "SALE" ||
+          product.badge === "DEAL"
+          ? "red"
+          : ""
+        }">
+          ${product.badge}
+        </span>`
+        :
+        ""
+      }
+
+      <button
+        class="product-heart"
+        onclick="toggleWishlist(this)"
+        aria-label="Add to wishlist"
+      >
+        ♡
+      </button>
+
+      <img
+        src="${product.image}"
+        alt="${product.name}"
+        loading="lazy"
+      >
+
+    </div>
+
+    <div class="product-info">
+
+      <div class="product-brand">
+        ${product.brand}
+      </div>
+
+      <div class="product-name">
+        ${product.name}
+      </div>
+
+      <div class="rating-row">
+
+        <span class="stars">
+          ${stars}
+        </span>
+
+        <span class="review-count">
+          (${product.reviews})
+        </span>
+
+      </div>
+
+      <div class="price-row">
+
+        <span class="price">
+          €${product.price.toFixed(2)}
+        </span>
+
+        <span class="old-price">
+          €${product.oldPrice.toFixed(2)}
+        </span>
+
+      </div>
+
+      <button
+        class="add-cart"
+        onclick="addToCart(${product.id})"
+      >
+        ADD TO CART
+      </button>
+
+    </div>
+
+  `;
+
+  return article;
+}
+
+
+/* =========================================================
+   LOAD PRODUCTS INTO CAROUSELS
+========================================================= */
+
+function loadCarousel(trackId, productList) {
+
+  const track =
+    document.getElementById(trackId);
+
+  if (!track) return;
+
+  track.innerHTML = "";
+
+  productList.forEach(product => {
+
+    track.appendChild(
+      createProductCard(product)
+    );
+
+  });
+}
+
+
+/* =========================================================
+   CAROUSEL POSITIONS
+========================================================= */
+
+const carouselPositions = {};
+
+
+/* =========================================================
+   MANUAL CAROUSEL MOVEMENT
+========================================================= */
+
+function moveCarousel(trackId, direction) {
+
+  const track =
+    document.getElementById(trackId);
+
+  if (!track) return;
+
+  const cards =
+    track.querySelectorAll(".product-card");
+
+  if (!cards.length) return;
+
+  if (
+    typeof carouselPositions[trackId] !== "number"
+  ) {
+    carouselPositions[trackId] = 0;
+  }
+
+  const card =
+    cards[0];
+
+  const gap =
+    parseInt(
+      getComputedStyle(track).gap || 16,
+      10
+    );
+
+  const cardWidth =
+    card.offsetWidth + gap;
+
+  const windowElement =
+    track.parentElement;
+
+  const visibleWidth =
+    windowElement.offsetWidth;
+
+  const totalWidth =
+    track.scrollWidth;
+
+  const maxPosition =
+    Math.max(
+      0,
+      Math.ceil(
+        (totalWidth - visibleWidth) /
+        cardWidth
+      )
+    );
+
+  carouselPositions[trackId] += direction;
+
+  if (
+    carouselPositions[trackId] < 0
+  ) {
+    carouselPositions[trackId] = 0;
+  }
+
+  if (
+    carouselPositions[trackId] >
+    maxPosition
+  ) {
+    carouselPositions[trackId] =
+      maxPosition;
+  }
+
+  const distance =
+    carouselPositions[trackId] *
+    cardWidth;
+
+  track.style.transform =
+    `translateX(-${distance}px)`;
+
+  updateCarouselButtons(trackId);
+}
+
+
+/* =========================================================
+   UPDATE CAROUSEL BUTTONS
+========================================================= */
+
+function updateCarouselButtons(trackId) {
+
+  const track =
+    document.getElementById(trackId);
+
+  if (!track) return;
+
+  const section =
+    track.closest(".section");
+
+  if (!section) return;
+
+  const buttons =
+    section.querySelectorAll(
+      ".carousel-control"
+    );
+
+  if (buttons.length < 2) return;
+
+  const cards =
+    track.querySelectorAll(
+      ".product-card"
+    );
+
+  if (!cards.length) return;
+
+  const gap =
+    parseInt(
+      getComputedStyle(track).gap || 16,
+      10
+    );
+
+  const cardWidth =
+    cards[0].offsetWidth + gap;
+
+  const visibleWidth =
+    track.parentElement.offsetWidth;
+
+  const totalWidth =
+    track.scrollWidth;
+
+  const maxPosition =
+    Math.max(
+      0,
+      Math.ceil(
+        (totalWidth - visibleWidth) /
+        cardWidth
+      )
+    );
+
+  const position =
+    carouselPositions[trackId] || 0;
+
+  buttons[0].disabled =
+    position <= 0;
+
+  buttons[1].disabled =
+    position >= maxPosition;
+}
+
+
+/* =========================================================
+   INITIALIZE CAROUSELS
+========================================================= */
+
+function initializeCarousels() {
+
+  const tracks =
+    document.querySelectorAll(
+      ".product-track"
+    );
+
+  tracks.forEach(track => {
+
+    carouselPositions[track.id] = 0;
+
+    track.style.transform =
+      "translateX(0)";
+
+    updateCarouselButtons(
+      track.id
+    );
+
+  });
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
+
+const searchResults =
+  document.getElementById(
+    "searchResults"
+  );
+
+function performSearch() {
+
+  const query =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+  if (!query) {
+
+    searchResults.classList.remove(
+      "active"
+    );
+
+    searchResults.innerHTML = "";
+
+    return;
+  }
+
+  const matches =
+    products.filter(product =>
+
+      product.name
+        .toLowerCase()
+        .includes(query)
+
+      ||
+
+      product.brand
+        .toLowerCase()
+        .includes(query)
+
+  );
+
+  if (!matches.length) {
+
+    searchResults.innerHTML = `
+
+      <div class="search-result-item">
+
+        <div>
+
+          <strong>
+            No products found
+          </strong>
+
+          <span>
+            Try another search.
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
+
+  } else {
+
+    searchResults.innerHTML =
+      matches.map(product => `
+
+        <div
+          class="search-result-item"
+          onclick="searchProduct(${product.id})"
+          style="cursor:pointer"
+        >
+
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+          >
+
+          <div>
+
+            <strong>
+              ${product.name}
+            </strong>
+
+            <span>
+              ${product.brand}
+              · €${product.price.toFixed(2)}
+            </span>
+
+          </div>
+
+        </div>
+
+      `).join("");
+
+  }
+
+  searchResults.classList.add(
+    "active"
+  );
+}
+
+
+function searchProduct(productId) {
+
+  const product =
+    products.find(
+      item => item.id === productId
+    );
+
+  if (!product) return;
+
+  searchInput.value =
+    product.name;
+
+  searchResults.classList.remove(
+    "active"
+  );
+
+  showToast(
+    product.name
+  );
+}
+
+
+searchInput.addEventListener(
+  "input",
+  performSearch
+);
+
+document.getElementById(
+  "searchButton"
+).addEventListener(
+  "click",
+  performSearch
+);
+
+
+/* =========================================================
+   CLOSE SEARCH WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+  "click",
+  event => {
+
+    const searchBox =
+      document.querySelector(
+        ".search-box"
+      );
+
+    if (
+      !searchBox.contains(event.target) &&
+      !searchResults.contains(event.target)
+    ) {
+
+      searchResults.classList.remove(
+        "active"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+  toast.textContent =
+    message;
+
+  toast.classList.add(
+    "show"
+  );
+
+  clearTimeout(
+    toastTimer
+  );
+
+  toastTimer =
+    setTimeout(() => {
+
+      toast.classList.remove(
+        "show"
+      );
+
+    }, 2500);
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+document.getElementById(
+  "newsletterForm"
+).addEventListener(
+  "submit",
+  function(event) {
+
+    event.preventDefault();
+
+    const email =
+      document.getElementById(
+        "emailInput"
+      ).value.trim();
+
+    if (!email) return;
+
+    showToast(
+      "Thank you for subscribing to SUPLAB!"
+    );
+
+    this.reset();
+
+  }
+);
+
+
+/* =========================================================
+   FLASH COUNTDOWN
+========================================================= */
+
+let countdownSeconds =
+  8 * 60 * 60 +
+  45 * 60 +
+  22;
+
+function updateCountdown() {
+
+  if (countdownSeconds <= 0) {
+
+    countdownSeconds =
+      24 * 60 * 60;
+
+  }
+
+  const hours =
+    Math.floor(
+      countdownSeconds / 3600
+    );
+
+  const minutes =
+    Math.floor(
+      (countdownSeconds % 3600) / 60
+    );
+
+  const seconds =
+    countdownSeconds % 60;
+
+  document.getElementById(
+    "hours"
+  ).textContent =
+    String(hours).padStart(2, "0");
+
+  document.getElementById(
+    "minutes"
+  ).textContent =
+    String(minutes).padStart(2, "0");
+
+  document.getElementById(
+    "seconds"
+  ).textContent =
+    String(seconds).padStart(2, "0");
+
+  countdownSeconds--;
+
+}
+
+
+/* =========================================================
+   INITIAL PAGE LOAD
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    /*
+      Different sections use different
+      product orders to feel like a real
+      marketplace.
+    */
+
+    loadCarousel(
+      "popularTrack",
+      products.slice(0, 10)
+    );
+
+    loadCarousel(
+      "featuredTrack",
+      products.slice(2, 12)
+    );
+
+    loadCarousel(
+      "flashTrack",
+      products
+        .filter(
+          product =>
+            product.badge === "SALE" ||
+            product.badge === "DEAL"
+        )
+        .concat(products.slice(0, 6))
+    );
+
+    loadCarousel(
+      "trendingTrack",
+      [
+        ...products.slice(5, 12),
+        ...products.slice(0, 5)
+      ]
+    );
+
+    loadCarousel(
+      "bestSellerTrack",
+      [
+        products[0],
+        products[1],
+        products[4],
+        products[6],
+        products[8],
+        products[11],
+        products[2],
+        products[3]
+      ]
+    );
+
+    loadCarousel(
+      "newTrack",
+      [
+        products[3],
+        products[7],
+        products[9],
+        products[10],
+        products[11],
+        products[5],
+        products[6]
+      ]
+    );
+
+    loadCarousel(
+      "allProductsTrack",
+      products
+    );
+
+    updateCartCount();
+
+    setTimeout(
+      initializeCarousels,
+      100
+    );
+
+    updateCountdown();
+
+  }
+);
+
+
+/* =========================================================
+   COUNTDOWN TIMER
+========================================================= */
+
+setInterval(
+  updateCountdown,
+  1000
+);
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+window.addEventListener(
+  "resize",
+  function() {
+
+    document
+      .querySelectorAll(
+        ".product-track"
+      )
+      .forEach(track => {
+
+        carouselPositions[
+          track.id
+        ] = 0;
+
+        track.style.transform =
+          "translateX(0)";
+
+        updateCarouselButtons(
+          track.id
+        );
+
+      });
+
+  }
+);
+
+</script>
+
 </body>
 </html>
+```
