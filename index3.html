@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,8 @@
 <style>
 /* =========================================================
    SUPPLAB MARKETPLACE
-   Updated Palette: Modern Ocean / Deep Blue + Cyan + Gold
+   Unified Single-File Version
+   Manual Carousels
 ========================================================= */
 
 * {
@@ -51,6 +53,10 @@ body {
   background: var(--white);
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -66,7 +72,7 @@ button {
 }
 
 /* =========================================================
-   TOP PROMO
+   PROMO BAR
 ========================================================= */
 
 .promo-bar {
@@ -121,7 +127,9 @@ button {
   transform: rotate(45deg);
 }
 
-/* SEARCH */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 .search-box {
   flex: 1;
@@ -155,7 +163,9 @@ button {
   font-size: 19px;
 }
 
-/* HEADER ACTIONS */
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
 
 .header-actions {
   display: flex;
@@ -170,6 +180,7 @@ button {
   color: var(--black);
   font-size: 12px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .header-action-icon {
@@ -307,16 +318,20 @@ button {
   flex-wrap: wrap;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 46px;
   padding: 0 27px;
-  background: var(--yellow);
-  color: var(--black);
   font-weight: 900;
   border-radius: 3px;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--black);
 }
 
 .btn-primary:hover {
@@ -324,19 +339,12 @@ button {
 }
 
 .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 27px;
   background: white;
   color: var(--green-dark);
-  font-weight: 900;
-  border-radius: 3px;
 }
 
 /* =========================================================
-   QUICK BENEFITS
+   BENEFITS
 ========================================================= */
 
 .benefits {
@@ -375,7 +383,7 @@ button {
 }
 
 /* =========================================================
-   GENERAL SECTIONS
+   SECTIONS
 ========================================================= */
 
 .section {
@@ -415,7 +423,7 @@ button {
 }
 
 /* =========================================================
-   PRODUCT CAROUSEL
+   MANUAL CAROUSELS
 ========================================================= */
 
 .carousel-container {
@@ -423,27 +431,57 @@ button {
 }
 
 .carousel-window {
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow: hidden;
   width: 100%;
-  cursor: grab;
-}
-
-.carousel-window:active {
-  cursor: grabbing;
-}
-
-.carousel-window::-webkit-scrollbar {
-  display: none;
+  scroll-behavior: smooth;
 }
 
 .product-track {
   display: flex;
   gap: 16px;
   width: max-content;
-  padding: 5px 0;
+  transform: translateX(0);
+  transition: transform .35s ease;
+}
+
+/* IMPORTANT:
+   No automatic animation.
+*/
+.auto-scroll {
+  animation: none !important;
+}
+
+/* =========================================================
+   CAROUSEL CONTROLS
+========================================================= */
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-control {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--black);
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 3px;
+  transition: .2s ease;
+}
+
+.carousel-control:hover:not(:disabled) {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.carousel-control:disabled {
+  opacity: .35;
+  cursor: not-allowed;
 }
 
 /* =========================================================
@@ -459,7 +497,6 @@ button {
   border-radius: 5px;
   overflow: hidden;
   transition: .2s ease;
-  user-select: none;
 }
 
 .product-card:hover {
@@ -479,7 +516,6 @@ button {
   height: 100%;
   object-fit: cover;
   transition: transform .35s;
-  pointer-events: none;
 }
 
 .product-card:hover .product-image img {
@@ -515,9 +551,6 @@ button {
   background: white;
   border: 1px solid #ddd;
   font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .product-heart.active {
@@ -635,7 +668,7 @@ button {
 }
 
 /* =========================================================
-   GREEN FEATURE SECTION
+   FEATURE GREEN
 ========================================================= */
 
 .feature-green {
@@ -645,6 +678,10 @@ button {
 
 .feature-green .section-title {
   color: white;
+}
+
+.feature-green .section-title span {
+  color: var(--yellow);
 }
 
 .feature-green .view-all {
@@ -708,7 +745,7 @@ button {
 }
 
 /* =========================================================
-   BRAND SECTION
+   BRANDS
 ========================================================= */
 
 .brands-section {
@@ -869,10 +906,10 @@ button {
 
 .newsletter-form button {
   min-width: 125px;
+  border: 0;
   background: var(--black);
   color: white;
   font-weight: 900;
-  border: 0;
   border-radius: 0 3px 3px 0;
 }
 
@@ -974,6 +1011,7 @@ footer {
   width: 55px;
   height: 55px;
   object-fit: cover;
+  border-radius: 4px;
 }
 
 .search-result-item strong {
@@ -987,10 +1025,34 @@ footer {
 }
 
 /* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+  position: fixed;
+  z-index: 1000;
+  bottom: 25px;
+  right: 25px;
+  background: var(--black);
+  color: white;
+  padding: 14px 20px;
+  border-left: 5px solid var(--yellow);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: .3s;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* =========================================================
    RESPONSIVE
 ========================================================= */
 
 @media (max-width: 1100px) {
+
   .header {
     flex-wrap: wrap;
   }
@@ -1023,6 +1085,7 @@ footer {
 }
 
 @media (max-width: 700px) {
+
   .promo-bar {
     font-size: 11px;
   }
@@ -1103,7 +1166,7 @@ footer {
   }
 
   .goal-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .flash-banner {
@@ -1122,12 +1185,18 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
-  .footer-bottom {
+  .section-header {
+    align-items: flex-start;
     flex-direction: column;
+  }
+
+  .section-header .carousel-controls {
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
+
   .header-actions {
     gap: 4px;
   }
@@ -1176,11 +1245,24 @@ footer {
     border-radius: 3px;
     width: 100%;
   }
+
+  .carousel-controls {
+    width: 100%;
+  }
+
+  .carousel-control {
+    width: 38px;
+    height: 38px;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<!-- =========================================================
+     PROMO
+========================================================= -->
 
 <div class="promo-bar">
   🚚 FREE SHIPPING ON ORDERS OVER €50
@@ -1188,10 +1270,14 @@ footer {
   <span class="promo-highlight">EXTRA 10% OFF YOUR FIRST ORDER</span>
 </div>
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
 <header class="header">
 
   <a href="#" class="logo">
-    SUP<span>PLAB</span><i class="logo-mark"></i>
+    SUP<span>LAB</span><i class="logo-mark"></i>
   </a>
 
   <div class="search-box">
@@ -1211,17 +1297,17 @@ footer {
 
   <div class="header-actions">
 
-    <a href="#" class="header-action">
+    <a href="#account" class="header-action">
       <span class="header-action-icon">👤</span>
       <span>Account</span>
     </a>
 
-    <a href="#" class="header-action">
+    <a href="#wishlist" class="header-action">
       <span class="header-action-icon">♡</span>
       <span>Wishlist</span>
     </a>
 
-    <a href="#" class="header-action">
+    <a href="#cart" class="header-action">
       <span class="header-action-icon">🛒</span>
       <span>Cart</span>
       <span class="cart-count" id="cartCount">0</span>
@@ -1231,7 +1317,13 @@ footer {
 
 </header>
 
+<!-- SEARCH RESULTS -->
+
 <div class="search-results" id="searchResults"></div>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
 <nav class="navigation">
 
@@ -1242,9 +1334,9 @@ footer {
     <a class="nav-link" href="#personal-care">Bath & Personal Care</a>
     <a class="nav-link" href="#beauty">Beauty</a>
     <a class="nav-link" href="#grocery">Grocery</a>
-    <a class="nav-link" href="#">Home</a>
-    <a class="nav-link" href="#">Baby & Kids</a>
-    <a class="nav-link" href="#">Pets</a>
+    <a class="nav-link" href="#home">Home</a>
+    <a class="nav-link" href="#baby">Baby & Kids</a>
+    <a class="nav-link" href="#pets">Pets</a>
     <a class="nav-link" href="#brands">Brands A-Z</a>
     <a class="nav-link deals" href="#deals">Deals</a>
     <a class="nav-link" href="#bestsellers">Best Sellers</a>
@@ -1255,12 +1347,16 @@ footer {
 
 </nav>
 
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <section class="hero">
 
   <div class="hero-content">
 
     <div class="hero-label">
-      SUPPLAB WELLNESS MARKETPLACE
+      SUPLAB WELLNESS MARKETPLACE
     </div>
 
     <h1>
@@ -1289,6 +1385,10 @@ footer {
   </div>
 
 </section>
+
+<!-- =========================================================
+     BENEFITS
+========================================================= -->
 
 <section class="benefits">
 
@@ -1319,12 +1419,16 @@ footer {
   <div class="benefit">
     <div class="benefit-icon">🎁</div>
     <div>
-      <strong>SUPPLAB Rewards</strong>
+      <strong>SUPLAB Rewards</strong>
       <span>Earn while you shop</span>
     </div>
   </div>
 
 </section>
+
+<!-- =========================================================
+     1. POPULAR — TOP CAROUSEL
+========================================================= -->
 
 <section class="section" id="popular">
 
@@ -1339,6 +1443,7 @@ footer {
       <button
         class="carousel-control"
         onclick="moveCarousel('popularTrack', -1)"
+        aria-label="Previous popular products"
       >
         ‹
       </button>
@@ -1346,11 +1451,12 @@ footer {
       <button
         class="carousel-control"
         onclick="moveCarousel('popularTrack', 1)"
+        aria-label="Next popular products"
       >
         ›
       </button>
 
-      <a href="#" class="view-all">
+      <a href="#popular" class="view-all">
         View All →
       </a>
 
@@ -1361,12 +1467,21 @@ footer {
   <div class="carousel-container">
 
     <div class="carousel-window">
-      <div class="product-track" id="popularTrack"></div>
+
+      <div
+        class="product-track"
+        id="popularTrack"
+      ></div>
+
     </div>
 
   </div>
 
 </section>
+
+<!-- =========================================================
+     CATEGORIES
+========================================================= -->
 
 <section class="section green-section" id="supplements">
 
@@ -1376,7 +1491,7 @@ footer {
       Shop by <span>Category</span>
     </h2>
 
-    <a href="#" class="view-all">
+    <a href="#supplements" class="view-all">
       View All →
     </a>
 
@@ -1384,32 +1499,32 @@ footer {
 
   <div class="category-grid">
 
-    <a href="#" class="category-card">
+    <a href="#supplements" class="category-card">
       <div class="category-icon">💊</div>
       <h3>Vitamins & Supplements</h3>
     </a>
 
-    <a href="#" class="category-card" id="sports">
+    <a href="#sports" class="category-card" id="sports">
       <div class="category-icon">🏋️</div>
       <h3>Sports Nutrition</h3>
     </a>
 
-    <a href="#" class="category-card" id="beauty">
+    <a href="#beauty" class="category-card" id="beauty">
       <div class="category-icon">✨</div>
       <h3>Beauty</h3>
     </a>
 
-    <a href="#" class="category-card" id="personal-care">
+    <a href="#personal-care" class="category-card" id="personal-care">
       <div class="category-icon">🧴</div>
       <h3>Personal Care</h3>
     </a>
 
-    <a href="#" class="category-card" id="grocery">
+    <a href="#grocery" class="category-card" id="grocery">
       <div class="category-icon">🥑</div>
       <h3>Healthy Grocery</h3>
     </a>
 
-    <a href="#" class="category-card">
+    <a href="#pets" class="category-card" id="pets">
       <div class="category-icon">🐶</div>
       <h3>Pet Wellness</h3>
     </a>
@@ -1417,6 +1532,10 @@ footer {
   </div>
 
 </section>
+
+<!-- =========================================================
+     2. FEATURED CAROUSEL
+========================================================= -->
 
 <section class="section feature-green">
 
@@ -1431,6 +1550,7 @@ footer {
       <button
         class="carousel-control"
         onclick="moveCarousel('featuredTrack', -1)"
+        aria-label="Previous featured products"
       >
         ‹
       </button>
@@ -1438,6 +1558,7 @@ footer {
       <button
         class="carousel-control"
         onclick="moveCarousel('featuredTrack', 1)"
+        aria-label="Next featured products"
       >
         ›
       </button>
@@ -1450,15 +1571,20 @@ footer {
 
   </div>
 
-  <div class="carousel-container">
+  <div class="carousel-window">
 
-    <div class="carousel-window">
-      <div class="product-track" id="featuredTrack"></div>
-    </div>
+    <div
+      class="product-track"
+      id="featuredTrack"
+    ></div>
 
   </div>
 
 </section>
+
+<!-- =========================================================
+     3. FLASH DEALS CAROUSEL
+========================================================= -->
 
 <section class="section flash-section" id="deals">
 
@@ -1493,7 +1619,7 @@ footer {
   <div class="section-header">
 
     <h2 class="section-title">
-      Limited Time <span>Discounts</span>
+      Today's <span>Deals</span>
     </h2>
 
     <div class="carousel-controls">
@@ -1501,6 +1627,7 @@ footer {
       <button
         class="carousel-control"
         onclick="moveCarousel('flashTrack', -1)"
+        aria-label="Previous flash deals"
       >
         ‹
       </button>
@@ -1508,6 +1635,7 @@ footer {
       <button
         class="carousel-control"
         onclick="moveCarousel('flashTrack', 1)"
+        aria-label="Next flash deals"
       >
         ›
       </button>
@@ -1516,15 +1644,161 @@ footer {
 
   </div>
 
-  <div class="carousel-container">
+  <div class="carousel-window">
 
-    <div class="carousel-window">
-      <div class="product-track" id="flashTrack"></div>
-    </div>
+    <div
+      class="product-track"
+      id="flashTrack"
+    ></div>
 
   </div>
 
 </section>
+
+<!-- =========================================================
+     TRENDING
+========================================================= -->
+
+<section class="section">
+
+  <div class="section-header">
+
+    <h2 class="section-title">
+      🔥 Trending <span>Products</span>
+    </h2>
+
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('trendingTrack', -1)"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('trendingTrack', 1)"
+      >
+        ›
+      </button>
+
+      <a href="#" class="view-all">
+        Explore Trending →
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="carousel-window">
+
+    <div
+      class="product-track"
+      id="trendingTrack"
+    ></div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     BEST SELLERS
+========================================================= -->
+
+<section class="section green-section" id="bestsellers">
+
+  <div class="section-header">
+
+    <h2 class="section-title">
+      🏆 Best <span>Sellers</span>
+    </h2>
+
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('bestSellerTrack', -1)"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('bestSellerTrack', 1)"
+      >
+        ›
+      </button>
+
+      <a href="#" class="view-all">
+        Shop Best Sellers →
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="carousel-window">
+
+    <div
+      class="product-track"
+      id="bestSellerTrack"
+    ></div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     NEW ARRIVALS
+========================================================= -->
+
+<section class="section" id="new">
+
+  <div class="section-header">
+
+    <h2 class="section-title">
+      ✨ New <span>Arrivals</span>
+    </h2>
+
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('newTrack', -1)"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('newTrack', 1)"
+      >
+        ›
+      </button>
+
+      <a href="#new" class="view-all">
+        View All →
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="carousel-window">
+
+    <div
+      class="product-track"
+      id="newTrack"
+    ></div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     BRANDS
+========================================================= -->
 
 <section class="section brands-section" id="brands">
 
@@ -1534,7 +1808,7 @@ footer {
       ⭐ Shop by <span>Brand</span>
     </h2>
 
-    <a href="#" class="view-all">
+    <a href="#brands" class="view-all">
       Brands A-Z →
     </a>
 
@@ -1542,29 +1816,33 @@ footer {
 
   <div class="brands-grid">
 
-    <a href="brand-iherb.html" class="brand-card">
-      <div class="brand-name green">iHerb</div>
+    <a href="#" class="brand-card">
+      <div class="brand-name green">SUPPLAB</div>
     </a>
 
-    <a href="brand-myprotein.html" class="brand-card">
+    <a href="#" class="brand-card">
       <div class="brand-name">MYPROTEIN</div>
     </a>
 
-    <a href="brand-different-pharm.html" class="brand-card">
+    <a href="#" class="brand-card">
       <div class="brand-name green">Different Pharm</div>
     </a>
 
-    <a href="brand-lazar.html" class="brand-card">
+    <a href="#" class="brand-card">
       <div class="brand-name">Lazar Nutrition</div>
     </a>
 
     <a href="#" class="brand-card">
-      <div class="brand-name yellow">SUPPLAB</div>
+      <div class="brand-name yellow">SUPLAB</div>
     </a>
 
   </div>
 
 </section>
+
+<!-- =========================================================
+     WELLNESS GOALS
+========================================================= -->
 
 <section class="section">
 
@@ -1622,15 +1900,66 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     ALL PRODUCTS
+========================================================= -->
+
+<section class="section feature-green">
+
+  <div class="section-header">
+
+    <h2 class="section-title">
+      🛍️ Explore <span>SUPLAB</span>
+    </h2>
+
+    <div class="carousel-controls">
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('allProductsTrack', -1)"
+      >
+        ‹
+      </button>
+
+      <button
+        class="carousel-control"
+        onclick="moveCarousel('allProductsTrack', 1)"
+      >
+        ›
+      </button>
+
+      <a href="#" class="view-all">
+        Shop Everything →
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="carousel-window">
+
+    <div
+      class="product-track"
+      id="allProductsTrack"
+    ></div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     REWARDS
+========================================================= -->
+
 <section class="rewards">
 
   <div>
 
-    <h2>🎁 Join SUPPLAB Rewards</h2>
+    <h2>🎁 Join SUPLAB Rewards</h2>
 
     <p>
       Earn points when you shop, discover exclusive offers
-      and unlock special SUPPLAB member rewards.
+      and unlock special SUPLAB member rewards.
     </p>
 
   </div>
@@ -1641,17 +1970,22 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     NEWSLETTER
+========================================================= -->
+
 <section class="newsletter">
 
-  <h2>Stay Updated with SUPPLAB</h2>
+  <h2>Stay Updated with SUPLAB</h2>
 
   <p>
     Subscribe to our newsletter for exclusive deals and updates.
   </p>
 
-  <form class="newsletter-form">
+  <form class="newsletter-form" id="newsletterForm">
 
     <input
+      id="emailInput"
       type="email"
       placeholder="Enter your email address"
       required
@@ -1665,6 +1999,10 @@ footer {
 
 </section>
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer>
 
   <div class="footer-grid">
@@ -1672,7 +2010,7 @@ footer {
     <div>
 
       <div class="footer-logo">
-        SUP<span>PLAB</span>
+        SUP<span>LAB</span>
       </div>
 
       <p class="footer-description">
@@ -1686,11 +2024,11 @@ footer {
 
       <h3>SHOP</h3>
 
-      <a href="#">Supplements</a>
-      <a href="#">Sports Nutrition</a>
-      <a href="#">Beauty</a>
-      <a href="#">Personal Care</a>
-      <a href="#">Grocery</a>
+      <a href="#supplements">Supplements</a>
+      <a href="#sports">Sports Nutrition</a>
+      <a href="#beauty">Beauty</a>
+      <a href="#personal-care">Personal Care</a>
+      <a href="#grocery">Grocery</a>
 
     </div>
 
@@ -1709,7 +2047,7 @@ footer {
 
       <h3>ABOUT</h3>
 
-      <a href="#">About SUPPLAB</a>
+      <a href="#">About SUPLAB</a>
       <a href="#">Careers</a>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Service</a>
@@ -1743,113 +2081,257 @@ footer {
 
 </footer>
 
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div class="toast" id="toast"></div>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script>
 
 /* =========================================================
-   SUPPLAB PRODUCT DATA
+   SUPPLAB PRODUCT DATABASE
 ========================================================= */
 
-const productsData = [
+const products = [
 
   {
     id: 1,
-    brand: "California Gold Nutrition",
-    name: "L-Theanine, 200 mg, 60 Veggie Capsules",
-    price: "€12.50",
-    oldPrice: "€15.00",
-    rating: "★★★★★",
-    reviews: "1,240",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80",
-    badge: "BEST SELLER"
+    brand: "SUPPLAB",
+    name: "Premium Daily Multivitamin",
+    price: 24.99,
+    oldPrice: 29.99,
+    rating: 5,
+    reviews: 128,
+    badge: "BEST SELLER",
+    image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=700&q=80"
   },
 
   {
     id: 2,
-    brand: "NOW Foods",
-    name: "Vitamin D3, 125 mcg (5,000 IU), 240 Softgels",
-    price: "€9.80",
-    oldPrice: "€12.00",
-    rating: "★★★★★",
-    reviews: "3,890",
-    image: "https://images.unsplash.com/photo-1550572017-edd951baa742?auto=format&fit=crop&w=400&q=80",
-    badge: "20% OFF",
-    badgeRed: true
+    brand: "SUPPLAB",
+    name: "Omega 3 Fish Oil 1000mg",
+    price: 18.99,
+    oldPrice: 23.99,
+    rating: 5,
+    reviews: 94,
+    badge: "POPULAR",
+    image: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=700&q=80"
   },
 
   {
     id: 3,
-    brand: "Doctor's Best",
-    name: "High Absorption Magnesium, 100 mg, 240 Tablets",
-    price: "€18.20",
-    oldPrice: "€21.50",
-    rating: "★★★★☆",
-    reviews: "850",
-    image: "https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=400&q=80",
-    badge: "POPULAR"
+    brand: "MYPROTEIN",
+    name: "Impact Whey Protein",
+    price: 39.99,
+    oldPrice: 49.99,
+    rating: 5,
+    reviews: 312,
+    badge: "SALE",
+    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=700&q=80"
   },
 
   {
     id: 4,
-    brand: "Optimum Nutrition",
-    name: "Gold Standard 100% Whey, Double Rich Chocolate",
-    price: "€38.00",
-    oldPrice: "€45.00",
-    rating: "★★★★★",
-    reviews: "5,120",
-    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=400&q=80",
-    badge: "HOT"
+    brand: "SUPPLAB",
+    name: "Magnesium Complex",
+    price: 16.99,
+    oldPrice: 21.99,
+    rating: 4,
+    reviews: 87,
+    badge: "NEW",
+    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=700&q=80"
   },
 
   {
     id: 5,
-    brand: "Life Extension",
-    name: "Two-Per-Day Multivitamin, 120 Capsules",
-    price: "€22.10",
-    oldPrice: "€25.00",
-    rating: "★★★★★",
-    reviews: "940",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80",
-    badge: "SALE",
-    badgeRed: true
+    brand: "Different Pharm",
+    name: "Creatine Monohydrate",
+    price: 22.99,
+    oldPrice: 27.99,
+    rating: 5,
+    reviews: 201,
+    badge: "BEST SELLER",
+    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=700&q=80"
   },
 
   {
     id: 6,
-    brand: "Solgar",
-    name: "Skin, Nails & Hair, Advanced MSM Formula",
-    price: "€16.40",
-    oldPrice: "€19.00",
-    rating: "★★★★☆",
-    reviews: "610",
-    image: "https://images.unsplash.com/photo-1550572017-edd951baa742?auto=format&fit=crop&w=400&q=80",
-    badge: "NEW"
+    brand: "Lazar Nutrition",
+    name: "Pre Workout Energy",
+    price: 27.99,
+    oldPrice: 34.99,
+    rating: 5,
+    reviews: 155,
+    badge: "HOT",
+    image: "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=700&q=80"
   },
 
   {
     id: 7,
-    brand: "Thorne",
-    name: "Basic B-Complex, 60 Capsules",
-    price: "€21.00",
-    oldPrice: "€24.00",
-    rating: "★★★★★",
-    reviews: "430",
-    image: "https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=400&q=80",
-    badge: "FEATURED"
+    brand: "SUPPLAB",
+    name: "Vitamin D3 + K2",
+    price: 14.99,
+    oldPrice: 18.99,
+    rating: 5,
+    reviews: 143,
+    badge: "POPULAR",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=700&q=80"
   },
 
   {
     id: 8,
-    brand: "Muscletech",
-    name: "Nitro-Tech Performance Series, Milk Chocolate",
-    price: "€42.00",
-    oldPrice: "€50.00",
-    rating: "★★★★☆",
-    reviews: "1,820",
-    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=400&q=80",
-    badge: "TOP RATED"
+    brand: "SUPPLAB",
+    name: "Collagen Beauty Formula",
+    price: 29.99,
+    oldPrice: 36.99,
+    rating: 4,
+    reviews: 76,
+    badge: "NEW",
+    image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 9,
+    brand: "MYPROTEIN",
+    name: "Clear Whey Isolate",
+    price: 34.99,
+    oldPrice: 44.99,
+    rating: 5,
+    reviews: 189,
+    badge: "SALE",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 10,
+    brand: "SUPPLAB",
+    name: "Zinc + Vitamin C",
+    price: 12.99,
+    oldPrice: 16.99,
+    rating: 5,
+    reviews: 112,
+    badge: "DEAL",
+    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 11,
+    brand: "Different Pharm",
+    name: "Electrolyte Hydration",
+    price: 19.99,
+    oldPrice: 24.99,
+    rating: 4,
+    reviews: 65,
+    badge: "POPULAR",
+    image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=700&q=80"
+  },
+
+  {
+    id: 12,
+    brand: "SUPPLAB",
+    name: "Ashwagandha Balance",
+    price: 21.99,
+    oldPrice: 26.99,
+    rating: 5,
+    reviews: 98,
+    badge: "TRENDING",
+    image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=700&q=80"
   }
 
 ];
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+let cart = JSON.parse(
+  localStorage.getItem("supplabCart") || "[]"
+);
+
+function updateCartCount() {
+
+  const count = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  document.getElementById("cartCount").textContent = count;
+
+  localStorage.setItem(
+    "supplabCart",
+    JSON.stringify(cart)
+  );
+}
+
+
+/* =========================================================
+   ADD TO CART
+========================================================= */
+
+function addToCart(productId) {
+
+  const product = products.find(
+    item => item.id === productId
+  );
+
+  if (!product) return;
+
+  const existing = cart.find(
+    item => item.id === productId
+  );
+
+  if (existing) {
+
+    existing.quantity++;
+
+  } else {
+
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1
+    });
+
+  }
+
+  updateCartCount();
+
+  showToast(
+    product.name + " added to cart"
+  );
+}
+
+
+/* =========================================================
+   WISHLIST
+========================================================= */
+
+function toggleWishlist(button) {
+
+  button.classList.toggle("active");
+
+  if (button.classList.contains("active")) {
+
+    button.textContent = "♥";
+
+    showToast("Added to wishlist");
+
+  } else {
+
+    button.textContent = "♡";
+
+    showToast("Removed from wishlist");
+
+  }
+}
+
 
 /* =========================================================
    CREATE PRODUCT CARD
@@ -1857,437 +2339,378 @@ const productsData = [
 
 function createProductCard(product) {
 
-  return `
+  const article =
+    document.createElement("article");
 
-    <div class="product-card">
+  article.className = "product-card";
 
-      <div class="product-image">
+  const stars =
+    "★".repeat(product.rating) +
+    "☆".repeat(5 - product.rating);
 
-        <span class="product-badge ${product.badgeRed ? 'red' : ''}">
+  article.innerHTML = `
+
+    <div class="product-image">
+
+      ${
+        product.badge
+        ?
+        `<span class="product-badge ${
+          product.badge === "SALE" ||
+          product.badge === "DEAL"
+          ? "red"
+          : ""
+        }">
           ${product.badge}
+        </span>`
+        :
+        ""
+      }
+
+      <button
+        class="product-heart"
+        onclick="toggleWishlist(this)"
+        aria-label="Add to wishlist"
+      >
+        ♡
+      </button>
+
+      <img
+        src="${product.image}"
+        alt="${product.name}"
+        loading="lazy"
+      >
+
+    </div>
+
+    <div class="product-info">
+
+      <div class="product-brand">
+        ${product.brand}
+      </div>
+
+      <div class="product-name">
+        ${product.name}
+      </div>
+
+      <div class="rating-row">
+
+        <span class="stars">
+          ${stars}
         </span>
 
-        <button
-          class="product-heart"
-          onclick="toggleWishlist(this)"
-          aria-label="Add to wishlist"
-        >
-          ♡
-        </button>
-
-        <img
-          src="${product.image}"
-          alt="${product.name}"
-          loading="lazy"
-        >
+        <span class="review-count">
+          (${product.reviews})
+        </span>
 
       </div>
 
-      <div class="product-info">
+      <div class="price-row">
 
-        <div class="product-brand">
-          ${product.brand}
-        </div>
+        <span class="price">
+          €${product.price.toFixed(2)}
+        </span>
 
-        <div class="product-name">
-          ${product.name}
-        </div>
-
-        <div class="rating-row">
-
-          <span class="stars">
-            ${product.rating}
-          </span>
-
-          <span class="review-count">
-            (${product.reviews})
-          </span>
-
-        </div>
-
-        <div class="price-row">
-
-          <span class="price">
-            ${product.price}
-          </span>
-
-          <span class="old-price">
-            ${product.oldPrice}
-          </span>
-
-        </div>
-
-        <button
-          class="add-cart"
-          onclick="addToCart()"
-        >
-          Add to Cart
-        </button>
+        <span class="old-price">
+          €${product.oldPrice.toFixed(2)}
+        </span>
 
       </div>
+
+      <button
+        class="add-cart"
+        onclick="addToCart(${product.id})"
+      >
+        ADD TO CART
+      </button>
 
     </div>
 
   `;
 
+  return article;
 }
 
+
 /* =========================================================
-   RENDER CAROUSELS
+   LOAD PRODUCTS INTO CAROUSELS
 ========================================================= */
 
-function renderCarousels() {
+function loadCarousel(trackId, productList) {
 
-  const tracks = [
-    'popularTrack',
-    'featuredTrack',
-    'flashTrack'
-  ];
+  const track =
+    document.getElementById(trackId);
 
-  tracks.forEach(trackId => {
+  if (!track) return;
 
-    const track = document.getElementById(trackId);
+  track.innerHTML = "";
 
-    if (!track) return;
+  productList.forEach(product => {
 
-    track.innerHTML = productsData
-      .map(product => createProductCard(product))
-      .join('');
+    track.appendChild(
+      createProductCard(product)
+    );
 
   });
-
 }
 
+
 /* =========================================================
-   CAROUSEL ARROW CONTROLS
+   CAROUSEL POSITIONS
 ========================================================= */
 
 const carouselPositions = {};
 
+
+/* =========================================================
+   MANUAL CAROUSEL MOVEMENT
+========================================================= */
+
 function moveCarousel(trackId, direction) {
 
-  const track = document.getElementById(trackId);
+  const track =
+    document.getElementById(trackId);
 
   if (!track) return;
 
-  const container = track.parentElement;
+  const cards =
+    track.querySelectorAll(".product-card");
 
-  const amount = Math.max(
-    container.clientWidth * 0.75,
-    300
-  );
+  if (!cards.length) return;
 
-  if (!carouselPositions[trackId]) {
+  if (
+    typeof carouselPositions[trackId] !== "number"
+  ) {
     carouselPositions[trackId] = 0;
   }
 
-  carouselPositions[trackId] += direction * amount;
+  const card =
+    cards[0];
 
-  const maxScroll =
-    container.scrollWidth - container.clientWidth;
+  const gap =
+    parseInt(
+      getComputedStyle(track).gap || 16,
+      10
+    );
 
-  if (carouselPositions[trackId] < 0) {
-    carouselPositions[trackId] = maxScroll;
-  }
+  const cardWidth =
+    card.offsetWidth + gap;
 
-  if (carouselPositions[trackId] > maxScroll) {
+  const windowElement =
+    track.parentElement;
+
+  const visibleWidth =
+    windowElement.offsetWidth;
+
+  const totalWidth =
+    track.scrollWidth;
+
+  const maxPosition =
+    Math.max(
+      0,
+      Math.ceil(
+        (totalWidth - visibleWidth) /
+        cardWidth
+      )
+    );
+
+  carouselPositions[trackId] += direction;
+
+  if (
+    carouselPositions[trackId] < 0
+  ) {
     carouselPositions[trackId] = 0;
   }
 
-  container.scrollTo({
-    left: carouselPositions[trackId],
-    behavior: 'smooth'
-  });
-
-}
-
-/* =========================================================
-   DRAG TO SCROLL
-========================================================= */
-
-function enableDragToScroll() {
-
-  const windows =
-    document.querySelectorAll('.carousel-window');
-
-  windows.forEach(win => {
-
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
-
-    win.addEventListener('mousedown', e => {
-
-      isDown = true;
-
-      win.style.cursor = 'grabbing';
-
-      startX =
-        e.pageX - win.offsetLeft;
-
-      scrollLeft =
-        win.scrollLeft;
-
-    });
-
-    win.addEventListener('mouseleave', () => {
-
-      isDown = false;
-
-      win.style.cursor = 'grab';
-
-    });
-
-    win.addEventListener('mouseup', () => {
-
-      isDown = false;
-
-      win.style.cursor = 'grab';
-
-    });
-
-    win.addEventListener('mousemove', e => {
-
-      if (!isDown) return;
-
-      e.preventDefault();
-
-      const x =
-        e.pageX - win.offsetLeft;
-
-      const walk =
-        (x - startX) * 2;
-
-      win.scrollLeft =
-        scrollLeft - walk;
-
-    });
-
-    win.addEventListener('scroll', () => {
-
-      const track =
-        win.querySelector('.product-track');
-
-      if (!track) return;
-
-      carouselPositions[track.id] =
-        win.scrollLeft;
-
-    });
-
-  });
-
-}
-
-/* =========================================================
-   AUTOMATIC CAROUSEL SCROLL
-========================================================= */
-
-function enableAutoScroll() {
-
-  const windows =
-    document.querySelectorAll('.carousel-window');
-
-  windows.forEach(win => {
-
-    let direction = 1;
-    let paused = false;
-
-    win.addEventListener('mouseenter', () => {
-      paused = true;
-    });
-
-    win.addEventListener('mouseleave', () => {
-      paused = false;
-    });
-
-    setInterval(() => {
-
-      if (paused) return;
-
-      const maxScroll =
-        win.scrollWidth - win.clientWidth;
-
-      if (maxScroll <= 0) return;
-
-      const next =
-        win.scrollLeft + direction * 1;
-
-      if (next >= maxScroll) {
-        direction = -1;
-      }
-
-      if (next <= 0) {
-        direction = 1;
-      }
-
-      win.scrollLeft += direction;
-
-    }, 20);
-
-  });
-
-}
-
-/* =========================================================
-   CART
-========================================================= */
-
-let cartCount = 0;
-
-function addToCart() {
-
-  cartCount++;
-
-  const counter =
-    document.getElementById('cartCount');
-
-  if (counter) {
-    counter.textContent = cartCount;
+  if (
+    carouselPositions[trackId] >
+    maxPosition
+  ) {
+    carouselPositions[trackId] =
+      maxPosition;
   }
 
+  const distance =
+    carouselPositions[trackId] *
+    cardWidth;
+
+  track.style.transform =
+    `translateX(-${distance}px)`;
+
+  updateCarouselButtons(trackId);
 }
+
 
 /* =========================================================
-   WISHLIST
+   UPDATE CAROUSEL BUTTONS
 ========================================================= */
 
-function toggleWishlist(btn) {
+function updateCarouselButtons(trackId) {
 
-  btn.classList.toggle('active');
+  const track =
+    document.getElementById(trackId);
 
-  btn.textContent =
-    btn.classList.contains('active')
-      ? '♥'
-      : '♡';
+  if (!track) return;
 
+  const section =
+    track.closest(".section");
+
+  if (!section) return;
+
+  const buttons =
+    section.querySelectorAll(
+      ".carousel-control"
+    );
+
+  if (buttons.length < 2) return;
+
+  const cards =
+    track.querySelectorAll(
+      ".product-card"
+    );
+
+  if (!cards.length) return;
+
+  const gap =
+    parseInt(
+      getComputedStyle(track).gap || 16,
+      10
+    );
+
+  const cardWidth =
+    cards[0].offsetWidth + gap;
+
+  const visibleWidth =
+    track.parentElement.offsetWidth;
+
+  const totalWidth =
+    track.scrollWidth;
+
+  const maxPosition =
+    Math.max(
+      0,
+      Math.ceil(
+        (totalWidth - visibleWidth) /
+        cardWidth
+      )
+    );
+
+  const position =
+    carouselPositions[trackId] || 0;
+
+  buttons[0].disabled =
+    position <= 0;
+
+  buttons[1].disabled =
+    position >= maxPosition;
 }
+
 
 /* =========================================================
-   COUNTDOWN
+   INITIALIZE CAROUSELS
 ========================================================= */
 
-function startCountdown() {
+function initializeCarousels() {
 
-  let totalSeconds =
-    (8 * 60 * 60) +
-    (45 * 60) +
-    22;
+  const tracks =
+    document.querySelectorAll(
+      ".product-track"
+    );
 
-  setInterval(() => {
+  tracks.forEach(track => {
 
-    if (totalSeconds <= 0) {
-      totalSeconds =
-        (8 * 60 * 60) +
-        (45 * 60) +
-        22;
-    }
+    carouselPositions[track.id] = 0;
 
-    totalSeconds--;
+    track.style.transform =
+      "translateX(0)";
 
-    const hours =
-      Math.floor(totalSeconds / 3600);
+    updateCarouselButtons(
+      track.id
+    );
 
-    const minutes =
-      Math.floor(
-        (totalSeconds % 3600) / 60
-      );
-
-    const seconds =
-      totalSeconds % 60;
-
-    const hoursElement =
-      document.getElementById('hours');
-
-    const minutesElement =
-      document.getElementById('minutes');
-
-    const secondsElement =
-      document.getElementById('seconds');
-
-    if (hoursElement) {
-      hoursElement.textContent =
-        String(hours).padStart(2, '0');
-    }
-
-    if (minutesElement) {
-      minutesElement.textContent =
-        String(minutes).padStart(2, '0');
-    }
-
-    if (secondsElement) {
-      secondsElement.textContent =
-        String(seconds).padStart(2, '0');
-    }
-
-  }, 1000);
-
+  });
 }
+
 
 /* =========================================================
    SEARCH
 ========================================================= */
 
-function setupSearch() {
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
 
-  const input =
-    document.getElementById('searchInput');
+const searchResults =
+  document.getElementById(
+    "searchResults"
+  );
 
-  const button =
-    document.getElementById('searchButton');
+function performSearch() {
 
-  const results =
-    document.getElementById('searchResults');
+  const query =
+    searchInput.value
+      .trim()
+      .toLowerCase();
 
-  if (!input || !results) return;
+  if (!query) {
 
-  function performSearch() {
+    searchResults.classList.remove(
+      "active"
+    );
 
-    const query =
-      input.value
-        .trim()
-        .toLowerCase();
+    searchResults.innerHTML = "";
 
-    if (!query) {
+    return;
+  }
 
-      results.innerHTML = '';
+  const matches =
+    products.filter(product =>
 
-      results.classList.remove('active');
+      product.name
+        .toLowerCase()
+        .includes(query)
 
-      return;
+      ||
 
-    }
+      product.brand
+        .toLowerCase()
+        .includes(query)
 
-    const matches =
-      productsData.filter(product => {
+  );
 
-        const searchable =
-          `${product.brand} ${product.name} ${product.badge}`
-            .toLowerCase();
+  if (!matches.length) {
 
-        return searchable.includes(query);
+    searchResults.innerHTML = `
 
-      });
+      <div class="search-result-item">
 
-    if (!matches.length) {
+        <div>
 
-      results.innerHTML = `
-        <div style="padding:25px;text-align:center;">
-          No products found for
-          "<strong>${input.value}</strong>"
+          <strong>
+            No products found
+          </strong>
+
+          <span>
+            Try another search.
+          </span>
+
         </div>
-      `;
 
-      results.classList.add('active');
+      </div>
 
-      return;
+    `;
 
-    }
+  } else {
 
-    results.innerHTML =
+    searchResults.innerHTML =
       matches.map(product => `
 
-        <div class="search-result-item">
+        <div
+          class="search-result-item"
+          onclick="searchProduct(${product.id})"
+          style="cursor:pointer"
+        >
 
           <img
             src="${product.image}"
@@ -2301,98 +2724,332 @@ function setupSearch() {
             </strong>
 
             <span>
-              ${product.price}
+              ${product.brand}
+              · €${product.price.toFixed(2)}
             </span>
 
           </div>
 
         </div>
 
-      `).join('');
-
-    results.classList.add('active');
+      `).join("");
 
   }
 
-  input.addEventListener(
-    'input',
-    performSearch
+  searchResults.classList.add(
+    "active"
+  );
+}
+
+
+function searchProduct(productId) {
+
+  const product =
+    products.find(
+      item => item.id === productId
+    );
+
+  if (!product) return;
+
+  searchInput.value =
+    product.name;
+
+  searchResults.classList.remove(
+    "active"
   );
 
-  button?.addEventListener(
-    'click',
-    performSearch
+  showToast(
+    product.name
   );
+}
 
-  document.addEventListener(
-    'click',
-    e => {
 
-      if (
-        !e.target.closest('.search-box') &&
-        !e.target.closest('.search-results')
-      ) {
+searchInput.addEventListener(
+  "input",
+  performSearch
+);
 
-        results.classList.remove('active');
+document.getElementById(
+  "searchButton"
+).addEventListener(
+  "click",
+  performSearch
+);
 
-      }
+
+/* =========================================================
+   CLOSE SEARCH WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+  "click",
+  event => {
+
+    const searchBox =
+      document.querySelector(
+        ".search-box"
+      );
+
+    if (
+      !searchBox.contains(event.target) &&
+      !searchResults.contains(event.target)
+    ) {
+
+      searchResults.classList.remove(
+        "active"
+      );
 
     }
+
+  }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+  toast.textContent =
+    message;
+
+  toast.classList.add(
+    "show"
   );
 
+  clearTimeout(
+    toastTimer
+  );
+
+  toastTimer =
+    setTimeout(() => {
+
+      toast.classList.remove(
+        "show"
+      );
+
+    }, 2500);
 }
+
 
 /* =========================================================
    NEWSLETTER
 ========================================================= */
 
-function setupNewsletter() {
+document.getElementById(
+  "newsletterForm"
+).addEventListener(
+  "submit",
+  function(event) {
 
-  const form =
-    document.querySelector('.newsletter-form');
+    event.preventDefault();
 
-  if (!form) return;
+    const email =
+      document.getElementById(
+        "emailInput"
+      ).value.trim();
 
-  form.addEventListener('submit', e => {
+    if (!email) return;
 
-    e.preventDefault();
-
-    const input =
-      form.querySelector('input');
-
-    if (!input.value.trim()) return;
-
-    alert(
-      'Thank you for subscribing to SUPPLAB!'
+    showToast(
+      "Thank you for subscribing to SUPLAB!"
     );
 
-    input.value = '';
+    this.reset();
 
-  });
+  }
+);
+
+
+/* =========================================================
+   FLASH COUNTDOWN
+========================================================= */
+
+let countdownSeconds =
+  8 * 60 * 60 +
+  45 * 60 +
+  22;
+
+function updateCountdown() {
+
+  if (countdownSeconds <= 0) {
+
+    countdownSeconds =
+      24 * 60 * 60;
+
+  }
+
+  const hours =
+    Math.floor(
+      countdownSeconds / 3600
+    );
+
+  const minutes =
+    Math.floor(
+      (countdownSeconds % 3600) / 60
+    );
+
+  const seconds =
+    countdownSeconds % 60;
+
+  document.getElementById(
+    "hours"
+  ).textContent =
+    String(hours).padStart(2, "0");
+
+  document.getElementById(
+    "minutes"
+  ).textContent =
+    String(minutes).padStart(2, "0");
+
+  document.getElementById(
+    "seconds"
+  ).textContent =
+    String(seconds).padStart(2, "0");
+
+  countdownSeconds--;
 
 }
 
+
 /* =========================================================
-   INITIALIZE EVERYTHING
+   INITIAL PAGE LOAD
 ========================================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
 
-  renderCarousels();
+    /*
+      Different sections use different
+      product orders to feel like a real
+      marketplace.
+    */
 
-  enableDragToScroll();
+    loadCarousel(
+      "popularTrack",
+      products.slice(0, 10)
+    );
 
-  enableAutoScroll();
+    loadCarousel(
+      "featuredTrack",
+      products.slice(2, 12)
+    );
 
-  startCountdown();
+    loadCarousel(
+      "flashTrack",
+      products
+        .filter(
+          product =>
+            product.badge === "SALE" ||
+            product.badge === "DEAL"
+        )
+        .concat(products.slice(0, 6))
+    );
 
-  setupSearch();
+    loadCarousel(
+      "trendingTrack",
+      [
+        ...products.slice(5, 12),
+        ...products.slice(0, 5)
+      ]
+    );
 
-  setupNewsletter();
+    loadCarousel(
+      "bestSellerTrack",
+      [
+        products[0],
+        products[1],
+        products[4],
+        products[6],
+        products[8],
+        products[11],
+        products[2],
+        products[3]
+      ]
+    );
 
-});
+    loadCarousel(
+      "newTrack",
+      [
+        products[3],
+        products[7],
+        products[9],
+        products[10],
+        products[11],
+        products[5],
+        products[6]
+      ]
+    );
+
+    loadCarousel(
+      "allProductsTrack",
+      products
+    );
+
+    updateCartCount();
+
+    setTimeout(
+      initializeCarousels,
+      100
+    );
+
+    updateCountdown();
+
+  }
+);
+
+
+/* =========================================================
+   COUNTDOWN TIMER
+========================================================= */
+
+setInterval(
+  updateCountdown,
+  1000
+);
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+window.addEventListener(
+  "resize",
+  function() {
+
+    document
+      .querySelectorAll(
+        ".product-track"
+      )
+      .forEach(track => {
+
+        carouselPositions[
+          track.id
+        ] = 0;
+
+        track.style.transform =
+          "translateX(0)";
+
+        updateCarouselButtons(
+          track.id
+        );
+
+      });
+
+  }
+);
 
 </script>
 
 </body>
 </html>
+```
