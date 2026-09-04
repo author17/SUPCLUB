@@ -416,7 +416,7 @@ button {
 }
 
 /* =========================================================
-   PRODUCT CAROUSEL
+   PRODUCT CAROUSEL (iHerb Smooth Carousel System)
 ========================================================= */
 
 .carousel-container {
@@ -424,40 +424,29 @@ button {
 }
 
 .carousel-window {
-  overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
   width: 100%;
+}
+
+.carousel-window::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .product-track {
   display: flex;
   gap: 16px;
   width: max-content;
-}
-
-/* Auto rolling carousels */
-
-.auto-scroll {
-  animation: productRoll 55s linear infinite;
-}
-
-.carousel-window:hover .auto-scroll {
-  animation-play-state: paused;
-}
-
-@keyframes productRoll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  padding: 5px 0;
 }
 
 /* Manual controls */
 
 .carousel-controls {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 
@@ -466,8 +455,12 @@ button {
   height: 38px;
   border: 1px solid var(--border);
   background: white;
-  font-size: 17px;
+  font-size: 18px;
   border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
 }
 
 .carousel-control:hover {
@@ -488,6 +481,7 @@ button {
   border-radius: 5px;
   overflow: hidden;
   transition: .2s ease;
+  user-select: none;
 }
 
 .product-card:hover {
@@ -507,6 +501,7 @@ button {
   height: 100%;
   object-fit: cover;
   transition: transform .35s;
+  pointer-events: none;
 }
 
 .product-card:hover .product-image img {
@@ -542,6 +537,9 @@ button {
   background: white;
   border: 1px solid #ddd;
   font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-heart.active {
@@ -610,6 +608,7 @@ button {
   margin-top: 12px;
   background: var(--green);
   color: white;
+  border: 0;
   border-radius: 3px;
   font-weight: 800;
 }
@@ -895,6 +894,7 @@ button {
   background: var(--black);
   color: white;
   font-weight: 900;
+  border: 0;
   border-radius: 0 3px 3px 0;
 }
 
@@ -1009,34 +1009,10 @@ footer {
 }
 
 /* =========================================================
-   TOAST
-========================================================= */
-
-.toast {
-  position: fixed;
-  z-index: 1000;
-  bottom: 25px;
-  right: 25px;
-  background: var(--black);
-  color: white;
-  padding: 14px 20px;
-  border-left: 5px solid var(--yellow);
-  transform: translateY(100px);
-  opacity: 0;
-  transition: .3s;
-}
-
-.toast.show {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* =========================================================
    RESPONSIVE
 ========================================================= */
 
 @media (max-width: 1100px) {
-
   .header {
     flex-wrap: wrap;
   }
@@ -1069,7 +1045,6 @@ footer {
 }
 
 @media (max-width: 700px) {
-
   .promo-bar {
     font-size: 11px;
   }
@@ -1175,7 +1150,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-
   .header-actions {
     gap: 4px;
   }
@@ -1312,7 +1286,7 @@ footer {
   <div class="hero-content">
 
     <div class="hero-label">
-      SUPPLAB WELLNESS MARKETPLACE
+      SUPLAB WELLNESS MARKETPLACE
     </div>
 
     <h1>
@@ -1372,7 +1346,7 @@ footer {
   <div class="benefit">
     <div class="benefit-icon">🎁</div>
     <div>
-      <strong>SUPPLAB Rewards</strong>
+      <strong>SUPLAB Rewards</strong>
       <span>Earn while you shop</span>
     </div>
   </div>
@@ -1397,17 +1371,9 @@ footer {
   </div>
 
   <div class="carousel-container">
-
     <div class="carousel-window">
-
-      <div
-        class="product-track auto-scroll"
-        id="popularTrack"
-        data-source="popular"
-      ></div>
-
+      <div class="product-track" id="popularTrack"></div>
     </div>
-
   </div>
 
 </section>
@@ -1472,20 +1438,18 @@ footer {
       Featured & Recommended
     </h2>
 
-    <a href="#" class="view-all">
-      View All →
-    </a>
+    <div class="carousel-controls">
+      <button class="carousel-control" onclick="moveCarousel('featuredTrack', -1)">‹</button>
+      <button class="carousel-control" onclick="moveCarousel('featuredTrack', 1)">›</button>
+      <a href="#" class="view-all">View All →</a>
+    </div>
 
   </div>
 
-  <div class="carousel-window">
-
-    <div
-      class="product-track auto-scroll"
-      id="featuredTrack"
-      data-source="featured"
-    ></div>
-
+  <div class="carousel-container">
+    <div class="carousel-window">
+      <div class="product-track" id="featuredTrack"></div>
+    </div>
   </div>
 
 </section>
@@ -1521,95 +1485,18 @@ footer {
 
   </div>
 
-  <div class="carousel-window">
-
-    <div
-      class="product-track auto-scroll"
-      id="flashTrack"
-      data-source="flash"
-    ></div>
-
-  </div>
-
-</section>
-
-
-<section class="section">
-
   <div class="section-header">
-
-    <h2 class="section-title">
-      🔥 Trending <span>Products</span>
-    </h2>
-
-    <a href="#" class="view-all">
-      Explore Trending →
-    </a>
-
+    <h2 class="section-title">Limited Time <span>Discounts</span></h2>
+    <div class="carousel-controls">
+      <button class="carousel-control" onclick="moveCarousel('flashTrack', -1)">‹</button>
+      <button class="carousel-control" onclick="moveCarousel('flashTrack', 1)">›</button>
+    </div>
   </div>
 
-  <div class="carousel-window">
-
-    <div
-      class="product-track auto-scroll"
-      id="trendingTrack"
-      data-source="trending"
-    ></div>
-
-  </div>
-
-</section>
-
-
-<section class="section green-section" id="bestsellers">
-
-  <div class="section-header">
-
-    <h2 class="section-title">
-      🏆 Best <span>Sellers</span>
-    </h2>
-
-    <a href="#" class="view-all">
-      Shop Best Sellers →
-    </a>
-
-  </div>
-
-  <div class="carousel-window">
-
-    <div
-      class="product-track auto-scroll"
-      id="bestSellerTrack"
-      data-source="bestseller"
-    ></div>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="new">
-
-  <div class="section-header">
-
-    <h2 class="section-title">
-      ✨ New <span>Arrivals</span>
-    </h2>
-
-    <a href="#" class="view-all">
-      View All →
-    </a>
-
-  </div>
-
-  <div class="carousel-window">
-
-    <div
-      class="product-track auto-scroll"
-      id="newTrack"
-      data-source="new"
-    ></div>
-
+  <div class="carousel-container">
+    <div class="carousel-window">
+      <div class="product-track" id="flashTrack"></div>
+    </div>
   </div>
 
 </section>
@@ -1648,7 +1535,7 @@ footer {
     </a>
 
     <a href="#" class="brand-card">
-      <div class="brand-name yellow">SUPPLAB</div>
+      <div class="brand-name yellow">SUPLAB</div>
     </a>
 
   </div>
@@ -1713,42 +1600,15 @@ footer {
 </section>
 
 
-<section class="section feature-green">
-
-  <div class="section-header">
-
-    <h2 class="section-title">
-      🛍️ Explore <span>SUPPLAB</span>
-    </h2>
-
-    <a href="#" class="view-all">
-      Shop Everything →
-    </a>
-
-  </div>
-
-  <div class="carousel-window">
-
-    <div
-      class="product-track auto-scroll"
-      id="allProductsTrack"
-      data-source="all"
-    ></div>
-
-  </div>
-
-</section>
-
-
 <section class="rewards">
 
   <div>
 
-    <h2>🎁 Join SUPPLAB Rewards</h2>
+    <h2>🎁 Join SUPLAB Rewards</h2>
 
     <p>
       Earn points when you shop, discover exclusive offers
-      and unlock special SUPPLAB member rewards.
+      and unlock special SUPLAB member rewards.
     </p>
 
   </div>
@@ -1762,7 +1622,7 @@ footer {
 
 <section class="newsletter">
 
-  <h2>Stay Updated with SUPPLAB</h2>
+  <h2>Stay Updated with SUPLAB</h2>
 
   <p>Subscribe to our newsletter for exclusive deals and updates.</p>
 
@@ -1850,6 +1710,125 @@ footer {
   </div>
 
 </footer>
+
+<script>
+// Sample Product Data
+const productsData = [
+  { id: 1, brand: "California Gold Nutrition", name: "L-Theanine, 200 mg, 60 Veggie Capsules", price: "€12.50", oldPrice: "€15.00", rating: "★★★★★", reviews: "1,240", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80", badge: "BEST SELLER" },
+  { id: 2, brand: "NOW Foods", name: "Vitamin D3, 125 mcg (5,000 IU), 240 Softgels", price: "€9.80", oldPrice: "€12.00", rating: "★★★★★", reviews: "3,890", image: "https://images.unsplash.com/photo-1550572017-edd951baa742?auto=format&fit=crop&w=400&q=80", badge: "20% OFF", badgeRed: true },
+  { id: 3, brand: "Doctor's Best", name: "High Absorption Magnesium, 100 mg, 240 Tablets", price: "€18.20", oldPrice: "€21.50", rating: "★★★★☆", reviews: "850", image: "https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=400&q=80", badge: "POPULAR" },
+  { id: 4, brand: "Optimum Nutrition", name: "Gold Standard 100% Whey, Double Rich Chocolate", price: "€38.00", oldPrice: "€45.00", rating: "★★★★★", reviews: "5,120", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=400&q=80", badge: "HOT" },
+  { id: 5, brand: "Life Extension", name: "Two-Per-Day Multivitamin, 120 Capsules", price: "€22.10", oldPrice: "€25.00", rating: "★★★★★", reviews: "940", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80", badge: "SALE", badgeRed: true },
+  { id: 6, brand: "Solgar", name: "Skin, Nails & Hair, Advanced MSM Formula", price: "€16.40", oldPrice: "€19.00", rating: "★★★★☆", reviews: "610", image: "https://images.unsplash.com/photo-1550572017-edd951baa742?auto=format&fit=crop&w=400&q=80", badge: "NEW" },
+  { id: 7, brand: "Thorne", name: "Basic B-Complex, 60 Capsules", price: "€21.00", oldPrice: "€24.00", rating: "★★★★★", reviews: "430", image: "https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=400&q=80", badge: "FEATURED" },
+  { id: 8, brand: "Muscletech", name: "Nitro-Tech Performance Series, Milk Chocolate", price: "€42.00", oldPrice: "€50.00", rating: "★★★★☆", reviews: "1,820", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=400&q=80", badge: "TOP RATED" }
+];
+
+// Generate Card HTML
+function createProductCard(product) {
+  return `
+    <div class="product-card">
+      <div class="product-image">
+        <span class="product-badge ${product.badgeRed ? 'red' : ''}">${product.badge}</span>
+        <button class="product-heart" onclick="toggleWishlist(this)">♡</button>
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">${product.brand}</div>
+        <div class="product-name">${product.name}</div>
+        <div class="rating-row">
+          <span class="stars">${product.rating}</span>
+          <span class="review-count">(${product.reviews})</span>
+        </div>
+        <div class="price-row">
+          <span class="price">${product.price}</span>
+          <span class="old-price">${product.oldPrice}</span>
+        </div>
+        <button class="add-cart" onclick="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+  `;
+}
+
+// Render products into all 3 carousels
+function renderCarousels() {
+  const tracks = ['popularTrack', 'featuredTrack', 'flashTrack'];
+  tracks.forEach(trackId => {
+    const track = document.getElementById(trackId);
+    if (track) {
+      track.innerHTML = productsData.map(product => createProductCard(product)).join('');
+    }
+  });
+}
+
+// Arrow Button Click Handler (Smooth Horizontal Scroll)
+function moveCarousel(trackId, direction) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+  const container = track.parentElement;
+  const scrollAmount = container.clientWidth * 0.75;
+  
+  container.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+// Drag-to-Scroll Functionality for Desktop Mouse
+function enableDragToScroll() {
+  const windows = document.querySelectorAll('.carousel-window');
+  
+  windows.forEach(win => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    win.addEventListener('mousedown', (e) => {
+      isDown = true;
+      win.style.cursor = 'grabbing';
+      startX = e.pageX - win.offsetLeft;
+      scrollLeft = win.scrollLeft;
+    });
+
+    win.addEventListener('mouseleave', () => {
+      isDown = false;
+      win.style.cursor = 'default';
+    });
+
+    win.addEventListener('mouseup', () => {
+      isDown = false;
+      win.style.cursor = 'default';
+    });
+
+    win.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - win.offsetLeft;
+      const walk = (x - startX) * 2;
+      win.scrollLeft = scrollLeft - walk;
+    });
+  });
+}
+
+// Cart functionality
+let cartCount = 0;
+function addToCart() {
+  cartCount++;
+  document.getElementById('cartCount').textContent = cartCount;
+}
+
+// Wishlist Heart Toggle
+function toggleWishlist(btn) {
+  btn.classList.toggle('active');
+  btn.textContent = btn.classList.contains('active') ? '♥' : '♡';
+}
+
+// Initialize on Load
+document.addEventListener('DOMContentLoaded', () => {
+  renderCarousels();
+  enableDragToScroll();
+});
+</script>
 
 </body>
 </html>
